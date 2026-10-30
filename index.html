@@ -3,22 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hisaab.Guru — The Art of Effortless Business</title>
-  <meta name="description" content="Hisaab.Guru is the luxury AI accounting, GST bookkeeping, inventory, shifts, and 2026 Indian payroll mobile app crafted for every modern business. Download on the App Store and Google Play." />
-  <meta name="theme-color" content="#040A07" />
+  <title>Hisaab.Guru — Effortless Business. In Your Hand.</title>
+  <meta name="description" content="Hisaab.Guru is the AI accounting, GST bookkeeping, inventory, shifts, and 2026 Indian payroll mobile app crafted for every modern business. Download on the App Store and Google Play." />
+  <meta name="theme-color" content="#000000" />
   <link rel="icon" type="image/svg+xml" href="assets/hisaab-guru-mascot.svg" />
 
-  <!-- Luxury Editorial Fonts -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
   <!-- daisyUI 5 + Tailwind CSS v4 -->
   <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
-  <!-- Three.js WebGL + GSAP 3.12 + ScrollTrigger -->
-  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+  <!-- GSAP 3.12 + ScrollTrigger for Apple Scroll-Driven Motion -->
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 
@@ -26,29 +25,29 @@
     @layer base {
       :root, [data-theme="hisaab"] {
         color-scheme: dark;
-        --color-base-100: #040A07;
-        --color-base-200: #08150E;
-        --color-base-300: #0E2418;
-        --color-base-content: #F6F3EA;
+        --color-base-100: #000000;
+        --color-base-200: #0B120E;
+        --color-base-300: #121E17;
+        --color-base-content: #F5F5F7;
         --color-primary: #147A46;
-        --color-primary-content: #F6F3EA;
+        --color-primary-content: #F5F5F7;
         --color-secondary: #5EE889;
-        --color-secondary-content: #040A07;
-        --color-accent: #FF9828;
-        --color-accent-content: #040A07;
-        --color-neutral: #102419;
-        --color-neutral-content: #E6E1D6;
-        --color-info: #38BDF8;
-        --color-info-content: #040A07;
-        --color-success: #34D399;
-        --color-success-content: #040A07;
-        --color-warning: #FBBF24;
-        --color-warning-content: #040A07;
-        --color-error: #F59E0B;
-        --color-error-content: #040A07;
+        --color-secondary-content: #030906;
+        --color-accent: #FFB340;
+        --color-accent-content: #030906;
+        --color-neutral: #16221B;
+        --color-neutral-content: #F5F5F7;
+        --color-info: #64D2FF;
+        --color-info-content: #030906;
+        --color-success: #30D158;
+        --color-success-content: #030906;
+        --color-warning: #FFD60A;
+        --color-warning-content: #030906;
+        --color-error: #FF9F0A;
+        --color-error-content: #030906;
         --radius-selector: 2rem;
         --radius-field: 1rem;
-        --radius-box: 1.5rem;
+        --radius-box: 1.75rem;
         --size-selector: 0.25rem;
         --size-field: 0.25rem;
         --border: 1px;
@@ -58,29 +57,43 @@
     }
 
     :root {
-      --font-serif: 'Cormorant Garamond', 'Instrument Serif', Georgia, serif;
-      --font-instrument: 'Instrument Serif', Georgia, serif;
-      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-      --font-mono: 'JetBrains Mono', monospace;
+      --font-apple: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Plus Jakarta Sans', system-ui, sans-serif;
+      --font-mono: 'SF Mono', 'JetBrains Mono', ui-monospace, monospace;
     }
 
     * {
       box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
     }
 
     body {
-      font-family: var(--font-sans);
-      background-color: #040A07;
-      color: #F6F3EA;
+      font-family: var(--font-apple);
+      background-color: #000000;
+      color: #F5F5F7;
       overflow-x: hidden;
+      font-optical-sizing: auto;
     }
 
-    .font-editorial {
-      font-family: var(--font-serif);
+    /* Apple Optical Typography Scale */
+    .apple-hero-display {
+      font-size: clamp(2.75rem, 5.6vw, 4.75rem);
+      line-height: 1.04;
+      letter-spacing: -0.032em;
+      font-weight: 700;
     }
 
-    .font-instrument {
-      font-family: var(--font-instrument);
+    .apple-section-display {
+      font-size: clamp(2.15rem, 4.2vw, 3.6rem);
+      line-height: 1.07;
+      letter-spacing: -0.026em;
+      font-weight: 700;
+    }
+
+    .apple-manifesto-type {
+      font-size: clamp(1.85rem, 3.4vw, 3.1rem);
+      line-height: 1.18;
+      letter-spacing: -0.022em;
+      font-weight: 600;
     }
 
     .font-mono-num {
@@ -88,77 +101,61 @@
       font-variant-numeric: tabular-nums;
     }
 
-    /* Custom Magnetic Cursor Follower */
-    #cursor-ring {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 36px;
-      height: 36px;
-      border: 1px solid rgba(94, 232, 137, 0.45);
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 9999;
-      transform: translate(-50%, -50%);
-      transition: width 0.25s ease, height 0.25s ease, background-color 0.25s ease, border-color 0.25s ease;
-      mix-blend-mode: screen;
-    }
-    #cursor-dot {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 6px;
-      height: 6px;
-      background: #5EE889;
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 9999;
-      transform: translate(-50%, -50%);
-      box-shadow: 0 0 12px #5EE889;
-    }
-    @media (hover: none), (pointer: coarse) {
-      #cursor-ring, #cursor-dot { display: none; }
+    /* Apple Translucent Vibrancy Chrome */
+    .apple-glass-nav {
+      background: rgba(14, 22, 18, 0.72);
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55);
     }
 
-    /* 3D Split Text Perspective Mask */
-    .split-line-mask {
-      display: inline-block;
-      overflow: hidden;
-      vertical-align: bottom;
-      perspective: 900px;
-      padding-bottom: 0.08em;
+    /* Apple Bento Material Surface */
+    .apple-bento-card {
+      background: linear-gradient(180deg, rgba(20, 33, 26, 0.88) 0%, rgba(11, 18, 14, 0.94) 100%);
+      border-radius: 28px;
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      box-shadow:
+        0 24px 60px rgba(0, 0, 0, 0.6),
+        inset 0 1px 0 rgba(255, 255, 255, 0.12);
+      transition: transform 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+                  border-color 0.35s ease,
+                  box-shadow 0.42s cubic-bezier(0.22, 1, 0.36, 1);
     }
-    .split-word {
-      display: inline-block;
-      transform-origin: 50% 100%;
-      will-change: transform, opacity;
-    }
-
-    /* Animated SVG Mascot Keyframes (Matches Flutter _Hisaab3DMascotVectorPainter!) */
-    @keyframes mascotFloat {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-6px); }
-    }
-    @keyframes pawWave {
-      0%, 100% { transform: translate(190px, 112px) rotate(-14deg); }
-      50% { transform: translate(190px, 108px) rotate(-4deg); }
-    }
-    @keyframes bobblePulse {
-      0%, 100% { transform: translateY(0px) scale(1); }
-      50% { transform: translateY(-3px) scale(1.08); }
-    }
-    .svg-mascot-float {
-      animation: mascotFloat 3.8s ease-in-out infinite;
-    }
-    .svg-paw-wave {
-      animation: pawWave 2.2s ease-in-out infinite;
-    }
-    .svg-bobble-pulse {
-      animation: bobblePulse 2.2s ease-in-out infinite;
-      transform-origin: 134px 17px;
+    .apple-bento-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(94, 232, 137, 0.32);
+      box-shadow:
+        0 32px 72px rgba(0, 0, 0, 0.75),
+        inset 0 1px 0 rgba(255, 255, 255, 0.18);
     }
 
-    /* Bespoke 3D Titanium Phone Stage (Zero Clipping!) */
+    /* Apple iOS Squircle Mascot Pod */
+    .apple-squircle-pod {
+      background: radial-gradient(circle at 50% 35%, #165B38 0%, #0B291A 60%, #06130C 100%);
+      border-radius: 56px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.8),
+        0 0 60px rgba(20, 122, 70, 0.25),
+        inset 0 1.5px 0 rgba(255, 255, 255, 0.22);
+    }
+
+    /* Instant Pointer-Down Response (Apple Rule #1) */
+    .apple-pressable {
+      transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+                  box-shadow 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+                  background-color 0.2s ease,
+                  border-color 0.2s ease;
+      cursor: pointer;
+      user-select: none;
+    }
+    .apple-pressable:active {
+      transform: scale(0.965) !important;
+      transition: transform 90ms ease-out !important;
+    }
+
+    /* 3D Titanium Device Chassis (Unclipped, Precision Bezel) */
     .stage-3d-wrapper {
       perspective: 1800px;
       transform-style: preserve-3d;
@@ -168,16 +165,15 @@
       position: relative;
       width: 300px;
       height: 620px;
-      border-radius: 48px;
+      border-radius: 50px;
       transform-style: preserve-3d;
-      background: linear-gradient(145deg, #273B30 0%, #0D1912 45%, #1D3125 100%);
+      background: linear-gradient(145deg, #2D3D34 0%, #111A15 48%, #223028 100%);
       padding: 10px;
       box-shadow:
-        0 40px 90px -15px rgba(0, 0, 0, 0.92),
-        0 0 0 1px rgba(94, 232, 137, 0.35),
-        inset 0 2px 4px rgba(255, 255, 255, 0.22),
-        inset 0 -2px 6px rgba(0, 0, 0, 0.8);
-      transition: box-shadow 0.4s ease;
+        0 40px 100px -15px rgba(0, 0, 0, 0.95),
+        0 0 0 1px rgba(255, 255, 255, 0.16),
+        inset 0 1.5px 3px rgba(255, 255, 255, 0.25),
+        inset 0 -2px 5px rgba(0, 0, 0, 0.85);
       will-change: transform;
     }
 
@@ -185,9 +181,9 @@
       content: '';
       position: absolute;
       inset: 0;
-      border-radius: 48px;
-      background: linear-gradient(180deg, #1B3527, #07120C);
-      transform: translateZ(-14px);
+      border-radius: 50px;
+      background: linear-gradient(180deg, #1A2820, #080E0B);
+      transform: translateZ(-12px);
       box-shadow: 0 30px 60px rgba(0, 0, 0, 0.85);
       pointer-events: none;
     }
@@ -196,8 +192,8 @@
       position: relative;
       width: 100%;
       height: 100%;
-      border-radius: 39px;
-      background: #050F0A;
+      border-radius: 41px;
+      background: #050E09;
       overflow: hidden;
       display: flex;
       flex-direction: column;
@@ -208,15 +204,18 @@
     .phone-glass-glare {
       position: absolute;
       inset: 0;
-      background: linear-gradient(125deg, rgba(255,255,255,0.11) 0%, rgba(255,255,255,0.02) 32%, transparent 50%);
+      background: linear-gradient(125deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.015) 34%, transparent 52%);
       pointer-events: none;
       z-index: 30;
     }
 
     .floating-3d-chip {
-      transform: translateZ(46px);
-      box-shadow: 0 22px 45px rgba(0, 0, 0, 0.75), 0 0 20px rgba(94, 232, 137, 0.2);
-      backdrop-filter: blur(16px);
+      transform: translateZ(42px);
+      background: rgba(12, 22, 16, 0.82);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      box-shadow: 0 20px 44px rgba(0, 0, 0, 0.72);
     }
 
     @keyframes scanLaser {
@@ -227,376 +226,221 @@
       animation: scanLaser 3.2s cubic-bezier(0.45, 0, 0.55, 1) infinite;
     }
 
-    @keyframes dashFlow {
-      to { stroke-dashoffset: -120; }
-    }
-    .animate-data-stream {
-      stroke-dasharray: 10 14;
-      animation: dashFlow 2.6s linear infinite;
-    }
-
     @keyframes marqueeLeft {
       0% { transform: translate3d(0, 0, 0); }
       100% { transform: translate3d(-50%, 0, 0); }
     }
-    @keyframes marqueeRight {
-      0% { transform: translate3d(-50%, 0, 0); }
-      100% { transform: translate3d(0, 0, 0); }
-    }
-    .marquee-track-left {
+    .marquee-track {
       display: flex;
       width: max-content;
-      animation: marqueeLeft 32s linear infinite;
-    }
-    .marquee-track-right {
-      display: flex;
-      width: max-content;
-      animation: marqueeRight 36s linear infinite;
+      animation: marqueeLeft 36s linear infinite;
     }
 
-    .tilt-card {
-      position: relative;
-      transform-style: preserve-3d;
-      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+    /* Reduced Motion & Transparency Compliance (Apple Rule #14) */
+    @media (prefers-reduced-motion: reduce) {
+      .laser-beam, .marquee-track {
+        animation: none !important;
+      }
+      .phone-3d-rig, .apple-bento-card {
+        transition: opacity 200ms ease !important;
+      }
     }
-    .tilt-card::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: inherit;
-      background: radial-gradient(
-        500px circle at var(--mx, 50%) var(--my, 50%),
-        rgba(94, 232, 137, 0.13),
-        transparent 45%
-      );
-      pointer-events: none;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-    .tilt-card:hover::after {
-      opacity: 1;
-    }
-
-    .store-cta {
-      position: relative;
-      overflow: hidden;
-      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-                  box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-                  border-color 0.3s ease;
-    }
-    .store-cta::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(115deg, transparent 20%, rgba(94, 232, 137, 0.22) 50%, transparent 80%);
-      transform: translateX(-130%);
-      transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .store-cta:hover::before {
-      transform: translateX(130%);
-    }
-    .store-cta:hover {
-      box-shadow: 0 22px 50px -10px rgba(20, 122, 70, 0.55), 0 0 0 1px rgba(94, 232, 137, 0.65);
+    @media (prefers-reduced-transparency: reduce) {
+      .apple-glass-nav, .floating-3d-chip {
+        background: #0D1712 !important;
+        backdrop-filter: none !important;
+      }
     }
   </style>
 </head>
 <body class="bg-base-100 text-base-content antialiased selection:bg-secondary selection:text-base-100">
 
-  <!-- Reusable Master SVG Symbol for our App's Exact 3D Plush Mascot Logo -->
-  <svg width="0" height="0" class="hidden" aria-hidden="true">
-    <defs>
-      <radialGradient id="hgPlushGlow" cx="50%" cy="46%" r="50%">
-        <stop offset="0%" stop-color="#64F5B2" stop-opacity="0.42"/>
-        <stop offset="45%" stop-color="#FF9A62" stop-opacity="0.26"/>
-        <stop offset="75%" stop-color="#8C7AE6" stop-opacity="0.10"/>
-        <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
-      </radialGradient>
-      <radialGradient id="hgBobbleGrad" cx="35%" cy="35%" r="65%">
-        <stop offset="0%" stop-color="#FFF5D6"/>
-        <stop offset="55%" stop-color="#FFB142"/>
-        <stop offset="100%" stop-color="#FF793F"/>
-      </radialGradient>
-      <radialGradient id="hgEarLeft" cx="35%" cy="35%" r="65%">
-        <stop offset="0%" stop-color="#82F9C3"/>
-        <stop offset="55%" stop-color="#28A46E"/>
-        <stop offset="100%" stop-color="#104932"/>
-      </radialGradient>
-      <radialGradient id="hgEarRight" cx="35%" cy="35%" r="65%">
-        <stop offset="0%" stop-color="#FFC78E"/>
-        <stop offset="55%" stop-color="#39B57D"/>
-        <stop offset="100%" stop-color="#124E35"/>
-      </radialGradient>
-      <radialGradient id="hgPlushHead" cx="31%" cy="26%" r="74%">
-        <stop offset="0%" stop-color="#A3FCD2"/>
-        <stop offset="38%" stop-color="#34C782"/>
-        <stop offset="78%" stop-color="#145A3C"/>
-        <stop offset="100%" stop-color="#2A394A"/>
-      </radialGradient>
-      <radialGradient id="hgWarmBounce" cx="85%" cy="42%" r="55%">
-        <stop offset="0%" stop-color="#FF9A76" stop-opacity="0.58"/>
-        <stop offset="55%" stop-color="#FF6B9D" stop-opacity="0.26"/>
-        <stop offset="100%" stop-color="#FF6B9D" stop-opacity="0"/>
-      </radialGradient>
-      <linearGradient id="hgFaceRim" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stop-color="#B8FFE0"/>
-        <stop offset="50%" stop-color="#38B87C"/>
-        <stop offset="100%" stop-color="#FFAE78"/>
-      </linearGradient>
-      <radialGradient id="hgVelvetFace" cx="50%" cy="40%" r="60%">
-        <stop offset="0%" stop-color="#1F3833"/>
-        <stop offset="65%" stop-color="#0E1B1A"/>
-        <stop offset="100%" stop-color="#070D0E"/>
-      </radialGradient>
-      <linearGradient id="hgEyeIris" x1="50%" y1="0%" x2="50%" y2="100%">
-        <stop offset="0%" stop-color="#FFFFFF"/>
-        <stop offset="45%" stop-color="#8FFFD4"/>
-        <stop offset="100%" stop-color="#2CE090"/>
-      </linearGradient>
-      <radialGradient id="hgWavePaw" cx="38%" cy="32%" r="68%">
-        <stop offset="0%" stop-color="#FFCBA4"/>
-        <stop offset="55%" stop-color="#4BE89E"/>
-        <stop offset="100%" stop-color="#196E4B"/>
-      </radialGradient>
-      <linearGradient id="hgWaveSparkle" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stop-color="#FFE0B2"/>
-        <stop offset="100%" stop-color="#FF85A1"/>
-      </linearGradient>
-      <radialGradient id="hgFootGrad" cx="40%" cy="35%" r="65%">
-        <stop offset="0%" stop-color="#7AF5BE"/>
-        <stop offset="100%" stop-color="#1E7B52"/>
-      </radialGradient>
-      <filter id="hgSoftBlur" x="-30%" y="-30%" width="160%" height="160%">
-        <feGaussianBlur stdDeviation="4.5"/>
-      </filter>
-      <filter id="hgDropShadow" x="-20%" y="-20%" width="140%" height="150%">
-        <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#071A12" flood-opacity="0.48"/>
-      </filter>
+  <!-- Calm Apple Studio Ambient Lighting (No Noisy Wireframes!) -->
+  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+    <div class="absolute -top-48 left-1/2 -translate-x-1/2 w-[62rem] h-[34rem] rounded-full bg-[#147A46]/18 blur-[150px]"></div>
+    <div class="absolute top-1/3 right-[-10%] w-[36rem] h-[36rem] rounded-full bg-[#5EE889]/8 blur-[160px]"></div>
+  </div>
 
-      <!-- Master Animated 3D Plush Mascot Symbol -->
-      <symbol id="hisaab-mascot-logo" viewBox="0 0 240 240">
-        <circle cx="120" cy="112" r="114" fill="url(#hgPlushGlow)"/>
-        <g class="svg-bobble-pulse">
-          <path d="M 120 42 Q 122 26 132 20" stroke="#6EF7B4" stroke-width="5.5" stroke-linecap="round" fill="none"/>
-          <circle cx="134" cy="17" r="11" fill="#FFB86C" fill-opacity="0.45" filter="url(#hgSoftBlur)"/>
-          <circle cx="134" cy="17" r="7.5" fill="url(#hgBobbleGrad)"/>
-        </g>
-        <ellipse cx="52" cy="98" rx="14" ry="16" fill="url(#hgEarLeft)"/>
-        <ellipse cx="188" cy="98" rx="14" ry="16" fill="url(#hgEarRight)"/>
-        <ellipse cx="96" cy="174" rx="14" ry="9" fill="url(#hgFootGrad)"/>
-        <ellipse cx="144" cy="174" rx="14" ry="9" fill="url(#hgFootGrad)"/>
-        <g filter="url(#hgDropShadow)">
-          <rect x="48" y="38" width="144" height="134" rx="66" fill="url(#hgPlushHead)"/>
-          <rect x="48" y="38" width="144" height="134" rx="66" fill="url(#hgWarmBounce)"/>
-        </g>
-        <path d="M 78 52 Q 120 41 162 52" stroke="#FFFFFF" stroke-opacity="0.55" stroke-width="5" stroke-linecap="round" fill="none"/>
-        <rect x="61.8" y="55.8" width="116.4" height="86.4" rx="42.2" fill="url(#hgFaceRim)"/>
-        <rect x="64" y="58" width="112" height="82" rx="40" fill="url(#hgVelvetFace)"/>
-        <path d="M 82 68 Q 120 61 158 69" stroke="#FFFFFF" stroke-opacity="0.26" stroke-width="3" stroke-linecap="round" fill="none"/>
-        <ellipse cx="84" cy="114" rx="10" ry="5.5" fill="#FF7E9D" fill-opacity="0.62" filter="url(#hgSoftBlur)"/>
-        <ellipse cx="156" cy="114" rx="10" ry="5.5" fill="#FF7E9D" fill-opacity="0.62" filter="url(#hgSoftBlur)"/>
-        <ellipse cx="97" cy="97" rx="12" ry="14" fill="#64F5B2" fill-opacity="0.32" filter="url(#hgSoftBlur)"/>
-        <ellipse cx="97" cy="97" rx="10.5" ry="12.5" fill="url(#hgEyeIris)"/>
-        <ellipse cx="97" cy="98" rx="6.75" ry="8.25" fill="#0A1E17"/>
-        <path d="M 91.8 101.5 A 6 6.5 0 0 0 102.2 101.5" stroke="#6EF7B4" stroke-width="2.6" stroke-linecap="round" fill="none"/>
-        <circle cx="93.2" cy="92.5" r="4.2" fill="#FFFFFF"/>
-        <circle cx="100.6" cy="101" r="2.0" fill="#FFFFFF" fill-opacity="0.92"/>
-        <ellipse cx="143" cy="97" rx="12" ry="14" fill="#64F5B2" fill-opacity="0.32" filter="url(#hgSoftBlur)"/>
-        <ellipse cx="143" cy="97" rx="10.5" ry="12.5" fill="url(#hgEyeIris)"/>
-        <ellipse cx="143" cy="98" rx="6.75" ry="8.25" fill="#0A1E17"/>
-        <path d="M 137.8 101.5 A 6 6.5 0 0 0 148.2 101.5" stroke="#6EF7B4" stroke-width="2.6" stroke-linecap="round" fill="none"/>
-        <circle cx="139.2" cy="92.5" r="4.2" fill="#FFFFFF"/>
-        <circle cx="146.6" cy="101" r="2.0" fill="#FFFFFF" fill-opacity="0.92"/>
-        <path d="M 112 112 Q 120 121 128 112" stroke="#9BFFCE" stroke-width="3.4" stroke-linecap="round" fill="none"/>
-        <g class="svg-paw-wave">
-          <rect x="-15" y="-20" width="30" height="38" rx="16" fill="url(#hgWavePaw)"/>
-          <ellipse cx="0" cy="-3" rx="6" ry="4.5" fill="#FF9EB5" fill-opacity="0.88"/>
-          <circle cx="-6" cy="-11" r="2.6" fill="#FF9EB5" fill-opacity="0.88"/>
-          <circle cx="0" cy="-13" r="2.8" fill="#FF9EB5" fill-opacity="0.88"/>
-          <circle cx="6" cy="-11" r="2.6" fill="#FF9EB5" fill-opacity="0.88"/>
-        </g>
-        <line x1="202" y1="82" x2="210" y2="68" stroke="url(#hgWaveSparkle)" stroke-width="4.5" stroke-linecap="round"/>
-        <line x1="208" y1="94" x2="222" y2="84" stroke="url(#hgWaveSparkle)" stroke-width="4.5" stroke-linecap="round"/>
-        <rect x="103" y="139" width="34" height="26" rx="13" fill="#0E291E"/>
-        <text x="120" y="158" text-anchor="middle" fill="#FFC86B" font-size="18" font-weight="800" font-family="Plus Jakarta Sans, sans-serif">₹</text>
-      </symbol>
-    </defs>
-  </svg>
-
-  <!-- Custom Magnetic Cursor -->
-  <div id="cursor-ring"></div>
-  <div id="cursor-dot"></div>
-
-  <!-- ================= THREE.JS 3D WEBGL SCENE CANVAS ================= -->
-  <canvas id="webgl-canvas" class="fixed inset-0 w-full h-full pointer-events-none z-0"></canvas>
-
-  <!-- Ambient Luxury Vignette -->
-  <div class="fixed inset-0 pointer-events-none z-0 bg-[radial-gradient(ellipse_at_center,transparent_25%,#040A07_90%)]"></div>
-
-  <!-- ================= LUXURY FLOATING NAVBAR (daisyUI navbar) ================= -->
-  <header class="sticky top-4 z-50 px-4 sm:px-8 max-w-7xl mx-auto">
-    <div class="navbar bg-base-200/80 backdrop-blur-2xl border border-secondary/20 rounded-full px-4 sm:px-7 py-2 shadow-[0_20px_60px_rgba(0,0,0,0.75)]">
+  <!-- ================= APPLE TRANSLUCENT STICKY NAVBAR ================= -->
+  <header class="sticky top-4 z-50 px-4 sm:px-8 max-w-6xl mx-auto">
+    <div class="navbar apple-glass-nav rounded-full px-4 sm:px-6 py-2 min-h-[58px]">
       <div class="navbar-start gap-3">
-        <a href="#top" class="flex items-center gap-3 group focus:outline-none">
-          <!-- Official SVG Mascot Logo from the App -->
-          <div class="w-12 h-12 flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
-            <svg class="w-12 h-12 overflow-visible" viewBox="0 0 240 240" role="img" aria-label="Hisaab.Guru SVG Logo">
-              <use href="#hisaab-mascot-logo" />
-            </svg>
-          </div>
+        <a href="#top" class="flex items-center gap-3 apple-pressable focus:outline-none">
+          <img
+            src="assets/hisaab-guru-mascot.svg"
+            alt="Hisaab.Guru Logo"
+            class="w-10 h-10 object-contain"
+          />
           <div class="flex flex-col">
-            <span class="font-editorial text-2xl sm:text-[1.75rem] font-semibold tracking-tight leading-none text-base-content">
-              Hisaab<span class="italic font-normal text-secondary">.Guru</span>
+            <span class="text-lg sm:text-xl font-bold tracking-tight leading-none text-[#F5F5F7]">
+              Hisaab<span class="text-secondary">.Guru</span>
             </span>
-            <span class="font-mono-num text-[9px] tracking-[0.25em] uppercase text-secondary/80 mt-0.5">
-              Mobile App Exclusive
+            <span class="text-[10px] font-medium tracking-wider uppercase text-[#A1A1A6] mt-0.5">
+              Mobile App
             </span>
           </div>
         </a>
       </div>
 
-      <div class="navbar-center hidden lg:flex">
-        <nav aria-label="Main Navigation" class="flex items-center gap-8 text-sm font-medium text-base-content/75">
-          <a href="#manifesto" class="hover:text-secondary transition-colors">Philosophy</a>
-          <a href="#motion-pipeline" class="hover:text-secondary transition-colors">3D Motion</a>
-          <a href="#industries" class="hover:text-secondary transition-colors">Every Business</a>
-          <a href="#download-cta" class="hover:text-secondary transition-colors">Download</a>
+      <div class="navbar-center hidden md:flex">
+        <nav aria-label="Main Navigation" class="flex items-center gap-7 text-[13px] font-medium text-[#A1A1A6]">
+          <a href="#manifesto" class="hover:text-[#F5F5F7] transition-colors">Overview</a>
+          <a href="#bento-features" class="hover:text-[#F5F5F7] transition-colors">Capabilities</a>
+          <a href="#industries" class="hover:text-[#F5F5F7] transition-colors">Businesses</a>
+          <a href="#download-cta" class="hover:text-[#F5F5F7] transition-colors">Download</a>
         </nav>
       </div>
 
-      <div class="navbar-end gap-3">
-        <span class="badge badge-soft badge-secondary hidden sm:inline-flex font-mono-num text-[10px] tracking-widest uppercase px-3.5 py-3">
-          <span class="w-1.5 h-1.5 rounded-full bg-secondary animate-ping mr-1.5"></span>
-          App Only
-        </span>
-        <button onclick="qr_modal.showModal()" class="btn btn-sm sm:btn-md rounded-full bg-secondary text-base-100 hover:bg-secondary/90 border-0 font-semibold px-5 shadow-lg shadow-secondary/25">
-          <span>Get the App</span>
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v12m0 0l-4-4m4 4l4-4M4 20h16"/></svg>
+      <div class="navbar-end gap-2.5">
+        <button
+          type="button"
+          onclick="qr_modal.showModal()"
+          class="apple-pressable btn btn-sm rounded-full bg-[#F5F5F7] text-[#000000] hover:bg-white border-0 font-semibold px-4 text-xs h-9"
+        >
+          <span>Download App</span>
         </button>
       </div>
     </div>
   </header>
 
-  <!-- ================= HERO SECTION: KINETIC TYPE + 3D DUAL TITANIUM PHONES ================= -->
-  <main id="top" class="relative z-10 pt-8 sm:pt-14 pb-20">
+  <!-- ================= HERO SECTION ================= -->
+  <main id="top" class="relative z-10 pt-10 sm:pt-16 pb-20">
     <section class="max-w-7xl mx-auto px-4 sm:px-8">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-14 lg:gap-6 items-center">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-14 lg:gap-8 items-center">
 
-        <!-- Left Column: Split-Text Animated Editorial Headline & Store Badges (6 cols) -->
+        <!-- Left Column: Optical Display Headline & Store Actions (6 cols) -->
         <div class="lg:col-span-6 space-y-7 text-center lg:text-left">
-          <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-base-200/90 border border-secondary/30 shadow-lg backdrop-blur-md">
-            <svg class="w-7 h-7" viewBox="0 0 240 240" aria-hidden="true">
-              <use href="#hisaab-mascot-logo" />
-            </svg>
-            <span class="font-mono-num text-[11px] uppercase tracking-[0.18em] text-secondary">
+          <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/[0.06] border border-white/[0.12]">
+            <img src="assets/hisaab-guru-mascot.svg" alt="" class="w-6 h-6 object-contain" />
+            <span class="text-xs font-medium text-[#F5F5F7]/90 tracking-tight">
               Exclusively on Mobile · Built for Every Business
             </span>
           </div>
 
-          <!-- 3D Kinetic Split Headline -->
-          <h1 id="hero-headline" class="font-editorial text-5xl sm:text-6xl xl:text-[5.1rem] font-normal leading-[0.98] tracking-[-0.025em] text-base-content">
-            <span class="split-line-mask"><span class="split-word">Financial</span> <span class="split-word">clarity,</span></span><br />
-            <span class="split-line-mask"><span class="split-word italic text-secondary">sculpted</span> <span class="split-word">for</span> <span class="split-word">your</span></span><br />
-            <span class="split-line-mask"><span class="split-word">palm.</span> <span class="split-word text-accent italic">Nothing</span> <span class="split-word text-accent italic">else.</span></span>
+          <h1 id="hero-title" class="apple-hero-display text-[#F5F5F7]">
+            Effortless business.<br />
+            <span class="text-secondary">Right in your hand.</span>
           </h1>
 
-          <p id="hero-subcopy" class="text-base sm:text-lg text-base-content/75 max-w-xl mx-auto lg:mx-0 leading-relaxed">
-            <strong class="text-base-content font-semibold">Hisaab.Guru</strong> is a pure mobile operating system for modern Indian commerce. Snap supplier invoices with AI, automate GST input credits, orchestrate shifts, and issue 2026 statutory PDF payslips in one tap — live today for hospitality, and expanding rapidly to pharmacies, retail, salons, and enterprises.
+          <p class="text-base sm:text-[19px] text-[#A1A1A6] max-w-xl mx-auto lg:mx-0 leading-[1.48] font-normal">
+            Snap supplier bills with AI, automate GST input credits, schedule shifts, and generate 2026 Indian statutory PDF payslips in a single tap. Launching first for hospitality and expanding across retail, pharmacies, salons, and modern enterprises.
           </p>
 
-          <!-- Official App Store & Google Play Store Magnetic Buttons -->
-          <div class="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+          <!-- Official App Store & Google Play Store Buttons -->
+          <div class="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5">
             <!-- App Store -->
             <a
               href="#app-store"
               onclick="event.preventDefault(); openStoreModal('App Store');"
-              class="magnetic-btn store-cta w-full sm:w-auto min-w-[225px] flex items-center gap-4 px-6 py-3.5 rounded-2xl bg-[#0A1A12]/95 border border-secondary/40 text-left shadow-2xl"
+              class="apple-pressable w-full sm:w-auto min-w-[215px] flex items-center justify-center sm:justify-start gap-3.5 px-6 py-3.5 rounded-2xl bg-[#F5F5F7] text-[#000000] hover:bg-white shadow-xl"
             >
-              <svg class="w-9 h-9 text-base-content shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <svg class="w-8 h-8 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                 <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.33c.64-.78 1.08-1.86.96-2.94-.93.04-2.06.62-2.72 1.4-.58.68-1.1 1.79-.96 2.84 1.04.08 2.08-.52 2.72-1.3z"/>
               </svg>
-              <div>
-                <div class="text-[10px] font-mono-num uppercase tracking-[0.2em] text-base-content/60">Download on the</div>
-                <div class="font-editorial text-2xl font-semibold tracking-tight text-base-content leading-none mt-0.5">App Store</div>
+              <div class="text-left">
+                <div class="text-[10px] font-semibold uppercase tracking-wider text-black/60 leading-none">Download on the</div>
+                <div class="text-xl font-bold tracking-tight text-black leading-tight mt-0.5">App Store</div>
               </div>
             </a>
 
-            <!-- Google Play Store -->
+            <!-- Google Play -->
             <a
               href="#google-play"
               onclick="event.preventDefault(); openStoreModal('Google Play');"
-              class="magnetic-btn store-cta w-full sm:w-auto min-w-[225px] flex items-center gap-4 px-6 py-3.5 rounded-2xl bg-[#0A1A12]/95 border border-secondary/40 text-left shadow-2xl"
+              class="apple-pressable w-full sm:w-auto min-w-[215px] flex items-center justify-center sm:justify-start gap-3.5 px-6 py-3.5 rounded-2xl bg-white/[0.08] hover:bg-white/[0.12] border border-white/[0.16] text-[#F5F5F7] shadow-xl"
             >
-              <svg class="w-8 h-8 shrink-0" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <svg class="w-7 h-7 shrink-0" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <path d="M3.609 1.814L13.792 12 3.61 22.186a1.75 1.75 0 01-.61-1.334V3.148c0-.517.224-.998.609-1.334z" fill="#34D399"/>
                 <path d="M17.256 8.536L13.792 12l3.464 3.464 3.908-2.233c.79-.452.79-1.59 0-2.062l-3.908-2.633z" fill="#FBBF24"/>
                 <path d="M3.609 22.186L13.792 12l3.464 3.464-11.98 6.846c-.645.368-1.268.222-1.667-.124z" fill="#5EE889"/>
                 <path d="M3.609 1.814c.4-.346 1.022-.492 1.667-.124l11.98 6.846L13.792 12 3.609 1.814z" fill="#147A46"/>
               </svg>
-              <div>
-                <div class="text-[10px] font-mono-num uppercase tracking-[0.2em] text-base-content/60">Get it on</div>
-                <div class="font-editorial text-2xl font-semibold tracking-tight text-base-content leading-none mt-0.5">Google Play</div>
+              <div class="text-left">
+                <div class="text-[10px] font-semibold uppercase tracking-wider text-[#A1A1A6] leading-none">Get it on</div>
+                <div class="text-xl font-bold tracking-tight text-[#F5F5F7] leading-tight mt-0.5">Google Play</div>
               </div>
             </a>
 
-            <!-- Instant QR Trigger -->
+            <!-- QR Code Button -->
             <button
+              type="button"
               onclick="qr_modal.showModal()"
-              class="magnetic-btn btn btn-ghost rounded-2xl border border-secondary/25 hover:border-secondary px-4 h-[62px] flex items-center gap-2.5 text-base-content"
+              class="apple-pressable px-4 h-[60px] rounded-2xl bg-white/[0.06] hover:bg-white/[0.1] border border-white/[0.14] flex items-center gap-2 text-xs font-semibold text-[#F5F5F7]"
             >
-              <svg class="w-6 h-6 text-secondary" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <svg class="w-5 h-5 text-secondary" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 4.875c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5A1.125 1.125 0 013.75 9.375v-4.5zM3.75 14.625c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5a1.125 1.125 0 01-1.125-1.125v-4.5zM13.5 4.875c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5A1.125 1.125 0 0113.5 9.375v-4.5z"/>
                 <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 6.75h.75v.75h-.75v-.75zM6.75 16.5h.75v.75h-.75v-.75zM16.5 6.75h.75v.75h-.75v-.75zM13.5 13.5h.75v.75h-.75v-.75zM13.5 19.5h.75v.75h-.75v-.75zM19.5 13.5h.75v.75h-.75v-.75zM19.5 19.5h.75v.75h-.75v-.75zM16.5 16.5h.75v.75h-.75v-.75z"/>
               </svg>
-              <span class="font-mono-num text-xs uppercase tracking-wider">QR</span>
+              <span>QR Code</span>
             </button>
           </div>
 
-          <!-- Interactive 3D Phone Screen Switcher Controls -->
-          <div class="pt-3 flex flex-wrap items-center justify-center lg:justify-start gap-2">
-            <span class="font-mono-num text-[10px] uppercase tracking-widest text-base-content/50 mr-2">Interactive 3D Stage:</span>
-            <button type="button" onclick="focusPhoneStage('welcome')" id="stage-btn-welcome" class="btn btn-xs rounded-full bg-secondary text-base-100 border-0 font-mono-num">01 · Welcome Screen</button>
-            <button type="button" onclick="focusPhoneStage('payroll')" id="stage-btn-payroll" class="btn btn-xs rounded-full bg-base-200 text-base-content/75 border border-secondary/25 font-mono-num">02 · Payroll &amp; PDF Payslip</button>
-            <button type="button" onclick="focusPhoneStage('scanner')" id="stage-btn-scanner" class="btn btn-xs rounded-full bg-base-200 text-base-content/75 border border-secondary/25 font-mono-num">03 · AI Bill Scanner</button>
+          <!-- Apple-Style Segmented Control for 3D Stage -->
+          <div class="pt-3 flex items-center justify-center lg:justify-start">
+            <div class="inline-flex p-1 rounded-full bg-white/[0.07] border border-white/[0.1] backdrop-blur-xl">
+              <button
+                type="button"
+                id="seg-welcome"
+                onclick="focusPhoneStage('welcome')"
+                class="apple-pressable px-4 py-1.5 rounded-full text-xs font-semibold bg-[#F5F5F7] text-black shadow"
+              >
+                Welcome
+              </button>
+              <button
+                type="button"
+                id="seg-payroll"
+                onclick="focusPhoneStage('payroll')"
+                class="apple-pressable px-4 py-1.5 rounded-full text-xs font-semibold text-[#A1A1A6] hover:text-white"
+              >
+                Payroll &amp; PDF
+              </button>
+              <button
+                type="button"
+                id="seg-scanner"
+                onclick="focusPhoneStage('scanner')"
+                class="apple-pressable px-4 py-1.5 rounded-full text-xs font-semibold text-[#A1A1A6] hover:text-white"
+              >
+                AI Bill Capture
+              </button>
+            </div>
           </div>
         </div>
 
-        <!-- Right Column: Bespoke 3D Interactive Titanium Dual-Phone Stage (6 cols, Zero Clipping!) -->
-        <div class="lg:col-span-6 relative flex items-center justify-center min-h-[650px] stage-3d-wrapper" id="hero-3d-stage">
+        <!-- Right Column: 3D Titanium Dual-Phone Stage (6 cols, 1:1 Pointer Tracking) -->
+        <div class="lg:col-span-6 relative flex items-center justify-center min-h-[640px] stage-3d-wrapper" id="hero-3d-stage">
 
-          <!-- Ambient 3D Halo Glow Behind Phones -->
-          <div class="absolute w-[380px] h-[380px] sm:w-[460px] sm:h-[460px] rounded-full bg-gradient-to-tr from-primary/35 via-secondary/15 to-accent/20 blur-[90px] pointer-events-none"></div>
+          <!-- Soft Studio Spotlight Behind Phones -->
+          <div class="absolute w-[380px] h-[380px] sm:w-[440px] sm:h-[440px] rounded-full bg-[#147A46]/25 blur-[100px] pointer-events-none"></div>
 
-          <!-- ==================== 3D PHONE 1: Welcome Screen with Exact SVG Mascot ==================== -->
+          <!-- ==================== 3D PHONE 1: Welcome Screen (Exact App Design) ==================== -->
           <div
             id="phone-ios-rig"
             class="phone-3d-rig z-20 -mr-10 sm:-mr-8"
-            style="transform: rotateY(-14deg) rotateX(6deg) rotateZ(-2deg) translateZ(20px);"
+            style="transform: rotateY(-12deg) rotateX(5deg) rotateZ(-1.5deg) translateZ(20px);"
           >
-            <!-- Floating 3D Parallax Badge Popping Out in Z-Space -->
-            <div class="floating-3d-chip absolute -left-8 top-14 z-40 px-3.5 py-2 rounded-2xl bg-[#071810]/90 border border-secondary/45 flex items-center gap-2.5 pointer-events-none">
-              <span class="w-2 h-2 rounded-full bg-secondary animate-ping"></span>
+            <!-- Translucent Floating Pill -->
+            <div class="floating-3d-chip absolute -left-7 top-14 z-40 px-3.5 py-2 rounded-2xl flex items-center gap-2.5 pointer-events-none">
+              <span class="w-2 h-2 rounded-full bg-secondary"></span>
               <div>
-                <div class="font-mono-num text-[9px] text-secondary uppercase tracking-wider">Hisaab.Guru App</div>
-                <div class="text-[11px] font-semibold text-white">Instant Biometric Auth</div>
+                <div class="text-[10px] font-semibold text-secondary leading-none">Hisaab.Guru</div>
+                <div class="text-[11px] font-medium text-[#F5F5F7] mt-0.5">Instant Sign-In</div>
               </div>
             </div>
 
             <div class="phone-screen-viewport">
               <div class="phone-glass-glare"></div>
 
-              <!-- Top Status Bar -->
-              <div class="relative z-20 pt-3 px-6 flex items-center justify-between text-[11px] font-mono-num text-white/90 bg-[#0D5B34]">
+              <!-- Status Bar -->
+              <div class="relative z-20 pt-3 px-6 flex items-center justify-between text-[11px] font-semibold text-white/90 bg-[#0E5C34]">
                 <span>9:41</span>
-                <div class="w-20 h-5 rounded-full bg-black flex items-center justify-end pr-2">
-                  <span class="w-2 h-2 rounded-full bg-[#1a3a2a] ring-1 ring-secondary/40"></span>
-                </div>
-                <span>5G 100%</span>
+                <div class="w-20 h-5 rounded-full bg-black"></div>
+                <span>100%</span>
               </div>
 
-              <!-- Emerald Topographic Wave Header with Our App's Animated SVG Mascot (No White Bubble!) -->
-              <div class="relative h-[330px] w-full bg-gradient-to-b from-[#0D5B34] via-[#147A46] to-[#198C52] flex flex-col items-center justify-center overflow-hidden">
-                <!-- Animated Topographic Contour SVG Lines -->
-                <svg class="absolute inset-0 w-full h-full opacity-35" viewBox="0 0 280 320" fill="none">
+              <!-- Emerald Topographic Wave Header with Full 3D Plush SVG Mascot -->
+              <div class="relative h-[330px] w-full bg-gradient-to-b from-[#0E5C34] via-[#147A46] to-[#1C9456] flex flex-col items-center justify-center overflow-hidden">
+                <!-- Topographic Contours -->
+                <svg class="absolute inset-0 w-full h-full opacity-30" viewBox="0 0 280 320" fill="none">
                   <path d="M-20 35 C 60 5, 140 85, 220 35 C 250 15, 280 45, 310 30" stroke="#A7F3D0" stroke-width="1.2"/>
                   <path d="M-20 90 C 50 55, 130 135, 210 80 C 250 55, 280 90, 310 75" stroke="#A7F3D0" stroke-width="1.2"/>
                   <path d="M-10 150 C 70 115, 150 185, 230 130 C 260 110, 290 135, 320 120" stroke="#A7F3D0" stroke-width="1.2"/>
@@ -605,24 +449,24 @@
                   <ellipse cx="72" cy="185" rx="56" ry="30" stroke="#5EE889" stroke-width="1.1"/>
                 </svg>
 
-                <!-- App's Exact 3D Plush Mascot SVG Floating Directly on the Emerald Wave -->
-                <div class="relative z-10 svg-mascot-float">
-                  <svg class="w-40 h-40 overflow-visible" viewBox="0 0 240 240" role="img" aria-label="Hisaab.Guru 3D Mascot">
-                    <use href="#hisaab-mascot-logo" />
-                  </svg>
-                </div>
+                <!-- Standalone Animated SVG Mascot (Renders 100% of Gradients!) -->
+                <img
+                  src="assets/hisaab-guru-mascot.svg"
+                  alt="Hisaab.Guru 3D Mascot"
+                  class="relative z-10 w-40 h-40 object-contain drop-shadow-[0_14px_28px_rgba(0,0,0,0.4)]"
+                />
 
-                <!-- Smooth S-Curve Wave Divider -->
-                <svg class="absolute -bottom-1 left-0 w-full h-12 text-[#050F0A]" viewBox="0 0 280 50" preserveAspectRatio="none">
+                <!-- Smooth S-Curve Wave Cutout -->
+                <svg class="absolute -bottom-1 left-0 w-full h-12 text-[#050E09]" viewBox="0 0 280 50" preserveAspectRatio="none">
                   <path d="M0,12 C90,-12 180,55 280,16 L280,50 L0,50 Z" fill="currentColor"></path>
                 </svg>
               </div>
 
-              <!-- Clean Welcome Screen Body (Matches 00-welcome.png!) -->
-              <div class="flex-1 bg-[#050F0A] px-6 pt-3 pb-6 flex flex-col justify-between">
+              <!-- Welcome Body (Matches 00-welcome.png) -->
+              <div class="flex-1 bg-[#050E09] px-6 pt-3 pb-6 flex flex-col justify-between">
                 <div>
-                  <h2 class="font-sans text-3xl font-bold text-white tracking-tight">Welcome</h2>
-                  <p class="text-[12px] text-white/70 mt-2 leading-relaxed">
+                  <h2 class="text-3xl font-bold text-[#F5F5F7] tracking-tight">Welcome</h2>
+                  <p class="text-[12px] text-[#A1A1A6] mt-2 leading-relaxed">
                     Smart business bookkeeping, GST bills, inventory, shifts &amp; payroll in one calm workspace.
                   </p>
                   <div class="mt-4">
@@ -632,42 +476,41 @@
                   </div>
                 </div>
 
-                <!-- Bottom Continue Row -->
                 <div class="pt-3 flex items-center justify-end gap-3">
-                  <span class="text-xs font-semibold text-white/90">Continue</span>
-                  <span class="w-9 h-9 rounded-full bg-secondary text-base-100 font-bold flex items-center justify-center shadow-lg shadow-secondary/30">→</span>
+                  <span class="text-xs font-semibold text-[#F5F5F7]">Continue</span>
+                  <span class="w-9 h-9 rounded-full bg-secondary text-black font-bold flex items-center justify-center shadow-lg shadow-secondary/25">→</span>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- ==================== 3D PHONE 2: Live Payroll & AI Scanner (Right / Angled) ==================== -->
+          <!-- ==================== 3D PHONE 2: Live Payroll & AI Scanner ==================== -->
           <div
             id="phone-android-rig"
             class="phone-3d-rig z-10 hidden sm:block mt-14"
-            style="transform: rotateY(-22deg) rotateX(8deg) rotateZ(3deg) translateZ(-25px);"
+            style="transform: rotateY(-20deg) rotateX(7deg) rotateZ(2.5deg) translateZ(-25px);"
           >
-            <!-- Floating 3D Parallax Badge Popping Out in Z-Space -->
-            <div class="floating-3d-chip absolute -right-7 bottom-20 z-40 px-3.5 py-2 rounded-2xl bg-[#071810]/95 border border-accent/55 flex items-center gap-2.5 pointer-events-none">
-              <span class="w-2 h-2 rounded-full bg-accent animate-ping"></span>
+            <!-- Translucent Floating Pill -->
+            <div class="floating-3d-chip absolute -right-6 bottom-20 z-40 px-3.5 py-2 rounded-2xl flex items-center gap-2.5 pointer-events-none">
+              <span class="w-2 h-2 rounded-full bg-accent"></span>
               <div>
-                <div class="font-mono-num text-[9px] text-accent uppercase tracking-wider">2026 Indian Payroll</div>
-                <div class="text-[11px] font-semibold text-white">1-Tap PDF Payslip ↗</div>
+                <div class="text-[10px] font-semibold text-accent leading-none">2026 Statutory</div>
+                <div class="text-[11px] font-medium text-[#F5F5F7] mt-0.5">1-Tap PDF Payslip</div>
               </div>
             </div>
 
-            <div class="phone-screen-viewport bg-[#06130C] p-4">
+            <div class="phone-screen-viewport bg-[#06110B] p-4">
               <div class="phone-glass-glare"></div>
 
               <!-- Status Bar -->
-              <div class="flex items-center justify-between text-[10px] font-mono-num text-white/75 px-1">
+              <div class="flex items-center justify-between text-[11px] font-semibold text-white/80 px-1">
                 <span>9:41</span>
                 <span class="w-2.5 h-2.5 rounded-full bg-black ring-1 ring-white/20"></span>
-                <span class="text-secondary">● LIVE SYNC</span>
+                <span class="text-secondary text-[10px]">● Live Sync</span>
               </div>
 
-              <!-- Hey Arjun Card with Eye Symbol Privacy Toggle (Zero Clipping!) -->
-              <div class="rounded-2xl bg-gradient-to-br from-[#0E5C34] via-[#103825] to-[#1A2342] p-3.5 border border-secondary/30 shadow-lg mt-2">
+              <!-- Hey Arjun Card with Symbol-Only Eye Toggle -->
+              <div class="rounded-2xl bg-gradient-to-br from-[#0E5C34] via-[#103825] to-[#1A2342] p-3.5 border border-white/15 shadow-lg mt-2">
                 <div class="flex items-center justify-between">
                   <span class="text-[8.5px] font-mono-num uppercase tracking-wider px-2 py-0.5 rounded-full bg-black/35 text-secondary">
                     PAYSLIP HISTORY · MONTHLY
@@ -675,15 +518,14 @@
                   <svg class="w-3.5 h-3.5 text-secondary" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
                 </div>
 
-                <!-- Hey Arjun + Symbol-Only Eye Toggle -->
                 <div class="flex items-center gap-2 mt-2">
                   <h3 class="font-bold text-base text-white leading-none">Hey Arjun,</h3>
                   <button
                     type="button"
                     onclick="toggleDemoMask()"
-                    class="w-6 h-6 rounded-full bg-white/15 hover:bg-white/25 flex items-center justify-center text-white transition cursor-pointer"
-                    title="Toggle salary mask symbol"
-                    aria-label="Toggle salary mask symbol"
+                    class="apple-pressable w-6 h-6 rounded-full bg-white/15 hover:bg-white/25 flex items-center justify-center text-white"
+                    title="Toggle salary visibility symbol"
+                    aria-label="Toggle salary visibility symbol"
                   >
                     <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
@@ -691,16 +533,16 @@
                     </svg>
                   </button>
                 </div>
-                <p class="text-[10px] text-white/70 mt-0.5">Operations Lead · Multi-Branch</p>
+                <p class="text-[10px] text-white/75 mt-0.5">Operations Lead · Multi-Branch</p>
 
                 <div class="mt-2.5 pt-2 border-t border-white/15 flex items-baseline justify-between">
-                  <span class="text-[10px] text-white/65">Net Disbursed</span>
+                  <span class="text-[10px] text-white/70">Net Disbursed</span>
                   <span id="demo-salary-val" class="font-mono-num text-sm font-bold text-secondary">₹48,450.00</span>
                 </div>
               </div>
 
-              <!-- Hisaab AI Bill OCR Laser Scanner Box -->
-              <div class="relative rounded-2xl bg-[#0A1F14] border border-secondary/25 p-3 overflow-hidden my-1.5">
+              <!-- AI Bill OCR Laser Scanner Box -->
+              <div class="relative rounded-2xl bg-[#0B1C13] border border-white/10 p-3 overflow-hidden my-1.5">
                 <div class="laser-beam absolute left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-secondary to-transparent shadow-[0_0_12px_#5EE889]"></div>
                 <div class="flex items-center justify-between text-[9px] font-mono-num text-secondary">
                   <span>HISAAB AI OCR</span>
@@ -711,7 +553,7 @@
                     <span>Wholesale Invoice #409</span>
                     <span class="font-mono-num">₹18,200</span>
                   </div>
-                  <div class="flex justify-between text-white/65 text-[10px]">
+                  <div class="flex justify-between text-[#A1A1A6] text-[10px]">
                     <span>CGST 9% + SGST 9%</span>
                     <span class="font-mono-num text-secondary">+₹3,276 ITC</span>
                   </div>
@@ -719,11 +561,11 @@
               </div>
 
               <!-- Statutory Salary Breakdown & PDF Payslip Card -->
-              <div class="rounded-2xl bg-[#0A1A11] border border-white/10 p-3 space-y-2">
+              <div class="rounded-2xl bg-[#0B1811] border border-white/10 p-3 space-y-2">
                 <div class="flex items-center justify-between">
                   <div>
                     <div class="text-[11px] font-semibold text-white">Oct 2026 Payslip PDF</div>
-                    <div class="text-[9.5px] text-white/55">Basic · DA · HRA · EPF · ESI</div>
+                    <div class="text-[9.5px] text-[#A1A1A6]">Basic · DA · HRA · EPF · ESI</div>
                   </div>
                   <span class="px-2 py-1 rounded-md bg-secondary/20 text-secondary font-mono-num text-[9.5px] font-semibold">
                     OPEN PDF
@@ -734,7 +576,7 @@
                   <div class="bg-accent w-1/4 h-full"></div>
                   <div class="bg-info w-1/4 h-full"></div>
                 </div>
-                <div class="flex justify-between text-[9px] font-mono-num text-white/60">
+                <div class="flex justify-between text-[9px] font-mono-num text-[#A1A1A6]">
                   <span>● Basic+DA 50%</span>
                   <span>● HRA 25%</span>
                   <span>● Shifts 100%</span>
@@ -750,278 +592,263 @@
       </div>
     </section>
 
-    <!-- ================= DUAL COUNTER-SCROLLING KINETIC TYPOGRAPHY RIBBONS ================= -->
-    <section aria-label="Kinetic Capabilities" class="mt-16 sm:mt-24 border-y border-secondary/20 bg-base-200/70 backdrop-blur-xl py-4 overflow-hidden space-y-3">
-      <!-- Ribbon 1 (Left) -->
-      <div class="marquee-track-left flex items-center gap-10 text-base sm:text-xl font-editorial tracking-wider uppercase text-base-content/90">
-        <span class="flex items-center gap-3"><i class="w-2 h-2 rounded-full bg-secondary"></i> Exclusively on Mobile</span>
-        <span class="flex items-center gap-3 italic text-secondary"><i class="w-2 h-2 rounded-full bg-accent"></i> Instant AI Invoice &amp; Receipt OCR</span>
-        <span class="flex items-center gap-3"><i class="w-2 h-2 rounded-full bg-secondary"></i> 2026 Indian Statutory Payroll &amp; PDF Payslips</span>
-        <span class="flex items-center gap-3 italic text-accent"><i class="w-2 h-2 rounded-full bg-secondary"></i> Automated GST Input Tax Credit</span>
-        <span class="flex items-center gap-3"><i class="w-2 h-2 rounded-full bg-accent"></i> Smart Leave &amp; Shift Rosters</span>
+    <!-- ================= CLEAN APPLE TELEMETRY TICKER ================= -->
+    <section aria-label="Platform Capabilities" class="mt-12 sm:mt-20 border-y border-white/[0.08] bg-white/[0.02] py-4 overflow-hidden">
+      <div class="marquee-track flex items-center gap-12 text-xs sm:text-sm font-medium tracking-wide text-[#A1A1A6]">
+        <span class="flex items-center gap-2.5"><i class="w-1.5 h-1.5 rounded-full bg-secondary"></i> Exclusively on Mobile</span>
+        <span class="flex items-center gap-2.5"><i class="w-1.5 h-1.5 rounded-full bg-secondary"></i> AI Invoice &amp; Receipt OCR</span>
+        <span class="flex items-center gap-2.5"><i class="w-1.5 h-1.5 rounded-full bg-secondary"></i> 2026 Indian Statutory Payroll &amp; PDF Payslips</span>
+        <span class="flex items-center gap-2.5"><i class="w-1.5 h-1.5 rounded-full bg-secondary"></i> Automated GST Input Tax Credit</span>
+        <span class="flex items-center gap-2.5"><i class="w-1.5 h-1.5 rounded-full bg-secondary"></i> Smart Leave &amp; Shift Rosters</span>
+        <span class="flex items-center gap-2.5"><i class="w-1.5 h-1.5 rounded-full bg-accent"></i> Hospitality · Pharmacies · Retail · Salons · Enterprises</span>
         <!-- Duplicate -->
-        <span class="flex items-center gap-3"><i class="w-2 h-2 rounded-full bg-secondary"></i> Exclusively on Mobile</span>
-        <span class="flex items-center gap-3 italic text-secondary"><i class="w-2 h-2 rounded-full bg-accent"></i> Instant AI Invoice &amp; Receipt OCR</span>
-        <span class="flex items-center gap-3"><i class="w-2 h-2 rounded-full bg-secondary"></i> 2026 Indian Statutory Payroll &amp; PDF Payslips</span>
-        <span class="flex items-center gap-3 italic text-accent"><i class="w-2 h-2 rounded-full bg-secondary"></i> Automated GST Input Tax Credit</span>
-        <span class="flex items-center gap-3"><i class="w-2 h-2 rounded-full bg-accent"></i> Smart Leave &amp; Shift Rosters</span>
-      </div>
-
-      <!-- Ribbon 2 (Right) -->
-      <div class="marquee-track-right flex items-center gap-10 text-xs sm:text-sm font-mono-num tracking-[0.22em] uppercase text-base-content/55">
-        <span>HOSPITALITY &amp; CLOUD KITCHENS (LIVE)</span>
-        <span class="text-secondary">✦</span>
-        <span>PHARMACIES &amp; MEDICOS (SOON)</span>
-        <span class="text-accent">✦</span>
-        <span>RETAIL, KIRANA &amp; SUPERMARKETS (SOON)</span>
-        <span class="text-secondary">✦</span>
-        <span>SALONS, SPAS &amp; WELLNESS (SOON)</span>
-        <span class="text-accent">✦</span>
-        <span>BOUTIQUES &amp; DISTRIBUTORS (SOON)</span>
-        <span class="text-secondary">✦</span>
-        <!-- Duplicate -->
-        <span>HOSPITALITY &amp; CLOUD KITCHENS (LIVE)</span>
-        <span class="text-secondary">✦</span>
-        <span>PHARMACIES &amp; MEDICOS (SOON)</span>
-        <span class="text-accent">✦</span>
-        <span>RETAIL, KIRANA &amp; SUPERMARKETS (SOON)</span>
-        <span class="text-secondary">✦</span>
-        <span>SALONS, SPAS &amp; WELLNESS (SOON)</span>
-        <span class="text-accent">✦</span>
-        <span>BOUTIQUES &amp; DISTRIBUTORS (SOON)</span>
+        <span class="flex items-center gap-2.5"><i class="w-1.5 h-1.5 rounded-full bg-secondary"></i> Exclusively on Mobile</span>
+        <span class="flex items-center gap-2.5"><i class="w-1.5 h-1.5 rounded-full bg-secondary"></i> AI Invoice &amp; Receipt OCR</span>
+        <span class="flex items-center gap-2.5"><i class="w-1.5 h-1.5 rounded-full bg-secondary"></i> 2026 Indian Statutory Payroll &amp; PDF Payslips</span>
+        <span class="flex items-center gap-2.5"><i class="w-1.5 h-1.5 rounded-full bg-secondary"></i> Automated GST Input Tax Credit</span>
+        <span class="flex items-center gap-2.5"><i class="w-1.5 h-1.5 rounded-full bg-secondary"></i> Smart Leave &amp; Shift Rosters</span>
+        <span class="flex items-center gap-2.5"><i class="w-1.5 h-1.5 rounded-full bg-accent"></i> Hospitality · Pharmacies · Retail · Salons · Enterprises</span>
       </div>
     </section>
 
-    <!-- ================= SCROLL-SCRUBBED EDITORIAL MANIFESTO ================= -->
+    <!-- ================= APPLE KEYNOTE SCROLL-SCRUBBED MANIFESTO (Fixed & Clean!) ================= -->
     <section id="manifesto" class="max-w-6xl mx-auto px-4 sm:px-8 py-24 sm:py-36">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <!-- Left: Apple Squircle App Icon Pod with Complete 3D Plush SVG Mascot -->
         <div class="lg:col-span-4 flex flex-col items-center lg:items-start">
-          <!-- Animated 3D Plush SVG Mascot Showcase Pod -->
-          <div class="relative w-56 h-56 sm:w-64 sm:h-64 rounded-[2.25rem] bg-gradient-to-br from-[#0D5B34] via-[#092819] to-[#050F0A] border border-secondary/35 shadow-[0_25px_70px_rgba(0,0,0,0.85)] flex items-center justify-center overflow-hidden group">
-            <svg class="w-48 h-48 svg-mascot-float transition-transform duration-500 group-hover:scale-110" viewBox="0 0 240 240" role="img" aria-label="Hisaab.Guru Mascot SVG">
-              <use href="#hisaab-mascot-logo" />
-            </svg>
+          <div class="apple-squircle-pod w-56 h-56 sm:w-64 sm:h-64 flex flex-col items-center justify-center p-6 relative overflow-hidden">
+            <img
+              src="assets/hisaab-guru-mascot.svg"
+              alt="Hisaab.Guru 3D Plush Mascot"
+              class="w-44 h-44 object-contain drop-shadow-[0_16px_28px_rgba(0,0,0,0.45)]"
+            />
           </div>
         </div>
 
+        <!-- Right: Crisp Apple White Scroll-Scrubbed Typography (No Wireframes Behind Text!) -->
         <div class="lg:col-span-8">
-          <p id="scrub-manifesto" class="font-editorial text-3xl sm:text-5xl lg:text-[3.5rem] font-normal leading-[1.12] tracking-tight">
-            Modern business owners shouldn’t be chained to a desktop spreadsheet. Every thermal bill, GST ledger, shift roster, and statutory payslip belongs gracefully in the palm of your hand — crafted exclusively for our mobile app.
+          <p id="scrub-manifesto" class="apple-manifesto-type">
+            Modern business owners shouldn’t be chained to a desktop spreadsheet. Every thermal bill, GST ledger, shift roster, and statutory payslip belongs effortlessly in the palm of your hand — crafted exclusively for our mobile app.
           </p>
         </div>
       </div>
     </section>
 
-    <!-- ================= SVG MOTION GRAPHICS TELEMETRY PIPELINE ================= -->
-    <section id="motion-pipeline" class="max-w-7xl mx-auto px-4 sm:px-8 pb-24">
-      <div class="rounded-[2.25rem] bg-base-200/85 border border-secondary/25 p-7 sm:p-12 shadow-2xl relative overflow-hidden">
-        <div class="max-w-2xl mb-10">
-          <h2 class="gsap-reveal font-editorial text-4xl sm:text-5xl font-normal text-base-content">
-            Autonomous <span class="italic text-secondary">motion intelligence</span> inside your pocket.
-          </h2>
-          <p class="gsap-reveal text-sm sm:text-base text-base-content/70 mt-2">
-            Watch how a single camera snap flows through Hisaab.Guru’s mobile engine in under 2.4 seconds.
-          </p>
+    <!-- ================= APPLE BENTO GRID CAPABILITIES ================= -->
+    <section id="bento-features" class="max-w-7xl mx-auto px-4 sm:px-8 pb-24">
+      <div class="max-w-2xl mb-12">
+        <h2 class="apple-section-display text-[#F5F5F7]">
+          Designed for speed.<br />
+          <span class="text-[#A1A1A6]">Engineered for statutory precision.</span>
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+        <!-- Bento 1: AI Bill Capture (7 cols) -->
+        <div class="apple-bento-card md:col-span-7 p-8 sm:p-10 flex flex-col justify-between">
+          <div>
+            <span class="text-xs font-semibold uppercase tracking-wider text-secondary">AI Bill Capture</span>
+            <h3 class="text-2xl sm:text-3xl font-bold text-[#F5F5F7] tracking-tight mt-2">
+              Point your camera. Your GST ledger writes itself.
+            </h3>
+            <p class="text-sm sm:text-base text-[#A1A1A6] mt-2.5 max-w-xl leading-relaxed">
+              Snap any paper invoice or thermal receipt. Hisaab.Guru extracts line items, verifies supplier GSTIN, splits CGST, SGST, and IGST, and flags unpaid bills on your Home screen automatically.
+            </p>
+          </div>
+
+          <div class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-3.5">
+            <div class="rounded-2xl bg-white/[0.04] border border-white/[0.08] p-4">
+              <div class="font-mono-num text-xs text-secondary">0.4s</div>
+              <div class="text-sm font-semibold text-[#F5F5F7] mt-1">Auto-Crop Scan</div>
+              <div class="text-xs text-[#A1A1A6] mt-0.5">De-skews crumpled bills</div>
+            </div>
+            <div class="rounded-2xl bg-white/[0.04] border border-white/[0.08] p-4">
+              <div class="font-mono-num text-xs text-accent">100%</div>
+              <div class="text-sm font-semibold text-[#F5F5F7] mt-1">HSN &amp; Tax Split</div>
+              <div class="text-xs text-[#A1A1A6] mt-0.5">CGST + SGST + IGST</div>
+            </div>
+            <div class="rounded-2xl bg-[#147A46]/25 border border-secondary/30 p-4">
+              <div class="font-mono-num text-xs text-secondary">Ready</div>
+              <div class="text-sm font-semibold text-[#F5F5F7] mt-1">Stock &amp; ITC Sync</div>
+              <div class="text-xs text-secondary/90 mt-0.5">1-Tap Owner Review</div>
+            </div>
+          </div>
         </div>
 
-        <!-- Animated SVG Circuit Pipeline -->
-        <div class="relative py-4">
-          <svg class="hidden lg:block absolute top-1/2 left-0 w-full h-24 -translate-y-1/2 pointer-events-none z-0" viewBox="0 0 1100 100" fill="none">
-            <path d="M 120 50 C 260 10, 340 90, 480 50 C 620 10, 720 90, 960 50" stroke="rgba(94, 232, 137, 0.16)" stroke-width="2" />
-            <path d="M 120 50 C 260 10, 340 90, 480 50 C 620 10, 720 90, 960 50" stroke="#5EE889" stroke-width="3" stroke-linecap="round" class="animate-data-stream" />
-          </svg>
+        <!-- Bento 2: 2026 Statutory Payroll & PDF Payslips (5 cols) -->
+        <div class="apple-bento-card md:col-span-5 p-8 sm:p-10 flex flex-col justify-between">
+          <div>
+            <span class="text-xs font-semibold uppercase tracking-wider text-accent">2026 Indian Payroll</span>
+            <h3 class="text-2xl sm:text-3xl font-bold text-[#F5F5F7] tracking-tight mt-2">
+              Instant PDF payslips &amp; privacy by design.
+            </h3>
+            <p class="text-sm sm:text-base text-[#A1A1A6] mt-2.5 leading-relaxed">
+              Structured Basic, DA, HRA, Special Allowance, EPF, ESI, and Professional Tax calculations with owner-only digital signatures, symbol-only salary privacy, and leave management.
+            </p>
+          </div>
 
-          <div class="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-6">
-            <!-- Node 1 -->
-            <div class="tilt-card rounded-2xl bg-base-100/95 border border-secondary/30 p-6 shadow-xl">
-              <div class="flex items-center justify-between">
-                <span class="font-mono-num text-xs text-secondary uppercase tracking-widest">STAGE 01 · CAPTURE</span>
-                <span class="w-8 h-8 rounded-full bg-secondary/15 text-secondary flex items-center justify-center font-mono-num text-xs">0.4s</span>
-              </div>
-              <h3 class="font-editorial text-2xl sm:text-3xl font-semibold mt-4">Camera Bill Scan</h3>
-              <p class="text-xs sm:text-sm text-base-content/70 mt-2 leading-relaxed">
-                Snap any crumpled thermal receipt or distributor invoice in the mobile app. Auto-perspective crop &amp; glare removal run instantly.
-              </p>
+          <div class="mt-8 rounded-2xl bg-white/[0.04] border border-white/[0.08] p-4 flex items-center gap-4">
+            <div class="w-16 h-16 shrink-0 relative flex items-center justify-center">
+              <svg class="w-full h-full -rotate-90" viewBox="0 0 36 36">
+                <circle cx="18" cy="18" r="14" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="4"></circle>
+                <circle cx="18" cy="18" r="14" fill="none" stroke="#5EE889" stroke-width="4" stroke-dasharray="50 100"></circle>
+                <circle cx="18" cy="18" r="14" fill="none" stroke="#FFB340" stroke-width="4" stroke-dasharray="25 100" stroke-dashoffset="-50"></circle>
+                <circle cx="18" cy="18" r="14" fill="none" stroke="#64D2FF" stroke-width="4" stroke-dasharray="25 100" stroke-dashoffset="-75"></circle>
+              </svg>
+              <span class="absolute font-mono-num text-[10px] font-bold text-secondary">PDF</span>
             </div>
-
-            <!-- Node 2 -->
-            <div class="tilt-card rounded-2xl bg-base-100/95 border border-accent/35 p-6 shadow-xl">
-              <div class="flex items-center justify-between">
-                <span class="font-mono-num text-xs text-accent uppercase tracking-widest">STAGE 02 · AI LEDGER</span>
-                <span class="w-8 h-8 rounded-full bg-accent/15 text-accent flex items-center justify-center font-mono-num text-xs">1.2s</span>
-              </div>
-              <h3 class="font-editorial text-2xl sm:text-3xl font-semibold mt-4">GST &amp; Stock Sync</h3>
-              <p class="text-xs sm:text-sm text-base-content/70 mt-2 leading-relaxed">
-                Hisaab AI extracts HSN codes, splits CGST/SGST/IGST, flags unpaid bills on your Home screen, and updates real-time inventory.
-              </p>
-            </div>
-
-            <!-- Node 3 -->
-            <div class="tilt-card rounded-2xl bg-base-100/95 border border-secondary/30 p-6 shadow-xl">
-              <div class="flex items-center justify-between">
-                <span class="font-mono-num text-xs text-secondary uppercase tracking-widest">STAGE 03 · PAYROLL</span>
-                <span class="w-8 h-8 rounded-full bg-secondary/15 text-secondary flex items-center justify-center font-mono-num text-xs">0.8s</span>
-              </div>
-              <h3 class="font-editorial text-2xl sm:text-3xl font-semibold mt-4">1-Tap PDF Payslips</h3>
-              <p class="text-xs sm:text-sm text-base-content/70 mt-2 leading-relaxed">
-                2026 Indian statutory structure (Basic, DA, HRA, EPF, ESI), symbol-only salary privacy, owner-only digital signatures, and instant PDF export.
-              </p>
+            <div class="space-y-1 text-xs flex-1">
+              <div class="flex justify-between"><span class="text-[#A1A1A6]">Basic + DA (50%)</span><span class="font-mono-num text-[#F5F5F7]">₹24,000</span></div>
+              <div class="flex justify-between"><span class="text-[#A1A1A6]">HRA &amp; Allowances</span><span class="font-mono-num text-[#F5F5F7]">₹16,800</span></div>
+              <div class="flex justify-between"><span class="text-[#A1A1A6]">Owner Signature</span><span class="font-mono-num text-secondary">Verified</span></div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ================= MULTI-INDUSTRY EXPANSION (Not Only For Restaurants!) ================= -->
-    <section id="industries" class="max-w-7xl mx-auto px-4 sm:px-8 py-20 border-t border-secondary/15">
+    <!-- ================= MULTI-INDUSTRY EXPANSION (Built for Every Business) ================= -->
+    <section id="industries" class="max-w-7xl mx-auto px-4 sm:px-8 py-20 border-t border-white/[0.08]">
       <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12">
         <div>
-          <h2 class="gsap-reveal font-editorial text-4xl sm:text-5xl lg:text-6xl font-normal tracking-tight text-base-content">
-            Started in hospitality. <br />
-            <span class="italic text-secondary">Expanding to every business.</span>
+          <h2 class="apple-section-display text-[#F5F5F7]">
+            Started in hospitality.<br />
+            <span class="text-secondary">Expanding to every business.</span>
           </h2>
         </div>
-        <p class="gsap-reveal text-sm sm:text-base text-base-content/70 max-w-md">
-          Hisaab.Guru is engineered for every counter, clinic, storefront, and studio in India. One mobile app — tailored intelligence for your vertical.
+        <p class="text-sm sm:text-base text-[#A1A1A6] max-w-md leading-relaxed">
+          Hisaab.Guru is built for every counter, clinic, storefront, and studio in India. One mobile app — tailored workflows for your industry.
         </p>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="tilt-card rounded-2xl bg-gradient-to-br from-primary/30 via-base-200 to-base-200 border border-secondary/45 p-7 shadow-xl">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="apple-bento-card p-7 border-secondary/35">
           <div class="flex items-center justify-between">
-            <span class="font-mono-num text-xs uppercase tracking-widest text-secondary">01 / HOSPITALITY</span>
-            <span class="badge badge-sm bg-secondary text-base-100 border-0 font-mono-num">LIVE NOW</span>
+            <span class="text-xs font-semibold uppercase tracking-wider text-secondary">Hospitality</span>
+            <span class="px-2.5 py-0.5 rounded-full bg-secondary text-black font-mono-num text-[10px] font-bold">LIVE NOW</span>
           </div>
-          <h3 class="font-editorial text-3xl font-semibold mt-4">Restaurants, Cafés &amp; Cloud Kitchens</h3>
-          <p class="text-xs sm:text-sm text-base-content/75 mt-2 leading-relaxed">
-            Vendor invoice OCR, kitchen raw-material costing, delivery payout reconciliation, shift rosters, and staff payroll.
+          <h3 class="text-xl font-bold text-[#F5F5F7] mt-3">Restaurants, Cafés &amp; Kitchens</h3>
+          <p class="text-xs sm:text-sm text-[#A1A1A6] mt-2 leading-relaxed">
+            Supplier invoice OCR, kitchen raw-material costing, delivery payout reconciliation, shift rosters, and staff payroll.
           </p>
         </div>
 
-        <div class="tilt-card rounded-2xl bg-base-200/85 border border-white/10 p-7 shadow-xl">
+        <div class="apple-bento-card p-7">
           <div class="flex items-center justify-between">
-            <span class="font-mono-num text-xs uppercase tracking-widest text-accent">02 / HEALTHCARE</span>
-            <span class="badge badge-sm badge-outline border-accent/60 text-accent font-mono-num">COMING SOON</span>
+            <span class="text-xs font-semibold uppercase tracking-wider text-accent">Healthcare</span>
+            <span class="px-2.5 py-0.5 rounded-full bg-white/[0.07] text-accent font-mono-num text-[10px] font-semibold">COMING SOON</span>
           </div>
-          <h3 class="font-editorial text-3xl font-semibold mt-4">Pharmacies, Medicos &amp; Clinics</h3>
-          <p class="text-xs sm:text-sm text-base-content/75 mt-2 leading-relaxed">
-            Distributor invoice scanning, batch &amp; expiry ledger alerts, drug HSN GST slabs, and pharmacist shift scheduling.
+          <h3 class="text-xl font-bold text-[#F5F5F7] mt-3">Pharmacies, Medicos &amp; Clinics</h3>
+          <p class="text-xs sm:text-sm text-[#A1A1A6] mt-2 leading-relaxed">
+            Distributor invoice scanning, batch &amp; expiry ledger alerts, HSN GST slabs, and pharmacist shift scheduling.
           </p>
         </div>
 
-        <div class="tilt-card rounded-2xl bg-base-200/85 border border-white/10 p-7 shadow-xl">
+        <div class="apple-bento-card p-7">
           <div class="flex items-center justify-between">
-            <span class="font-mono-num text-xs uppercase tracking-widest text-accent">03 / RETAIL</span>
-            <span class="badge badge-sm badge-outline border-accent/60 text-accent font-mono-num">COMING SOON</span>
+            <span class="text-xs font-semibold uppercase tracking-wider text-accent">Retail</span>
+            <span class="px-2.5 py-0.5 rounded-full bg-white/[0.07] text-accent font-mono-num text-[10px] font-semibold">COMING SOON</span>
           </div>
-          <h3 class="font-editorial text-3xl font-semibold mt-4">Supermarkets, Kirana &amp; Stores</h3>
-          <p class="text-xs sm:text-sm text-base-content/75 mt-2 leading-relaxed">
-            Fast mobile purchase bill capture, multi-counter UPI/Cash settlement checks, and automated GSTR-2B input credit matching.
+          <h3 class="text-xl font-bold text-[#F5F5F7] mt-3">Supermarkets, Kirana &amp; Stores</h3>
+          <p class="text-xs sm:text-sm text-[#A1A1A6] mt-2 leading-relaxed">
+            Fast mobile purchase bill capture, multi-counter UPI/Cash settlement checks, and automated GST input credit matching.
           </p>
         </div>
 
-        <div class="tilt-card rounded-2xl bg-base-200/85 border border-white/10 p-7 shadow-xl">
+        <div class="apple-bento-card p-7">
           <div class="flex items-center justify-between">
-            <span class="font-mono-num text-xs uppercase tracking-widest text-accent">04 / WELLNESS</span>
-            <span class="badge badge-sm badge-outline border-accent/60 text-accent font-mono-num">COMING SOON</span>
+            <span class="text-xs font-semibold uppercase tracking-wider text-accent">Wellness</span>
+            <span class="px-2.5 py-0.5 rounded-full bg-white/[0.07] text-accent font-mono-num text-[10px] font-semibold">COMING SOON</span>
           </div>
-          <h3 class="font-editorial text-3xl font-semibold mt-4">Salons, Spas &amp; Fitness Studios</h3>
-          <p class="text-xs sm:text-sm text-base-content/75 mt-2 leading-relaxed">
+          <h3 class="text-xl font-bold text-[#F5F5F7] mt-3">Salons, Spas &amp; Studios</h3>
+          <p class="text-xs sm:text-sm text-[#A1A1A6] mt-2 leading-relaxed">
             Stylist &amp; trainer incentive splits, leave &amp; time-off management, consumable inventory tracking, and instant payslips.
           </p>
         </div>
 
-        <div class="tilt-card rounded-2xl bg-base-200/85 border border-white/10 p-7 shadow-xl">
+        <div class="apple-bento-card p-7">
           <div class="flex items-center justify-between">
-            <span class="font-mono-num text-xs uppercase tracking-widest text-accent">05 / LIFESTYLE</span>
-            <span class="badge badge-sm badge-outline border-accent/60 text-accent font-mono-num">COMING SOON</span>
+            <span class="text-xs font-semibold uppercase tracking-wider text-accent">Lifestyle</span>
+            <span class="px-2.5 py-0.5 rounded-full bg-white/[0.07] text-accent font-mono-num text-[10px] font-semibold">COMING SOON</span>
           </div>
-          <h3 class="font-editorial text-3xl font-semibold mt-4">Boutiques, Apparel &amp; Showrooms</h3>
-          <p class="text-xs sm:text-sm text-base-content/75 mt-2 leading-relaxed">
-            Artisan &amp; supplier ledger tracking, seasonal stock valuation, attendance calendars, and CA-ready GST exports.
+          <h3 class="text-xl font-bold text-[#F5F5F7] mt-3">Boutiques, Apparel &amp; Showrooms</h3>
+          <p class="text-xs sm:text-sm text-[#A1A1A6] mt-2 leading-relaxed">
+            Vendor ledger tracking, seasonal stock valuation, attendance calendars, and CA-ready GST exports.
           </p>
         </div>
 
-        <div class="tilt-card rounded-2xl bg-base-200/85 border border-white/10 p-7 shadow-xl">
+        <div class="apple-bento-card p-7">
           <div class="flex items-center justify-between">
-            <span class="font-mono-num text-xs uppercase tracking-widest text-accent">06 / ENTERPRISE</span>
-            <span class="badge badge-sm badge-outline border-accent/60 text-accent font-mono-num">COMING SOON</span>
+            <span class="text-xs font-semibold uppercase tracking-wider text-accent">Enterprise</span>
+            <span class="px-2.5 py-0.5 rounded-full bg-white/[0.07] text-accent font-mono-num text-[10px] font-semibold">COMING SOON</span>
           </div>
-          <h3 class="font-editorial text-3xl font-semibold mt-4">Wholesale, Agencies &amp; Services</h3>
-          <p class="text-xs sm:text-sm text-base-content/75 mt-2 leading-relaxed">
-            Unpaid bill follow-ups, multi-branch team payroll with owner-only digital signatures, and daily cashflow intelligence.
+          <h3 class="text-xl font-bold text-[#F5F5F7] mt-3">Distributors &amp; Service Agencies</h3>
+          <p class="text-xs sm:text-sm text-[#A1A1A6] mt-2 leading-relaxed">
+            Unpaid bill follow-ups, multi-branch team payroll with owner-only digital signatures, and daily cashflow clarity.
           </p>
         </div>
       </div>
     </section>
 
-    <!-- ================= GRAND SVG BRAND BANNER & STORE DOWNLOAD CTA ================= -->
-    <section id="download-cta" class="max-w-7xl mx-auto px-4 sm:px-8 pt-10 pb-20">
-      <div class="rounded-[2.5rem] bg-gradient-to-br from-[#0B3B22] via-[#071A10] to-[#040A07] border border-secondary/35 p-8 sm:p-16 shadow-2xl relative overflow-hidden">
+    <!-- ================= GRAND STORE DOWNLOAD CTA ================= -->
+    <section id="download-cta" class="max-w-7xl mx-auto px-4 sm:px-8 pt-8 pb-20">
+      <div class="apple-bento-card p-8 sm:p-16 relative overflow-hidden">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center relative z-10">
           <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
-            <span class="badge badge-soft badge-secondary font-mono-num text-xs uppercase tracking-widest px-4 py-3">
-              EXCLUSIVELY ON APP STORE &amp; GOOGLE PLAY
+            <span class="inline-flex items-center px-3.5 py-1 rounded-full bg-secondary/15 text-secondary text-xs font-semibold tracking-wide">
+              Available Exclusively on Mobile
             </span>
-            <h2 class="font-editorial text-4xl sm:text-6xl font-normal leading-[1.04] text-base-content">
-              Your entire business, <br />
-              <span class="italic text-secondary">distilled into one app.</span>
+            <h2 class="apple-section-display text-[#F5F5F7]">
+              Your entire business.<br />
+              <span class="text-secondary">In a single app.</span>
             </h2>
-            <p class="text-base sm:text-lg text-base-content/75 max-w-xl mx-auto lg:mx-0">
-              Download <strong class="text-base-content">Hisaab.Guru</strong> from the App Store or Google Play and experience effortless AI accounting, GST compliance, and 2026 Indian payroll today.
+            <p class="text-base sm:text-lg text-[#A1A1A6] max-w-xl mx-auto lg:mx-0 leading-relaxed">
+              Download <strong class="text-[#F5F5F7]">Hisaab.Guru</strong> from the App Store or Google Play to get started.
             </p>
 
-            <div class="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+            <div class="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5">
               <a
                 href="#app-store-footer"
                 onclick="event.preventDefault(); openStoreModal('App Store');"
-                class="magnetic-btn store-cta w-full sm:w-auto min-w-[230px] flex items-center justify-center gap-4 px-7 py-4 rounded-2xl bg-base-100 border border-secondary/45 text-left shadow-2xl"
+                class="apple-pressable w-full sm:w-auto min-w-[220px] flex items-center justify-center sm:justify-start gap-3.5 px-6 py-4 rounded-2xl bg-[#F5F5F7] text-black hover:bg-white shadow-xl"
               >
-                <svg class="w-9 h-9 text-base-content shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                <svg class="w-8 h-8 shrink-0" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.33c.64-.78 1.08-1.86.96-2.94-.93.04-2.06.62-2.72 1.4-.58.68-1.1 1.79-.96 2.84 1.04.08 2.08-.52 2.72-1.3z"/>
                 </svg>
-                <div>
-                  <div class="text-[10px] font-mono-num uppercase tracking-[0.2em] text-base-content/65">Download on the</div>
-                  <div class="font-editorial text-2xl font-semibold tracking-tight text-base-content leading-tight">App Store</div>
+                <div class="text-left">
+                  <div class="text-[10px] font-semibold uppercase tracking-wider text-black/60 leading-none">Download on the</div>
+                  <div class="text-xl font-bold tracking-tight text-black leading-tight mt-0.5">App Store</div>
                 </div>
               </a>
 
               <a
                 href="#google-play-footer"
                 onclick="event.preventDefault(); openStoreModal('Google Play');"
-                class="magnetic-btn store-cta w-full sm:w-auto min-w-[230px] flex items-center justify-center gap-4 px-7 py-4 rounded-2xl bg-base-100 border border-secondary/45 text-left shadow-2xl"
+                class="apple-pressable w-full sm:w-auto min-w-[220px] flex items-center justify-center sm:justify-start gap-3.5 px-6 py-4 rounded-2xl bg-white/[0.08] hover:bg-white/[0.12] border border-white/[0.16] text-[#F5F5F7] shadow-xl"
               >
-                <svg class="w-8 h-8 shrink-0" viewBox="0 0 24 24" fill="none">
+                <svg class="w-7 h-7 shrink-0" viewBox="0 0 24 24" fill="none">
                   <path d="M3.609 1.814L13.792 12 3.61 22.186a1.75 1.75 0 01-.61-1.334V3.148c0-.517.224-.998.609-1.334z" fill="#34D399"/>
                   <path d="M17.256 8.536L13.792 12l3.464 3.464 3.908-2.233c.79-.452.79-1.59 0-2.062l-3.908-2.633z" fill="#FBBF24"/>
                   <path d="M3.609 22.186L13.792 12l3.464 3.464-11.98 6.846c-.645.368-1.268.222-1.667-.124z" fill="#5EE889"/>
                   <path d="M3.609 1.814c.4-.346 1.022-.492 1.667-.124l11.98 6.846L13.792 12 3.609 1.814z" fill="#147A46"/>
                 </svg>
-                <div>
-                  <div class="text-[10px] font-mono-num uppercase tracking-[0.2em] text-base-content/65">Get it on</div>
-                  <div class="font-editorial text-2xl font-semibold tracking-tight text-base-content leading-tight">Google Play</div>
+                <div class="text-left">
+                  <div class="text-[10px] font-semibold uppercase tracking-wider text-[#A1A1A6] leading-none">Get it on</div>
+                  <div class="text-xl font-bold tracking-tight text-[#F5F5F7] leading-tight mt-0.5">Google Play</div>
                 </div>
               </a>
             </div>
           </div>
 
-          <!-- Official Animated SVG Mascot + Topographic Brand Card -->
           <div class="lg:col-span-5 flex justify-center">
-            <div class="relative w-full max-w-sm rounded-3xl bg-gradient-to-b from-[#0D5B34] via-[#147A46] to-[#06140D] border border-secondary/40 p-8 shadow-[0_25px_70px_rgba(0,0,0,0.9)] flex flex-col items-center text-center overflow-hidden">
-              <svg class="absolute inset-0 w-full h-full opacity-25 pointer-events-none" viewBox="0 0 300 300" fill="none">
-                <circle cx="150" cy="130" r="110" stroke="#A7F3D0" stroke-width="1"/>
-                <circle cx="150" cy="130" r="80" stroke="#A7F3D0" stroke-width="1"/>
-                <circle cx="150" cy="130" r="52" stroke="#5EE889" stroke-width="1"/>
-              </svg>
-              <svg class="w-40 h-40 relative z-10 svg-mascot-float" viewBox="0 0 240 240" role="img" aria-label="Hisaab.Guru Mascot SVG">
-                <use href="#hisaab-mascot-logo" />
-              </svg>
-              <div class="relative z-10 mt-2 font-editorial text-3xl font-semibold text-white">
-                Hisaab<span class="italic font-normal text-secondary">.Guru</span>
-              </div>
-              <div class="relative z-10 font-mono-num text-[10px] uppercase tracking-[0.24em] text-secondary/85 mt-1">
-                OFFICIAL MOBILE APP
-              </div>
+            <div class="apple-squircle-pod w-60 h-60 sm:w-68 sm:h-68 flex flex-col items-center justify-center p-6 text-center">
+              <img
+                src="assets/hisaab-guru-mascot.svg"
+                alt="Hisaab.Guru Mascot"
+                class="w-36 h-36 object-contain"
+              />
+              <div class="text-xl font-bold text-[#F5F5F7] mt-2">Hisaab<span class="text-secondary">.Guru</span></div>
+              <div class="text-[11px] text-[#A1A1A6]">App Store &amp; Google Play</div>
             </div>
           </div>
         </div>
@@ -1029,55 +856,51 @@
     </section>
   </main>
 
-  <!-- ================= FOOTER (daisyUI footer) ================= -->
-  <footer class="footer sm:footer-horizontal bg-base-200/90 border-t border-secondary/15 text-base-content/70 p-10 max-w-7xl mx-auto rounded-t-3xl relative z-10">
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer sm:footer-horizontal border-t border-white/[0.08] text-[#A1A1A6] p-10 max-w-7xl mx-auto relative z-10">
     <aside class="space-y-2">
-      <div class="flex items-center gap-3">
-        <svg class="w-10 h-10" viewBox="0 0 240 240" aria-hidden="true">
-          <use href="#hisaab-mascot-logo" />
-        </svg>
-        <span class="font-editorial text-2xl font-semibold text-base-content">
-          Hisaab<span class="italic text-secondary font-normal">.Guru</span>
+      <div class="flex items-center gap-2.5">
+        <img src="assets/hisaab-guru-mascot.svg" alt="Hisaab.Guru" class="w-8 h-8 object-contain" />
+        <span class="text-lg font-bold text-[#F5F5F7]">
+          Hisaab<span class="text-secondary">.Guru</span>
         </span>
       </div>
       <p class="text-xs max-w-xs leading-relaxed">
         The AI-powered mobile accounting, GST, shift &amp; payroll companion for modern Indian businesses.
       </p>
-      <p class="font-mono-num text-[11px] text-base-content/45 pt-1">© 2026 Hisaab.Guru. All rights reserved.</p>
+      <p class="text-[11px] text-[#A1A1A6]/60 pt-1">Copyright © 2026 Hisaab.Guru. All rights reserved.</p>
     </aside>
     <nav>
-      <h6 class="footer-title font-mono-num text-secondary opacity-90">Mobile Apps</h6>
-      <a href="#download-cta" onclick="event.preventDefault(); openStoreModal('App Store');" class="link link-hover text-xs">Download on the App Store</a>
-      <a href="#download-cta" onclick="event.preventDefault(); openStoreModal('Google Play');" class="link link-hover text-xs">Get it on Google Play</a>
-      <a href="#download-cta" onclick="event.preventDefault(); qr_modal.showModal();" class="link link-hover text-xs">Scan Mobile QR Code</a>
+      <h6 class="text-xs font-semibold text-[#F5F5F7] uppercase tracking-wider">Download</h6>
+      <a href="#download-cta" onclick="event.preventDefault(); openStoreModal('App Store');" class="link link-hover text-xs">App Store</a>
+      <a href="#download-cta" onclick="event.preventDefault(); openStoreModal('Google Play');" class="link link-hover text-xs">Google Play</a>
+      <a href="#download-cta" onclick="event.preventDefault(); qr_modal.showModal();" class="link link-hover text-xs">Scan QR Code</a>
     </nav>
     <nav>
-      <h6 class="footer-title font-mono-num text-secondary opacity-90">Industries</h6>
+      <h6 class="text-xs font-semibold text-[#F5F5F7] uppercase tracking-wider">Industries</h6>
       <a href="#industries" class="link link-hover text-xs">Hospitality &amp; Cloud Kitchens (Live)</a>
       <a href="#industries" class="link link-hover text-xs">Pharmacies &amp; Healthcare (Soon)</a>
       <a href="#industries" class="link link-hover text-xs">Retail, Salons &amp; Supermarkets (Soon)</a>
     </nav>
   </footer>
 
-  <!-- ================= QR & STORE DOWNLOAD MODAL (daisyUI modal) ================= -->
+  <!-- ================= QR DOWNLOAD MODAL ================= -->
   <dialog id="qr_modal" class="modal modal-middle">
-    <div class="modal-box bg-base-200 border border-secondary/40 max-w-md text-center p-8 rounded-3xl shadow-2xl">
-      <div class="flex justify-center mb-2">
-        <svg class="w-16 h-16 svg-mascot-float" viewBox="0 0 240 240" aria-hidden="true">
-          <use href="#hisaab-mascot-logo" />
-        </svg>
+    <div class="modal-box bg-[#0E1712] border border-white/15 max-w-md text-center p-8 rounded-[32px] shadow-2xl">
+      <div class="flex justify-center mb-3">
+        <img src="assets/hisaab-guru-mascot.svg" alt="Hisaab.Guru" class="w-16 h-16 object-contain" />
       </div>
-      <span id="modal-store-pill" class="badge badge-soft badge-secondary font-mono-num text-[10px] uppercase tracking-widest mb-3">
+      <span id="modal-store-pill" class="inline-block px-3 py-1 rounded-full bg-secondary/15 text-secondary font-mono-num text-[10px] font-semibold uppercase tracking-widest mb-2">
         HISAAB.GURU MOBILE APP
       </span>
-      <h3 id="modal-store-title" class="font-editorial text-3xl font-semibold text-base-content">
+      <h3 id="modal-store-title" class="text-2xl font-bold text-[#F5F5F7] tracking-tight">
         Scan to Download Hisaab.Guru
       </h3>
-      <p class="text-xs sm:text-sm text-base-content/70 mt-2">
-        Hisaab.Guru is an app-only platform. Point your phone camera at the QR code below to install directly from the App Store or Google Play.
+      <p class="text-xs sm:text-sm text-[#A1A1A6] mt-2 leading-relaxed">
+        Point your phone camera at the QR code below to open Hisaab.Guru on the App Store or Google Play.
       </p>
 
-      <div class="my-6 mx-auto w-48 h-48 rounded-2xl bg-[#FAF7F2] p-4 shadow-inner flex items-center justify-center">
+      <div class="my-6 mx-auto w-48 h-48 rounded-2xl bg-[#F5F5F7] p-4 shadow-inner flex items-center justify-center">
         <svg viewBox="0 0 120 120" class="w-full h-full" fill="#040A07">
           <rect x="8" y="8" width="32" height="32" rx="4" fill="none" stroke="#040A07" stroke-width="6"/>
           <rect x="16" y="16" width="16" height="16" rx="2" fill="#147A46"/>
@@ -1091,7 +914,7 @@
           <rect x="10" y="48" width="16" height="8" rx="1.5"/>
           <rect x="32" y="48" width="8" height="16" rx="1.5"/>
           <rect x="48" y="48" width="24" height="24" rx="5" fill="#147A46"/>
-          <text x="60" y="65" text-anchor="middle" fill="#FAF7F2" font-size="15" font-weight="bold">₹</text>
+          <text x="60" y="65" text-anchor="middle" fill="#F5F5F7" font-size="15" font-weight="bold">₹</text>
           <rect x="80" y="48" width="10" height="10" rx="1.5"/>
           <rect x="98" y="48" width="12" height="8" rx="1.5"/>
           <rect x="84" y="64" width="24" height="8" rx="1.5"/>
@@ -1103,14 +926,9 @@
         </svg>
       </div>
 
-      <div class="flex flex-col sm:flex-row gap-2.5 justify-center">
-        <span class="badge badge-outline border-secondary/40 text-xs py-3 px-4">App Store</span>
-        <span class="badge badge-outline border-secondary/40 text-xs py-3 px-4">Google Play</span>
-      </div>
-
-      <div class="modal-action justify-center mt-6">
+      <div class="modal-action justify-center mt-4">
         <form method="dialog">
-          <button class="btn btn-sm rounded-full px-6 bg-secondary text-base-100 border-0">Close</button>
+          <button class="apple-pressable px-6 py-2 rounded-full bg-[#F5F5F7] text-black text-xs font-semibold">Done</button>
         </form>
       </div>
     </div>
@@ -1119,231 +937,42 @@
     </form>
   </dialog>
 
-  <!-- ================= THREE.JS 3D WEBGL + GSAP KINETIC ENGINE ================= -->
+  <!-- ================= APPLE FLUID SPRING & SCROLL ENGINE ================= -->
   <script>
-    // 1. THREE.JS INTERACTIVE 3D WEBGL SCENE
-    (function initThreeScene() {
-      const canvas = document.getElementById('webgl-canvas');
-      if (!canvas || typeof THREE === 'undefined') return;
-
-      const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-      renderer.setSize(window.innerWidth, window.innerHeight);
-
-      const scene = new THREE.Scene();
-      const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 100);
-      camera.position.set(0, 0, 14);
-
-      const ambientLight = new THREE.AmbientLight(0x5EE889, 0.65);
-      scene.add(ambientLight);
-
-      const emeraldLight = new THREE.PointLight(0x5EE889, 4.5, 30);
-      emeraldLight.position.set(6, 4, 6);
-      scene.add(emeraldLight);
-
-      const goldLight = new THREE.PointLight(0xFF9828, 3.8, 30);
-      goldLight.position.set(-6, -3, 5);
-      scene.add(goldLight);
-
-      const rootGroup = new THREE.Group();
-      scene.add(rootGroup);
-
-      // 3D Glowing Golden Orbital Ring
-      const torusGeo = new THREE.TorusGeometry(4.4, 0.035, 24, 160);
-      const torusMat = new THREE.MeshStandardMaterial({
-        color: 0xFF9828,
-        emissive: 0xFF9828,
-        emissiveIntensity: 0.75,
-        roughness: 0.15,
-        metalness: 0.9,
-      });
-      const goldenOrbitRing = new THREE.Mesh(torusGeo, torusMat);
-      goldenOrbitRing.rotation.x = Math.PI * 0.36;
-      goldenOrbitRing.rotation.y = -Math.PI * 0.18;
-      goldenOrbitRing.position.set(2.4, 0.2, -1.5);
-      rootGroup.add(goldenOrbitRing);
-
-      // Secondary Emerald Wireframe Gyro Ring
-      const emeraldRingGeo = new THREE.TorusGeometry(5.3, 0.02, 16, 140);
-      const emeraldRingMat = new THREE.MeshStandardMaterial({
-        color: 0x5EE889,
-        emissive: 0x147A46,
-        emissiveIntensity: 0.6,
-        roughness: 0.2,
-        metalness: 0.8,
-      });
-      const emeraldOrbitRing = new THREE.Mesh(emeraldRingGeo, emeraldRingMat);
-      emeraldOrbitRing.rotation.x = -Math.PI * 0.28;
-      emeraldOrbitRing.rotation.z = Math.PI * 0.22;
-      emeraldOrbitRing.position.set(2.4, 0.2, -2.2);
-      rootGroup.add(emeraldOrbitRing);
-
-      // Floating 3D Geometric Emerald & Gold Crystals
-      const shards = [];
-      const shardGeo = new THREE.OctahedronGeometry(0.28, 0);
-      for (let i = 0; i < 16; i++) {
-        const isGold = i % 3 === 0;
-        const mat = new THREE.MeshStandardMaterial({
-          color: isGold ? 0xFF9828 : 0x5EE889,
-          emissive: isGold ? 0x552800 : 0x09381E,
-          metalness: 0.85,
-          roughness: 0.18,
-          wireframe: i % 2 === 0,
-        });
-        const mesh = new THREE.Mesh(shardGeo, mat);
-        mesh.position.set(
-          (Math.random() - 0.5) * 18,
-          (Math.random() - 0.5) * 11,
-          (Math.random() - 0.5) * 6 - 2
-        );
-        const scale = 0.45 + Math.random() * 1.1;
-        mesh.scale.set(scale, scale, scale);
-        rootGroup.add(mesh);
-        shards.push({
-          mesh,
-          speedX: (Math.random() - 0.5) * 0.012,
-          speedY: (Math.random() - 0.5) * 0.015,
-          floatOffset: Math.random() * Math.PI * 2,
-        });
-      }
-
-      // 3D Starfield / Financial Telemetry Particles
-      const particleCount = 420;
-      const posArray = new Float32Array(particleCount * 3);
-      for (let i = 0; i < particleCount * 3; i++) {
-        posArray[i] = (Math.random() - 0.5) * 26;
-      }
-      const particleGeo = new THREE.BufferGeometry();
-      particleGeo.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-      const particleMat = new THREE.PointsMaterial({
-        size: 0.045,
-        color: 0x5EE889,
-        transparent: true,
-        opacity: 0.55,
-      });
-      const particleMesh = new THREE.Points(particleGeo, particleMat);
-      rootGroup.add(particleMesh);
-
-      let targetX = 0;
-      let targetY = 0;
-      let scrollY = 0;
-
-      window.addEventListener('mousemove', (e) => {
-        targetX = (e.clientX / window.innerWidth - 0.5) * 1.4;
-        targetY = -(e.clientY / window.innerHeight - 0.5) * 1.1;
-      });
-
-      window.addEventListener('scroll', () => {
-        scrollY = window.scrollY;
-      }, { passive: true });
-
-      window.addEventListener('resize', () => {
-        camera.aspect = window.innerWidth / window.innerHeight;
-        camera.updateProjectionMatrix();
-        renderer.setSize(window.innerWidth, window.innerHeight);
-      });
-
-      let clock = 0;
-      function animateThree() {
-        clock += 0.01;
-        goldenOrbitRing.rotation.z += 0.0045;
-        goldenOrbitRing.rotation.x = Math.PI * 0.36 + Math.sin(clock * 0.7) * 0.12;
-        emeraldOrbitRing.rotation.y -= 0.0035;
-        emeraldOrbitRing.rotation.x = -Math.PI * 0.28 + Math.cos(clock * 0.5) * 0.1;
-
-        shards.forEach((s) => {
-          s.mesh.rotation.x += s.speedX;
-          s.mesh.rotation.y += s.speedY;
-          s.mesh.position.y += Math.sin(clock * 1.4 + s.floatOffset) * 0.003;
-        });
-
-        particleMesh.rotation.y = clock * 0.04;
-        rootGroup.rotation.y += (targetX * 0.35 - rootGroup.rotation.y) * 0.05;
-        rootGroup.rotation.x += (targetY * 0.25 - rootGroup.rotation.x) * 0.05;
-        rootGroup.position.y = (scrollY * 0.0018);
-
-        renderer.render(scene, camera);
-        requestAnimationFrame(animateThree);
-      }
-      animateThree();
-    })();
-
-    // 2. GSAP 3.12 + SCROLLTRIGGER KINETIC TEXT & 3D PHONE STAGE CHOREOGRAPHY
     window.addEventListener('DOMContentLoaded', () => {
       if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
         gsap.registerPlugin(ScrollTrigger);
 
-        gsap.fromTo(
-          '#hero-headline .split-word',
-          { yPercent: 115, rotationX: -75, opacity: 0 },
-          {
-            yPercent: 0,
-            rotationX: 0,
-            opacity: 1,
-            duration: 1.15,
-            stagger: 0.065,
-            ease: 'power4.out',
-            delay: 0.1,
-          }
-        );
-
-        gsap.fromTo(
-          '#phone-ios-rig',
-          { y: 70, rotationY: -35, rotationX: 18, opacity: 0 },
-          { y: 0, rotationY: -14, rotationX: 6, opacity: 1, duration: 1.4, ease: 'power3.out', delay: 0.2 }
-        );
-        gsap.fromTo(
-          '#phone-android-rig',
-          { y: 100, rotationY: -45, rotationX: 22, opacity: 0 },
-          { y: 0, rotationY: -22, rotationX: 8, opacity: 1, duration: 1.5, ease: 'power3.out', delay: 0.35 }
-        );
-
+        // 1. Apple Keynote Word-by-Word White Illumination on Manifesto
         const manifestoEl = document.getElementById('scrub-manifesto');
         if (manifestoEl) {
           const words = manifestoEl.innerText.trim().split(/\s+/);
           manifestoEl.innerHTML = words
-            .map((w) => `<span class="scrub-word inline-block mr-[0.26em] text-base-content/20 transition-colors duration-150">${w}</span>`)
+            .map((w) => `<span class="scrub-word inline-block mr-[0.26em] text-[#F5F5F7]/20 transition-colors duration-150">${w}</span>`)
             .join('');
 
           gsap.to('#scrub-manifesto .scrub-word', {
-            color: '#5EE889',
-            stagger: 0.08,
+            color: '#F5F5F7',
+            stagger: 0.06,
             scrollTrigger: {
               trigger: '#manifesto',
-              start: 'top 78%',
+              start: 'top 80%',
               end: 'bottom 45%',
-              scrub: 0.6,
+              scrub: 0.5,
             },
           });
         }
 
-        gsap.utils.toArray('.gsap-reveal').forEach((el) => {
-          gsap.fromTo(
-            el,
-            { y: 40, opacity: 0 },
-            {
-              y: 0,
-              opacity: 1,
-              duration: 0.95,
-              ease: 'power3.out',
-              scrollTrigger: {
-                trigger: el,
-                start: 'top 86%',
-              },
-            }
-          );
-        });
-
-        gsap.utils.toArray('.tilt-card').forEach((card, i) => {
+        // 2. Smooth Critically-Damped Spring Entrance for Bento Cards
+        gsap.utils.toArray('.apple-bento-card').forEach((card, i) => {
           gsap.fromTo(
             card,
-            { y: 48, opacity: 0, rotationX: 8 },
+            { y: 36, opacity: 0 },
             {
               y: 0,
               opacity: 1,
-              rotationX: 0,
-              duration: 0.85,
-              delay: (i % 3) * 0.08,
+              duration: 0.75,
+              delay: (i % 3) * 0.06,
               ease: 'power3.out',
               scrollTrigger: {
                 trigger: card,
@@ -1355,116 +984,77 @@
       }
     });
 
-    // 3. INTERACTIVE 3D PHONE MOUSE TILT & STAGE FOCUS SWITCHER
+    // 3. Direct 1:1 Pointer Tracking on 3D Phone Stage with Critically-Damped Return
     const heroStage = document.getElementById('hero-3d-stage');
     const iosRig = document.getElementById('phone-ios-rig');
     const androidRig = document.getElementById('phone-android-rig');
 
     if (heroStage && iosRig) {
-      heroStage.addEventListener('mousemove', (e) => {
+      heroStage.addEventListener('pointermove', (e) => {
         const rect = heroStage.getBoundingClientRect();
         const nx = (e.clientX - rect.left) / rect.width - 0.5;
         const ny = (e.clientY - rect.top) / rect.height - 0.5;
 
         if (typeof gsap !== 'undefined') {
           gsap.to(iosRig, {
-            rotationY: -12 + nx * 22,
-            rotationX: 5 - ny * 18,
-            duration: 0.45,
+            rotationY: -12 + nx * 18,
+            rotationX: 5 - ny * 14,
+            duration: 0.35,
             ease: 'power2.out',
+            overwrite: 'auto',
           });
           if (androidRig) {
             gsap.to(androidRig, {
-              rotationY: -20 + nx * 26,
-              rotationX: 7 - ny * 20,
-              duration: 0.55,
+              rotationY: -20 + nx * 22,
+              rotationX: 7 - ny * 16,
+              duration: 0.42,
               ease: 'power2.out',
+              overwrite: 'auto',
             });
           }
         }
       });
 
-      heroStage.addEventListener('mouseleave', () => {
+      heroStage.addEventListener('pointerleave', () => {
         if (typeof gsap !== 'undefined') {
-          gsap.to(iosRig, { rotationY: -14, rotationX: 6, duration: 0.7, ease: 'power3.out' });
+          gsap.to(iosRig, { rotationY: -12, rotationX: 5, duration: 0.6, ease: 'power3.out', overwrite: 'auto' });
           if (androidRig) {
-            gsap.to(androidRig, { rotationY: -22, rotationX: 8, duration: 0.7, ease: 'power3.out' });
+            gsap.to(androidRig, { rotationY: -20, rotationX: 7, duration: 0.6, ease: 'power3.out', overwrite: 'auto' });
           }
         }
       });
     }
 
+    // 4. Apple Segmented Control Switcher (Interruptible Spring Transitions)
     function focusPhoneStage(mode) {
-      const btns = {
-        welcome: document.getElementById('stage-btn-welcome'),
-        payroll: document.getElementById('stage-btn-payroll'),
-        scanner: document.getElementById('stage-btn-scanner'),
+      const segs = {
+        welcome: document.getElementById('seg-welcome'),
+        payroll: document.getElementById('seg-payroll'),
+        scanner: document.getElementById('seg-scanner'),
       };
-      Object.keys(btns).forEach((k) => {
-        if (!btns[k]) return;
+      Object.keys(segs).forEach((k) => {
+        if (!segs[k]) return;
         if (k === mode) {
-          btns[k].className = 'btn btn-xs rounded-full bg-secondary text-base-100 border-0 font-mono-num';
+          segs[k].className = 'apple-pressable px-4 py-1.5 rounded-full text-xs font-semibold bg-[#F5F5F7] text-black shadow';
         } else {
-          btns[k].className = 'btn btn-xs rounded-full bg-base-200 text-base-content/75 border border-secondary/25 font-mono-num';
+          segs[k].className = 'apple-pressable px-4 py-1.5 rounded-full text-xs font-semibold text-[#A1A1A6] hover:text-white';
         }
       });
 
       if (typeof gsap === 'undefined' || !iosRig || !androidRig) return;
       if (mode === 'welcome') {
-        gsap.to(iosRig, { rotationY: -8, rotationX: 4, scale: 1.03, zIndex: 30, duration: 0.65, ease: 'back.out(1.4)' });
-        gsap.to(androidRig, { rotationY: -24, scale: 0.96, zIndex: 10, duration: 0.65, ease: 'power3.out' });
+        gsap.to(iosRig, { rotationY: -8, rotationX: 4, scale: 1.03, zIndex: 30, duration: 0.55, ease: 'power3.out', overwrite: 'auto' });
+        gsap.to(androidRig, { rotationY: -22, scale: 0.96, zIndex: 10, duration: 0.55, ease: 'power3.out', overwrite: 'auto' });
       } else if (mode === 'payroll') {
-        gsap.to(androidRig, { rotationY: -6, rotationX: 3, scale: 1.05, zIndex: 35, duration: 0.65, ease: 'back.out(1.4)' });
-        gsap.to(iosRig, { rotationY: -22, scale: 0.94, zIndex: 10, duration: 0.65, ease: 'power3.out' });
+        gsap.to(androidRig, { rotationY: -6, rotationX: 3, scale: 1.04, zIndex: 35, duration: 0.55, ease: 'power3.out', overwrite: 'auto' });
+        gsap.to(iosRig, { rotationY: -22, scale: 0.94, zIndex: 10, duration: 0.55, ease: 'power3.out', overwrite: 'auto' });
       } else {
-        gsap.to(iosRig, { rotationY: 4, rotationX: 0, scale: 1, zIndex: 25, duration: 0.65, ease: 'back.out(1.4)' });
-        gsap.to(androidRig, { rotationY: -10, rotationX: 2, scale: 1.02, zIndex: 30, duration: 0.65, ease: 'back.out(1.4)' });
+        gsap.to(iosRig, { rotationY: 2, rotationX: 0, scale: 1, zIndex: 25, duration: 0.55, ease: 'power3.out', overwrite: 'auto' });
+        gsap.to(androidRig, { rotationY: -10, rotationX: 2, scale: 1.02, zIndex: 30, duration: 0.55, ease: 'power3.out', overwrite: 'auto' });
       }
     }
 
-    // 4. 3D SPOTLIGHT BENTO CARDS & MAGNETIC BUTTONS & CURSOR FOLLOWER
-    document.querySelectorAll('.tilt-card').forEach((card) => {
-      card.addEventListener('mousemove', (e) => {
-        const r = card.getBoundingClientRect();
-        const x = e.clientX - r.left;
-        const y = e.clientY - r.top;
-        card.style.setProperty('--mx', `${x}px`);
-        card.style.setProperty('--my', `${y}px`);
-        const rx = ((y / r.height) - 0.5) * -7;
-        const ry = ((x / r.width) - 0.5) * 7;
-        card.style.transform = `perspective(1000px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-4px)`;
-      });
-      card.addEventListener('mouseleave', () => {
-        card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
-      });
-    });
-
-    document.querySelectorAll('.magnetic-btn').forEach((btn) => {
-      btn.addEventListener('mousemove', (e) => {
-        const r = btn.getBoundingClientRect();
-        const dx = (e.clientX - (r.left + r.width / 2)) * 0.22;
-        const dy = (e.clientY - (r.top + r.height / 2)) * 0.22;
-        btn.style.transform = `translate(${dx}px, ${dy}px)`;
-      });
-      btn.addEventListener('mouseleave', () => {
-        btn.style.transform = 'translate(0px, 0px)';
-      });
-    });
-
-    const cursorRing = document.getElementById('cursor-ring');
-    const cursorDot = document.getElementById('cursor-dot');
-    if (cursorRing && cursorDot) {
-      window.addEventListener('mousemove', (e) => {
-        cursorDot.style.left = `${e.clientX}px`;
-        cursorDot.style.top = `${e.clientY}px`;
-        cursorRing.animate(
-          { left: `${e.clientX}px`, top: `${e.clientY}px` },
-          { duration: 280, fill: 'forwards' }
-        );
-      });
-    }
-
-    // 5. SYMBOL-ONLY SALARY MASK TOGGLE & STORE MODAL
+    // 5. Symbol-Only Salary Mask Toggle & Store Modal
     let isSalaryMasked = false;
     function toggleDemoMask() {
       isSalaryMasked = !isSalaryMasked;

@@ -1,10 +1,39 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="240" height="240" fill="none">
   <defs>
+    <style>
+      @keyframes hgBobble {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-3px); }
+      }
+      @keyframes hgWave {
+        0%, 100% { transform: translate(190px, 112px) rotate(-14deg); }
+        50% { transform: translate(190px, 108px) rotate(-3deg); }
+      }
+      @keyframes hgBodyFloat {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-3.5px); }
+      }
+      .hg-body-group {
+        animation: hgBodyFloat 3.6s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+      }
+      .hg-bobble-group {
+        animation: hgBobble 2.4s ease-in-out infinite;
+      }
+      .hg-paw-group {
+        animation: hgWave 2.2s ease-in-out infinite;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .hg-body-group, .hg-bobble-group, .hg-paw-group {
+          animation: none !important;
+        }
+      }
+    </style>
+
     <!-- 1. Dreamy soft pastel aurora halo -->
     <radialGradient id="hgPlushGlow" cx="50%" cy="46%" r="50%">
-      <stop offset="0%" stop-color="#64F5B2" stop-opacity="0.42"/>
-      <stop offset="45%" stop-color="#FF9A62" stop-opacity="0.26"/>
-      <stop offset="75%" stop-color="#8C7AE6" stop-opacity="0.10"/>
+      <stop offset="0%" stop-color="#64F5B2" stop-opacity="0.44"/>
+      <stop offset="45%" stop-color="#FF9A62" stop-opacity="0.24"/>
+      <stop offset="75%" stop-color="#8C7AE6" stop-opacity="0.08"/>
       <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
     </radialGradient>
 
@@ -78,7 +107,6 @@
       <stop offset="100%" stop-color="#1E7B52"/>
     </radialGradient>
 
-    <!-- Soft blur filters -->
     <filter id="hgSoftBlur" x="-30%" y="-30%" width="160%" height="160%">
       <feGaussianBlur stdDeviation="4.5"/>
     </filter>
@@ -90,68 +118,74 @@
   <!-- 1. Soft Pastel Aurora Halo -->
   <circle cx="120" cy="112" r="114" fill="url(#hgPlushGlow)"/>
 
-  <!-- 2. Cute Glowing Sprout / Antenna Bobble -->
-  <path d="M 120 42 Q 122 26 132 20" stroke="#6EF7B4" stroke-width="5.5" stroke-linecap="round"/>
-  <circle cx="134" cy="17" r="11" fill="#FFB86C" fill-opacity="0.45" filter="url(#hgSoftBlur)"/>
-  <circle cx="134" cy="17" r="7.5" fill="url(#hgBobbleGrad)"/>
+  <g class="hg-body-group">
+    <!-- 2. Cute Glowing Sprout / Antenna Bobble -->
+    <g class="hg-bobble-group">
+      <path d="M 120 42 Q 122 26 132 20" stroke="#6EF7B4" stroke-width="5.5" stroke-linecap="round"/>
+      <circle cx="134" cy="17" r="11" fill="#FFB86C" fill-opacity="0.45" filter="url(#hgSoftBlur)"/>
+      <circle cx="134" cy="17" r="7.5" fill="url(#hgBobbleGrad)"/>
+    </g>
 
-  <!-- 3. Cute Soft 3D Plush Ears -->
-  <ellipse cx="52" cy="98" rx="14" ry="16" fill="url(#hgEarLeft)"/>
-  <ellipse cx="188" cy="98" rx="14" ry="16" fill="url(#hgEarRight)"/>
+    <!-- 3. Cute Soft 3D Plush Ears -->
+    <ellipse cx="52" cy="98" rx="14" ry="16" fill="url(#hgEarLeft)"/>
+    <ellipse cx="188" cy="98" rx="14" ry="16" fill="url(#hgEarRight)"/>
 
-  <!-- 10a. Cute Chubby Nubby Feet -->
-  <ellipse cx="96" cy="174" rx="14" ry="9" fill="url(#hgFootGrad)"/>
-  <ellipse cx="144" cy="174" rx="14" ry="9" fill="url(#hgFootGrad)"/>
+    <!-- 10a. Cute Chubby Nubby Feet -->
+    <ellipse cx="96" cy="174" rx="14" ry="9" fill="url(#hgFootGrad)"/>
+    <ellipse cx="144" cy="174" rx="14" ry="9" fill="url(#hgFootGrad)"/>
 
-  <!-- 4. Main Soft Marshmallow / Mochi 3D Plush Body & Hood -->
-  <g filter="url(#hgDropShadow)">
-    <rect x="48" y="38" width="144" height="134" rx="66" fill="url(#hgPlushHead)"/>
-    <rect x="48" y="38" width="144" height="134" rx="66" fill="url(#hgWarmBounce)"/>
+    <!-- 4. Main Soft Marshmallow / Mochi 3D Plush Body & Hood -->
+    <g filter="url(#hgDropShadow)">
+      <rect x="48" y="38" width="144" height="134" rx="66" fill="url(#hgPlushHead)"/>
+      <rect x="48" y="38" width="144" height="134" rx="66" fill="url(#hgWarmBounce)"/>
+    </g>
+
+    <!-- Pearlescent 3D top crown sheen -->
+    <path d="M 78 52 Q 120 41 162 52" stroke="#FFFFFF" stroke-opacity="0.55" stroke-width="5" stroke-linecap="round"/>
+
+    <!-- 5. Cozy Rounded Velvet Inner Face Screen -->
+    <rect x="61.8" y="55.8" width="116.4" height="86.4" rx="42.2" fill="url(#hgFaceRim)"/>
+    <rect x="64" y="58" width="112" height="82" rx="40" fill="url(#hgVelvetFace)"/>
+    <path d="M 82 68 Q 120 61 158 69" stroke="#FFFFFF" stroke-opacity="0.26" stroke-width="3" stroke-linecap="round"/>
+
+    <!-- 6. Rosy Plush Blush Cheeks -->
+    <ellipse cx="84" cy="114" rx="10" ry="5.5" fill="#FF7E9D" fill-opacity="0.62" filter="url(#hgSoftBlur)"/>
+    <ellipse cx="156" cy="114" rx="10" ry="5.5" fill="#FF7E9D" fill-opacity="0.62" filter="url(#hgSoftBlur)"/>
+
+    <!-- 7a. Big Sparkling Kawaii Left Eye -->
+    <ellipse cx="97" cy="97" rx="12" ry="14" fill="#64F5B2" fill-opacity="0.32" filter="url(#hgSoftBlur)"/>
+    <ellipse cx="97" cy="97" rx="10.5" ry="12.5" fill="url(#hgEyeIris)"/>
+    <ellipse cx="97" cy="98" rx="6.75" ry="8.25" fill="#0A1E17"/>
+    <path d="M 91.8 101.5 A 6 6.5 0 0 0 102.2 101.5" stroke="#6EF7B4" stroke-width="2.6" stroke-linecap="round"/>
+    <circle cx="93.2" cy="92.5" r="4.2" fill="#FFFFFF"/>
+    <circle cx="100.6" cy="101" r="2.0" fill="#FFFFFF" fill-opacity="0.92"/>
+
+    <!-- 7b. Big Sparkling Kawaii Right Eye -->
+    <ellipse cx="143" cy="97" rx="12" ry="14" fill="#64F5B2" fill-opacity="0.32" filter="url(#hgSoftBlur)"/>
+    <ellipse cx="143" cy="97" rx="10.5" ry="12.5" fill="url(#hgEyeIris)"/>
+    <ellipse cx="143" cy="98" rx="6.75" ry="8.25" fill="#0A1E17"/>
+    <path d="M 137.8 101.5 A 6 6.5 0 0 0 148.2 101.5" stroke="#6EF7B4" stroke-width="2.6" stroke-linecap="round"/>
+    <circle cx="139.2" cy="92.5" r="4.2" fill="#FFFFFF"/>
+    <circle cx="146.6" cy="101" r="2.0" fill="#FFFFFF" fill-opacity="0.92"/>
+
+    <!-- 8. Happy Curved Kawaii Smile -->
+    <path d="M 112 112 Q 120 121 128 112" stroke="#9BFFCE" stroke-width="3.4" stroke-linecap="round"/>
+
+    <!-- 9. Cute Waving Right Paw with Soft Pink Paw Pads -->
+    <g class="hg-paw-group">
+      <rect x="-15" y="-20" width="30" height="38" rx="16" fill="url(#hgWavePaw)"/>
+      <ellipse cx="0" cy="-3" rx="6" ry="4.5" fill="#FF9EB5" fill-opacity="0.88"/>
+      <circle cx="-6" cy="-11" r="2.6" fill="#FF9EB5" fill-opacity="0.88"/>
+      <circle cx="0" cy="-13" r="2.8" fill="#FF9EB5" fill-opacity="0.88"/>
+      <circle cx="6" cy="-11" r="2.6" fill="#FF9EB5" fill-opacity="0.88"/>
+    </g>
+
+    <!-- Wave Sparkle Motion Lines -->
+    <line x1="202" y1="82" x2="210" y2="68" stroke="url(#hgWaveSparkle)" stroke-width="4.5" stroke-linecap="round"/>
+    <line x1="208" y1="94" x2="222" y2="84" stroke="url(#hgWaveSparkle)" stroke-width="4.5" stroke-linecap="round"/>
+
+    <!-- 10b. Soft Glowing ₹ Tummy Badge -->
+    <rect x="103" y="139" width="34" height="26" rx="13" fill="#0E291E"/>
+    <text x="120" y="158" text-anchor="middle" fill="#FFC86B" font-size="18" font-weight="800" font-family="-apple-system, BlinkMacSystemFont, Plus Jakarta Sans, sans-serif">₹</text>
   </g>
-  <!-- Pearlescent 3D top crown sheen -->
-  <path d="M 78 52 Q 120 41 162 52" stroke="#FFFFFF" stroke-opacity="0.55" stroke-width="5" stroke-linecap="round"/>
-
-  <!-- 5. Cozy Rounded Velvet Inner Face Screen -->
-  <rect x="61.8" y="55.8" width="116.4" height="86.4" rx="42.2" fill="url(#hgFaceRim)"/>
-  <rect x="64" y="58" width="112" height="82" rx="40" fill="url(#hgVelvetFace)"/>
-  <path d="M 82 68 Q 120 61 158 69" stroke="#FFFFFF" stroke-opacity="0.26" stroke-width="3" stroke-linecap="round"/>
-
-  <!-- 6. Rosy Plush Blush Cheeks -->
-  <ellipse cx="84" cy="114" rx="10" ry="5.5" fill="#FF7E9D" fill-opacity="0.62" filter="url(#hgSoftBlur)"/>
-  <ellipse cx="156" cy="114" rx="10" ry="5.5" fill="#FF7E9D" fill-opacity="0.62" filter="url(#hgSoftBlur)"/>
-
-  <!-- 7a. Big Sparkling Kawaii Left Eye -->
-  <ellipse cx="97" cy="97" rx="12" ry="14" fill="#64F5B2" fill-opacity="0.32" filter="url(#hgSoftBlur)"/>
-  <ellipse cx="97" cy="97" rx="10.5" ry="12.5" fill="url(#hgEyeIris)"/>
-  <ellipse cx="97" cy="98" rx="6.75" ry="8.25" fill="#0A1E17"/>
-  <path d="M 91.8 101.5 A 6 6.5 0 0 0 102.2 101.5" stroke="#6EF7B4" stroke-width="2.6" stroke-linecap="round"/>
-  <circle cx="93.2" cy="92.5" r="4.2" fill="#FFFFFF"/>
-  <circle cx="100.6" cy="101" r="2.0" fill="#FFFFFF" fill-opacity="0.92"/>
-
-  <!-- 7b. Big Sparkling Kawaii Right Eye -->
-  <ellipse cx="143" cy="97" rx="12" ry="14" fill="#64F5B2" fill-opacity="0.32" filter="url(#hgSoftBlur)"/>
-  <ellipse cx="143" cy="97" rx="10.5" ry="12.5" fill="url(#hgEyeIris)"/>
-  <ellipse cx="143" cy="98" rx="6.75" ry="8.25" fill="#0A1E17"/>
-  <path d="M 137.8 101.5 A 6 6.5 0 0 0 148.2 101.5" stroke="#6EF7B4" stroke-width="2.6" stroke-linecap="round"/>
-  <circle cx="139.2" cy="92.5" r="4.2" fill="#FFFFFF"/>
-  <circle cx="146.6" cy="101" r="2.0" fill="#FFFFFF" fill-opacity="0.92"/>
-
-  <!-- 8. Happy Curved Kawaii Smile -->
-  <path d="M 112 112 Q 120 121 128 112" stroke="#9BFFCE" stroke-width="3.4" stroke-linecap="round"/>
-
-  <!-- 9. Cute Waving Right Paw with Soft Pink Paw Pads -->
-  <g transform="translate(190, 112) rotate(-14)">
-    <rect x="-15" y="-20" width="30" height="38" rx="16" fill="url(#hgWavePaw)"/>
-    <ellipse cx="0" cy="-3" rx="6" ry="4.5" fill="#FF9EB5" fill-opacity="0.88"/>
-    <circle cx="-6" cy="-11" r="2.6" fill="#FF9EB5" fill-opacity="0.88"/>
-    <circle cx="0" cy="-13" r="2.8" fill="#FF9EB5" fill-opacity="0.88"/>
-    <circle cx="6" cy="-11" r="2.6" fill="#FF9EB5" fill-opacity="0.88"/>
-  </g>
-  <!-- Wave Sparkle Motion Lines -->
-  <line x1="202" y1="82" x2="210" y2="68" stroke="url(#hgWaveSparkle)" stroke-width="4.5" stroke-linecap="round"/>
-  <line x1="208" y1="94" x2="222" y2="84" stroke="url(#hgWaveSparkle)" stroke-width="4.5" stroke-linecap="round"/>
-
-  <!-- 10b. Soft Glowing ₹ Tummy Badge -->
-  <rect x="103" y="139" width="34" height="26" rx="13" fill="#0E291E"/>
-  <text x="120" y="158" text-anchor="middle" fill="#FFC86B" font-size="18" font-weight="800" font-family="Plus Jakarta Sans, sans-serif">₹</text>
 </svg>
