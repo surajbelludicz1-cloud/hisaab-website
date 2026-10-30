@@ -650,8 +650,8 @@
     </section>
 
     <!-- ================= CENTERED APPLE KEYNOTE MANIFESTO (No Side Logo Box!) ================= -->
-    <section id="manifesto" class="max-w-4xl mx-auto px-4 sm:px-8 py-24 sm:py-36 text-center">
-      <p id="scrub-manifesto" class="apple-manifesto-type mx-auto">
+    <section id="manifesto" class="max-w-4xl mx-auto px-4 sm:px-8 py-24 sm:py-36 flex flex-col items-center justify-center text-center">
+      <p id="scrub-manifesto" class="apple-manifesto-type max-w-4xl mx-auto text-center flex flex-wrap justify-center">
         Modern business owners shouldn’t be chained to a desktop spreadsheet. Every thermal bill, GST ledger, shift roster, and statutory payslip belongs effortlessly in the palm of your hand — crafted exclusively for our mobile app.
       </p>
     </section>
@@ -983,19 +983,25 @@
         if (manifestoEl) {
           const words = manifestoEl.innerText.trim().split(/\s+/);
           manifestoEl.innerHTML = words
-            .map((w) => `<span class="scrub-word inline-block mr-[0.26em] opacity-25 transition-opacity duration-150 text-ink">${w}</span>`)
+            .map((w) => `<span class="scrub-word inline-block mx-[0.15em] text-ink" style="opacity:0.22; transform:translateY(6px);">${w}</span>`)
             .join('');
 
-          gsap.to('#scrub-manifesto .scrub-word', {
-            opacity: 1,
-            stagger: 0.06,
-            scrollTrigger: {
-              trigger: '#manifesto',
-              start: 'top 82%',
-              end: 'bottom 48%',
-              scrub: 0.5,
-            },
-          });
+          gsap.fromTo(
+            '#scrub-manifesto .scrub-word',
+            { opacity: 0.22, y: 6 },
+            {
+              opacity: 1,
+              y: 0,
+              stagger: 0.06,
+              ease: 'power2.out',
+              scrollTrigger: {
+                trigger: '#manifesto',
+                start: 'top 84%',
+                end: 'bottom 50%',
+                scrub: 0.45,
+              },
+            }
+          );
         }
 
         // Smooth Spring Entrance for Bento Cards
