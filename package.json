@@ -1,0 +1,9 @@
+{
+  "name": "hisaab-guru-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Luxury motion-graphics promotional website for the Hisaab.Guru iOS & Android mobile app",
+  "scripts": {
+    "start": "node server.cjs"
+  }
+}
