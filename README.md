@@ -1,15 +1,16 @@
-# Hisaab.Guru — Official Promotional Website
+# Hisaab.Guru promotional website
 
-Luxury editorial & motion-graphics promotional website for **Hisaab.Guru**, the mobile-only AI bookkeeping, GST ledger, shift scheduling, and 2026 Indian statutory payroll application for iOS and Android.
+Static mobile-product showcase with current versus planned capability labels, illustrative phone screens, responsive navigation and optional motion.
 
-## Highlights
-- **App-Only Showcase**: Prominent **Apple App Store** and **Google Play Store** download badges plus an instant mobile QR scanner modal.
-- **Luxury Editorial Typography**: Paired `Cormorant Garamond` & `Instrument Serif` display typography with `Plus Jakarta Sans` and `JetBrains Mono`.
-- **Motion Graphics**: Ambient topographic contour wave canvas, floating 3D iOS & Android phone mockups, live AI invoice laser scanner animation, and infinite kinetic typography marquee.
-- **Multi-Industry Vision**: Showcases Hisaab.Guru live for Hospitality & Cloud Kitchens today and expanding to Pharmacies, Retail, Salons, Boutiques, and Service Enterprises.
+The current-workflow description is inherited from product-status correction `9da5879`; this repository does not independently verify app/backend readiness. Store badges and QR dialog remain intentional placeholders. Pricing and public support/policies are not yet published.
 
-## Local Preview
-```bash
+## Local preview
+
+```sh
 node server.cjs
 # Open http://127.0.0.1:8767
 ```
+
+No build or lint scripts are configured. Styling/fonts and optional GSAP motion load from external CDNs. The page remains readable and interactive without GSAP or browser storage.
+
+Owner-only editorial questions are in `.github/LAUNCH-CONTENT-DRAFT.md`; that file is not a legal policy and must be excluded from the published site. Deploy only `index.html` and `assets/`. No deployment is part of this change.

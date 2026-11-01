@@ -4,10 +4,29 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hisaab.Guru — Effortless Business. In Your Hand.</title>
-  <meta name="description" content="Hisaab.Guru is the AI accounting, GST bookkeeping, inventory, shifts, and 2026 Indian payroll mobile app crafted for every modern business. Download on the App Store and Google Play." />
+  <meta name="description" content="Explore Hisaab.Guru, a mobile workspace for sales, inventory and team records. See current workflows, planned accounting features and release information." />
   <meta name="theme-color" content="#000000" id="meta-theme-color" />
   <link rel="icon" type="image/svg+xml" href="assets/hisaab-guru-mascot.svg" />
 
+  <link rel="canonical" href="https://hisaab.guru/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://hisaab.guru/" />
+  <meta property="og:title" content="Hisaab.Guru — Business in your hand" />
+  <meta property="og:description" content="Explore current mobile workflows, planned accounting features and release information." />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Hisaab.Guru — Business in your hand" />
+  <meta name="twitter:description" content="Explore current mobile workflows, planned accounting features and release information." />
+  <style>
+    :focus-visible { outline: 3px solid #34D399 !important; outline-offset: 4px; }
+    section[id], main[id] { scroll-margin-top: 110px; }
+    .mobile-menu { display: none; }
+    .mobile-menu summary { cursor: pointer; padding: 10px; list-style: none; font-size: 12px; font-weight: 600; white-space: nowrap; }
+    .mobile-menu summary::-webkit-details-marker { display: none; }
+    .mobile-menu nav { position: absolute; right: 16px; top: 70px; padding: 20px; background: var(--bg-elevated); border: 1px solid var(--border-strong); border-radius: 20px; min-width: 200px; display: grid; gap: 18px; }
+    @media(max-width: 767px) { .mobile-menu { display: block; } #theme-toggle-label { display: none; } .navbar-start { width: auto !important; flex: 1; } .navbar-end { width: auto !important; } }
+    @media(max-width: 380px) { #hero-3d-stage { overflow: clip; } #hero-3d-stage .phone-3d-rig { margin-right: 0; } .navbar { padding-inline: 8px; } .navbar-end { gap: 2px; } .navbar-start img { width: 26px; } .navbar-start span { font-size: 13px; } .navbar-start a { gap: 4px; } }
+    @media(prefers-reduced-motion: reduce) { html { scroll-behavior: auto !important; } *, *::before, *::after { animation: none !important; transition: none !important; } .marquee-track { flex-wrap: wrap; width: auto !important; padding: 16px; } }
+  </style>
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -309,11 +328,19 @@
           <a href="#manifesto" class="hover:text-ink transition-colors">Philosophy</a>
           <a href="#bento-features" class="hover:text-ink transition-colors">Capabilities</a>
           <a href="#industries" class="hover:text-ink transition-colors">Businesses</a>
-          <a href="#download-cta" class="hover:text-ink transition-colors">Download</a>
+          <a href="#availability" class="hover:text-ink transition-colors">Availability</a>
         </nav>
       </div>
 
       <div class="navbar-end gap-2.5">
+        <details class="mobile-menu" id="mobile-menu">
+          <summary aria-label="Toggle navigation menu">Menu</summary>
+          <nav aria-label="Mobile navigation">
+            <a href="#manifesto">Philosophy</a><a href="#bento-features">Capabilities</a>
+            <a href="#industries">Businesses</a><a href="#availability">Availability &amp; pricing</a>
+            <a href="#support">Support &amp; policies</a><a href="#download-cta">Download</a>
+          </nav>
+        </details>
         <!-- Light / Dark Theme Toggle Button in Navbar -->
         <button
           type="button"
@@ -435,7 +462,7 @@
                 onclick="focusPhoneStage('payroll')"
                 class="apple-pressable px-4 py-1.5 rounded-full text-xs font-semibold text-muted-ink hover:text-ink"
               >
-                Payroll &amp; PDF
+                Payroll preview
               </button>
               <button
                 type="button"
@@ -443,7 +470,7 @@
                 onclick="focusPhoneStage('scanner')"
                 class="apple-pressable px-4 py-1.5 rounded-full text-xs font-semibold text-muted-ink hover:text-ink"
               >
-                AI Bill Capture
+                Planned bill capture
               </button>
             </div>
           </div>
@@ -465,7 +492,7 @@
               <span class="w-2 h-2 rounded-full bg-[#5EE889]"></span>
               <div>
                 <div class="text-[10px] font-semibold text-[#5EE889] leading-none">Hisaab.Guru</div>
-                <div class="text-[11px] font-medium text-[#F5F5F7] mt-0.5">Instant Sign-In</div>
+                <div class="text-[11px] font-medium text-[#F5F5F7] mt-0.5">Illustrative preview</div>
               </div>
             </div>
 
@@ -506,7 +533,7 @@
                 <div>
                   <h2 class="text-3xl font-bold text-[#F5F5F7] tracking-tight">Welcome</h2>
                   <p class="text-[12px] text-[#A1A1A6] mt-2 leading-relaxed">
-                    Smart business bookkeeping, GST bills, inventory, shifts &amp; payroll in one calm workspace.
+                    A preview of sales, inventory and team records. Connected accounting features are planned.
                   </p>
                   <div class="mt-4">
                     <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#5EE889]/50 text-[11px] font-semibold text-[#5EE889]">
@@ -532,8 +559,8 @@
             <div class="floating-3d-chip absolute -right-5 bottom-20 z-40 px-3.5 py-2 rounded-2xl flex items-center gap-2.5 pointer-events-none">
               <span class="w-2 h-2 rounded-full bg-[#FFB340]"></span>
               <div>
-                <div class="text-[10px] font-semibold text-[#FFB340] leading-none">2026 Statutory</div>
-                <div class="text-[11px] font-medium text-[#F5F5F7] mt-0.5">1-Tap PDF Payslip</div>
+                <div class="text-[10px] font-semibold text-[#FFB340] leading-none">Planned payroll</div>
+                <div class="text-[11px] font-medium text-[#F5F5F7] mt-0.5">Sample payslip</div>
               </div>
             </div>
 
@@ -544,14 +571,14 @@
               <div class="flex items-center justify-between text-[11px] font-semibold text-white/80 px-1">
                 <span>9:41</span>
                 <span class="w-2.5 h-2.5 rounded-full bg-black ring-1 ring-white/20"></span>
-                <span class="text-[#5EE889] text-[10px]">● Live Sync</span>
+                <span class="text-[#5EE889] text-[10px]">Sample data</span>
               </div>
 
               <!-- Hey Arjun Card with Symbol-Only Eye Toggle -->
               <div class="rounded-2xl bg-gradient-to-br from-[#0E5C34] via-[#103825] to-[#1A2342] p-3.5 border border-white/15 shadow-lg mt-2">
                 <div class="flex items-center justify-between">
                   <span class="text-[8.5px] font-mono-num uppercase tracking-wider px-2 py-0.5 rounded-full bg-black/35 text-[#5EE889]">
-                    PAYSLIP HISTORY · MONTHLY
+                    SAMPLE PAYSLIP · MONTHLY
                   </span>
                   <svg class="w-3.5 h-3.5 text-[#5EE889]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
                 </div>
@@ -574,7 +601,7 @@
                 <p class="text-[10px] text-white/75 mt-0.5">Operations Lead · Multi-Branch</p>
 
                 <div class="mt-2.5 pt-2 border-t border-white/15 flex items-baseline justify-between">
-                  <span class="text-[10px] text-white/70">Net Disbursed</span>
+                  <span class="text-[10px] text-white/70">Sample net pay</span>
                   <span id="demo-salary-val" class="font-mono-num text-sm font-bold text-[#5EE889]">₹48,450.00</span>
                 </div>
               </div>
@@ -583,8 +610,8 @@
               <div class="relative rounded-2xl bg-[#0B1C13] border border-white/10 p-3 overflow-hidden my-1.5">
                 <div class="laser-beam absolute left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-[#5EE889] to-transparent shadow-[0_0_12px_#5EE889]"></div>
                 <div class="flex items-center justify-between text-[9px] font-mono-num text-[#5EE889]">
-                  <span>HISAAB AI OCR</span>
-                  <span>GSTIN VERIFIED ✓</span>
+                  <span>PLANNED AI OCR</span>
+                  <span>SAMPLE GSTIN ✓</span>
                 </div>
                 <div class="mt-1.5 space-y-1 text-[11px]">
                   <div class="flex justify-between text-white font-medium">
@@ -602,11 +629,11 @@
               <div class="rounded-2xl bg-[#0B1811] border border-white/10 p-3 space-y-2">
                 <div class="flex items-center justify-between">
                   <div>
-                    <div class="text-[11px] font-semibold text-white">Oct 2026 Payslip PDF</div>
+                    <div class="text-[11px] font-semibold text-white">Sample Payslip Preview</div>
                     <div class="text-[9.5px] text-[#A1A1A6]">Basic · DA · HRA · EPF · ESI</div>
                   </div>
                   <span class="px-2 py-1 rounded-md bg-[#5EE889]/20 text-[#5EE889] font-mono-num text-[9.5px] font-semibold">
-                    OPEN PDF
+                    PREVIEW
                   </span>
                 </div>
                 <div class="w-full bg-white/10 h-1.5 rounded-full overflow-hidden flex">
@@ -633,18 +660,18 @@
     <!-- ================= CLEAN APPLE TELEMETRY TICKER ================= -->
     <section aria-label="Platform Capabilities" class="mt-12 sm:mt-16 border-y border-theme bg-subcard-theme py-4 overflow-hidden">
       <div class="marquee-track flex items-center gap-12 text-xs sm:text-sm font-medium tracking-wide text-muted-ink">
-        <span class="flex items-center gap-2.5"><i class="w-1.5 h-1.5 rounded-full bg-[#34D399]"></i> Automatic Double-Entry Bookkeeping</span>
-        <span class="flex items-center gap-2.5"><i class="w-1.5 h-1.5 rounded-full bg-[#34D399]"></i> AI Invoice &amp; Receipt OCR</span>
-        <span class="flex items-center gap-2.5"><i class="w-1.5 h-1.5 rounded-full bg-[#34D399]"></i> Live P&amp;L, Trial Balance &amp; GST ITC</span>
-        <span class="flex items-center gap-2.5"><i class="w-1.5 h-1.5 rounded-full bg-[#34D399]"></i> Customer &amp; Supplier Khata + UPI Reconciliation</span>
-        <span class="flex items-center gap-2.5"><i class="w-1.5 h-1.5 rounded-full bg-[#34D399]"></i> 2026 Statutory Payroll &amp; Signed PDF Payslips</span>
+        <span class="flex items-center gap-2.5"><i class="w-1.5 h-1.5 rounded-full bg-[#34D399]"></i> Planned: Double-Entry Bookkeeping</span>
+        <span class="flex items-center gap-2.5"><i class="w-1.5 h-1.5 rounded-full bg-[#34D399]"></i> Planned: Invoice &amp; Receipt OCR</span>
+        <span class="flex items-center gap-2.5"><i class="w-1.5 h-1.5 rounded-full bg-[#34D399]"></i> Planned: Reports &amp; GST ITC</span>
+        <span class="flex items-center gap-2.5"><i class="w-1.5 h-1.5 rounded-full bg-[#34D399]"></i> Planned: Khata &amp; UPI Reconciliation</span>
+        <span class="flex items-center gap-2.5"><i class="w-1.5 h-1.5 rounded-full bg-[#34D399]"></i> Planned: Statutory Payroll &amp; Payslips</span>
         <span class="flex items-center gap-2.5"><i class="w-1.5 h-1.5 rounded-full bg-[#FFB340]"></i> Retail · Restaurants · Supermarkets · Pharmacies · Salons · Hotels · Clinics</span>
         <!-- Duplicate -->
-        <span class="flex items-center gap-2.5"><i class="w-1.5 h-1.5 rounded-full bg-[#34D399]"></i> Automatic Double-Entry Bookkeeping</span>
-        <span class="flex items-center gap-2.5"><i class="w-1.5 h-1.5 rounded-full bg-[#34D399]"></i> AI Invoice &amp; Receipt OCR</span>
-        <span class="flex items-center gap-2.5"><i class="w-1.5 h-1.5 rounded-full bg-[#34D399]"></i> Live P&amp;L, Trial Balance &amp; GST ITC</span>
-        <span class="flex items-center gap-2.5"><i class="w-1.5 h-1.5 rounded-full bg-[#34D399]"></i> Customer &amp; Supplier Khata + UPI Reconciliation</span>
-        <span class="flex items-center gap-2.5"><i class="w-1.5 h-1.5 rounded-full bg-[#34D399]"></i> 2026 Statutory Payroll &amp; Signed PDF Payslips</span>
+        <span class="flex items-center gap-2.5"><i class="w-1.5 h-1.5 rounded-full bg-[#34D399]"></i> Planned: Double-Entry Bookkeeping</span>
+        <span class="flex items-center gap-2.5"><i class="w-1.5 h-1.5 rounded-full bg-[#34D399]"></i> Planned: Invoice &amp; Receipt OCR</span>
+        <span class="flex items-center gap-2.5"><i class="w-1.5 h-1.5 rounded-full bg-[#34D399]"></i> Planned: Reports &amp; GST ITC</span>
+        <span class="flex items-center gap-2.5"><i class="w-1.5 h-1.5 rounded-full bg-[#34D399]"></i> Planned: Khata &amp; UPI Reconciliation</span>
+        <span class="flex items-center gap-2.5"><i class="w-1.5 h-1.5 rounded-full bg-[#34D399]"></i> Planned: Statutory Payroll &amp; Payslips</span>
         <span class="flex items-center gap-2.5"><i class="w-1.5 h-1.5 rounded-full bg-[#FFB340]"></i> Retail · Restaurants · Supermarkets · Pharmacies · Salons · Hotels · Clinics</span>
       </div>
     </section>
@@ -652,226 +679,21 @@
     <!-- ================= CENTERED APPLE KEYNOTE MANIFESTO (No Side Logo Box!) ================= -->
     <section id="manifesto" class="max-w-4xl mx-auto px-4 sm:px-8 py-24 sm:py-36 flex flex-col items-center justify-center text-center">
       <p id="scrub-manifesto" class="apple-manifesto-type max-w-4xl mx-auto text-center flex flex-wrap justify-center">
-        Modern business owners shouldn’t be chained to a desktop spreadsheet. Every thermal bill, GST ledger, shift roster, and statutory payslip belongs effortlessly in the palm of your hand — crafted exclusively for our mobile app.
+        Modern business owners shouldn’t be chained to a desktop spreadsheet. Bring everyday sales, stock and team records into a mobile workspace, with connected accounting and statutory features on the roadmap.
       </p>
     </section>
 
-    <!-- ================= APPLE BENTO GRID CAPABILITIES ================= -->
     <section id="bento-features" class="max-w-6xl mx-auto px-4 sm:px-8 pb-24">
-      <div class="text-center max-w-2xl mx-auto mb-14">
-        <h2 class="apple-section-display text-ink">
-          Designed for speed.<br />
-          <span class="text-muted-ink">Engineered for statutory precision.</span>
-        </h2>
+      <div class="text-center max-w-2xl mx-auto mb-14"><h2 class="apple-section-display text-ink">Everyday records.<br /><span class="text-muted-ink">A clear view of what comes next.</span></h2><p class="text-muted-ink mt-4">Available describes current app workflows, not public store availability. Planned features are not ready for use. The screens above are illustrative previews with sample data.</p></div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <article class="apple-bento-card p-8 sm:p-10"><span class="text-xs font-semibold uppercase tracking-wider text-brand">Available in the app</span><h3 class="text-2xl font-bold text-ink mt-2">Sales &amp; inventory records</h3><p class="text-sm text-muted-ink mt-3 leading-relaxed">Record sales and payments manually, track inventory movements and counts, and review calendar views.</p></article>
+      <article class="apple-bento-card p-8 sm:p-10"><span class="text-xs font-semibold uppercase tracking-wider text-brand">Available in the app</span><h3 class="text-2xl font-bold text-ink mt-2">Attendance &amp; draft payroll</h3><p class="text-sm text-muted-ink mt-3 leading-relaxed">Manage attendance and leave, and review draft payroll approvals. Draft figures require review; they are not a statutory payroll service.</p></article>
+      <article class="apple-bento-card p-8 sm:p-10"><span class="text-xs font-semibold uppercase tracking-wider text-brand">Planned</span><h3 class="text-2xl font-bold text-ink mt-2">AI bill capture &amp; connected books</h3><p class="text-sm text-muted-ink mt-3 leading-relaxed">Invoice extraction, supplier checks, tax splits, double-entry journals, financial reports and period closing require further integration and validation.</p></article>
+      <article class="apple-bento-card p-8 sm:p-10"><span class="text-xs font-semibold uppercase tracking-wider text-brand">Planned</span><h3 class="text-2xl font-bold text-ink mt-2">Bank matching &amp; GST workflows</h3><p class="text-sm text-muted-ink mt-3 leading-relaxed">Connected bank and UPI reconciliation, GST return preparation, GSTR-2B matching and filing integrations are not available as end-to-end automated services.</p></article>
+      <article class="apple-bento-card p-8 sm:p-10"><span class="text-xs font-semibold uppercase tracking-wider text-brand">Planned</span><h3 class="text-2xl font-bold text-ink mt-2">Statutory payroll &amp; tax preparation</h3><p class="text-sm text-muted-ink mt-3 leading-relaxed">Statutory payroll calculations and challans, income-tax preparation and tax-notice assistance require validation before release.</p></article>
+      <article class="apple-bento-card p-8 sm:p-10"><span class="text-xs font-semibold uppercase tracking-wider text-brand">Planned</span><h3 class="text-2xl font-bold text-ink mt-2">Professional review &amp; audit handoff</h3><p class="text-sm text-muted-ink mt-3 leading-relaxed">Audit workpapers and connected review workflows are in development. Hisaab.Guru does not replace qualified professional review, statutory certification or taxpayer authorization.</p></article>
       </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
-        <!-- Bento 1: AI Bill Capture (7 cols) -->
-        <div class="apple-bento-card md:col-span-7 p-8 sm:p-10 flex flex-col justify-between">
-          <div>
-            <span class="text-xs font-semibold uppercase tracking-wider text-brand">AI Bill Capture</span>
-            <h3 class="text-2xl sm:text-3xl font-bold text-ink tracking-tight mt-2">
-              Point your camera. Your GST ledger writes itself.
-            </h3>
-            <p class="text-sm sm:text-base text-muted-ink mt-2.5 max-w-xl leading-relaxed">
-              Snap any paper invoice or thermal receipt. Hisaab.Guru extracts line items, verifies supplier GSTIN, splits CGST, SGST, and IGST, and flags unpaid bills on your Home screen automatically.
-            </p>
-          </div>
-
-          <div class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-3.5">
-            <div class="rounded-2xl bg-subcard-theme border border-theme p-4">
-              <div class="font-mono-num text-xs font-semibold text-brand">0.4s</div>
-              <div class="text-sm font-semibold text-ink mt-1">Auto-Crop Scan</div>
-              <div class="text-xs text-muted-ink mt-0.5">De-skews crumpled bills</div>
-            </div>
-            <div class="rounded-2xl bg-subcard-theme border border-theme p-4">
-              <div class="font-mono-num text-xs font-semibold text-amber-brand">100%</div>
-              <div class="text-sm font-semibold text-ink mt-1">HSN &amp; Tax Split</div>
-              <div class="text-xs text-muted-ink mt-0.5">CGST + SGST + IGST</div>
-            </div>
-            <div class="rounded-2xl bg-[#147A46]/15 border border-[#5EE889]/30 p-4">
-              <div class="font-mono-num text-xs font-semibold text-brand">Ready</div>
-              <div class="text-sm font-semibold text-ink mt-1">Stock &amp; ITC Sync</div>
-              <div class="text-xs text-brand mt-0.5">1-Tap Owner Review</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Bento 2: 2026 Statutory Payroll & PDF Payslips (5 cols) -->
-        <div class="apple-bento-card md:col-span-5 p-8 sm:p-10 flex flex-col justify-between">
-          <div>
-            <span class="text-xs font-semibold uppercase tracking-wider text-amber-brand">2026 Indian Payroll</span>
-            <h3 class="text-2xl sm:text-3xl font-bold text-ink tracking-tight mt-2">
-              Instant PDF payslips &amp; privacy by design.
-            </h3>
-            <p class="text-sm sm:text-base text-muted-ink mt-2.5 leading-relaxed">
-              Structured Basic, DA, HRA, Special Allowance, EPF, ESI, and Professional Tax calculations with owner-only digital signatures, symbol-only salary privacy, and leave management.
-            </p>
-          </div>
-
-          <div class="mt-8 rounded-2xl bg-subcard-theme border border-theme p-4 flex items-center gap-4">
-            <div class="w-16 h-16 shrink-0 relative flex items-center justify-center">
-              <svg class="w-full h-full -rotate-90" viewBox="0 0 36 36">
-                <circle cx="18" cy="18" r="14" fill="none" stroke="rgba(128,128,128,0.18)" stroke-width="4"></circle>
-                <circle cx="18" cy="18" r="14" fill="none" stroke="#34D399" stroke-width="4" stroke-dasharray="50 100"></circle>
-                <circle cx="18" cy="18" r="14" fill="none" stroke="#FFB340" stroke-width="4" stroke-dasharray="25 100" stroke-dashoffset="-50"></circle>
-                <circle cx="18" cy="18" r="14" fill="none" stroke="#38BDF8" stroke-width="4" stroke-dasharray="25 100" stroke-dashoffset="-75"></circle>
-              </svg>
-              <span class="absolute font-mono-num text-[10px] font-bold text-brand">PDF</span>
-            </div>
-            <div class="space-y-1 text-xs flex-1">
-              <div class="flex justify-between"><span class="text-muted-ink">Basic + DA (50%)</span><span class="font-mono-num font-semibold text-ink">₹24,000</span></div>
-              <div class="flex justify-between"><span class="text-muted-ink">HRA &amp; Allowances</span><span class="font-mono-num font-semibold text-ink">₹16,800</span></div>
-              <div class="flex justify-between"><span class="text-muted-ink">Owner Signature</span><span class="font-mono-num font-semibold text-brand">Verified</span></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Bento 3: Double-Entry Bookkeeping, Trial Balance & Period Lock (6 cols) -->
-        <div class="apple-bento-card md:col-span-6 p-8 sm:p-10 flex flex-col justify-between">
-          <div>
-            <span class="text-xs font-semibold uppercase tracking-wider text-brand">Indian Double-Entry Books</span>
-            <h3 class="text-2xl font-bold text-ink tracking-tight mt-2">
-              Journal vouchers, Trial Balance, P&amp;L &amp; Period Lock.
-            </h3>
-            <p class="text-sm text-muted-ink mt-2 leading-relaxed">
-              Every sale invoice, approved purchase bill, credit/debit note reversal, and monthly payroll run automatically posts balanced double-entry journal lines (`JV-SALE`, `JV-BILL`, `JV-PAY`) with CA-ready GSTR-1 &amp; GSTR-3B summaries.
-            </p>
-          </div>
-          <div class="mt-6 grid grid-cols-3 gap-3 text-center">
-            <div class="rounded-xl bg-subcard-theme border border-theme p-3">
-              <div class="font-mono-num text-xs font-bold text-brand">Dr = Cr</div>
-              <div class="text-xs font-semibold text-ink mt-1">Trial Balance</div>
-            </div>
-            <div class="rounded-xl bg-subcard-theme border border-theme p-3">
-              <div class="font-mono-num text-xs font-bold text-amber-brand">ITC Offset</div>
-              <div class="text-xs font-semibold text-ink mt-1">Net GST Ledger</div>
-            </div>
-            <div class="rounded-xl bg-subcard-theme border border-theme p-3">
-              <div class="font-mono-num text-xs font-bold text-brand">Locked</div>
-              <div class="text-xs font-semibold text-ink mt-1">Audit &amp; Period Lock</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Bento 4: Customer & Supplier Khata + Bank/UPI Reconciliation (6 cols) -->
-        <div class="apple-bento-card md:col-span-6 p-8 sm:p-10 flex flex-col justify-between">
-          <div>
-            <span class="text-xs font-semibold uppercase tracking-wider text-amber-brand">Khata &amp; Reconciliation</span>
-            <h3 class="text-2xl font-bold text-ink tracking-tight mt-2">
-              Customer &amp; Supplier Khata with auto-matched UPI feeds.
-            </h3>
-            <p class="text-sm text-muted-ink mt-2 leading-relaxed">
-              Track unpaid, part-paid, and overdue supplier bills or customer credit sales. Automatically match incoming UPI/Card settlements and outgoing vendor payouts, while syncing stock inward moves and unit costing.
-            </p>
-          </div>
-          <div class="mt-6 grid grid-cols-3 gap-3 text-center">
-            <div class="rounded-xl bg-subcard-theme border border-theme p-3">
-              <div class="font-mono-num text-xs font-bold text-brand">AR / AP</div>
-              <div class="text-xs font-semibold text-ink mt-1">Party Khata</div>
-            </div>
-            <div class="rounded-xl bg-subcard-theme border border-theme p-3">
-              <div class="font-mono-num text-xs font-bold text-brand">UPI / Bank</div>
-              <div class="text-xs font-semibold text-ink mt-1">Auto-Reconcile</div>
-            </div>
-            <div class="rounded-xl bg-subcard-theme border border-theme p-3">
-              <div class="font-mono-num text-xs font-bold text-amber-brand">Stock Sync</div>
-              <div class="text-xs font-semibold text-ink mt-1">Inventory &amp; Costing</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Bento 5: Autonomous AI Accountant Reviewer, GST/ITR Engine & CA Handoff (12 cols) -->
-        <div class="apple-bento-card md:col-span-12 p-8 sm:p-10">
-          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-8 border-b border-theme">
-            <div class="max-w-2xl">
-              <span class="text-xs font-semibold uppercase tracking-wider text-brand">
-                Autonomous AI Accountant · 12-Pillar Lifecycle
-              </span>
-              <h3 class="text-2xl sm:text-3xl font-bold text-ink tracking-tight mt-2">
-                No accountant needed for routine business accounting.
-              </h3>
-              <p class="text-sm sm:text-base text-muted-ink mt-2 leading-relaxed">
-                Hisaab.Guru independently completes your daily bookkeeping, GSTR-1/2B/3B reconciliation, RBI Account Aggregator bank matching, Sec 44AD / ITR-3 computation, WDV depreciation, and tax notice replies — while packaging tamper-evident workpapers for a qualified Chartered Accountant whenever a statutory audit (Companies Act Sec 141 or Income Tax Act Sec 44AB) is legally required.
-              </p>
-            </div>
-            <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-2 gap-3 shrink-0">
-              <div class="rounded-2xl bg-subcard-theme border border-theme px-4 py-3 text-center">
-                <div class="font-mono-num text-sm font-bold text-brand">Schedule III</div>
-                <div class="text-[11px] text-muted-ink mt-0.5">Balance Sheet &amp; Close</div>
-              </div>
-              <div class="rounded-2xl bg-subcard-theme border border-theme px-4 py-3 text-center">
-                <div class="font-mono-num text-sm font-bold text-brand">GSTR-1 / 2B / 3B</div>
-                <div class="text-[11px] text-muted-ink mt-0.5">GSP EVC Filing</div>
-              </div>
-              <div class="rounded-2xl bg-subcard-theme border border-theme px-4 py-3 text-center">
-                <div class="font-mono-num text-sm font-bold text-amber-brand">ITR-3 / ITR-4</div>
-                <div class="text-[11px] text-muted-ink mt-0.5">Sec 44AD &amp; WDV Dep.</div>
-              </div>
-              <div class="rounded-2xl bg-subcard-theme border border-theme px-4 py-3 text-center">
-                <div class="font-mono-num text-sm font-bold text-brand">Sec 141 / 44AB</div>
-                <div class="text-[11px] text-muted-ink mt-0.5">CA Audit Handoff</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 5-Stage Autonomous AI Accountant Pipeline -->
-          <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-            <div class="rounded-2xl bg-subcard-theme border border-theme p-4">
-              <div class="font-mono-num text-[11px] font-bold text-brand">01 · CAPTURE</div>
-              <div class="text-sm font-bold text-ink mt-1">Owner Scans &amp; Connects</div>
-              <div class="text-xs text-muted-ink mt-1 leading-relaxed">
-                Photographs bills, records sales, and links bank/UPI feeds.
-              </div>
-            </div>
-            <div class="rounded-2xl bg-subcard-theme border border-theme p-4">
-              <div class="font-mono-num text-[11px] font-bold text-brand">02 · AI REVIEWER</div>
-              <div class="text-sm font-bold text-ink mt-1">Extracts, Checks &amp; Asks</div>
-              <div class="text-xs text-muted-ink mt-1 leading-relaxed">
-                Flags duplicate bills, missing GSTINs &amp; Sec 17(5) blocked ITC; asks targeted questions instead of guessing.
-              </div>
-            </div>
-            <div class="rounded-2xl bg-subcard-theme border border-theme p-4">
-              <div class="font-mono-num text-[11px] font-bold text-brand">03 · VERIFIED ENGINE</div>
-              <div class="text-sm font-bold text-ink mt-1">Idempotent Ledger &amp; Tax</div>
-              <div class="text-xs text-muted-ink mt-1 leading-relaxed">
-                Posts balanced JVs, Opening/Closing entries, WDV depreciation, EPF/ESI/PT challans &amp; Trial Balance.
-              </div>
-            </div>
-            <div class="rounded-2xl bg-subcard-theme border border-theme p-4">
-              <div class="font-mono-num text-[11px] font-bold text-amber-brand">04 · OWNER SIGN-OFF</div>
-              <div class="text-sm font-bold text-ink mt-1">Returns, Deadlines &amp; Notices</div>
-              <div class="text-xs text-muted-ink mt-1 leading-relaxed">
-                Prepares GSTR-1/3B, Advance Tax &amp; ASMT-10/143(1) notice replies for owner EVC authorization.
-              </div>
-            </div>
-            <div class="rounded-2xl bg-subcard-theme border border-theme p-4">
-              <div class="font-mono-num text-[11px] font-bold text-brand">05 · CA HANDOFF</div>
-              <div class="text-sm font-bold text-ink mt-1">Statutory Audit Ready</div>
-              <div class="text-xs text-muted-ink mt-1 leading-relaxed">
-                Packages SHA-256 verified audit evidence when a qualified CA DSC sign-off is required by law.
-              </div>
-            </div>
-          </div>
-
-          <!-- Verified capability status: current vs planned -->
-          <div class="mt-8 pt-6 border-t border-theme">
-            <h4 class="text-sm font-bold text-ink mb-2">What works today — and what is still being built</h4>
-            <p class="text-xs text-muted-ink mb-4 leading-relaxed">Hisaab.Guru is designed to reduce routine accounting work over time. Current app workflows are local-first and are not yet a complete statutory accounting service.</p>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-              <div class="rounded-xl bg-subcard-theme border border-theme px-3.5 py-3">
-                <span class="font-bold text-brand">Available in the app</span>
-                <p class="text-muted-ink mt-1 leading-relaxed">Manual sales and payment records, inventory movements and counts, attendance and leave, draft payroll approvals, and calendar views. These records stay on this device and are not yet synced to the separate cloud editor.</p>
-              </div>
-              <div class="rounded-xl bg-subcard-theme border border-theme px-3.5 py-3">
-                <span class="font-bold text-amber-brand">In development / requires validation</span>
-                <p class="text-muted-ink mt-1 leading-relaxed">GST-ready invoices and returns, GST portal or GSP filing, GSTR-2B matching, bank-feed reconciliation, statutory payroll and challans, income-tax return preparation, year-end closing, and audit workpapers. These are not currently available as end-to-end automated services.</p>
-              </div>
-            </div>
-            <p class="text-[11px] text-muted-ink mt-3 leading-relaxed">App workflow tests validate selected local behavior; they do not establish statutory correctness, production integrations, or professional sign-off. Filing, certification, audit opinions and other legally reserved work remain subject to qualified professional review and required taxpayer authorization.</p>
-          </div>
-        </div>
-      </div>
+      <p class="text-sm text-muted-ink mt-6">Current records are local to the app device and are not yet synced to the separate cloud editor. Availability here follows the current product status recorded in this website; no beta release or launch date is announced.</p>
     </section>
 
     <!-- ================= MULTI-INDUSTRY COVERAGE (7 Core Business Sectors) ================= -->
@@ -879,7 +701,7 @@
       <div class="text-center max-w-3xl mx-auto mb-14">
         <h2 class="apple-section-display text-ink">
           One intelligent platform.<br />
-          <span class="text-brand">Built for every Indian business.</span>
+          <span class="text-brand">Designed around Indian businesses.</span>
         </h2>
         <p class="text-sm sm:text-base text-muted-ink mt-3 leading-relaxed">
           Designed for neighbourhood storefronts, restaurants, pharmacies, salons, hotels, and clinics. Current availability covers selected local sales, inventory, attendance, leave, and draft payroll workflows; connected accounting and statutory workflows are being developed.
@@ -891,11 +713,11 @@
         <div class="apple-bento-card md:col-span-2 p-7">
           <div class="flex items-center justify-between">
             <span class="text-xs font-semibold uppercase tracking-wider text-brand">Retail &amp; Lifestyle</span>
-            <span class="px-2.5 py-0.5 rounded-full bg-[#34D399]/15 text-brand font-mono-num text-[10px] font-bold">SUPPORTED</span>
+            <span class="px-2.5 py-0.5 rounded-full bg-[#34D399]/15 text-brand font-mono-num text-[10px] font-bold">PLANNED</span>
           </div>
           <h3 class="text-xl font-bold text-ink mt-3">Retail Stores &amp; Boutiques</h3>
           <p class="text-xs sm:text-sm text-muted-ink mt-2 leading-relaxed">
-            Wholesale purchase bill OCR, seasonal SKU stock valuation, customer &amp; vendor khata, HSN GST slabs, and staff sales incentives.
+            Planned industry workflows: Wholesale purchase bill OCR, seasonal SKU stock valuation, customer &amp; vendor khata, HSN GST slabs, and staff sales incentives.
           </p>
         </div>
 
@@ -903,11 +725,11 @@
         <div class="apple-bento-card md:col-span-2 p-7">
           <div class="flex items-center justify-between">
             <span class="text-xs font-semibold uppercase tracking-wider text-brand">Food &amp; Beverage</span>
-            <span class="px-2.5 py-0.5 rounded-full bg-[#34D399]/15 text-brand font-mono-num text-[10px] font-bold">SUPPORTED</span>
+            <span class="px-2.5 py-0.5 rounded-full bg-[#34D399]/15 text-brand font-mono-num text-[10px] font-bold">PLANNED</span>
           </div>
           <h3 class="text-xl font-bold text-ink mt-3">Restaurants, Cafés &amp; QSRs</h3>
           <p class="text-xs sm:text-sm text-muted-ink mt-2 leading-relaxed">
-            Kitchen supplier invoice capture, recipe &amp; unit food costing, daily counter &amp; delivery payout reconciliation, shift rosters, and payroll.
+            Planned industry workflows: Kitchen supplier invoice capture, recipe &amp; unit food costing, daily counter &amp; delivery payout reconciliation, shift rosters, and payroll.
           </p>
         </div>
 
@@ -915,11 +737,11 @@
         <div class="apple-bento-card md:col-span-2 p-7">
           <div class="flex items-center justify-between">
             <span class="text-xs font-semibold uppercase tracking-wider text-brand">High-Volume Grocery</span>
-            <span class="px-2.5 py-0.5 rounded-full bg-[#34D399]/15 text-brand font-mono-num text-[10px] font-bold">SUPPORTED</span>
+            <span class="px-2.5 py-0.5 rounded-full bg-[#34D399]/15 text-brand font-mono-num text-[10px] font-bold">PLANNED</span>
           </div>
           <h3 class="text-xl font-bold text-ink mt-3">Supermarkets &amp; Hypermarkets</h3>
           <p class="text-xs sm:text-sm text-muted-ink mt-2 leading-relaxed">
-            High-speed distributor bill scanning, multi-counter UPI/Cash/Card settlement matching, automated GST input credit (ITC), and shift attendance.
+            Planned industry workflows: High-speed distributor bill scanning, multi-counter UPI/Cash/Card settlement matching, automated GST input credit (ITC), and shift attendance.
           </p>
         </div>
 
@@ -927,11 +749,11 @@
         <div class="apple-bento-card md:col-span-2 p-7">
           <div class="flex items-center justify-between">
             <span class="text-xs font-semibold uppercase tracking-wider text-brand">Pharma &amp; Medicos</span>
-            <span class="px-2.5 py-0.5 rounded-full bg-[#34D399]/15 text-brand font-mono-num text-[10px] font-bold">SUPPORTED</span>
+            <span class="px-2.5 py-0.5 rounded-full bg-[#34D399]/15 text-brand font-mono-num text-[10px] font-bold">PLANNED</span>
           </div>
           <h3 class="text-xl font-bold text-ink mt-3">Pharmacies &amp; Medical Services</h3>
           <p class="text-xs sm:text-sm text-muted-ink mt-2 leading-relaxed">
-            Pharma distributor invoice OCR, HSN tax slab split, stock inward &amp; expiry ledger alerts, supplier payables, and pharmacist shift scheduling.
+            Planned industry workflows: Pharma distributor invoice OCR, HSN tax slab split, stock inward &amp; expiry ledger alerts, supplier payables, and pharmacist shift scheduling.
           </p>
         </div>
 
@@ -939,11 +761,11 @@
         <div class="apple-bento-card md:col-span-2 p-7">
           <div class="flex items-center justify-between">
             <span class="text-xs font-semibold uppercase tracking-wider text-brand">Services &amp; Studios</span>
-            <span class="px-2.5 py-0.5 rounded-full bg-[#34D399]/15 text-brand font-mono-num text-[10px] font-bold">SUPPORTED</span>
+            <span class="px-2.5 py-0.5 rounded-full bg-[#34D399]/15 text-brand font-mono-num text-[10px] font-bold">PLANNED</span>
           </div>
           <h3 class="text-xl font-bold text-ink mt-3">Salons, Spas &amp; Repair Shops</h3>
           <p class="text-xs sm:text-sm text-muted-ink mt-2 leading-relaxed">
-            Service &amp; spares GST billing, stylist and technician commission splits, consumable stock tracking, leave approvals, and instant payslips.
+            Planned industry workflows: Service &amp; spares GST billing, stylist and technician commission splits, consumable stock tracking, leave approvals, and instant payslips.
           </p>
         </div>
 
@@ -951,11 +773,11 @@
         <div class="apple-bento-card md:col-span-2 p-7">
           <div class="flex items-center justify-between">
             <span class="text-xs font-semibold uppercase tracking-wider text-brand">Hospitality &amp; Stays</span>
-            <span class="px-2.5 py-0.5 rounded-full bg-[#34D399]/15 text-brand font-mono-num text-[10px] font-bold">SUPPORTED</span>
+            <span class="px-2.5 py-0.5 rounded-full bg-[#34D399]/15 text-brand font-mono-num text-[10px] font-bold">PLANNED</span>
           </div>
           <h3 class="text-xl font-bold text-ink mt-3">Hospitality &amp; Hotels</h3>
           <p class="text-xs sm:text-sm text-muted-ink mt-2 leading-relaxed">
-            Department-wise procurement bills, vendor khata settlements, multi-shift housekeeping &amp; front-desk rosters, and 2026 statutory payroll.
+            Planned industry workflows: Department-wise procurement bills, vendor khata settlements, multi-shift housekeeping &amp; front-desk rosters, and 2026 statutory payroll.
           </p>
         </div>
 
@@ -964,11 +786,11 @@
           <div class="max-w-3xl">
             <div class="flex items-center gap-3">
               <span class="text-xs font-semibold uppercase tracking-wider text-brand">Clinical &amp; Diagnostics</span>
-              <span class="px-2.5 py-0.5 rounded-full bg-[#34D399]/15 text-brand font-mono-num text-[10px] font-bold">SUPPORTED</span>
+              <span class="px-2.5 py-0.5 rounded-full bg-[#34D399]/15 text-brand font-mono-num text-[10px] font-bold">PLANNED</span>
             </div>
             <h3 class="text-xl font-bold text-ink mt-2">Healthcare &amp; Clinics</h3>
             <p class="text-xs sm:text-sm text-muted-ink mt-1.5 leading-relaxed">
-              Diagnostic &amp; clinic consumable purchase accounting, equipment vendor payables, reception &amp; nursing shift rosters, and statutory EPF/ESI/PT payroll with signed PDF payslips.
+            Planned industry workflows: Diagnostic &amp; clinic consumable purchase accounting, equipment vendor payables, reception &amp; nursing shift rosters, and statutory EPF/ESI/PT payroll with signed PDF payslips.
             </p>
           </div>
           <a
@@ -981,6 +803,14 @@
       </div>
     </section>
 
+    <section id="availability" class="max-w-6xl mx-auto px-4 sm:px-8 py-16">
+      <h2 class="apple-section-display text-ink">Availability &amp; pricing</h2>
+      <p class="text-muted-ink mt-4 max-w-3xl">This website previews Hisaab.Guru. Public download links are not yet published. Pricing, plan inclusions and release dates have not been announced here. Planned features are not included in current availability.</p>
+    </section>
+    <section id="support" class="max-w-6xl mx-auto px-4 sm:px-8 pb-16">
+      <h2 class="text-2xl font-bold text-ink">Support &amp; policies</h2>
+      <p class="text-muted-ink mt-4 max-w-3xl">A public support contact, legal operator details, privacy policy and terms are not yet published on this website. Please review those details when available before providing business or personal information.</p>
+    </section>
     <!-- ================= CENTERED GRAND STORE DOWNLOAD CTA ================= -->
     <section id="download-cta" class="max-w-5xl mx-auto px-4 sm:px-8 pt-6 pb-20">
       <div class="apple-bento-card p-10 sm:p-16 text-center relative overflow-hidden">
@@ -1043,10 +873,11 @@
         </span>
       </div>
       <p class="text-xs max-w-xs leading-relaxed">
-        The AI-powered mobile accounting, GST, shift &amp; payroll companion for modern Indian businesses.
+        A mobile workspace for everyday business records, with connected accounting features in development.
       </p>
       <p class="text-[11px] opacity-65 pt-1">Copyright © 2026 Hisaab.Guru. All rights reserved.</p>
     </aside>
+    <nav aria-label="Product information"><h6 class="text-xs font-semibold text-ink">Product information</h6><a href="#availability" class="link link-hover text-xs">Availability &amp; pricing</a><a href="#support" class="link link-hover text-xs">Support &amp; policy status</a></nav>
     <nav>
       <h6 class="text-xs font-semibold text-ink uppercase tracking-wider">Download</h6>
       <a href="#download-cta" onclick="event.preventDefault(); openStoreModal('App Store');" class="link link-hover text-xs">App Store</a>
@@ -1062,7 +893,7 @@
   </footer>
 
   <!-- ================= QR DOWNLOAD MODAL ================= -->
-  <dialog id="qr_modal" class="modal modal-middle">
+  <dialog id="qr_modal" class="modal modal-middle" aria-labelledby="modal-store-title">
     <div class="modal-box apple-bento-card max-w-md text-center p-8 rounded-[32px]">
       <span id="modal-store-pill" class="inline-block px-3 py-1 rounded-full bg-[#34D399]/15 text-brand font-mono-num text-[10px] font-semibold uppercase tracking-widest mb-2">
         HISAAB.GURU MOBILE APP
@@ -1114,12 +945,14 @@
   <!-- ================= APPLE FLUID SPRING, THEME TOGGLE & SCROLL ENGINE ================= -->
   <script>
     // 1. Light / Dark Theme Switcher in Navbar
-    let currentTheme = localStorage.getItem('hisaab-web-theme') || 'dark';
+    let currentTheme = 'dark';
+    try { currentTheme = localStorage.getItem('hisaab-web-theme') === 'light' ? 'light' : 'dark'; } catch {}
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
     function applyTheme(theme) {
       currentTheme = theme;
       document.documentElement.setAttribute('data-theme', theme);
-      localStorage.setItem('hisaab-web-theme', theme);
+      try { localStorage.setItem('hisaab-web-theme', theme); } catch {}
 
       const sunIcon = document.getElementById('theme-icon-sun');
       const moonIcon = document.getElementById('theme-icon-moon');
@@ -1148,6 +981,8 @@
     // 2. Centered Apple Keynote Word-by-Word Illumination
     window.addEventListener('DOMContentLoaded', () => {
       if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+        const motion = gsap.matchMedia();
+        motion.add('(prefers-reduced-motion: no-preference)', () => {
         gsap.registerPlugin(ScrollTrigger);
 
         const manifestoEl = document.getElementById('scrub-manifesto');
@@ -1155,7 +990,7 @@
           const words = manifestoEl.innerText.trim().split(/\s+/);
           manifestoEl.innerHTML = words
             .map((w) => `<span class="scrub-word inline-block mx-[0.15em] text-ink" style="opacity:0.22; transform:translateY(6px);">${w}</span>`)
-            .join('');
+            .join(' ');
 
           gsap.fromTo(
             '#scrub-manifesto .scrub-word',
@@ -1176,7 +1011,7 @@
         }
 
         // Smooth Spring Entrance for Bento Cards
-        gsap.utils.toArray('.apple-bento-card').forEach((card, i) => {
+        gsap.utils.toArray('main .apple-bento-card').forEach((card, i) => {
           gsap.fromTo(
             card,
             { y: 32, opacity: 0 },
@@ -1193,9 +1028,21 @@
             }
           );
         });
+        return () => { if (manifestoEl) manifestoEl.textContent = manifestoEl.textContent; };
+        });
       }
     });
 
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenu.addEventListener('click', (event) => { if (event.target.closest('a')) mobileMenu.open = false; });
+    document.addEventListener('keydown', (event) => { if (event.key === 'Escape' && mobileMenu.open) { mobileMenu.open = false; mobileMenu.querySelector('summary').focus(); } });
+    document.addEventListener('click', (event) => { if (!mobileMenu.contains(event.target)) mobileMenu.open = false; });
+    reducedMotion.addEventListener('change', () => {
+      if (reducedMotion.matches && typeof gsap !== 'undefined') {
+        gsap.killTweensOf([iosRig, androidRig]);
+        gsap.set([iosRig, androidRig], { clearProps: 'transform' });
+      }
+    });
     // 3. Direct 1:1 Pointer Tracking on 3D Phone Stage
     const heroStage = document.getElementById('hero-3d-stage');
     const iosRig = document.getElementById('phone-ios-rig');
@@ -1207,7 +1054,7 @@
         const nx = (e.clientX - rect.left) / rect.width - 0.5;
         const ny = (e.clientY - rect.top) / rect.height - 0.5;
 
-        if (typeof gsap !== 'undefined') {
+        if (!reducedMotion.matches && typeof gsap !== 'undefined') {
           gsap.to(iosRig, {
             rotationY: -12 + nx * 18,
             rotationX: 5 - ny * 14,
@@ -1228,7 +1075,7 @@
       });
 
       heroStage.addEventListener('pointerleave', () => {
-        if (typeof gsap !== 'undefined') {
+        if (!reducedMotion.matches && typeof gsap !== 'undefined') {
           gsap.to(iosRig, { rotationY: -12, rotationX: 5, duration: 0.6, ease: 'power3.out', overwrite: 'auto' });
           if (androidRig) {
             gsap.to(androidRig, { rotationY: -20, rotationX: 7, duration: 0.6, ease: 'power3.out', overwrite: 'auto' });
@@ -1253,7 +1100,7 @@
         }
       });
 
-      if (typeof gsap === 'undefined' || !iosRig || !androidRig) return;
+      if (reducedMotion.matches || typeof gsap === 'undefined' || !iosRig || !androidRig) return;
       if (mode === 'welcome') {
         gsap.to(iosRig, { rotationY: -8, rotationX: 4, scale: 1.03, zIndex: 30, duration: 0.55, ease: 'power3.out', overwrite: 'auto' });
         gsap.to(androidRig, { rotationY: -22, scale: 0.96, zIndex: 10, duration: 0.55, ease: 'power3.out', overwrite: 'auto' });
