@@ -451,6 +451,7 @@
               <button
                 type="button"
                 id="seg-welcome"
+                aria-pressed="true"
                 onclick="focusPhoneStage('welcome')"
                 class="apple-pressable px-4 py-1.5 rounded-full text-xs font-semibold store-btn-primary"
               >
@@ -459,6 +460,7 @@
               <button
                 type="button"
                 id="seg-payroll"
+                aria-pressed="false"
                 onclick="focusPhoneStage('payroll')"
                 class="apple-pressable px-4 py-1.5 rounded-full text-xs font-semibold text-muted-ink hover:text-ink"
               >
@@ -467,6 +469,7 @@
               <button
                 type="button"
                 id="seg-scanner"
+                aria-pressed="false"
                 onclick="focusPhoneStage('scanner')"
                 class="apple-pressable px-4 py-1.5 rounded-full text-xs font-semibold text-muted-ink hover:text-ink"
               >
@@ -1093,6 +1096,7 @@
       };
       Object.keys(segs).forEach((k) => {
         if (!segs[k]) return;
+        segs[k].setAttribute('aria-pressed', String(k === mode));
         if (k === mode) {
           segs[k].className = 'apple-pressable px-4 py-1.5 rounded-full text-xs font-semibold store-btn-primary';
         } else {

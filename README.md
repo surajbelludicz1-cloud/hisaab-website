@@ -14,3 +14,5 @@ node server.cjs
 No build or lint scripts are configured. Styling/fonts and optional GSAP motion load from external CDNs. The page remains readable and interactive without GSAP or browser storage.
 
 Owner-only editorial questions are in `.github/LAUNCH-CONTENT-DRAFT.md`; that file is not a legal policy and must be excluded from the published site. Deploy only `index.html` and `assets/`. No deployment is part of this change.
+
+Deployment exclusion remains unverified: this repository has no publishing configuration enforcing that allowlist. The local preview server serves repository files, including this draft, when requested directly. Do not treat the draft as private merely because it is unlinked or under `.github`.
