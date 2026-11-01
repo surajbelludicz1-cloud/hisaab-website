@@ -1,0 +1,1517 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" id="meta-theme-color" content="#F6F3EC" />
+  <title>Pricing &amp; Subscription Plans — Hisaab.Guru</title>
+  <meta name="description" content="Simple, transparent monthly pricing for Hisaab.Guru: Free Forever (₹0), Starter (₹249/mo), Business (₹499/mo), and AI Pro (₹999/mo). Compare AI bill scanning, bookkeeping, GST reconciliation, payroll, and 24/7 AI automation." />
+  <link rel="icon" type="image/svg+xml" href="/assets/hisaab-mark.svg?v=consistent_orange_logo" />
+
+  <!-- Pre-paint theme loader: light by default, dark if previously chosen -->
+  <script>
+    (function () {
+      document.documentElement.classList.add('js');
+      try {
+        var saved = localStorage.getItem('hisaab-web-theme');
+        var theme = saved === 'dark' ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', theme);
+        var m = document.getElementById('meta-theme-color');
+        if (m) m.setAttribute('content', theme === 'dark' ? '#0B0D0C' : '#F6F3EC');
+      } catch (e) {}
+    })();
+  </script>
+
+  <!-- Fonts: Fraunces (display serif) + Plus Jakarta Sans (UI) + JetBrains Mono (tabular numerals) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- DaisyUI v5 + Tailwind CSS v4 browser runtime -->
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+  <style>
+    :root {
+      --font-display: 'Fraunces', Georgia, serif;
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+      --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+      --emil-ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+      --emil-ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+    }
+
+    html {
+      font-family: var(--font-sans);
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      background-color: var(--il-page);
+      color: var(--il-ink);
+      overflow-x: hidden;
+    }
+
+    body {
+      background-color: var(--il-page);
+      color: var(--il-ink);
+      overflow-x: hidden;
+    }
+
+    .hl-serif {
+      font-family: var(--font-display);
+      font-optical-sizing: auto;
+      font-variation-settings: "SOFT" 30, "WONK" 0;
+    }
+
+    .hl-mono {
+      font-family: var(--font-mono);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .hl-wrap {
+      width: 100%;
+      max-width: 78rem;
+      margin-inline: auto;
+      padding-inline: clamp(1rem, 4vw, 2.5rem);
+    }
+
+    .hl-section {
+      padding-block: clamp(3.25rem, 6.5vw, 5.75rem);
+    }
+
+    .hl-rule {
+      border: 0;
+      border-top: 1px solid var(--il-line);
+      margin: 0;
+    }
+
+    .hl-nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      padding-top: 0.75rem;
+      padding-bottom: 0.5rem;
+      background: transparent;
+      pointer-events: none;
+    }
+    .hl-nav-pill {
+      pointer-events: auto;
+      background: color-mix(in oklab, var(--il-panel) 90%, transparent);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border: 1px solid var(--il-line-strong);
+      border-radius: 9999px;
+      box-shadow: 0 10px 30px -12px rgba(10, 20, 14, 0.18);
+    }
+    html[data-theme="dark"] .hl-nav-pill {
+      background: color-mix(in oklab, var(--il-panel) 88%, transparent);
+      border-color: rgba(103, 229, 139, 0.22);
+      box-shadow: 0 14px 36px -12px rgba(0, 0, 0, 0.65);
+    }
+    .hl-navlink {
+      color: var(--il-ink-2);
+      transition: color 160ms var(--ease-out);
+    }
+    .hl-navlink:hover, .hl-navlink[aria-current="page"] { color: var(--il-ink); }
+    .hl-navlink[aria-current="page"] { font-weight: 700; color: var(--il-green); }
+
+    .hl-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      color: var(--il-green);
+      font-weight: 600;
+      transition: color 160ms var(--ease-out);
+    }
+    .hl-link:hover { color: var(--il-ink); }
+
+    /* Emil Kowalski Design Engineering: Tactile press feedback */
+    .il-btn, .sc-btn, .emil-press {
+      transition: transform 160ms var(--emil-ease-out), background-color 160ms var(--emil-ease-out), border-color 160ms var(--emil-ease-out), color 160ms var(--emil-ease-out), box-shadow 160ms var(--emil-ease-out), opacity 160ms var(--emil-ease-out);
+    }
+    .il-btn:active:not(:disabled),
+    .sc-btn:active:not(:disabled),
+    .emil-press:active:not(:disabled) {
+      transform: scale(0.97) !important;
+    }
+
+    /* Clean Category Filtering Transition (no blur filter so text stays razor-sharp) */
+    .emil-blur-morph {
+      transition: opacity 160ms var(--emil-ease-out);
+    }
+    .emil-blur-morph.is-transitioning {
+      opacity: 0.4;
+    }
+
+    /* 2D Subpixel-Aligned Stage & Cards for Crisp Text */
+    .hg-3d-stage { position: relative; }
+    .hg-3d-card {
+      transition: border-color 180ms ease, box-shadow 200ms var(--ease-out);
+    }
+
+    /* Pricing Plan Popular Glow */
+    .pricing-popular-card {
+      border: 2px solid var(--il-green) !important;
+      box-shadow: 0 22px 48px -18px rgba(18, 108, 56, 0.25);
+      position: relative;
+    }
+    html[data-theme="dark"] .pricing-popular-card {
+      box-shadow: 0 24px 56px -16px rgba(34, 197, 94, 0.22);
+    }
+
+    /* Consistent Plan & Registration Action Button with Warm Orange Hover */
+    .pricing-choose-btn {
+      border: 1.5px solid rgba(249, 115, 22, 0.55) !important;
+      background: rgba(249, 115, 22, 0.08) !important;
+      color: var(--il-ink) !important;
+      transition: transform 160ms var(--emil-ease-out), background-color 160ms var(--emil-ease-out), border-color 160ms var(--emil-ease-out), color 160ms var(--emil-ease-out), box-shadow 160ms var(--emil-ease-out) !important;
+    }
+    .pricing-choose-btn:hover {
+      background: #F97316 !important;
+      border-color: #F97316 !important;
+      color: #FFFFFF !important;
+      box-shadow: 0 10px 24px -6px rgba(249, 115, 22, 0.45) !important;
+    }
+    .pricing-choose-primary-btn {
+      background: var(--il-green) !important;
+      border: 1.5px solid var(--il-green) !important;
+      color: var(--il-green-ink) !important;
+      transition: transform 160ms var(--emil-ease-out), background-color 160ms var(--emil-ease-out), border-color 160ms var(--emil-ease-out), color 160ms var(--emil-ease-out), box-shadow 160ms var(--emil-ease-out) !important;
+    }
+    .pricing-choose-primary-btn:hover {
+      background: #F97316 !important;
+      border-color: #F97316 !important;
+      color: #FFFFFF !important;
+      box-shadow: 0 10px 24px -6px rgba(249, 115, 22, 0.45) !important;
+    }
+
+    /* Warm Orange Accent Badges */
+    .badge-orange-soft {
+      background: rgba(249, 115, 22, 0.14);
+      color: #EA580C;
+      border: 1px solid rgba(249, 115, 22, 0.35);
+    }
+    html[data-theme="dark"] .badge-orange-soft {
+      background: rgba(249, 115, 22, 0.16);
+      color: #FB923C;
+      border-color: rgba(251, 146, 60, 0.38);
+    }
+    .badge-orange-solid {
+      background: linear-gradient(135deg, #F97316 0%, #EA580C 100%);
+      color: #FFFFFF;
+      box-shadow: 0 4px 12px -2px rgba(249, 115, 22, 0.4);
+    }
+
+    /* Category Filter Button Active State */
+    .cat-filter-btn[aria-selected="true"] {
+      background: var(--il-green);
+      color: var(--il-green-ink);
+      border-color: var(--il-green);
+      font-weight: 700;
+      box-shadow: 0 6px 18px -6px rgba(18, 108, 56, 0.35);
+    }
+
+    /* Comparison Table Sticky Column & Highlights */
+    .comp-table th, .comp-table td {
+      padding: 0.9rem 1rem;
+      border-bottom: 1px solid var(--il-line);
+      vertical-align: middle;
+    }
+    .comp-table tbody tr:hover {
+      background: color-mix(in oklab, var(--il-panel-sunk) 65%, transparent);
+    }
+    .comp-col-popular {
+      background: color-mix(in oklab, var(--il-green-soft) 32%, transparent);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hg-3d-card, #hg-buddy-panel, #mobile-nav-menu, #qr_modal[open] .modal-box, #plan_modal[open] .modal-box {
+        transform: none !important;
+      }
+    }
+  </style>
+
+  <link rel="stylesheet" href="/assets/ink-ledger.css">
+</head>
+<body class="antialiased">
+
+  <!-- Icon sprite -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-external" viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></symbol>
+    <symbol id="i-qr" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="6.5" height="6.5" rx="1.2"/><rect x="14" y="3.5" width="6.5" height="6.5" rx="1.2"/><rect x="3.5" y="14" width="6.5" height="6.5" rx="1.2"/><path d="M14 14h2.5v2.5H14zM18 18h2.5v2.5H18zM14 19.5h1M19.5 14h1"/></symbol>
+    <symbol id="i-sparkles" viewBox="0 0 24 24"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9L12 3zM19 16l.9 2.1L22 19l-2.1.9L19 22l-.9-2.1L16 19l2.1-.9L19 16z"/></symbol>
+  </svg>
+
+  <!-- ================= HEADER (CLEAN ROUNDED-EDGE FLOATING PILL NAVBAR) ================= -->
+  <header class="hl-nav sticky top-0 z-50">
+    <div class="hl-wrap">
+      <div class="hl-nav-pill flex items-center justify-between gap-1.5 sm:gap-4 min-h-[56px] sm:min-h-[60px] px-3 sm:px-5">
+        <a href="/" class="il-logo flex items-center gap-1.5 sm:gap-2 shrink-0" aria-label="Hisaab.Guru home">
+          <img src="/assets/hisaab-mark.svg?v=consistent_orange_logo" width="36" height="36" alt="Hisaab.Guru Logo" class="size-8 sm:size-9 object-contain drop-shadow-sm shrink-0" />
+          <span class="il-logo-word !text-[1.12rem] sm:!text-[1.32rem] whitespace-nowrap">Hisaab<span>.Guru</span></span>
+        </a>
+
+        <nav aria-label="Main" class="hidden lg:flex items-center gap-5 xl:gap-7 text-[13.5px] font-medium whitespace-nowrap">
+          <a href="/#all-in-one" class="hl-navlink whitespace-nowrap">Features</a>
+          <a href="/#how-it-works" class="hl-navlink whitespace-nowrap">How It Works</a>
+          <a href="/pricing.html" aria-current="page" class="hl-navlink whitespace-nowrap">Pricing</a>
+          <a href="/#industries" class="hl-navlink whitespace-nowrap">Industries</a>
+          <a href="/gst-registration" class="hl-navlink whitespace-nowrap">GST Registration</a>
+          <a href="/#faqs" class="hl-navlink whitespace-nowrap">FAQs</a>
+        </nav>
+
+        <div class="flex items-center gap-1 sm:gap-2 shrink-0">
+          <button
+            type="button"
+            id="theme-toggle-btn"
+            onclick="toggleTheme()"
+            aria-label="Switch to dark theme"
+            title="Switch theme"
+            class="il-btn il-btn-ghost !min-h-0 !p-0 size-8.5 sm:size-10 !rounded-full shrink-0"
+          >
+            <svg id="theme-icon-sun" class="il-icon hidden" aria-hidden="true"><use href="#i-sun"/></svg>
+            <svg id="theme-icon-moon" class="il-icon" aria-hidden="true"><use href="#i-moon"/></svg>
+          </button>
+
+          <a href="/gst-registration?auth=1" id="navbar-login-signup-btn" class="il-btn il-btn-ghost !min-h-8.5 h-8.5 sm:h-10 !px-3 sm:!px-4 !rounded-full text-[12.5px] sm:text-[13px] whitespace-nowrap shrink-0">
+            Log in
+          </a>
+
+          <span class="hidden sm:inline-flex shrink-0">
+            <button type="button" onclick="qr_modal.showModal()" class="il-btn il-btn-primary !min-h-9 h-9 sm:h-10 !px-4 !rounded-full text-[13px] whitespace-nowrap">
+              Get the app
+            </button>
+          </span>
+
+          <button
+            type="button"
+            id="mobile-menu-toggle"
+            onclick="var m=document.getElementById('mobile-nav-menu'); if(m){m.toggleAttribute('hidden');}"
+            aria-label="Toggle navigation menu"
+            class="lg:!hidden emil-press il-btn il-btn-ghost !min-h-0 !p-0 size-8.5 sm:size-10 !rounded-full shrink-0"
+          >
+            <svg class="size-4.5 sm:size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile & Tablet Dropdown Navigation (< 1024px) -->
+      <nav id="mobile-nav-menu" hidden aria-label="Mobile navigation" class="lg:hidden mt-2 sc-card p-4 flex flex-col gap-2 text-sm font-medium shadow-xl pointer-events-auto">
+        <a href="/#all-in-one" onclick="document.getElementById('mobile-nav-menu').setAttribute('hidden','')" class="px-3 py-2 rounded-lg hover:bg-[var(--il-panel-sunk)] text-ink">Features</a>
+        <a href="/#how-it-works" onclick="document.getElementById('mobile-nav-menu').setAttribute('hidden','')" class="px-3 py-2 rounded-lg hover:bg-[var(--il-panel-sunk)] text-ink">How It Works</a>
+        <a href="/pricing.html" onclick="document.getElementById('mobile-nav-menu').setAttribute('hidden','')" class="px-3 py-2 rounded-lg bg-[var(--il-green-soft)] text-brand font-semibold">Pricing</a>
+        <a href="/#industries" onclick="document.getElementById('mobile-nav-menu').setAttribute('hidden','')" class="px-3 py-2 rounded-lg hover:bg-[var(--il-panel-sunk)] text-ink">Industries</a>
+        <a href="/gst-registration" class="px-3 py-2 rounded-lg hover:bg-[var(--il-panel-sunk)] text-ink">GST Registration</a>
+        <a href="/#faqs" onclick="document.getElementById('mobile-nav-menu').setAttribute('hidden','')" class="px-3 py-2 rounded-lg hover:bg-[var(--il-panel-sunk)] text-ink">FAQs</a>
+        <button type="button" onclick="document.getElementById('mobile-nav-menu').setAttribute('hidden',''); qr_modal.showModal();" class="mt-1 sm:hidden w-full sc-btn sc-btn-default !min-h-10 !rounded-lg font-semibold">
+          Get the app
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top" class="relative">
+
+    <!-- ================= 1. PRICING HERO & 4 SUBSCRIPTION PLANS ================= -->
+    <section id="plans" class="hl-wrap pt-8 pb-14 sm:pt-12 sm:pb-20">
+      <div class="text-center max-w-3xl mx-auto mb-10 sm:mb-14 flex flex-col items-center gap-3.5">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--il-green-soft)] text-brand text-xs font-semibold border border-[var(--il-line-strong)]">
+          <img src="/assets/hisaab-mark.svg?v=consistent_orange_logo" width="18" height="18" alt="" class="size-4.5 object-contain" />
+          <span><span class="il-logo-word !text-[0.92rem]">Hisaab<span>.Guru</span></span> — Complete Subscription Plans</span>
+        </div>
+
+        <h1 class="apple-hero-display text-ink max-w-[20ch]">
+          Simple pricing that grows <em class="text-brand">with your business.</em>
+        </h1>
+
+        <p class="text-[15.5px] sm:text-[17px] text-muted-ink max-w-2xl leading-relaxed">
+          Start free forever with basic bookkeeping, upgrade to Starter for everyday shop ledgers, choose Business for GST, inventory and payroll, or unlock 24/7 AI bookkeeping automation with AI Pro.
+        </p>
+      </div>
+
+      <!-- 4 Subscription Plan Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 items-stretch hg-3d-stage">
+
+        <!-- PLAN 1: FREE (₹0 Forever) -->
+        <article class="sc-card p-6 sm:p-7 flex flex-col justify-between gap-6 border border-theme" data-hg-tilt>
+          <div class="flex flex-col gap-5">
+            <div class="flex items-center justify-between gap-2">
+              <span class="sc-badge sc-badge-secondary hl-mono uppercase tracking-wider">FREE</span>
+              <span class="text-xs font-medium text-muted-ink hl-mono">Forever</span>
+            </div>
+
+            <div>
+              <div class="flex items-baseline gap-1.5">
+                <span class="text-4xl sm:text-[2.75rem] font-extrabold text-ink hl-mono tracking-tight">₹0</span>
+                <span class="text-sm font-medium text-muted-ink">Forever</span>
+              </div>
+              <p class="text-sm text-muted-ink mt-2 leading-relaxed">
+                For testing and basic bookkeeping.
+              </p>
+            </div>
+
+            <hr class="hl-rule" />
+
+            <ul class="flex flex-col gap-3 text-sm text-ink">
+              <li class="flex items-start gap-2.5">
+                <span class="size-5 rounded-full bg-[var(--il-green-soft)] text-brand flex items-center justify-center shrink-0 mt-0.5">
+                  <svg class="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>
+                </span>
+                <span><strong class="font-semibold">10 AI scans/month</strong></span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="size-5 rounded-full bg-[var(--il-green-soft)] text-brand flex items-center justify-center shrink-0 mt-0.5">
+                  <svg class="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>
+                </span>
+                <span>1 business · 1 user</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="size-5 rounded-full bg-[var(--il-green-soft)] text-brand flex items-center justify-center shrink-0 mt-0.5">
+                  <svg class="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>
+                </span>
+                <span>Manual bookkeeping</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="size-5 rounded-full bg-[var(--il-green-soft)] text-brand flex items-center justify-center shrink-0 mt-0.5">
+                  <svg class="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>
+                </span>
+                <span>Basic invoices and reports</span>
+              </li>
+            </ul>
+          </div>
+
+          <button
+            type="button"
+            onclick="window.openPlanModal('Free', '₹0', 'Forever', 'For testing and basic bookkeeping · 10 AI scans/month')"
+            class="w-full sc-btn pricing-choose-btn !min-h-11 !rounded-xl font-semibold text-sm"
+          >
+            Start Free
+          </button>
+        </article>
+
+        <!-- PLAN 2: STARTER (₹249/mo) -->
+        <article class="sc-card p-6 sm:p-7 flex flex-col justify-between gap-6 border border-theme" data-hg-tilt>
+          <div class="flex flex-col gap-5">
+            <div class="flex items-center justify-between gap-2">
+              <span class="sc-badge sc-badge-secondary hl-mono uppercase tracking-wider">STARTER</span>
+              <span class="text-xs font-medium text-muted-ink">Everyday</span>
+            </div>
+
+            <div>
+              <div class="flex items-baseline gap-1">
+                <span class="text-4xl sm:text-[2.75rem] font-extrabold text-ink hl-mono tracking-tight">₹249</span>
+                <span class="text-sm font-medium text-muted-ink">/mo</span>
+              </div>
+              <p class="text-sm text-muted-ink mt-2 leading-relaxed">
+                Freelancers and small shops
+              </p>
+            </div>
+
+            <hr class="hl-rule" />
+
+            <ul class="flex flex-col gap-3 text-sm text-ink">
+              <li class="flex items-start gap-2.5">
+                <span class="size-5 rounded-full bg-[var(--il-green-soft)] text-brand flex items-center justify-center shrink-0 mt-0.5">
+                  <svg class="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>
+                </span>
+                <span><strong class="font-semibold">100 AI scans/month</strong></span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="size-5 rounded-full bg-[var(--il-green-soft)] text-brand flex items-center justify-center shrink-0 mt-0.5">
+                  <svg class="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>
+                </span>
+                <span>Full basic bookkeeping</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="size-5 rounded-full bg-[var(--il-green-soft)] text-brand flex items-center justify-center shrink-0 mt-0.5">
+                  <svg class="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>
+                </span>
+                <span>Customer and supplier ledgers</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="size-5 rounded-full bg-[var(--il-green-soft)] text-brand flex items-center justify-center shrink-0 mt-0.5">
+                  <svg class="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>
+                </span>
+                <span>Payment reminders</span>
+              </li>
+            </ul>
+          </div>
+
+          <button
+            type="button"
+            onclick="window.openPlanModal('Starter', '₹249', '/mo', 'Freelancers and small shops · 100 AI scans/month')"
+            class="w-full sc-btn pricing-choose-btn !min-h-11 !rounded-xl font-semibold text-sm"
+          >
+            Choose Starter
+          </button>
+        </article>
+
+        <!-- PLAN 3: BUSINESS (₹499/mo · Most Popular) -->
+        <article class="sc-card pricing-popular-card p-6 sm:p-7 flex flex-col justify-between gap-6" data-hg-tilt>
+          <div class="flex flex-col gap-5">
+            <div class="flex items-center justify-between gap-2">
+              <span class="sc-badge sc-badge-default hl-mono uppercase tracking-wider">BUSINESS</span>
+              <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full badge-orange-soft text-[11px] font-bold hl-mono">
+                Most popular
+              </span>
+            </div>
+
+            <div>
+              <div class="flex items-baseline gap-1">
+                <span class="text-4xl sm:text-[2.75rem] font-extrabold text-brand hl-mono tracking-tight">₹499</span>
+                <span class="text-sm font-medium text-muted-ink">/mo</span>
+              </div>
+              <p class="text-sm text-ink font-medium mt-2 leading-relaxed">
+                Restaurants, shops and GST businesses
+              </p>
+            </div>
+
+            <hr class="hl-rule" />
+
+            <ul class="flex flex-col gap-3 text-sm text-ink">
+              <li class="flex items-start gap-2.5">
+                <span class="size-5 rounded-full bg-[var(--il-green)] text-[var(--il-green-ink)] flex items-center justify-center shrink-0 mt-0.5">
+                  <svg class="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>
+                </span>
+                <span><strong class="font-semibold">300 AI scans/month</strong></span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="size-5 rounded-full bg-[var(--il-green)] text-[var(--il-green-ink)] flex items-center justify-center shrink-0 mt-0.5">
+                  <svg class="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>
+                </span>
+                <span>GST and bank reconciliation</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="size-5 rounded-full bg-[var(--il-green)] text-[var(--il-green-ink)] flex items-center justify-center shrink-0 mt-0.5">
+                  <svg class="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>
+                </span>
+                <span>Inventory and payroll</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="size-5 rounded-full bg-[var(--il-green)] text-[var(--il-green-ink)] flex items-center justify-center shrink-0 mt-0.5">
+                  <svg class="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>
+                </span>
+                <span>Business analytics</span>
+              </li>
+            </ul>
+          </div>
+
+          <button
+            type="button"
+            onclick="window.openPlanModal('Business', '₹499', '/mo', 'Restaurants, shops and GST businesses · 300 AI scans/month')"
+            class="w-full sc-btn pricing-choose-primary-btn !min-h-11 !rounded-xl font-semibold text-sm shadow-md"
+          >
+            Choose Business →
+          </button>
+        </article>
+
+        <!-- PLAN 4: AI PRO (₹999/mo) -->
+        <article class="sc-card p-6 sm:p-7 flex flex-col justify-between gap-6 border border-[var(--il-line-strong)] bg-[var(--il-panel-sunk)]" data-hg-tilt>
+          <div class="flex flex-col gap-5">
+            <div class="flex items-center justify-between gap-2">
+              <span class="sc-badge sc-badge-secondary hl-mono uppercase tracking-wider">AI PRO</span>
+              <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full badge-orange-soft text-[11px] font-bold hl-mono">
+                24/7 AI
+              </span>
+            </div>
+
+            <div>
+              <div class="flex items-baseline gap-1">
+                <span class="text-4xl sm:text-[2.75rem] font-extrabold text-ink hl-mono tracking-tight">₹999</span>
+                <span class="text-sm font-medium text-muted-ink">/mo</span>
+              </div>
+              <p class="text-sm text-muted-ink mt-2 leading-relaxed">
+                AI-powered finance automation
+              </p>
+            </div>
+
+            <hr class="hl-rule" />
+
+            <ul class="flex flex-col gap-3 text-sm text-ink">
+              <li class="flex items-start gap-2.5">
+                <span class="size-5 rounded-full bg-[var(--il-green-soft)] text-brand flex items-center justify-center shrink-0 mt-0.5">
+                  <svg class="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>
+                </span>
+                <span><strong class="font-semibold">1,000 AI scans/month</strong></span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="size-5 rounded-full bg-[var(--il-green-soft)] text-brand flex items-center justify-center shrink-0 mt-0.5">
+                  <svg class="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>
+                </span>
+                <span>AI bookkeeping automation</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="size-5 rounded-full bg-[var(--il-green-soft)] text-brand flex items-center justify-center shrink-0 mt-0.5">
+                  <svg class="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>
+                </span>
+                <span>Advanced insights and forecasting</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="size-5 rounded-full bg-[var(--il-green-soft)] text-brand flex items-center justify-center shrink-0 mt-0.5">
+                  <svg class="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>
+                </span>
+                <span>Approvals and CA collaboration</span>
+              </li>
+            </ul>
+          </div>
+
+          <button
+            type="button"
+            onclick="window.openPlanModal('AI Pro', '₹999', '/mo', 'AI-powered finance automation · 1,000 AI scans/month')"
+            class="w-full sc-btn pricing-choose-btn !min-h-11 !rounded-xl font-semibold text-sm"
+          >
+            Choose AI Pro
+          </button>
+        </article>
+
+      </div>
+    </section>
+
+    <div class="hl-wrap"><hr class="sc-separator" /></div>
+
+    <!-- ================= 2. DETAILED FEATURE COMPARISON TABLE ================= -->
+    <section id="feature-comparison" class="hl-wrap hl-section">
+      <div class="text-center max-w-3xl mx-auto mb-8 sm:mb-10 flex flex-col items-center gap-3">
+        <span class="sc-badge sc-badge-secondary hl-mono">Detailed Feature Comparison</span>
+        <h2 class="apple-section-display text-ink">Compare every feature <em class="text-brand">across all 4 plans.</em></h2>
+        <p class="text-sm sm:text-base text-muted-ink leading-relaxed">
+          Select a category below to view the feature entitlements across Free, Starter, Business, and AI Pro.
+        </p>
+      </div>
+
+      <!-- Category Selector Pills -->
+      <div class="flex flex-wrap items-center justify-center gap-2 mb-8" role="tablist" aria-label="Feature comparison categories">
+        <button
+          type="button"
+          role="tab"
+          aria-selected="true"
+          data-cat-btn="all"
+          onclick="window.filterComparisonCategory('all')"
+          class="cat-filter-btn emil-press px-4 py-2 rounded-full text-xs sm:text-sm font-semibold border border-theme bg-[var(--il-panel)] text-ink"
+        >
+          All Categories
+        </button>
+        <button
+          type="button"
+          role="tab"
+          aria-selected="false"
+          data-cat-btn="ai"
+          onclick="window.filterComparisonCategory('ai')"
+          class="cat-filter-btn emil-press px-4 py-2 rounded-full text-xs sm:text-sm font-semibold border border-theme bg-[var(--il-panel)] text-ink"
+        >
+          AI &amp; Document Scanning
+        </button>
+        <button
+          type="button"
+          role="tab"
+          aria-selected="false"
+          data-cat-btn="bookkeeping"
+          onclick="window.filterComparisonCategory('bookkeeping')"
+          class="cat-filter-btn emil-press px-4 py-2 rounded-full text-xs sm:text-sm font-semibold border border-theme bg-[var(--il-panel)] text-ink"
+        >
+          Bookkeeping &amp; Ledgers
+        </button>
+        <button
+          type="button"
+          role="tab"
+          aria-selected="false"
+          data-cat-btn="gst"
+          onclick="window.filterComparisonCategory('gst')"
+          class="cat-filter-btn emil-press px-4 py-2 rounded-full text-xs sm:text-sm font-semibold border border-theme bg-[var(--il-panel)] text-ink"
+        >
+          GST, Inventory &amp; Banking
+        </button>
+        <button
+          type="button"
+          role="tab"
+          aria-selected="false"
+          data-cat-btn="payroll"
+          onclick="window.filterComparisonCategory('payroll')"
+          class="cat-filter-btn emil-press px-4 py-2 rounded-full text-xs sm:text-sm font-semibold border border-theme bg-[var(--il-panel)] text-ink"
+        >
+          Payroll, Analytics &amp; CA
+        </button>
+      </div>
+
+      <!-- Responsive Comparison Table Card -->
+      <div id="comparison-table-container" class="sc-card overflow-hidden border border-[var(--il-line-strong)] emil-blur-morph">
+        <div class="overflow-x-auto">
+          <table class="comp-table w-full text-left border-collapse min-w-[680px]">
+            <thead>
+              <tr class="bg-[var(--il-panel-sunk)] border-b border-[var(--il-line-strong)]">
+                <th class="w-[34%] text-xs sm:text-sm font-bold text-ink py-4 px-5">Feature</th>
+                <th class="w-[16.5%] text-center text-xs sm:text-sm font-bold text-ink py-4 px-3">
+                  <div class="hl-mono uppercase text-[11px] text-muted-ink">Free</div>
+                  <div class="text-base font-extrabold hl-mono mt-0.5">₹0</div>
+                </th>
+                <th class="w-[16.5%] text-center text-xs sm:text-sm font-bold text-ink py-4 px-3">
+                  <div class="hl-mono uppercase text-[11px] text-muted-ink">Starter</div>
+                  <div class="text-base font-extrabold hl-mono mt-0.5">₹249<span class="text-xs font-normal text-muted-ink">/mo</span></div>
+                </th>
+                <th class="w-[16.5%] text-center text-xs sm:text-sm font-bold text-brand py-4 px-3 comp-col-popular">
+                  <div class="hl-mono uppercase text-[11px] text-orange-brand font-extrabold">Business · Popular</div>
+                  <div class="text-base font-extrabold hl-mono mt-0.5">₹499<span class="text-xs font-normal text-muted-ink">/mo</span></div>
+                </th>
+                <th class="w-[16.5%] text-center text-xs sm:text-sm font-bold text-ink py-4 px-3">
+                  <div class="hl-mono uppercase text-[11px] text-muted-ink">AI Pro</div>
+                  <div class="text-base font-extrabold hl-mono mt-0.5">₹999<span class="text-xs font-normal text-muted-ink">/mo</span></div>
+                </th>
+              </tr>
+            </thead>
+
+            <!-- CATEGORY 1: AI & DOCUMENT SCANNING -->
+            <tbody data-comp-cat="ai">
+              <tr class="bg-[var(--il-panel-sunk)]/60">
+                <td colspan="5" class="py-2.5 px-5 text-xs font-extrabold uppercase tracking-wider text-brand hl-mono">
+                  1 · AI &amp; Document Scanning
+                </td>
+              </tr>
+              <tr>
+                <td class="px-5 font-medium text-sm text-ink">AI bill scans/month</td>
+                <td class="text-center font-mono text-sm font-semibold text-ink">10</td>
+                <td class="text-center font-mono text-sm font-semibold text-ink">100</td>
+                <td class="text-center font-mono text-sm font-extrabold text-brand comp-col-popular">300</td>
+                <td class="text-center font-mono text-sm font-extrabold text-ink">1,000</td>
+              </tr>
+              <tr>
+                <td class="px-5 font-medium text-sm text-ink">Receipt and invoice OCR</td>
+                <td class="text-center text-brand font-bold">✓</td>
+                <td class="text-center text-brand font-bold">✓</td>
+                <td class="text-center text-brand font-bold comp-col-popular">✓</td>
+                <td class="text-center text-brand font-bold">✓</td>
+              </tr>
+              <tr>
+                <td class="px-5 font-medium text-sm text-ink">PDF bill upload</td>
+                <td class="text-center text-muted-ink">—</td>
+                <td class="text-center text-brand font-bold">✓</td>
+                <td class="text-center text-brand font-bold comp-col-popular">✓</td>
+                <td class="text-center text-brand font-bold">✓</td>
+              </tr>
+              <tr>
+                <td class="px-5 font-medium text-sm text-ink">AI expense categorization</td>
+                <td class="text-center text-xs font-semibold text-muted-ink">Basic</td>
+                <td class="text-center text-brand font-bold">✓</td>
+                <td class="text-center text-brand font-bold comp-col-popular">✓</td>
+                <td class="text-center text-brand font-bold">✓</td>
+              </tr>
+              <tr>
+                <td class="px-5 font-medium text-sm text-ink">AI GST field extraction</td>
+                <td class="text-center text-muted-ink">—</td>
+                <td class="text-center text-brand font-bold">✓</td>
+                <td class="text-center text-brand font-bold comp-col-popular">✓</td>
+                <td class="text-center text-brand font-bold">✓</td>
+              </tr>
+              <tr>
+                <td class="px-5 font-medium text-sm text-ink">AI duplicate bill detection</td>
+                <td class="text-center text-muted-ink">—</td>
+                <td class="text-center text-brand font-bold">✓</td>
+                <td class="text-center text-brand font-bold comp-col-popular">✓</td>
+                <td class="text-center text-brand font-bold">✓</td>
+              </tr>
+              <tr>
+                <td class="px-5 font-medium text-sm text-ink">Ask Hisaab AI</td>
+                <td class="text-center text-xs font-semibold text-muted-ink">Limited</td>
+                <td class="text-center text-xs font-semibold text-ink">Basic</td>
+                <td class="text-center text-xs font-bold text-brand comp-col-popular">Standard</td>
+                <td class="text-center text-xs font-extrabold text-ink">Advanced</td>
+              </tr>
+              <tr>
+                <td class="px-5 font-medium text-sm text-ink">AI journal suggestions</td>
+                <td class="text-center text-muted-ink">—</td>
+                <td class="text-center text-muted-ink">—</td>
+                <td class="text-center text-brand font-bold comp-col-popular">✓</td>
+                <td class="text-center text-brand font-bold">✓</td>
+              </tr>
+              <tr>
+                <td class="px-5 font-medium text-sm text-ink">AI-assisted recurring entries</td>
+                <td class="text-center text-muted-ink">—</td>
+                <td class="text-center text-muted-ink">—</td>
+                <td class="text-center text-muted-ink comp-col-popular">—</td>
+                <td class="text-center text-brand font-bold">✓</td>
+              </tr>
+              <tr>
+                <td class="px-5 font-medium text-sm text-ink">AI anomaly detection</td>
+                <td class="text-center text-muted-ink">—</td>
+                <td class="text-center text-muted-ink">—</td>
+                <td class="text-center text-muted-ink comp-col-popular">—</td>
+                <td class="text-center text-brand font-bold">✓</td>
+              </tr>
+            </tbody>
+
+            <!-- CATEGORY 2: BOOKKEEPING & LEDGERS -->
+            <tbody data-comp-cat="bookkeeping">
+              <tr class="bg-[var(--il-panel-sunk)]/60">
+                <td colspan="5" class="py-2.5 px-5 text-xs font-extrabold uppercase tracking-wider text-orange-brand hl-mono">
+                  2 · Bookkeeping, Invoicing &amp; Khata Ledgers
+                </td>
+              </tr>
+              <tr>
+                <td class="px-5 font-medium text-sm text-ink">Manual double-entry bookkeeping</td>
+                <td class="text-center text-xs font-semibold text-ink">Basic</td>
+                <td class="text-center text-xs font-semibold text-ink">Unlimited</td>
+                <td class="text-center text-xs font-bold text-brand comp-col-popular">Unlimited</td>
+                <td class="text-center text-xs font-bold text-ink">Unlimited</td>
+              </tr>
+              <tr>
+                <td class="px-5 font-medium text-sm text-ink">Invoices, bills and financial reports</td>
+                <td class="text-center text-xs font-semibold text-muted-ink">Basic</td>
+                <td class="text-center text-brand font-bold">✓</td>
+                <td class="text-center text-brand font-bold comp-col-popular">✓</td>
+                <td class="text-center text-brand font-bold">✓</td>
+              </tr>
+              <tr>
+                <td class="px-5 font-medium text-sm text-ink">Customer and supplier khata ledgers</td>
+                <td class="text-center text-muted-ink">—</td>
+                <td class="text-center text-brand font-bold">✓</td>
+                <td class="text-center text-brand font-bold comp-col-popular">✓</td>
+                <td class="text-center text-brand font-bold">✓</td>
+              </tr>
+              <tr>
+                <td class="px-5 font-medium text-sm text-ink">Automated payment reminders</td>
+                <td class="text-center text-muted-ink">—</td>
+                <td class="text-center text-brand font-bold">✓</td>
+                <td class="text-center text-brand font-bold comp-col-popular">✓</td>
+                <td class="text-center text-brand font-bold">✓</td>
+              </tr>
+              <tr>
+                <td class="px-5 font-medium text-sm text-ink">AI bookkeeping automation</td>
+                <td class="text-center text-muted-ink">—</td>
+                <td class="text-center text-muted-ink">—</td>
+                <td class="text-center text-xs font-semibold text-brand comp-col-popular">Assisted</td>
+                <td class="text-center text-xs font-extrabold text-ink">Full 24/7 AI</td>
+              </tr>
+            </tbody>
+
+            <!-- CATEGORY 3: GST, INVENTORY & BANK RECONCILIATION -->
+            <tbody data-comp-cat="gst">
+              <tr class="bg-[var(--il-panel-sunk)]/60">
+                <td colspan="5" class="py-2.5 px-5 text-xs font-extrabold uppercase tracking-wider text-brand hl-mono">
+                  3 · GST, Inventory &amp; Bank Reconciliation
+                </td>
+              </tr>
+              <tr>
+                <td class="px-5 font-medium text-sm text-ink">GST and bank reconciliation</td>
+                <td class="text-center text-muted-ink">—</td>
+                <td class="text-center text-muted-ink">—</td>
+                <td class="text-center text-brand font-bold comp-col-popular">✓</td>
+                <td class="text-center text-brand font-bold">✓</td>
+              </tr>
+              <tr>
+                <td class="px-5 font-medium text-sm text-ink">Eligible GST Input Tax Credit (ITC) tracker</td>
+                <td class="text-center text-muted-ink">—</td>
+                <td class="text-center text-muted-ink">—</td>
+                <td class="text-center text-brand font-bold comp-col-popular">✓</td>
+                <td class="text-center text-brand font-bold">✓</td>
+              </tr>
+              <tr>
+                <td class="px-5 font-medium text-sm text-ink">Inventory &amp; stock tracking</td>
+                <td class="text-center text-muted-ink">—</td>
+                <td class="text-center text-muted-ink">—</td>
+                <td class="text-center text-brand font-bold comp-col-popular">✓</td>
+                <td class="text-center text-brand font-bold">✓</td>
+              </tr>
+              <tr>
+                <td class="px-5 font-medium text-sm text-ink">30-minute Business GST registration</td>
+                <td class="text-center text-xs font-mono text-muted-ink">₹399 Add-on</td>
+                <td class="text-center text-xs font-mono text-muted-ink">₹399 Add-on</td>
+                <td class="text-center text-xs font-mono text-brand font-semibold comp-col-popular">₹399 Add-on</td>
+                <td class="text-center text-xs font-mono text-ink font-semibold">₹399 Add-on</td>
+              </tr>
+            </tbody>
+
+            <!-- CATEGORY 4: PAYROLL, ANALYTICS & CA COLLABORATION -->
+            <tbody data-comp-cat="payroll">
+              <tr class="bg-[var(--il-panel-sunk)]/60">
+                <td colspan="5" class="py-2.5 px-5 text-xs font-extrabold uppercase tracking-wider text-orange-brand hl-mono">
+                  4 · Staff Payroll, Analytics &amp; CA Collaboration
+                </td>
+              </tr>
+              <tr>
+                <td class="px-5 font-medium text-sm text-ink">Staff attendance, payroll &amp; PDF payslips</td>
+                <td class="text-center text-muted-ink">—</td>
+                <td class="text-center text-muted-ink">—</td>
+                <td class="text-center text-brand font-bold comp-col-popular">✓</td>
+                <td class="text-center text-brand font-bold">✓</td>
+              </tr>
+              <tr>
+                <td class="px-5 font-medium text-sm text-ink">Live P&amp;L, Trial Balance &amp; business analytics</td>
+                <td class="text-center text-xs font-semibold text-muted-ink">Basic</td>
+                <td class="text-center text-xs font-semibold text-ink">Standard</td>
+                <td class="text-center text-brand font-bold comp-col-popular">✓</td>
+                <td class="text-center text-brand font-bold">✓</td>
+              </tr>
+              <tr>
+                <td class="px-5 font-medium text-sm text-ink">Advanced insights and cash-flow forecasting</td>
+                <td class="text-center text-muted-ink">—</td>
+                <td class="text-center text-muted-ink">—</td>
+                <td class="text-center text-muted-ink comp-col-popular">—</td>
+                <td class="text-center text-brand font-bold">✓</td>
+              </tr>
+              <tr>
+                <td class="px-5 font-medium text-sm text-ink">Approvals workflow and CA collaboration</td>
+                <td class="text-center text-muted-ink">—</td>
+                <td class="text-center text-muted-ink">—</td>
+                <td class="text-center text-muted-ink comp-col-popular">—</td>
+                <td class="text-center text-brand font-bold">✓</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <div class="hl-wrap"><hr class="sc-separator" /></div>
+
+    <!-- ================= 4. BUSINESS REGISTRATION & LICENSING PRICING ================= -->
+    <section id="registration-pricing" class="hl-wrap hl-section">
+      <div class="text-center max-w-3xl mx-auto mb-8 sm:mb-12 flex flex-col items-center gap-3">
+        <span class="sc-badge sc-badge-default hl-mono">Business Registration &amp; Statutory Filings</span>
+        <h2 class="apple-section-display text-ink">Transparent registration fees <em class="text-brand">before you pay.</em></h2>
+        <p class="text-sm sm:text-base text-muted-ink leading-relaxed">
+          Simple upfront service fees for every business registration and licence. Applicable GST and statutory government charges (where applicable) are added during payment.
+        </p>
+      </div>
+
+      <!-- Registration Services Table -->
+      <article class="sc-card overflow-hidden border border-[var(--il-line-strong)] mb-6">
+        <div class="overflow-x-auto">
+          <table class="comp-table w-full text-left border-collapse min-w-[660px]">
+            <thead>
+              <tr class="bg-[var(--il-panel-sunk)] border-b border-[var(--il-line-strong)]">
+                <th class="text-xs sm:text-sm font-bold text-ink py-4 px-5 w-[36%]">Service</th>
+                <th class="text-xs sm:text-sm font-bold text-ink py-4 px-5 w-[20%]">Hisaab.Guru Fee</th>
+                <th class="text-xs sm:text-sm font-bold text-ink py-4 px-5 w-[29%]">Transparent Pre-Payment Breakdown</th>
+                <th class="text-xs sm:text-sm font-bold text-ink py-4 px-5 text-right w-[15%]">Action</th>
+              </tr>
+            </thead>
+            <tbody class="text-sm">
+              <!-- 1. GST Registration (No govt fee -> Service fee + GST) -->
+              <tr class="comp-col-popular">
+                <td class="px-5 py-4">
+                  <div class="font-bold text-ink flex items-center gap-2">
+                    <span>GST registration</span>
+                    <span class="sc-badge sc-badge-default hl-mono text-[10px]">~30 mins</span>
+                  </div>
+                  <div class="text-xs text-muted-ink mt-0.5">Form GST REG-01 · All Indian entities</div>
+                </td>
+                <td class="px-5 py-4 font-mono font-extrabold text-brand text-base">₹399</td>
+                <td class="px-5 py-4">
+                  <span class="text-xs font-semibold text-ink">Service fee + GST</span>
+                </td>
+                <td class="px-5 py-4 text-right">
+                  <button
+                    type="button"
+                    onclick="window.openRegistrationModal('GST registration', '₹399', 'Service fee + GST', '/gst-registration')"
+                    class="sc-btn pricing-choose-primary-btn !min-h-9 !px-3.5 !rounded-lg text-xs font-semibold"
+                  >
+                    Start →
+                  </button>
+                </td>
+              </tr>
+
+              <!-- 2. Private Limited Registration (Has govt charges -> Service fee + GST + Govt charges) -->
+              <tr>
+                <td class="px-5 py-4">
+                  <div class="font-bold text-ink">Private Limited registration</div>
+                  <div class="text-xs text-muted-ink mt-0.5">MCA SPICe+ (INC-32) incorporation</div>
+                </td>
+                <td class="px-5 py-4 font-mono font-extrabold text-ink text-base">₹999</td>
+                <td class="px-5 py-4">
+                  <span class="text-xs font-semibold text-ink">Service fee + GST + Govt charges</span>
+                </td>
+                <td class="px-5 py-4 text-right">
+                  <button
+                    type="button"
+                    onclick="window.openRegistrationModal('Private Limited registration', '₹999', 'Service fee + GST + Govt charges', '/gst-registration?auth=1')"
+                    class="sc-btn pricing-choose-btn !min-h-9 !px-3.5 !rounded-lg text-xs font-semibold"
+                  >
+                    Select
+                  </button>
+                </td>
+              </tr>
+
+              <!-- 3. LLP Registration (Has govt charges -> Service fee + GST + Govt charges) -->
+              <tr>
+                <td class="px-5 py-4">
+                  <div class="font-bold text-ink">LLP registration</div>
+                  <div class="text-xs text-muted-ink mt-0.5">MCA FiLLiP incorporation &amp; LLPIN</div>
+                </td>
+                <td class="px-5 py-4 font-mono font-extrabold text-ink text-base">₹999</td>
+                <td class="px-5 py-4">
+                  <span class="text-xs font-semibold text-ink">Service fee + GST + Govt charges</span>
+                </td>
+                <td class="px-5 py-4 text-right">
+                  <button
+                    type="button"
+                    onclick="window.openRegistrationModal('LLP registration', '₹999', 'Service fee + GST + Govt charges', '/gst-registration?auth=1')"
+                    class="sc-btn pricing-choose-btn !min-h-9 !px-3.5 !rounded-lg text-xs font-semibold"
+                  >
+                    Select
+                  </button>
+                </td>
+              </tr>
+
+              <!-- 4. OPC Registration (Has govt charges -> Service fee + GST + Govt charges) -->
+              <tr>
+                <td class="px-5 py-4">
+                  <div class="font-bold text-ink">OPC registration</div>
+                  <div class="text-xs text-muted-ink mt-0.5">One Person Company (SPICe+ INC-32)</div>
+                </td>
+                <td class="px-5 py-4 font-mono font-extrabold text-ink text-base">₹999</td>
+                <td class="px-5 py-4">
+                  <span class="text-xs font-semibold text-ink">Service fee + GST + Govt charges</span>
+                </td>
+                <td class="px-5 py-4 text-right">
+                  <button
+                    type="button"
+                    onclick="window.openRegistrationModal('OPC registration', '₹999', 'Service fee + GST + Govt charges', '/gst-registration?auth=1')"
+                    class="sc-btn pricing-choose-btn !min-h-9 !px-3.5 !rounded-lg text-xs font-semibold"
+                  >
+                    Select
+                  </button>
+                </td>
+              </tr>
+
+              <!-- 5. Trademark Filing Assistance (Has govt charges -> Service fee + GST + Govt charges) -->
+              <tr>
+                <td class="px-5 py-4">
+                  <div class="font-bold text-ink">Trademark filing assistance</div>
+                  <div class="text-xs text-muted-ink mt-0.5">Form TM-A brand &amp; logo application</div>
+                </td>
+                <td class="px-5 py-4 font-mono font-extrabold text-ink text-base">₹999</td>
+                <td class="px-5 py-4">
+                  <span class="text-xs font-semibold text-ink">Service fee + GST + Govt charges</span>
+                </td>
+                <td class="px-5 py-4 text-right">
+                  <button
+                    type="button"
+                    onclick="window.openRegistrationModal('Trademark filing assistance', '₹999', 'Service fee + GST + Govt charges', '/gst-registration?auth=1')"
+                    class="sc-btn pricing-choose-btn !min-h-9 !px-3.5 !rounded-lg text-xs font-semibold"
+                  >
+                    Select
+                  </button>
+                </td>
+              </tr>
+
+              <!-- 6. FSSAI Registration / Licence Assistance (Has govt charges -> Service fee + GST + Govt charges) -->
+              <tr>
+                <td class="px-5 py-4">
+                  <div class="font-bold text-ink">FSSAI registration/licence assistance</div>
+                  <div class="text-xs text-muted-ink mt-0.5">FoSCoS food business registration &amp; licence</div>
+                </td>
+                <td class="px-5 py-4 font-mono font-extrabold text-ink text-base">₹5,999</td>
+                <td class="px-5 py-4">
+                  <span class="text-xs font-semibold text-ink">Service fee + GST + Govt charges</span>
+                </td>
+                <td class="px-5 py-4 text-right">
+                  <button
+                    type="button"
+                    onclick="window.openRegistrationModal('FSSAI registration/licence assistance', '₹5,999', 'Service fee + GST + Govt charges', '/gst-registration?auth=1')"
+                    class="sc-btn pricing-choose-btn !min-h-9 !px-3.5 !rounded-lg text-xs font-semibold"
+                  >
+                    Select
+                  </button>
+                </td>
+              </tr>
+
+              <!-- 7. IEC Registration Assistance (Has govt charges -> Service fee + GST + Govt charges) -->
+              <tr>
+                <td class="px-5 py-4">
+                  <div class="font-bold text-ink">IEC registration assistance</div>
+                  <div class="text-xs text-muted-ink mt-0.5">DGFT Import Export Code filing</div>
+                </td>
+                <td class="px-5 py-4 font-mono font-extrabold text-ink text-base">₹3,499</td>
+                <td class="px-5 py-4">
+                  <span class="text-xs font-semibold text-ink">Service fee + GST + Govt charges</span>
+                </td>
+                <td class="px-5 py-4 text-right">
+                  <button
+                    type="button"
+                    onclick="window.openRegistrationModal('IEC registration assistance', '₹3,499', 'Service fee + GST + Govt charges', '/gst-registration?auth=1')"
+                    class="sc-btn pricing-choose-btn !min-h-9 !px-3.5 !rounded-lg text-xs font-semibold"
+                  >
+                    Select
+                  </button>
+                </td>
+              </tr>
+
+              <!-- 8. Udyam/MSME Guidance (Free) -->
+              <tr>
+                <td class="px-5 py-4">
+                  <div class="font-bold text-ink">Udyam/MSME guidance</div>
+                  <div class="text-xs text-muted-ink mt-0.5">MSME registration support &amp; NIC code mapping</div>
+                </td>
+                <td class="px-5 py-4 font-mono font-extrabold text-brand text-base">Free</td>
+                <td class="px-5 py-4">
+                  <span class="text-xs font-semibold text-brand">Free</span>
+                </td>
+                <td class="px-5 py-4 text-right">
+                  <button
+                    type="button"
+                    onclick="window.openRegistrationModal('Udyam/MSME guidance', 'Free', 'Free', '/gst-registration')"
+                    class="sc-btn pricing-choose-btn !min-h-9 !px-3.5 !rounded-lg text-xs font-semibold"
+                  >
+                    Start Free
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+    </section>
+
+    <div class="hl-wrap"><hr class="sc-separator" /></div>
+
+    <!-- ================= 5. ADDITIONAL USAGE & ADD-ON PRICING RULES ================= -->
+    <section id="usage-addons" class="hl-wrap hl-section">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+
+        <div class="lg:col-span-4 flex flex-col gap-3.5">
+          <span class="sc-badge sc-badge-secondary hl-mono w-fit">Usage &amp; Add-Ons</span>
+          <h2 class="apple-section-display text-ink">Clear, flexible <em class="text-brand">usage &amp; add-on rules.</em></h2>
+          <p class="text-sm sm:text-base text-muted-ink leading-relaxed">
+            Need extra AI bill scans during peak festive months, an additional team seat, or 30-minute Business GST registration? Add only what your business needs, when you need it.
+          </p>
+          <div class="p-4 rounded-2xl bg-[var(--il-panel-sunk)] border border-theme mt-2 flex flex-col gap-2">
+            <div class="text-xs font-bold text-ink flex items-center gap-2">
+              <span class="size-2 rounded-full bg-[var(--il-green)]"></span>
+              <span>Need a new Business GSTIN?</span>
+            </div>
+            <p class="text-xs text-muted-ink leading-relaxed">
+              Get your complete Form GST REG-01 application, AI document verification, and 1-click Family Consent NOC ready in 30 minutes for just <strong class="text-ink font-mono">₹399</strong>.
+            </p>
+            <a href="/gst-registration" class="hl-link text-xs mt-1">
+              <span>Start 30-Min GST Registration (₹399)</span>
+              <svg class="il-icon !size-3.5" aria-hidden="true"><use href="#i-arrow"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="lg:col-span-8">
+          <article class="sc-card overflow-hidden border border-[var(--il-line-strong)]">
+            <div class="overflow-x-auto">
+              <table class="comp-table w-full text-left border-collapse">
+                <thead>
+                  <tr class="bg-[var(--il-panel-sunk)] border-b border-[var(--il-line-strong)]">
+                    <th class="text-xs sm:text-sm font-bold text-ink py-3.5 px-5 w-[38%]">Item</th>
+                    <th class="text-xs sm:text-sm font-bold text-ink py-3.5 px-5">Plan &amp; Usage Policy</th>
+                  </tr>
+                </thead>
+                <tbody class="text-sm">
+                  <tr>
+                    <td class="px-5 font-semibold text-ink">AI scans</td>
+                    <td class="px-5 text-muted-ink">Reset monthly; unused scans don't roll over</td>
+                  </tr>
+                  <tr>
+                    <td class="px-5 font-semibold text-ink">Extra 100 AI scans</td>
+                    <td class="px-5"><span class="sc-badge sc-badge-default hl-mono">₹49</span></td>
+                  </tr>
+                  <tr>
+                    <td class="px-5 font-semibold text-ink">Extra user</td>
+                    <td class="px-5"><span class="sc-badge sc-badge-secondary hl-mono">₹99/month</span></td>
+                  </tr>
+                  <tr>
+                    <td class="px-5 font-semibold text-ink">Additional business</td>
+                    <td class="px-5 text-muted-ink">Separate subscription</td>
+                  </tr>
+                  <tr>
+                    <td class="px-5 font-semibold text-ink">Manual bookkeeping</td>
+                    <td class="px-5 text-brand font-semibold">Unlimited on paid plans</td>
+                  </tr>
+                  <tr>
+                    <td class="px-5 font-semibold text-ink">Data retention</td>
+                    <td class="px-5 text-muted-ink">Retain records according to applicable legal requirements</td>
+                  </tr>
+                  <tr>
+                    <td class="px-5 font-semibold text-ink">Exports</td>
+                    <td class="px-5 text-muted-ink">Available even after cancellation for a defined access period</td>
+                  </tr>
+                  <tr>
+                    <td class="px-5 font-semibold text-ink">GST registration</td>
+                    <td class="px-5">
+                      <span class="sc-badge sc-badge-default hl-mono">₹399</span>
+                      <span class="text-xs text-muted-ink ml-1.5">separate one-time service</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="px-5 font-semibold text-ink">GST filing</td>
+                    <td class="px-5 text-muted-ink">Pay per return</td>
+                  </tr>
+                  <tr>
+                    <td class="px-5 font-semibold text-ink">Government fees</td>
+                    <td class="px-5 text-muted-ink">Actual statutory charges</td>
+                  </tr>
+                  <tr>
+                    <td class="px-5 font-semibold text-ink">CA/CS assistance</td>
+                    <td class="px-5 text-muted-ink">Separate professional fee</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="hl-wrap"><hr class="sc-separator" /></div>
+
+    <!-- ================= 6. PRICING FAQS ================= -->
+    <section id="pricing-faqs" class="hl-wrap hl-section">
+      <div class="text-center max-w-2xl mx-auto mb-10 flex flex-col items-center gap-3">
+        <span class="sc-badge sc-badge-secondary hl-mono">Pricing FAQs</span>
+        <h2 class="apple-section-display text-ink">Common questions <em class="text-brand">about plans &amp; billing.</em></h2>
+      </div>
+
+      <div class="max-w-3xl mx-auto flex flex-col gap-3">
+        <details class="sc-card p-5 group" open>
+          <summary class="font-bold text-ink cursor-pointer flex items-center justify-between gap-4 list-none">
+            <span>Which plan is best for a shop, restaurant, or GST-registered business?</span>
+            <span class="text-brand font-mono text-lg group-open:rotate-45 transition-transform">+</span>
+          </summary>
+          <p class="text-sm text-muted-ink mt-3 leading-relaxed">
+            The <strong class="text-ink">Business (₹499/mo)</strong> plan is our most popular choice for shops, cafés, restaurants, and GST-registered businesses. It includes 300 AI bill scans/month, GST and bank reconciliation, inventory and staff payroll, and real-time profit analytics.
+          </p>
+        </details>
+
+        <details class="sc-card p-5 group">
+          <summary class="font-bold text-ink cursor-pointer flex items-center justify-between gap-4 list-none">
+            <span>What happens if I run out of AI bill scans during the month?</span>
+            <span class="text-brand font-mono text-lg group-open:rotate-45 transition-transform">+</span>
+          </summary>
+          <p class="text-sm text-muted-ink mt-3 leading-relaxed">
+            Manual bookkeeping is unlimited on all paid plans, so you can always record entries manually. If you need more AI camera scans, you can top up an <strong class="text-ink">Extra 100 AI scans pack for ₹49</strong> anytime, or upgrade to the next plan tier.
+          </p>
+        </details>
+
+        <details class="sc-card p-5 group">
+          <summary class="font-bold text-ink cursor-pointer flex items-center justify-between gap-4 list-none">
+            <span>Can I export my accounting data if I cancel my subscription?</span>
+            <span class="text-brand font-mono text-lg group-open:rotate-45 transition-transform">+</span>
+          </summary>
+          <p class="text-sm text-muted-ink mt-3 leading-relaxed">
+            Yes. Your books and financial records belong to you. Data exports remain available even after cancellation for a defined access period, and records are retained in accordance with applicable legal requirements.
+          </p>
+        </details>
+
+        <details class="sc-card p-5 group">
+          <summary class="font-bold text-ink cursor-pointer flex items-center justify-between gap-4 list-none">
+            <span>Does AI Pro change my books or file returns without asking me?</span>
+            <span class="text-brand font-mono text-lg group-open:rotate-45 transition-transform">+</span>
+          </summary>
+          <p class="text-sm text-muted-ink mt-3 leading-relaxed">
+            Never. AI Pro proactively prepares journal suggestions, flags duplicate bills or anomalies, and organizes workflows for you and your CA — but it never submits tax returns, alters approved books, or makes payments without your explicit authorization.
+          </p>
+        </details>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= UNIFIED SITE FOOTER WITH SOCIAL ICONS BELOW LOGO ================= -->
+  <footer id="site-footer" class="border-t border-theme bg-[var(--il-panel)] text-muted-ink mt-12">
+    <div class="hl-wrap py-12 flex flex-col gap-10">
+
+      <!-- Five-column navigation -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-6">
+        <div class="lg:col-span-4 flex flex-col gap-3.5">
+          <a href="/" class="il-logo" aria-label="Hisaab.Guru home">
+            <img src="/assets/hisaab-mark.svg?v=consistent_orange_logo" width="40" height="40" alt="Hisaab.Guru Sprout Mascot" class="size-10 object-contain" />
+            <span class="il-logo-word">Hisaab<span>.Guru</span></span>
+          </a>
+          <p class="text-[13px] max-w-xs leading-relaxed">
+            Smart mobile accounting, AI bill scanning, live profit tracking, staff payslips, and 30-minute Business GST registration for Indian businesses.
+          </p>
+
+          <!-- Social Icons Directly Below Hisaab.guru Logo & Tagline -->
+          <div class="flex items-center gap-2.5 pt-1" aria-label="Hisaab.Guru social media links">
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Follow Hisaab.Guru on Instagram" class="emil-press size-9 rounded-full border border-theme bg-[var(--il-panel-sunk)] hover:border-[var(--il-green)] hover:text-brand flex items-center justify-center transition-[border-color,color,transform] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)]">
+              <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="Watch Hisaab.Guru on YouTube" class="emil-press size-9 rounded-full border border-theme bg-[var(--il-panel-sunk)] hover:border-[var(--il-green)] hover:text-brand flex items-center justify-center transition-[border-color,color,transform] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)]">
+              <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 003.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29 29 0 00.46-5.25 29 29 0 00-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg>
+            </a>
+            <a href="https://x.com" target="_blank" rel="noopener noreferrer" aria-label="Follow Hisaab.Guru on X (Twitter)" class="emil-press size-9 rounded-full border border-theme bg-[var(--il-panel-sunk)] hover:border-[var(--il-green)] hover:text-brand flex items-center justify-center transition-[border-color,color,transform] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)]">
+              <svg class="size-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="Connect with Hisaab.Guru on LinkedIn" class="emil-press size-9 rounded-full border border-theme bg-[var(--il-panel-sunk)] hover:border-[var(--il-green)] hover:text-brand flex items-center justify-center transition-[border-color,color,transform] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)]">
+              <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+            <a href="https://wa.me/919940000000" target="_blank" rel="noopener noreferrer" aria-label="Chat with Hisaab.Guru on WhatsApp" class="emil-press size-9 rounded-full border border-theme bg-[var(--il-panel-sunk)] hover:border-[var(--il-green)] hover:text-brand flex items-center justify-center transition-[border-color,color,transform] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)]">
+              <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <nav class="lg:col-span-2 flex flex-col gap-4" aria-label="Subscription Plans">
+          <h6 class="text-[13px] font-semibold text-ink">Subscription plans</h6>
+          <ul class="flex flex-col gap-2.5 text-[13px]">
+            <li><a href="#plans" class="hl-navlink">Free Forever (₹0)</a></li>
+            <li><a href="#plans" class="hl-navlink">Starter (₹249/mo)</a></li>
+            <li><a href="#plans" class="hl-navlink">Business (₹499/mo)</a></li>
+            <li><a href="#plans" class="hl-navlink">AI Pro (₹999/mo)</a></li>
+            <li><a href="#feature-comparison" class="hl-navlink">Compare all features</a></li>
+          </ul>
+        </nav>
+
+        <nav class="lg:col-span-2 flex flex-col gap-4" aria-label="GST registration">
+          <h6 class="text-[13px] font-semibold text-ink">GST registration</h6>
+          <ul class="flex flex-col gap-2.5 text-[13px]">
+            <li><a href="/gst-registration" class="hl-navlink">30-Min GST Registration (₹399)</a></li>
+            <li><a href="/gst-registration/review" class="hl-navlink">Six-section review &amp; OTP</a></li>
+            <li><a href="/gst-registration/status" class="hl-navlink">Live 10-tab TRN status</a></li>
+            <li><a href="/api/gst-registration/consent-noc-preview" target="_blank" rel="noopener" class="hl-link font-medium">Family consent NOC <svg class="il-icon !size-3.5" aria-hidden="true"><use href="#i-external"/></svg></a></li>
+          </ul>
+        </nav>
+
+        <nav class="lg:col-span-2 flex flex-col gap-4" aria-label="Mobile app">
+          <h6 class="text-[13px] font-semibold text-ink">Mobile app</h6>
+          <ul class="flex flex-col gap-2.5 text-[13px]">
+            <li><a href="/#all-in-one" class="hl-navlink">AI bill &amp; receipt scanner</a></li>
+            <li><a href="/#all-in-one" class="hl-navlink">Live profit &amp; GST tracker</a></li>
+            <li><a href="/#all-in-one" class="hl-navlink">Staff salary &amp; payslips</a></li>
+            <li><a href="#top" onclick="event.preventDefault(); qr_modal.showModal();" class="hl-navlink">Download for iOS &amp; Android</a></li>
+          </ul>
+        </nav>
+
+        <nav class="lg:col-span-2 flex flex-col gap-4" aria-label="Official portals">
+          <h6 class="text-[13px] font-semibold text-ink">Official portals</h6>
+          <ul class="flex flex-col gap-2.5 text-[13px]">
+            <li><a href="https://reg.gst.gov.in/registration/" target="_blank" rel="noopener noreferrer" class="hl-navlink inline-flex items-center gap-1">reg.gst.gov.in portal <svg class="il-icon !size-3.5" aria-hidden="true"><use href="#i-external"/></svg></a></li>
+            <li><a href="https://udyamregistration.gov.in/" target="_blank" rel="noopener noreferrer" class="hl-navlink inline-flex items-center gap-1">MSME Udyam portal <svg class="il-icon !size-3.5" aria-hidden="true"><use href="#i-external"/></svg></a></li>
+            <li><a href="https://cbic-gst.gov.in/" target="_blank" rel="noopener noreferrer" class="hl-navlink inline-flex items-center gap-1">CBIC GST Act and Rules <svg class="il-icon !size-3.5" aria-hidden="true"><use href="#i-external"/></svg></a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <!-- Copyright -->
+      <div class="pt-6 border-t border-theme flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs">
+        <p>© 2026 <strong class="text-ink font-semibold">Hisaab.Guru</strong>. Made for Indian founders, merchants and chartered accountants.</p>
+        <p class="max-w-xl sm:text-right leading-relaxed">
+          Independent accounting and GST filing preparation platform.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================= PLAN & REGISTRATION PRE-PAYMENT MODAL ================= -->
+  <dialog id="plan_modal" class="modal modal-middle" aria-labelledby="plan-modal-title">
+    <div class="modal-box sc-card !rounded-2xl !shadow-2xl max-w-md p-7">
+      <div class="flex items-center justify-between gap-3 mb-4">
+        <div class="flex items-center gap-2.5">
+          <img src="/assets/hisaab-mark.svg?v=consistent_orange_logo" width="32" height="32" alt="Hisaab.Guru" class="size-8 object-contain" />
+          <div>
+            <span id="plan-modal-badge" class="sc-badge sc-badge-default hl-mono text-[11px]">BUSINESS</span>
+          </div>
+        </div>
+        <div class="text-right">
+          <span id="plan-modal-price" class="text-2xl font-extrabold text-ink hl-mono">₹499</span>
+          <span id="plan-modal-period" class="text-xs text-muted-ink">/mo</span>
+        </div>
+      </div>
+
+      <h3 id="plan-modal-title" class="text-xl font-bold text-ink">Get started with Business</h3>
+      <p id="plan-modal-desc" class="text-xs sm:text-sm text-muted-ink mt-1.5 leading-relaxed">
+        Restaurants, shops and GST businesses · 300 AI scans/month
+      </p>
+
+      <div class="my-5 p-4 rounded-xl bg-[var(--il-panel-sunk)] border border-theme flex flex-col gap-2.5 text-xs">
+        <div class="flex items-center justify-between">
+          <span id="plan-modal-label-name" class="text-muted-ink">Selected Plan</span>
+          <strong id="plan-modal-summary-name" class="text-ink font-semibold text-right">Business Plan</strong>
+        </div>
+        <div id="plan-modal-row-service-fee" class="flex items-center justify-between">
+          <span id="plan-modal-label-fee" class="text-muted-ink">Monthly Price</span>
+          <strong id="plan-modal-summary-price" class="text-brand font-mono font-bold text-sm">₹499</strong>
+        </div>
+        <div id="plan-modal-row-breakdown" style="display: none;" class="items-center justify-between pt-2 border-t border-theme">
+          <span class="text-muted-ink">Pre-Payment Breakdown</span>
+          <strong id="plan-modal-summary-breakdown" class="text-ink font-semibold">Service fee + GST</strong>
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-2.5">
+        <a
+          id="plan-modal-cta-link"
+          href="/gst-registration?auth=1"
+          class="w-full sc-btn sc-btn-default !min-h-11 !rounded-xl font-semibold text-sm flex items-center justify-center gap-2"
+        >
+          <span>Continue with Email OTP</span>
+          <svg class="il-icon !size-4" aria-hidden="true"><use href="#i-arrow"/></svg>
+        </a>
+        <button
+          type="button"
+          onclick="document.getElementById('plan_modal').close(); qr_modal.showModal();"
+          class="w-full sc-btn sc-btn-outline !min-h-10 !rounded-xl font-semibold text-xs"
+        >
+          Download Mobile App (iOS &amp; Android)
+        </button>
+      </div>
+
+      <form method="dialog" class="mt-4 text-center">
+        <button class="text-xs text-muted-ink hover:text-ink underline">Close</button>
+      </form>
+    </div>
+    <form method="dialog" class="modal-backdrop">
+      <button>close</button>
+    </form>
+  </dialog>
+
+  <!-- ================= QR DOWNLOAD MODAL ================= -->
+  <dialog id="qr_modal" class="modal modal-middle" aria-labelledby="modal-store-title">
+    <div class="modal-box sc-card !rounded-[16px] !shadow-xl max-w-sm text-center p-8">
+      <h3 id="modal-store-title" class="sc-card-title text-xl text-ink">Scan to download Hisaab.Guru</h3>
+      <p class="sc-card-description text-sm mt-2 leading-relaxed">
+        Point your phone camera at the code to open Hisaab.Guru on the App Store or Google Play.
+      </p>
+
+      <div class="my-7 mx-auto size-48 rounded-[14px] bg-white p-4 border border-black/10 flex items-center justify-center">
+        <svg viewBox="0 0 120 120" class="w-full h-full" fill="#0B0D0C" role="img" aria-label="QR code">
+          <rect x="8" y="8" width="32" height="32" rx="4" fill="none" stroke="#0B0D0C" stroke-width="6"/>
+          <rect x="16" y="16" width="16" height="16" rx="2" fill="#126C38"/>
+          <rect x="80" y="8" width="32" height="32" rx="4" fill="none" stroke="#0B0D0C" stroke-width="6"/>
+          <rect x="88" y="16" width="16" height="16" rx="2" fill="#126C38"/>
+          <rect x="8" y="80" width="32" height="32" rx="4" fill="none" stroke="#0B0D0C" stroke-width="6"/>
+          <rect x="16" y="88" width="16" height="16" rx="2" fill="#126C38"/>
+          <rect x="48" y="10" width="8" height="8" rx="1.5"/>
+          <rect x="62" y="10" width="8" height="16" rx="1.5"/>
+          <rect x="48" y="24" width="10" height="8" rx="1.5"/>
+          <rect x="10" y="48" width="16" height="8" rx="1.5"/>
+          <rect x="32" y="48" width="8" height="16" rx="1.5"/>
+          <rect x="48" y="48" width="24" height="24" rx="5" fill="#126C38"/>
+          <text x="60" y="65" text-anchor="middle" fill="#FFFFFF" font-size="15" font-weight="bold">₹</text>
+          <rect x="80" y="48" width="10" height="10" rx="1.5"/>
+          <rect x="98" y="48" width="12" height="8" rx="1.5"/>
+          <rect x="84" y="64" width="24" height="8" rx="1.5"/>
+          <rect x="48" y="80" width="12" height="10" rx="1.5"/>
+          <rect x="66" y="80" width="8" height="28" rx="1.5"/>
+          <rect x="82" y="82" width="14" height="14" rx="2" fill="#126C38"/>
+          <rect x="100" y="82" width="10" height="26" rx="1.5"/>
+          <rect x="48" y="98" width="12" height="10" rx="1.5"/>
+        </svg>
+      </div>
+
+      <form method="dialog">
+        <button class="il-btn il-btn-primary !px-7">Done</button>
+      </form>
+    </div>
+    <form method="dialog" class="modal-backdrop">
+      <button>close</button>
+    </form>
+  </dialog>
+
+  <script>
+    // 1. Theme toggle
+    var currentTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+    function applyTheme(theme, persist) {
+      currentTheme = theme;
+      document.documentElement.setAttribute('data-theme', theme);
+      if (persist) {
+        try { localStorage.setItem('hisaab-web-theme', theme); } catch (e) {}
+      }
+      var sun = document.getElementById('theme-icon-sun');
+      var moon = document.getElementById('theme-icon-moon');
+      var meta = document.getElementById('meta-theme-color');
+      var dark = theme === 'dark';
+      if (sun) sun.classList.toggle('hidden', !dark);
+      if (moon) moon.classList.toggle('hidden', dark);
+      if (meta) meta.setAttribute('content', dark ? '#0B0D0C' : '#F6F3EC');
+    }
+    function toggleTheme() {
+      applyTheme(currentTheme === 'dark' ? 'light' : 'dark', true);
+    }
+    applyTheme(currentTheme, false);
+
+    // 2. Mobile menu toggle
+    window.toggleMobileNavMenu = function () {
+      var m = document.getElementById('mobile-nav-menu');
+      var btn = document.getElementById('mobile-menu-toggle');
+      if (!m) return;
+      m.removeAttribute('data-instant');
+      var isHidden = m.classList.contains('hidden');
+      m.classList.toggle('hidden', !isHidden);
+      if (btn) btn.setAttribute('aria-expanded', isHidden ? 'true' : 'false');
+    };
+    window.closeMobileNavMenu = function (instant) {
+      var m = document.getElementById('mobile-nav-menu');
+      var btn = document.getElementById('mobile-menu-toggle');
+      if (!m) return;
+      if (instant) m.setAttribute('data-instant', '');
+      m.classList.add('hidden');
+      if (btn) btn.setAttribute('aria-expanded', 'false');
+    };
+
+    // 3. Category filter with Emil Kowalski blur-morph transition
+    window.filterComparisonCategory = function (cat) {
+      document.querySelectorAll('[data-cat-btn]').forEach(function (btn) {
+        var active = btn.getAttribute('data-cat-btn') === cat;
+        btn.setAttribute('aria-selected', active ? 'true' : 'false');
+      });
+      var container = document.getElementById('comparison-table-container');
+      if (container) container.classList.add('is-transitioning');
+      setTimeout(function () {
+        document.querySelectorAll('tbody[data-comp-cat]').forEach(function (tb) {
+          var match = cat === 'all' || tb.getAttribute('data-comp-cat') === cat;
+          tb.style.display = match ? '' : 'none';
+        });
+        if (container) container.classList.remove('is-transitioning');
+      }, 90);
+    };
+
+    // 4. Plan & Registration pre-payment modal
+    window.openPlanModal = function (name, price, period, desc) {
+      var modal = document.getElementById('plan_modal');
+      if (!modal) return;
+      document.getElementById('plan-modal-badge').textContent = name.toUpperCase();
+      document.getElementById('plan-modal-price').textContent = price;
+      document.getElementById('plan-modal-period').textContent = ' ' + period;
+      document.getElementById('plan-modal-title').textContent = 'Get started with ' + name;
+      document.getElementById('plan-modal-desc').textContent = desc;
+      document.getElementById('plan-modal-label-name').textContent = 'Selected Plan';
+      document.getElementById('plan-modal-summary-name').textContent = name + ' Plan';
+      document.getElementById('plan-modal-label-fee').textContent = 'Monthly Price';
+      document.getElementById('plan-modal-summary-price').textContent = price + (period === 'Forever' ? ' (Forever)' : period);
+      document.getElementById('plan-modal-row-breakdown').style.display = 'none';
+      var cta = document.getElementById('plan-modal-cta-link');
+      if (cta) cta.setAttribute('href', '/gst-registration?auth=1');
+      modal.showModal();
+    };
+
+    window.openRegistrationModal = function (serviceName, serviceFee, breakdownText, targetUrl) {
+      var modal = document.getElementById('plan_modal');
+      if (!modal) return;
+      document.getElementById('plan-modal-badge').textContent = 'REGISTRATION';
+      document.getElementById('plan-modal-price').textContent = serviceFee;
+      document.getElementById('plan-modal-period').textContent = '';
+      document.getElementById('plan-modal-title').textContent = serviceName;
+      document.getElementById('plan-modal-desc').textContent = 'Pre-payment breakdown: ' + breakdownText;
+      document.getElementById('plan-modal-label-name').textContent = 'Service';
+      document.getElementById('plan-modal-summary-name').textContent = serviceName;
+      document.getElementById('plan-modal-label-fee').textContent = 'Hisaab.Guru Fee';
+      document.getElementById('plan-modal-summary-price').textContent = serviceFee;
+
+      var rowBreakdown = document.getElementById('plan-modal-row-breakdown');
+      document.getElementById('plan-modal-summary-breakdown').textContent = breakdownText;
+      rowBreakdown.style.display = 'flex';
+
+      var cta = document.getElementById('plan-modal-cta-link');
+      if (cta) cta.setAttribute('href', targetUrl || '/gst-registration');
+      modal.showModal();
+    };
+
+    // 5. Instant Escape key close
+    window.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        window.closeMobileNavMenu(true);
+      }
+    });
+  </script>
+  <script src="assets/clerk-auth.js"></script>
+</body>
+</html>

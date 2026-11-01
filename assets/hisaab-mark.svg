@@ -1,0 +1,152 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-200 -200 400 350" role="img" aria-labelledby="hgSproutMascotTitle">
+  <title id="hgSproutMascotTitle">Hisaab.Guru Canonical 3D Sprout Mascot Logo</title>
+  <defs>
+    <!-- Canonical Top-to-Bottom Squircle Body Gradient: Glossy Lime Crown -> Warm Cream Face -->
+    <linearGradient id="hgBodyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#86EFAC"/>
+      <stop offset="28%" stop-color="#BBF7D0"/>
+      <stop offset="52%" stop-color="#FEFCE8"/>
+      <stop offset="100%" stop-color="#FFF7ED"/>
+    </linearGradient>
+
+    <!-- Warm Orange-Emerald Rim Border Gradient -->
+    <linearGradient id="hgOuterRimGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4ADE80"/>
+      <stop offset="55%" stop-color="#22C55E"/>
+      <stop offset="100%" stop-color="#F97316"/>
+    </linearGradient>
+
+    <!-- Top 3D Specular Rim Highlight -->
+    <linearGradient id="hgRimGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.84"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- Left Sprout Leaf Gradient -->
+    <linearGradient id="hgLeafLeft" x1="15%" y1="0%" x2="85%" y2="100%">
+      <stop offset="0%" stop-color="#D9F99D"/>
+      <stop offset="55%" stop-color="#4ADE80"/>
+      <stop offset="100%" stop-color="#15803D"/>
+    </linearGradient>
+
+    <!-- Right Sprout Leaf Gradient with Warm Sunlit Tip -->
+    <linearGradient id="hgLeafRight" x1="15%" y1="0%" x2="85%" y2="100%">
+      <stop offset="0%" stop-color="#FDBA74"/>
+      <stop offset="30%" stop-color="#BEF264"/>
+      <stop offset="65%" stop-color="#4ADE80"/>
+      <stop offset="100%" stop-color="#166534"/>
+    </linearGradient>
+
+    <!-- Warm Orange Cheek Radial Gradient -->
+    <radialGradient id="hgCheekGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#F97316" stop-opacity="0.68"/>
+      <stop offset="55%" stop-color="#FB923C" stop-opacity="0.32"/>
+      <stop offset="100%" stop-color="#FB923C" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Warm Orange Sparkle Gradient -->
+    <linearGradient id="hgOrangeStarGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FDBA74"/>
+      <stop offset="50%" stop-color="#F97316"/>
+      <stop offset="100%" stop-color="#EA580C"/>
+    </linearGradient>
+
+    <!-- Dual Emerald & Orange Aura Glow -->
+    <radialGradient id="hgAuraGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#67E58B" stop-opacity="0.36"/>
+      <stop offset="55%" stop-color="#F97316" stop-opacity="0.16"/>
+      <stop offset="100%" stop-color="#F97316" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Soft 3D Drop Shadow -->
+    <filter id="hgDropShadow" x="-25%" y="-25%" width="150%" height="150%">
+      <feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#062814" flood-opacity="0.42"/>
+    </filter>
+
+    <!-- Hand Drop Shadow -->
+    <filter id="hgHandShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#000000" flood-opacity="0.28"/>
+    </filter>
+
+    <!-- Mouth Clip for Warm Coral-Orange Tongue -->
+    <clipPath id="hgMouthClip">
+      <path d="M -25 0 Q 0 -3 25 0 C 25 26 -25 26 -25 0 Z"/>
+    </clipPath>
+  </defs>
+
+  <!-- Subtle Emerald + Warm Orange Aura -->
+  <circle cx="0" cy="-10" r="175" fill="url(#hgAuraGrad)"/>
+
+  <!-- Orbiting 4-Point Sparkle Stars in Signature Warm Orange & Emerald -->
+  <g transform="translate(-145, -95) scale(1.02)">
+    <path d="M0 -14 L3.8 -3.8 L14 0 L3.8 3.8 L0 14 L-3.8 3.8 L-14 0 L-3.8 -3.8 Z" fill="url(#hgOrangeStarGrad)"/>
+  </g>
+  <g transform="translate(148, -82) scale(0.92)">
+    <path d="M0 -14 L3.8 -3.8 L14 0 L3.8 3.8 L0 14 L-3.8 3.8 L-14 0 L-3.8 -3.8 Z" fill="url(#hgOrangeStarGrad)"/>
+  </g>
+  <g transform="translate(142, 72) scale(0.82)">
+    <path d="M0 -14 L3.5 -3.5 L14 0 L3.5 3.5 L0 14 L-3.5 3.5 L-14 0 L-3.5 -3.5 Z" fill="#FB923C"/>
+  </g>
+  <g transform="translate(-140, 74) scale(0.72)">
+    <path d="M0 -14 L3.5 -3.5 L14 0 L3.5 3.5 L0 14 L-3.5 3.5 L-14 0 L-3.5 -3.5 Z" fill="#4ADE80"/>
+  </g>
+
+  <!-- Twin Glossy Sprout Leaves on Top -->
+  <!-- Left Leaf -->
+  <g transform="translate(-8, -96) rotate(-28)">
+    <ellipse cx="-18" cy="-32" rx="26" ry="46" transform="rotate(-14 -18 -32)" fill="url(#hgLeafLeft)"/>
+    <ellipse cx="-25" cy="-44" rx="7" ry="18" transform="rotate(-14 -25 -44)" fill="#FFFFFF" fill-opacity="0.48"/>
+  </g>
+
+  <!-- Right Leaf (with Warm Orange-Gold Sunlit Tip) -->
+  <g transform="translate(10, -96) rotate(26)">
+    <ellipse cx="20" cy="-34" rx="30" ry="50" transform="rotate(14 20 -34)" fill="url(#hgLeafRight)"/>
+    <ellipse cx="12" cy="-48" rx="8" ry="20" transform="rotate(14 12 -48)" fill="#FFFFFF" fill-opacity="0.52"/>
+  </g>
+
+  <!-- 3D Rounded Squircle Body with Subtle Warm Orange-Emerald Rim -->
+  <rect x="-116" y="-102" width="232" height="206" rx="74" fill="url(#hgBodyGrad)" stroke="url(#hgOuterRimGrad)" stroke-width="5" filter="url(#hgDropShadow)"/>
+
+  <!-- Top 3D Specular Rim Highlight -->
+  <rect x="-92" y="-94" width="184" height="48" rx="26" fill="url(#hgRimGrad)"/>
+
+  <!-- Warm Orange-Coral Cheeks -->
+  <circle cx="-68" cy="26" r="29" fill="url(#hgCheekGrad)"/>
+  <circle cx="68" cy="26" r="29" fill="url(#hgCheekGrad)"/>
+
+  <!-- Both Eyes Wide Open: Glossy 3D Eyes with Double Catchlights & Warm Orange Iris Spark -->
+  <!-- Left Eye -->
+  <g transform="translate(-46, -6)">
+    <ellipse cx="0" cy="0" rx="22" ry="24" fill="#1C1917"/>
+    <circle cx="-6" cy="-7" r="7.5" fill="#FFFFFF"/>
+    <circle cx="6" cy="7" r="3.5" fill="#FDBA74"/>
+  </g>
+
+  <!-- Right Eye -->
+  <g transform="translate(46, -6)">
+    <ellipse cx="0" cy="0" rx="22" ry="24" fill="#1C1917"/>
+    <circle cx="-6" cy="-7" r="7.5" fill="#FFFFFF"/>
+    <circle cx="6" cy="7" r="3.5" fill="#FDBA74"/>
+  </g>
+
+  <!-- Happy Open Mouth with Warm Orange-Coral Tongue -->
+  <g transform="translate(0, 22)">
+    <path d="M -25 0 Q 0 -3 25 0 C 25 26 -25 26 -25 0 Z" fill="#3B0A14"/>
+    <g clip-path="url(#hgMouthClip)">
+      <ellipse cx="3" cy="16" rx="19" ry="12" fill="#F97316"/>
+    </g>
+  </g>
+
+  <!-- Articulated 3D Puffy Hands -->
+  <!-- Left Hand -->
+  <g transform="translate(-132, 26) rotate(-18)" filter="url(#hgHandShadow)">
+    <ellipse cx="0" cy="0" rx="26" ry="22" fill="#FFF7ED" stroke="#FDBA74" stroke-width="2"/>
+    <ellipse cx="12" cy="-16" rx="9" ry="13" transform="rotate(17 12 -16)" fill="#FFF7ED"/>
+  </g>
+
+  <!-- Right Hand -->
+  <g transform="translate(132, 24) rotate(16)" filter="url(#hgHandShadow)">
+    <ellipse cx="0" cy="0" rx="26" ry="22" fill="#FFF7ED" stroke="#FDBA74" stroke-width="2"/>
+    <ellipse cx="-12" cy="-18" rx="9" ry="14" transform="rotate(-12 -12 -18)" fill="#FFF7ED"/>
+  </g>
+</svg>

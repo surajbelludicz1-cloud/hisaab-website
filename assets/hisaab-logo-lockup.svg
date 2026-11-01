@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 160" role="img" aria-labelledby="hgLockupTitle">
+  <title id="hgLockupTitle">Hisaab.Guru — Cute 3D Sprout Mascot Brand Lockup</title>
+  <defs>
+    <linearGradient id="lkBodyGrad" x1="25%" y1="0%" x2="75%" y2="100%">
+      <stop offset="0%" stop-color="#9EFF5A"/>
+      <stop offset="24%" stop-color="#4CE048"/>
+      <stop offset="45%" stop-color="#E9FBD7"/>
+      <stop offset="68%" stop-color="#FFFDF8"/>
+      <stop offset="100%" stop-color="#CFE8B4"/>
+    </linearGradient>
+    <linearGradient id="lkLeaf" x1="10%" y1="0%" x2="90%" y2="100%">
+      <stop offset="0%" stop-color="#C2FF78"/>
+      <stop offset="48%" stop-color="#3FE043"/>
+      <stop offset="100%" stop-color="#138E30"/>
+    </linearGradient>
+    <filter id="lkShadow" x="-15%" y="-15%" width="130%" height="140%">
+      <feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#071F10" flood-opacity="0.28"/>
+    </filter>
+  </defs>
+
+  <!-- 1. Cute Glossy 3D Sprout Mascot (Sole Brand Logo) -->
+  <g filter="url(#lkShadow)" transform="translate(8, 2) rotate(-3 76 82)">
+    <g transform="translate(52, 22) rotate(-28)">
+      <path d="M16 20 C4 20 -3 9 4 2 C11 -5 24 2 20 18 Z" fill="url(#lkLeaf)"/>
+      <path d="M7 5 C10 1 15 4 15 10" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-opacity="0.75"/>
+    </g>
+    <g transform="translate(70, 8) rotate(22)">
+      <path d="M4 30 C-4 13 8 -2 22 0 C35 2 37 18 11 31 Z" fill="url(#lkLeaf)"/>
+      <path d="M11 6 C18 2 26 5 24 12" fill="none" stroke="#FFFFFF" stroke-width="2.8" stroke-linecap="round" stroke-opacity="0.8"/>
+    </g>
+    <rect x="26" y="36" width="96" height="86" rx="39" fill="url(#lkBodyGrad)" stroke="#FFFFFF" stroke-width="1.5" stroke-opacity="0.7"/>
+    <path d="M42 49 C58 40 90 40 106 48" fill="none" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" stroke-opacity="0.68"/>
+    <ellipse cx="44" cy="92" rx="7.5" ry="4.5" fill="#FF7E95" fill-opacity="0.52"/>
+    <ellipse cx="104" cy="92" rx="7.5" ry="4.5" fill="#FF7E95" fill-opacity="0.52"/>
+    <ellipse cx="55" cy="79" rx="8.8" ry="10.2" fill="#181517"/>
+    <circle cx="52" cy="75" r="3.4" fill="#FFFFFF"/>
+    <circle cx="58" cy="83" r="1.6" fill="#FFFFFF"/>
+    <path d="M84 80 Q93 69 102 80" fill="none" stroke="#181517" stroke-width="4.8" stroke-linecap="round"/>
+    <path d="M66 90 Q74 92 82 90 C84 101 80 107 74 107 C68 107 64 101 66 90 Z" fill="#281317"/>
+    <path d="M68.5 100 Q74 95.5 79.5 100 C78.5 105 76.5 106.8 74 106.8 C71.5 106.8 69.5 105 68.5 100 Z" fill="#FF6B83"/>
+    <ellipse cx="18" cy="102" rx="10.5" ry="9" fill="#FFFFFF"/>
+    <ellipse cx="130" cy="100" rx="10.5" ry="9" fill="#FFFFFF"/>
+  </g>
+
+  <!-- 2. Wordmark & Tagline (No 'h' tile — Mascot is the Logo) -->
+  <text x="162" y="88" font-family="'Inter Tight', system-ui, sans-serif" font-size="48" font-weight="800" letter-spacing="-1.2" fill="#0B0D0C">
+    Hisaab<tspan fill="#16A34A">.Guru</tspan>
+  </text>
+  <text x="164" y="116" font-family="'Inter Tight', system-ui, sans-serif" font-size="17" font-weight="600" fill="#4E534C">
+    Business tumhara. Hisaab smart.
+  </text>
+</svg>

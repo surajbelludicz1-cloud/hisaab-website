@@ -1,1313 +1,1524 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark" class="scroll-smooth">
+<html lang="en" data-theme="light" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hisaab.Guru — Effortless Business. In Your Hand.</title>
-  <meta name="description" content="Hisaab.Guru is the AI accounting, GST bookkeeping, inventory, shifts, and 2026 Indian payroll mobile app crafted for every modern business. Download on the App Store and Google Play." />
-  <meta name="theme-color" content="#000000" id="meta-theme-color" />
-  <link rel="icon" type="image/svg+xml" href="assets/hisaab-guru-mascot.svg" />
+  <title>Hisaab.Guru · Business accounting that fits in your hand</title>
+  <meta name="description" content="AI accounting, 30-minute Business GST registration, GST bookkeeping, inventory, shifts and 2026 Indian payroll in one mobile app for Indian businesses. Download on the App Store and Google Play." />
+  <meta name="theme-color" content="#F6F3EC" id="meta-theme-color" />
+  <link rel="icon" type="image/svg+xml" href="/assets/hisaab-mark.svg?v=consistent_orange_logo" />
 
-  <!-- Fonts -->
+  <!-- Theme before first paint: light by default, dark only if the visitor chose it -->
+  <script>
+    (function () {
+      var t = 'light';
+      try { if (localStorage.getItem('hisaab-web-theme') === 'dark') t = 'dark'; } catch (e) {}
+      var d = document.documentElement;
+      d.setAttribute('data-theme', t);
+      d.classList.add('js');
+    })();
+  </script>
+
+  <!-- Fonts: Fraunces (Display Serif), Inter Tight (UI Sans), JetBrains Mono (Tabular Figures) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,0..100,0..1;1,9..144,300..700,0..100,0..1&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 
   <!-- daisyUI 5 + Tailwind CSS v4 -->
   <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
+  <!-- Three.js (3d-web-experience scroll & pointer-driven 3D depth scene) -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js" defer></script>
+
   <!-- GSAP 3.12 + ScrollTrigger -->
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 
+  <!-- Lottie (hero ledger, plays once) -->
+  <script src="https://cdn.jsdelivr.net/npm/lottie-web@5.12.2/build/player/lottie_light.min.js" defer></script>
+
   <style type="text/tailwindcss">
     :root,
-    html[data-theme="dark"] {
-      color-scheme: dark;
-      --bg-canvas: #000000;
-      --bg-elevated: #0B120E;
-      --bg-card: linear-gradient(180deg, rgba(20, 33, 26, 0.88) 0%, rgba(11, 18, 14, 0.94) 100%);
-      --bg-subcard: rgba(255, 255, 255, 0.04);
-      --bg-pill: rgba(255, 255, 255, 0.07);
-      --bg-nav: rgba(14, 22, 18, 0.72);
-      --ink-primary: #F5F5F7;
-      --ink-secondary: #A1A1A6;
-      --ink-Dim: rgba(245, 245, 247, 0.22);
-      --brand-emerald: #5EE889;
-      --brand-emerald-strong: #147A46;
-      --brand-amber: #FFB340;
-      --border-subtle: rgba(255, 255, 255, 0.09);
-      --border-strong: rgba(255, 255, 255, 0.16);
-      --card-shadow: 0 24px 60px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.12);
-      --card-shadow-hover: 0 32px 72px rgba(0, 0, 0, 0.75), inset 0 1px 0 rgba(255, 255, 255, 0.18);
-      --store-primary-bg: #F5F5F7;
-      --store-primary-ink: #000000;
-      --store-secondary-bg: rgba(255, 255, 255, 0.08);
-      --store-secondary-ink: #F5F5F7;
-      --glow-opacity: 0.18;
-    }
-
     html[data-theme="light"] {
       color-scheme: light;
-      --bg-canvas: #F5F5F7;
-      --bg-elevated: #FFFFFF;
-      --bg-card: linear-gradient(180deg, #FFFFFF 0%, #FBFBFD 100%);
-      --bg-subcard: rgba(15, 36, 25, 0.035);
-      --bg-pill: rgba(15, 36, 25, 0.06);
-      --bg-nav: rgba(255, 255, 255, 0.78);
-      --ink-primary: #1D1D1F;
-      --ink-secondary: #6E6E73;
-      --ink-Dim: rgba(29, 29, 31, 0.20);
-      --brand-emerald: #117A43;
-      --brand-emerald-strong: #0E5C34;
-      --brand-amber: #D97706;
-      --border-subtle: rgba(0, 0, 0, 0.08);
-      --border-strong: rgba(0, 0, 0, 0.14);
-      --card-shadow: 0 18px 45px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.9);
-      --card-shadow-hover: 0 26px 60px rgba(20, 122, 70, 0.12), inset 0 1px 0 rgba(255, 255, 255, 1);
-      --store-primary-bg: #1D1D1F;
-      --store-primary-ink: #FFFFFF;
-      --store-secondary-bg: #FFFFFF;
-      --store-secondary-ink: #1D1D1F;
-      --glow-opacity: 0.10;
+      --bg-canvas: #F6F3EC;
+      --ink-primary: #0B0D0C;
+      --ink-secondary: #4E534C;
+      --brand-emerald: #126C38;
+    }
+    html[data-theme="dark"] {
+      color-scheme: dark;
+      --bg-canvas: #0B0D0C;
+      --ink-primary: #F2EEE4;
+      --ink-secondary: #B4B1A7;
+      --brand-emerald: #67E58B;
     }
 
-    :root {
-      --font-apple: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Plus Jakarta Sans', system-ui, sans-serif;
-      --font-mono: 'SF Mono', 'JetBrains Mono', ui-monospace, monospace;
-    }
-
-    * {
-      box-sizing: border-box;
-      -webkit-tap-highlight-color: transparent;
-    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
     body {
-      font-family: var(--font-apple);
       background-color: var(--bg-canvas);
       color: var(--ink-primary);
       overflow-x: hidden;
-      font-optical-sizing: auto;
-      transition: background-color 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-                  color 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+      transition: background-color 240ms ease, color 240ms ease;
     }
 
-    .text-ink { color: var(--ink-primary); }
-    .text-muted-ink { color: var(--ink-secondary); }
-    .text-brand { color: var(--brand-emerald); }
-    .text-amber-brand { color: var(--brand-amber); }
-    .border-theme { border-color: var(--border-subtle); }
-    .bg-pill-theme { background-color: var(--bg-pill); }
-    .bg-subcard-theme { background-color: var(--bg-subcard); }
+    .text-ink { color: var(--il-ink, var(--ink-primary)); }
+    .text-muted-ink { color: var(--il-ink-2, var(--ink-secondary)); }
+    .text-caption { color: var(--il-ink-3); }
+    .text-brand { color: var(--il-green, var(--brand-emerald)); }
+    .border-theme { border-color: var(--il-line); }
 
-    /* Apple Optical Typography Scale */
-    .apple-hero-display {
-      font-size: clamp(2.65rem, 5.4vw, 4.65rem);
-      line-height: 1.04;
-      letter-spacing: -0.032em;
-      font-weight: 700;
+    .hl-wrap { width: 100%; max-width: 74rem; margin-inline: auto; padding-inline: 1.25rem; }
+    @media (min-width: 640px) { .hl-wrap { padding-inline: 2rem; } }
+    .measure { max-width: 64ch; }
+
+    /* Optical typography scale */
+    .apple-hero-display { font-size: clamp(2.15rem, 3.8vw, 3.75rem); line-height: 1.08; }
+    .apple-section-display { font-size: clamp(1.85rem, 3.4vw, 2.95rem); line-height: 1.08; }
+    .apple-manifesto-type { font-size: clamp(1.5rem, 3vw, 2.35rem); }
+    .hl-lead { font-size: clamp(1rem, 1.2vw, 1.12rem); line-height: 1.62; }
+    .hl-h3 { font-family: var(--font-sans); font-weight: 600; letter-spacing: -0.016em; line-height: 1.22; }
+    .hl-mono { font-family: var(--font-mono); font-variant-numeric: tabular-nums; letter-spacing: 0; }
+
+    .hl-section { padding-block: clamp(3.5rem, 7vw, 6rem); }
+
+    .hl-panel {
+      background: var(--il-panel);
+      border: 1px solid var(--il-line);
+      border-radius: var(--il-radius, 14px);
     }
-
-    .apple-section-display {
-      font-size: clamp(2.1rem, 4vw, 3.45rem);
-      line-height: 1.07;
-      letter-spacing: -0.026em;
-      font-weight: 700;
-    }
-
-    .apple-manifesto-type {
-      font-size: clamp(1.85rem, 3.5vw, 3.15rem);
-      line-height: 1.22;
-      letter-spacing: -0.022em;
-      font-weight: 600;
-    }
-
-    .font-mono-num {
-      font-family: var(--font-mono);
-      font-variant-numeric: tabular-nums;
+    .hl-sunk {
+      background: var(--il-panel-sunk);
+      border: 1px solid var(--il-line);
+      border-radius: var(--il-radius, 14px);
     }
 
-    /* Apple Translucent Vibrancy Chrome */
-    .apple-glass-nav {
-      background: var(--bg-nav);
-      backdrop-filter: blur(24px) saturate(180%);
-      -webkit-backdrop-filter: blur(24px) saturate(180%);
-      border: 1px solid var(--border-strong);
-      box-shadow: 0 12px 34px rgba(0, 0, 0, 0.18);
-      transition: background-color 0.35s ease, border-color 0.35s ease;
+    .hl-rows > * + * { border-top: 1px solid var(--il-line); }
+    .hl-leader { display: flex; align-items: baseline; gap: .75rem; }
+    .hl-leader::after { content: none; }
+    .hl-leader .dots { flex: 1; border-bottom: 1px dotted var(--il-line-strong); transform: translateY(-.25em); min-width: 1rem; }
+
+    /* Header: Floating Rounded-Edge Pill Navbar */
+    .hl-nav {
+      background: transparent;
+      padding-top: 0.65rem;
+      padding-inline: 0.35rem;
+    }
+    @media (min-width: 640px) {
+      .hl-nav { padding-top: 0.75rem; padding-inline: 0.75rem; }
+    }
+    .hl-nav-pill {
+      background: var(--il-nav);
+      border: 1.5px solid var(--il-line-strong);
+      border-radius: 9999px;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      box-shadow: 0 14px 36px rgba(11, 13, 12, 0.08);
+      padding-inline: 1.15rem;
+    }
+    .hl-navlink { color: var(--il-ink-2); transition: color 160ms ease; }
+    .hl-navlink:hover { color: var(--il-ink); }
+
+    .il-icon { width: 1.1rem; height: 1.1rem; flex: none; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* Store buttons */
+    .store-btn {
+      display: inline-flex; align-items: center; gap: .8rem;
+      min-height: 54px; padding: .55rem 1.2rem;
+      border-radius: var(--il-radius, 14px); border: 1px solid transparent;
+      cursor: pointer; user-select: none;
+      transition: transform 140ms var(--ease-out), background-color 160ms ease, color 160ms ease, border-color 160ms ease;
+    }
+    .store-btn:active { transform: scale(0.97); }
+    .store-btn-primary { background: var(--il-ink); color: var(--il-page); }
+    .store-btn-primary:hover { background: var(--il-green); color: var(--il-green-ink); }
+    .store-btn-secondary { background: var(--il-panel); color: var(--il-ink); border-color: var(--il-line-strong); }
+    .store-btn-secondary:hover { border-color: var(--il-ink); }
+    .store-btn small { display: block; font-size: .66rem; font-weight: 500; letter-spacing: .02em; opacity: .7; line-height: 1; }
+    .store-btn b { display: block; font-size: 1.08rem; font-weight: 600; letter-spacing: -0.01em; line-height: 1.15; margin-top: .15rem; }
+
+    .hl-link { color: var(--il-green); font-weight: 600; text-underline-offset: 3px; display: inline-flex; align-items: center; gap: .4rem; }
+    .hl-link:hover { text-decoration: underline; }
+    .hl-link .il-icon { transition: transform 160ms var(--ease-out); }
+    .hl-link:hover .il-icon { transform: translateX(2px); }
+
+    .hl-media { border-radius: calc(var(--radius, 14px) - 2px); display: block; width: 100%; height: auto; object-fit: cover; }
+
+    /* Tooltip badge */
+    .hg-tip {
+      position: relative; display: inline-flex; align-items: center; justify-content: center;
+      width: 1.1rem; height: 1.1rem; margin-left: .3rem; vertical-align: middle;
+      color: var(--il-ink-3); cursor: help; border-radius: 999px;
+    }
+    .hg-tip:hover, .hg-tip:focus-visible { color: var(--il-green); }
+    .hg-tip .il-icon { width: .95rem; height: .95rem; }
+    .hg-tip::after {
+      content: attr(data-hg-tip);
+      position: absolute; bottom: calc(100% + 8px); left: 50%;
+      transform: translateX(-50%) translateY(4px) scale(0.97);
+      transform-origin: bottom center;
+      width: max-content; max-width: 240px;
+      padding: .55rem .75rem;
+      font-size: .72rem; font-weight: 500; line-height: 1.45; text-align: left; white-space: normal;
+      pointer-events: none; opacity: 0; z-index: 90;
+      box-shadow: var(--il-shadow);
+      transition: opacity 130ms var(--ease-out), transform 130ms var(--ease-out);
+    }
+    .hg-tip:hover::after, .hg-tip:focus-visible::after { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
+
+    @keyframes hl-rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+    .js .hero-item { animation: hl-rise 260ms var(--ease-out) both; animation-delay: calc(var(--i, 0) * 45ms); }
+
+    /* Emil Kowalski Design Engineering: Responsive press feedback, origin-aware popovers, blur morphing & clip-path tabs */
+    .emil-press,
+    .hg-lang-btn,
+    details.sc-card > summary {
+      transition: transform 140ms var(--ease-out), color 160ms ease, background-color 160ms ease, border-color 160ms ease;
+    }
+    .emil-press:active,
+    .hg-lang-btn:active,
+    details.sc-card > summary:active {
+      transform: scale(0.97);
     }
 
-    /* Apple Bento Material Surface */
-    .apple-bento-card {
-      background: var(--bg-card);
-      border-radius: 28px;
-      border: 1px solid var(--border-subtle);
-      box-shadow: var(--card-shadow);
-      transition: transform 0.42s cubic-bezier(0.22, 1, 0.36, 1),
-                  border-color 0.35s ease,
-                  box-shadow 0.42s cubic-bezier(0.22, 1, 0.36, 1),
-                  background 0.35s ease;
+    /* Origin-aware popovers: scale from trigger (never scale(0)); modals stay centered; no blur filter so text stays razor-sharp */
+    #hg-buddy-panel {
+      transform-origin: bottom right;
+      opacity: 1;
+      transform: scale(1) translateY(0);
+      transition: opacity 200ms var(--ease-out), transform 200ms var(--ease-out);
+      @starting-style {
+        opacity: 0;
+        transform: scale(0.95) translateY(6px);
+      }
     }
-    .apple-bento-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(94, 232, 137, 0.38);
-      box-shadow: var(--card-shadow-hover);
+    #mobile-nav-menu {
+      transform-origin: top right;
+      opacity: 1;
+      transform: scale(1) translateY(0);
+      transition: opacity 180ms var(--ease-out), transform 180ms var(--ease-out);
+      @starting-style {
+        opacity: 0;
+        transform: scale(0.96) translateY(-4px);
+      }
     }
-
-    /* Primary & Secondary Store Buttons (Adapt to Light/Dark) */
-    .store-btn-primary {
-      background-color: var(--store-primary-bg);
-      color: var(--store-primary-ink);
-      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.18);
+    #qr_modal[open] .modal-box {
+      transform-origin: center;
+      opacity: 1;
+      transform: scale(1);
+      transition: opacity 200ms var(--ease-out), transform 200ms var(--ease-out);
+      @starting-style {
+        opacity: 0;
+        transform: scale(0.95);
+      }
     }
-    .store-btn-secondary {
-      background-color: var(--store-secondary-bg);
-      color: var(--store-secondary-ink);
-      border: 1px solid var(--border-strong);
-      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.10);
-    }
-
-    /* Instant Pointer-Down Response (Apple Rule #1) */
-    .apple-pressable {
-      transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
-                  box-shadow 0.28s cubic-bezier(0.22, 1, 0.36, 1),
-                  background-color 0.2s ease,
-                  border-color 0.2s ease;
-      cursor: pointer;
-      user-select: none;
-    }
-    .apple-pressable:active {
-      transform: scale(0.965) !important;
-      transition: transform 90ms ease-out !important;
+    /* Keyboard actions skip animation (0ms) */
+    [data-instant] {
+      transition-duration: 0ms !important;
+      animation-duration: 0ms !important;
     }
 
-    /* 3D Titanium Device Chassis */
-    .stage-3d-wrapper {
-      perspective: 1800px;
-      transform-style: preserve-3d;
+    /* Clean opacity transition without blur filter so text remains 100% sharp */
+    .emil-blur-morph {
+      transition: opacity 160ms ease;
+    }
+    .emil-blur-morph.is-transitioning {
+      opacity: 0.55;
     }
 
-    .phone-3d-rig {
+    /* clip-path duplicate tab overlay for seamless color transition */
+    .emil-clip-tabs {
       position: relative;
-      width: 296px;
-      height: 612px;
-      border-radius: 50px;
-      transform-style: preserve-3d;
-      background: linear-gradient(145deg, #2D3D34 0%, #111A15 48%, #223028 100%);
-      padding: 10px;
-      box-shadow:
-        0 38px 90px -15px rgba(0, 0, 0, 0.65),
-        0 0 0 1px rgba(255, 255, 255, 0.18),
-        inset 0 1.5px 3px rgba(255, 255, 255, 0.25),
-        inset 0 -2px 5px rgba(0, 0, 0, 0.85);
-      will-change: transform;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      padding: 0.25rem;
+      border-radius: 9999px;
+      background: var(--il-panel-sunk);
+      border: 1px solid var(--il-line);
     }
-
-    .phone-3d-rig::before {
-      content: '';
+    .emil-clip-tabs-active {
       position: absolute;
-      inset: 0;
-      border-radius: 50px;
-      background: linear-gradient(180deg, #1A2820, #080E0B);
-      transform: translateZ(-12px);
-      box-shadow: 0 28px 55px rgba(0, 0, 0, 0.55);
-      pointer-events: none;
-    }
-
-    .phone-screen-viewport {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      border-radius: 41px;
-      background: #050E09;
-      overflow: hidden;
+      inset: 0.25rem;
       display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    .phone-glass-glare {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(125deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.015) 34%, transparent 52%);
+      align-items: center;
+      gap: 0.25rem;
       pointer-events: none;
-      z-index: 30;
+      background: var(--il-green);
+      color: var(--il-green-ink);
+      border-radius: 9999px;
+      clip-path: inset(0px 75% 0px 0px round 999px);
+      transition: clip-path 200ms var(--ease-out);
     }
 
-    .floating-3d-chip {
-      transform: translateZ(42px);
-      background: rgba(12, 22, 16, 0.86);
-      backdrop-filter: blur(20px) saturate(180%);
-      -webkit-backdrop-filter: blur(20px) saturate(180%);
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      box-shadow: 0 20px 44px rgba(0, 0, 0, 0.45);
-    }
-
-    @keyframes scanLaser {
-      0%, 100% { top: 10%; opacity: 0.35; }
-      50% { top: 86%; opacity: 1; }
-    }
-    .laser-beam {
-      animation: scanLaser 3.2s cubic-bezier(0.45, 0, 0.55, 1) infinite;
-    }
-
-    @keyframes marqueeLeft {
-      0% { transform: translate3d(0, 0, 0); }
-      100% { transform: translate3d(-50%, 0, 0); }
-    }
-    .marquee-track {
-      display: flex;
-      width: max-content;
-      animation: marqueeLeft 36s linear infinite;
+    /* Keep cards on 2D subpixel-aligned rendering so every word is razor-sharp */
+    .hg-3d-stage { position: relative; }
+    .hg-3d-card {
+      transition: border-color 180ms ease, box-shadow 200ms var(--ease-out);
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .laser-beam, .marquee-track {
-        animation: none !important;
-      }
-      .phone-3d-rig, .apple-bento-card {
-        transition: opacity 200ms ease !important;
+      .js .hero-item { animation: opacity 200ms ease; transform: none !important; }
+      .hl-link .il-icon, .store-btn, .hg-3d-card, #hg-buddy-panel, #mobile-nav-menu, #qr_modal[open] .modal-box {
+        transform: none !important;
       }
     }
     @media (prefers-reduced-transparency: reduce) {
-      .apple-glass-nav, .floating-3d-chip {
-        backdrop-filter: none !important;
-      }
+      .hl-nav { backdrop-filter: none; -webkit-backdrop-filter: none; background: var(--il-page); }
     }
   </style>
+
+  <link rel="stylesheet" href="/assets/ink-ledger.css">
 </head>
-<body class="antialiased selection:bg-[#5EE889] selection:text-black">
+<body class="antialiased">
 
-  <!-- Calm Apple Studio Ambient Lighting -->
-  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-    <div class="absolute -top-48 left-1/2 -translate-x-1/2 w-[60rem] h-[32rem] rounded-full bg-[#147A46] blur-[150px]" style="opacity: var(--glow-opacity);"></div>
-    <div class="absolute top-1/3 right-[-10%] w-[34rem] h-[34rem] rounded-full bg-[#5EE889] blur-[160px]" style="opacity: calc(var(--glow-opacity) * 0.5);"></div>
-  </div>
+  <!-- Icon sprite: one 1.6px stroke family -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-external" viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></symbol>
+    <symbol id="i-qr" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="6.5" height="6.5" rx="1.2"/><rect x="14" y="3.5" width="6.5" height="6.5" rx="1.2"/><rect x="3.5" y="14" width="6.5" height="6.5" rx="1.2"/><path d="M14 14h2.5v2.5H14zM18 18h2.5v2.5H18zM14 19.5h1M19.5 14h1"/></symbol>
+    <symbol id="i-sparkles" viewBox="0 0 24 24"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9L12 3zM19 16l.9 2.1L22 19l-2.1.9L19 22l-.9-2.1L16 19l2.1-.9L19 16z"/></symbol>
+    <symbol id="i-zap" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></symbol>
+    <symbol id="i-volume" viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></symbol>
+    <symbol id="i-scan" viewBox="0 0 24 24"><path d="M3 7V5a2 2 0 0 1 2-2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/><path d="M21 17v2a2 2 0 0 1-2 2h-2"/><path d="M7 21H5a2 2 0 0 1-2-2v-2"/><line x1="7" y1="12" x2="17" y2="12"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="9" y1="16" x2="13" y2="16"/></symbol>
+    <symbol id="i-ledger" viewBox="0 0 24 24"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/><path d="M8 7h8"/><path d="M8 11h6"/></symbol>
+    <symbol id="i-profit" viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></symbol>
+    <symbol id="i-khata" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><polyline points="16 11 18 13 22 9"/></symbol>
+    <symbol id="i-payroll" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/></symbol>
+    <symbol id="i-gst" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-cafe" viewBox="0 0 24 24"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></symbol>
+    <symbol id="i-shop" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></symbol>
+    <symbol id="i-cart" viewBox="0 0 24 24"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></symbol>
+    <symbol id="i-clinic" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M12 9v6"/><path d="M9 12h6"/></symbol>
+    <symbol id="i-scissors" viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></symbol>
+    <symbol id="i-building" viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M12 6h.01"/><path d="M12 10h.01"/><path d="M12 14h.01"/><path d="M16 10h.01"/><path d="M16 14h.01"/><path d="M8 10h.01"/><path d="M8 14h.01"/></symbol>
+  </svg>
 
-  <!-- ================= APPLE TRANSLUCENT STICKY NAVBAR ================= -->
-  <header class="sticky top-4 z-50 px-4 sm:px-8 max-w-6xl mx-auto">
-    <div class="navbar apple-glass-nav rounded-full px-4 sm:px-6 py-2 min-h-[58px]">
-      <div class="navbar-start gap-3">
-        <a href="#top" class="flex items-center gap-2.5 apple-pressable focus:outline-none">
-          <img
-            src="assets/hisaab-guru-mascot.svg"
-            alt="Hisaab.Guru Logo"
-            class="w-9 h-9 object-contain"
-          />
-          <div class="flex flex-col">
-            <span class="text-lg sm:text-xl font-bold tracking-tight leading-none text-ink">
-              Hisaab<span class="text-brand">.Guru</span>
-            </span>
-          </div>
+  <!-- ================= HEADER (CLEAN ROUNDED-EDGE FLOATING PILL NAVBAR) ================= -->
+  <header class="hl-nav sticky top-0 z-50">
+    <div class="hl-wrap">
+      <div class="hl-nav-pill flex items-center justify-between gap-1.5 sm:gap-4 min-h-[56px] sm:min-h-[60px] px-3 sm:px-5">
+        <a href="#top" class="il-logo flex items-center gap-1.5 sm:gap-2 shrink-0" aria-label="Hisaab.Guru home">
+          <img src="/assets/hisaab-mark.svg?v=consistent_orange_logo" width="36" height="36" alt="Hisaab.Guru Logo" class="size-8 sm:size-9 object-contain drop-shadow-sm shrink-0" />
+          <span class="il-logo-word !text-[1.12rem] sm:!text-[1.32rem] whitespace-nowrap">Hisaab<span>.Guru</span></span>
         </a>
-      </div>
 
-      <div class="navbar-center hidden md:flex">
-        <nav aria-label="Main Navigation" class="flex items-center gap-8 text-[13px] font-medium text-muted-ink">
-          <a href="#manifesto" class="hover:text-ink transition-colors">Philosophy</a>
-          <a href="#bento-features" class="hover:text-ink transition-colors">Capabilities</a>
-          <a href="#industries" class="hover:text-ink transition-colors">Businesses</a>
-          <a href="#download-cta" class="hover:text-ink transition-colors">Download</a>
+        <nav aria-label="Main" class="hidden lg:flex items-center gap-5 xl:gap-7 text-[13.5px] font-medium whitespace-nowrap">
+          <a href="#all-in-one" class="hl-navlink whitespace-nowrap">Features</a>
+          <a href="#how-it-works" class="hl-navlink whitespace-nowrap">How It Works</a>
+          <a href="/pricing.html" class="hl-navlink whitespace-nowrap">Pricing</a>
+          <a href="#industries" class="hl-navlink whitespace-nowrap">Industries</a>
+          <a href="/gst-registration" class="hl-navlink whitespace-nowrap">GST Registration</a>
+          <a href="#faqs" class="hl-navlink whitespace-nowrap">FAQs</a>
+          <a href="#download-cta" class="hl-navlink whitespace-nowrap">Download</a>
         </nav>
+
+        <div class="flex items-center gap-1 sm:gap-2 shrink-0">
+          <button
+            type="button"
+            id="theme-toggle-btn"
+            onclick="toggleTheme()"
+            aria-label="Switch to dark theme"
+            title="Switch theme"
+            class="il-btn il-btn-ghost !min-h-0 !p-0 size-8.5 sm:size-10 !rounded-full shrink-0"
+          >
+            <svg id="theme-icon-sun" class="il-icon hidden" aria-hidden="true"><use href="#i-sun"/></svg>
+            <svg id="theme-icon-moon" class="il-icon" aria-hidden="true"><use href="#i-moon"/></svg>
+          </button>
+
+          <a href="/gst-registration?auth=1" id="navbar-login-signup-btn" class="il-btn il-btn-ghost !min-h-8.5 h-8.5 sm:h-10 !px-3 sm:!px-4 !rounded-full text-[12.5px] sm:text-[13px] whitespace-nowrap shrink-0">
+            Log in
+          </a>
+
+          <span class="hidden sm:inline-flex shrink-0">
+            <button type="button" onclick="qr_modal.showModal()" class="il-btn il-btn-primary !min-h-9 h-9 sm:h-10 !px-4 !rounded-full text-[13px] whitespace-nowrap">
+              Get the app
+            </button>
+          </span>
+
+          <button
+            type="button"
+            id="mobile-menu-toggle"
+            onclick="var m=document.getElementById('mobile-nav-menu'); if(m){m.toggleAttribute('hidden');}"
+            aria-label="Toggle navigation menu"
+            class="lg:!hidden il-btn il-btn-ghost !min-h-0 !p-0 size-8.5 sm:size-10 !rounded-full shrink-0"
+          >
+            <svg class="size-4.5 sm:size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+          </button>
+        </div>
       </div>
 
-      <div class="navbar-end gap-2.5">
-        <!-- Light / Dark Theme Toggle Button in Navbar -->
-        <button
-          type="button"
-          id="theme-toggle-btn"
-          onclick="toggleTheme()"
-          aria-label="Toggle Light or Dark Theme"
-          title="Switch between Light and Dark theme"
-          class="apple-pressable h-9 px-3.5 rounded-full bg-pill-theme border border-theme flex items-center gap-2 text-xs font-semibold text-ink"
-        >
-          <!-- Sun Icon (shown in dark mode to switch to light) -->
-          <svg id="theme-icon-sun" class="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <circle cx="12" cy="12" r="4"></circle>
-            <path stroke-linecap="round" d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32l1.41-1.41"></path>
-          </svg>
-          <!-- Moon Icon (shown in light mode to switch to dark) -->
-          <svg id="theme-icon-moon" class="w-4 h-4 text-[#117A43] hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
-          </svg>
-          <span id="theme-toggle-label">Light</span>
-        </button>
-
-        <button
-          type="button"
-          onclick="qr_modal.showModal()"
-          class="apple-pressable btn btn-sm rounded-full store-btn-primary border-0 font-semibold px-4 text-xs h-9"
-        >
-          <span>Get App</span>
-        </button>
-      </div>
+      <!-- Mobile & Tablet Dropdown Navigation (< 1024px) -->
+      <nav id="mobile-nav-menu" hidden aria-label="Mobile navigation" class="lg:hidden mt-2 sc-card p-4 flex flex-col gap-2 text-sm font-medium shadow-xl">
+        <a href="#all-in-one" onclick="document.getElementById('mobile-nav-menu').setAttribute('hidden','')" class="px-3 py-2 rounded-lg hover:bg-[var(--il-panel-sunk)] text-ink">Features</a>
+        <a href="#how-it-works" onclick="document.getElementById('mobile-nav-menu').setAttribute('hidden','')" class="px-3 py-2 rounded-lg hover:bg-[var(--il-panel-sunk)] text-ink">How It Works</a>
+        <a href="/pricing.html" class="px-3 py-2 rounded-lg hover:bg-[var(--il-panel-sunk)] text-ink">Pricing</a>
+        <a href="#industries" onclick="document.getElementById('mobile-nav-menu').setAttribute('hidden','')" class="px-3 py-2 rounded-lg hover:bg-[var(--il-panel-sunk)] text-ink">Industries</a>
+        <a href="/gst-registration" class="px-3 py-2 rounded-lg hover:bg-[var(--il-panel-sunk)] text-ink">GST Registration</a>
+        <a href="#faqs" onclick="document.getElementById('mobile-nav-menu').setAttribute('hidden','')" class="px-3 py-2 rounded-lg hover:bg-[var(--il-panel-sunk)] text-ink">FAQs</a>
+        <a href="#download-cta" onclick="document.getElementById('mobile-nav-menu').setAttribute('hidden','')" class="px-3 py-2 rounded-lg hover:bg-[var(--il-panel-sunk)] text-ink">Download App</a>
+      </nav>
     </div>
   </header>
 
-  <!-- ================= HERO SECTION ================= -->
-  <main id="top" class="relative z-10 pt-10 sm:pt-14 pb-20">
-    <section class="max-w-6xl mx-auto px-4 sm:px-8">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+  <main id="top" class="relative">
 
-        <!-- Left Column: Optical Display Headline & Store Actions (6 cols) -->
-        <div class="lg:col-span-6 space-y-6 text-center lg:text-left">
-          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-pill-theme border border-theme">
-            <span class="w-2 h-2 rounded-full bg-[#34D399]"></span>
-            <span class="text-xs font-semibold text-ink tracking-tight">
-              Exclusively on Mobile · Built for Every Business
-            </span>
-          </div>
+    <!-- ================= HERO ================= -->
+    <section class="relative overflow-hidden pt-8 sm:pt-12 lg:pt-16 pb-14 sm:pb-18">
+      <canvas id="hg-3d-experience-canvas" class="hg-3d-webgl-bg" aria-hidden="true"></canvas>
+      <div id="hg-3d-webgl-fallback" class="hidden" aria-hidden="true" data-webgl-status="ready"></div>
 
-          <h1 id="hero-title" class="apple-hero-display text-ink">
-            Effortless business.<br />
-            <span class="text-brand">Right in your hand.</span>
-          </h1>
+      <div class="hl-wrap relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
 
-          <p class="text-base sm:text-[18px] text-muted-ink max-w-xl mx-auto lg:mx-0 leading-[1.5] font-normal">
-            Snap supplier bills with AI, automate double-entry GST books &amp; input credits, reconcile UPI settlements, schedule shifts, and generate 2026 Indian statutory PDF payslips in a single tap — built for retail stores, restaurants, supermarkets, pharmacies, salons, hotels, and clinics.
-          </p>
-
-          <!-- Official App Store & Google Play Store Buttons -->
-          <div class="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5">
-            <!-- App Store -->
-            <a
-              href="#app-store"
-              onclick="event.preventDefault(); openStoreModal('App Store');"
-              class="apple-pressable store-btn-primary w-full sm:w-auto min-w-[210px] flex items-center justify-center sm:justify-start gap-3.5 px-6 py-3.5 rounded-2xl"
-            >
-              <svg class="w-8 h-8 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.33c.64-.78 1.08-1.86.96-2.94-.93.04-2.06.62-2.72 1.4-.58.68-1.1 1.79-.96 2.84 1.04.08 2.08-.52 2.72-1.3z"/>
-              </svg>
-              <div class="text-left">
-                <div class="text-[10px] font-semibold uppercase tracking-wider opacity-65 leading-none">Download on the</div>
-                <div class="text-xl font-bold tracking-tight leading-tight mt-0.5">App Store</div>
-              </div>
-            </a>
-
-            <!-- Google Play -->
-            <a
-              href="#google-play"
-              onclick="event.preventDefault(); openStoreModal('Google Play');"
-              class="apple-pressable store-btn-secondary w-full sm:w-auto min-w-[210px] flex items-center justify-center sm:justify-start gap-3.5 px-6 py-3.5 rounded-2xl"
-            >
-              <svg class="w-7 h-7 shrink-0" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M3.609 1.814L13.792 12 3.61 22.186a1.75 1.75 0 01-.61-1.334V3.148c0-.517.224-.998.609-1.334z" fill="#34D399"/>
-                <path d="M17.256 8.536L13.792 12l3.464 3.464 3.908-2.233c.79-.452.79-1.59 0-2.062l-3.908-2.633z" fill="#FBBF24"/>
-                <path d="M3.609 22.186L13.792 12l3.464 3.464-11.98 6.846c-.645.368-1.268.222-1.667-.124z" fill="#5EE889"/>
-                <path d="M3.609 1.814c.4-.346 1.022-.492 1.667-.124l11.98 6.846L13.792 12 3.609 1.814z" fill="#147A46"/>
-              </svg>
-              <div class="text-left">
-                <div class="text-[10px] font-semibold uppercase tracking-wider text-muted-ink leading-none">Get it on</div>
-                <div class="text-xl font-bold tracking-tight text-ink leading-tight mt-0.5">Google Play</div>
-              </div>
-            </a>
-
-            <!-- QR Code Button -->
-            <button
-              type="button"
-              onclick="qr_modal.showModal()"
-              class="apple-pressable store-btn-secondary px-4 h-[60px] rounded-2xl flex items-center gap-2 text-xs font-semibold"
-            >
-              <svg class="w-5 h-5 text-brand" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 4.875c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5A1.125 1.125 0 013.75 9.375v-4.5zM3.75 14.625c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5a1.125 1.125 0 01-1.125-1.125v-4.5zM13.5 4.875c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5A1.125 1.125 0 0113.5 9.375v-4.5z"/>
-                <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 6.75h.75v.75h-.75v-.75zM6.75 16.5h.75v.75h-.75v-.75zM16.5 6.75h.75v.75h-.75v-.75zM13.5 13.5h.75v.75h-.75v-.75zM13.5 19.5h.75v.75h-.75v-.75zM19.5 13.5h.75v.75h-.75v-.75zM19.5 19.5h.75v.75h-.75v-.75zM16.5 16.5h.75v.75h-.75v-.75z"/>
-              </svg>
-              <span>QR</span>
-            </button>
-          </div>
-
-          <!-- Apple-Style Segmented Control for 3D Stage -->
-          <div class="pt-2 flex items-center justify-center lg:justify-start">
-            <div class="inline-flex p-1 rounded-full bg-pill-theme border border-theme backdrop-blur-xl">
-              <button
-                type="button"
-                id="seg-welcome"
-                onclick="focusPhoneStage('welcome')"
-                class="apple-pressable px-4 py-1.5 rounded-full text-xs font-semibold store-btn-primary"
-              >
-                Welcome
-              </button>
-              <button
-                type="button"
-                id="seg-payroll"
-                onclick="focusPhoneStage('payroll')"
-                class="apple-pressable px-4 py-1.5 rounded-full text-xs font-semibold text-muted-ink hover:text-ink"
-              >
-                Payroll &amp; PDF
-              </button>
-              <button
-                type="button"
-                id="seg-scanner"
-                onclick="focusPhoneStage('scanner')"
-                class="apple-pressable px-4 py-1.5 rounded-full text-xs font-semibold text-muted-ink hover:text-ink"
-              >
-                AI Bill Capture
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Right Column: 3D Titanium Dual-Phone Stage (6 cols) -->
-        <div class="lg:col-span-6 relative flex items-center justify-center min-h-[620px] stage-3d-wrapper" id="hero-3d-stage">
-
-          <!-- Soft Studio Spotlight Behind Phones -->
-          <div class="absolute w-[360px] h-[360px] sm:w-[420px] sm:h-[420px] rounded-full bg-[#147A46]/20 blur-[90px] pointer-events-none"></div>
-
-          <!-- ==================== 3D PHONE 1: Welcome Screen ==================== -->
-          <div
-            id="phone-ios-rig"
-            class="phone-3d-rig z-20 -mr-10 sm:-mr-8"
-            style="transform: rotateY(-12deg) rotateX(5deg) rotateZ(-1.5deg) translateZ(20px);"
-          >
-            <div class="floating-3d-chip absolute -left-6 top-14 z-40 px-3.5 py-2 rounded-2xl flex items-center gap-2.5 pointer-events-none">
-              <span class="w-2 h-2 rounded-full bg-[#5EE889]"></span>
-              <div>
-                <div class="text-[10px] font-semibold text-[#5EE889] leading-none">Hisaab.Guru</div>
-                <div class="text-[11px] font-medium text-[#F5F5F7] mt-0.5">Instant Sign-In</div>
-              </div>
-            </div>
-
-            <div class="phone-screen-viewport">
-              <div class="phone-glass-glare"></div>
-
-              <!-- Status Bar -->
-              <div class="relative z-20 pt-3 px-6 flex items-center justify-between text-[11px] font-semibold text-white/90 bg-[#0E5C34]">
-                <span>9:41</span>
-                <div class="w-20 h-5 rounded-full bg-black"></div>
-                <span>100%</span>
-              </div>
-
-              <!-- Emerald Topographic Wave Header with Full 3D Plush SVG Mascot -->
-              <div class="relative h-[325px] w-full bg-gradient-to-b from-[#0E5C34] via-[#147A46] to-[#1C9456] flex flex-col items-center justify-center overflow-hidden">
-                <svg class="absolute inset-0 w-full h-full opacity-30" viewBox="0 0 280 320" fill="none">
-                  <path d="M-20 35 C 60 5, 140 85, 220 35 C 250 15, 280 45, 310 30" stroke="#A7F3D0" stroke-width="1.2"/>
-                  <path d="M-20 90 C 50 55, 130 135, 210 80 C 250 55, 280 90, 310 75" stroke="#A7F3D0" stroke-width="1.2"/>
-                  <path d="M-10 150 C 70 115, 150 185, 230 130 C 260 110, 290 135, 320 120" stroke="#A7F3D0" stroke-width="1.2"/>
-                  <ellipse cx="205" cy="84" rx="52" ry="32" stroke="#5EE889" stroke-width="1.1"/>
-                  <ellipse cx="205" cy="84" rx="28" ry="17" stroke="#5EE889" stroke-width="1.1"/>
-                  <ellipse cx="72" cy="185" rx="56" ry="30" stroke="#5EE889" stroke-width="1.1"/>
-                </svg>
-
-                <img
-                  src="assets/hisaab-guru-mascot.svg"
-                  alt="Hisaab.Guru 3D Mascot"
-                  class="relative z-10 w-38 h-38 object-contain drop-shadow-[0_14px_28px_rgba(0,0,0,0.4)]"
-                />
-
-                <svg class="absolute -bottom-1 left-0 w-full h-12 text-[#050E09]" viewBox="0 0 280 50" preserveAspectRatio="none">
-                  <path d="M0,12 C90,-12 180,55 280,16 L280,50 L0,50 Z" fill="currentColor"></path>
-                </svg>
-              </div>
-
-              <!-- Welcome Body -->
-              <div class="flex-1 bg-[#050E09] px-6 pt-3 pb-6 flex flex-col justify-between">
-                <div>
-                  <h2 class="text-3xl font-bold text-[#F5F5F7] tracking-tight">Welcome</h2>
-                  <p class="text-[12px] text-[#A1A1A6] mt-2 leading-relaxed">
-                    Smart business bookkeeping, GST bills, inventory, shifts &amp; payroll in one calm workspace.
-                  </p>
-                  <div class="mt-4">
-                    <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#5EE889]/50 text-[11px] font-semibold text-[#5EE889]">
-                      <span>▶</span> Explore demo
-                    </span>
-                  </div>
-                </div>
-
-                <div class="pt-3 flex items-center justify-end gap-3">
-                  <span class="text-xs font-semibold text-[#F5F5F7]">Continue</span>
-                  <span class="w-9 h-9 rounded-full bg-[#5EE889] text-black font-bold flex items-center justify-center shadow-lg">→</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- ==================== 3D PHONE 2: Live Payroll & AI Scanner ==================== -->
-          <div
-            id="phone-android-rig"
-            class="phone-3d-rig z-10 hidden sm:block mt-14"
-            style="transform: rotateY(-20deg) rotateX(7deg) rotateZ(2.5deg) translateZ(-25px);"
-          >
-            <div class="floating-3d-chip absolute -right-5 bottom-20 z-40 px-3.5 py-2 rounded-2xl flex items-center gap-2.5 pointer-events-none">
-              <span class="w-2 h-2 rounded-full bg-[#FFB340]"></span>
-              <div>
-                <div class="text-[10px] font-semibold text-[#FFB340] leading-none">2026 Statutory</div>
-                <div class="text-[11px] font-medium text-[#F5F5F7] mt-0.5">1-Tap PDF Payslip</div>
-              </div>
-            </div>
-
-            <div class="phone-screen-viewport bg-[#06110B] p-4">
-              <div class="phone-glass-glare"></div>
-
-              <!-- Status Bar -->
-              <div class="flex items-center justify-between text-[11px] font-semibold text-white/80 px-1">
-                <span>9:41</span>
-                <span class="w-2.5 h-2.5 rounded-full bg-black ring-1 ring-white/20"></span>
-                <span class="text-[#5EE889] text-[10px]">● Live Sync</span>
-              </div>
-
-              <!-- Hey Arjun Card with Symbol-Only Eye Toggle -->
-              <div class="rounded-2xl bg-gradient-to-br from-[#0E5C34] via-[#103825] to-[#1A2342] p-3.5 border border-white/15 shadow-lg mt-2">
-                <div class="flex items-center justify-between">
-                  <span class="text-[8.5px] font-mono-num uppercase tracking-wider px-2 py-0.5 rounded-full bg-black/35 text-[#5EE889]">
-                    PAYSLIP HISTORY · MONTHLY
-                  </span>
-                  <svg class="w-3.5 h-3.5 text-[#5EE889]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-                </div>
-
-                <div class="flex items-center gap-2 mt-2">
-                  <h3 class="font-bold text-base text-white leading-none">Hey Arjun,</h3>
-                  <button
-                    type="button"
-                    onclick="toggleDemoMask()"
-                    class="apple-pressable w-6 h-6 rounded-full bg-white/15 hover:bg-white/25 flex items-center justify-center text-white"
-                    title="Toggle salary visibility symbol"
-                    aria-label="Toggle salary visibility symbol"
-                  >
-                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
-                    </svg>
-                  </button>
-                </div>
-                <p class="text-[10px] text-white/75 mt-0.5">Operations Lead · Multi-Branch</p>
-
-                <div class="mt-2.5 pt-2 border-t border-white/15 flex items-baseline justify-between">
-                  <span class="text-[10px] text-white/70">Net Disbursed</span>
-                  <span id="demo-salary-val" class="font-mono-num text-sm font-bold text-[#5EE889]">₹48,450.00</span>
-                </div>
-              </div>
-
-              <!-- AI Bill OCR Laser Scanner Box -->
-              <div class="relative rounded-2xl bg-[#0B1C13] border border-white/10 p-3 overflow-hidden my-1.5">
-                <div class="laser-beam absolute left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-[#5EE889] to-transparent shadow-[0_0_12px_#5EE889]"></div>
-                <div class="flex items-center justify-between text-[9px] font-mono-num text-[#5EE889]">
-                  <span>HISAAB AI OCR</span>
-                  <span>GSTIN VERIFIED ✓</span>
-                </div>
-                <div class="mt-1.5 space-y-1 text-[11px]">
-                  <div class="flex justify-between text-white font-medium">
-                    <span>Wholesale Invoice #409</span>
-                    <span class="font-mono-num">₹18,200</span>
-                  </div>
-                  <div class="flex justify-between text-[#A1A1A6] text-[10px]">
-                    <span>CGST 9% + SGST 9%</span>
-                    <span class="font-mono-num text-[#5EE889]">+₹3,276 ITC</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Statutory Salary Breakdown & PDF Payslip Card -->
-              <div class="rounded-2xl bg-[#0B1811] border border-white/10 p-3 space-y-2">
-                <div class="flex items-center justify-between">
-                  <div>
-                    <div class="text-[11px] font-semibold text-white">Oct 2026 Payslip PDF</div>
-                    <div class="text-[9.5px] text-[#A1A1A6]">Basic · DA · HRA · EPF · ESI</div>
-                  </div>
-                  <span class="px-2 py-1 rounded-md bg-[#5EE889]/20 text-[#5EE889] font-mono-num text-[9.5px] font-semibold">
-                    OPEN PDF
-                  </span>
-                </div>
-                <div class="w-full bg-white/10 h-1.5 rounded-full overflow-hidden flex">
-                  <div class="bg-[#5EE889] w-1/2 h-full"></div>
-                  <div class="bg-[#FFB340] w-1/4 h-full"></div>
-                  <div class="bg-[#64D2FF] w-1/4 h-full"></div>
-                </div>
-                <div class="flex justify-between text-[9px] font-mono-num text-[#A1A1A6]">
-                  <span>● Basic+DA 50%</span>
-                  <span>● HRA 25%</span>
-                  <span>● Shifts 100%</span>
-                </div>
-              </div>
-
-              <!-- Home Bar -->
-              <div class="w-20 h-1 bg-white/25 rounded-full mx-auto"></div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= CLEAN APPLE TELEMETRY TICKER ================= -->
-    <section aria-label="Platform Capabilities" class="mt-12 sm:mt-16 border-y border-theme bg-subcard-theme py-4 overflow-hidden">
-      <div class="marquee-track flex items-center gap-12 text-xs sm:text-sm font-medium tracking-wide text-muted-ink">
-        <span class="flex items-center gap-2.5"><i class="w-1.5 h-1.5 rounded-full bg-[#34D399]"></i> Automatic Double-Entry Bookkeeping</span>
-        <span class="flex items-center gap-2.5"><i class="w-1.5 h-1.5 rounded-full bg-[#34D399]"></i> AI Invoice &amp; Receipt OCR</span>
-        <span class="flex items-center gap-2.5"><i class="w-1.5 h-1.5 rounded-full bg-[#34D399]"></i> Live P&amp;L, Trial Balance &amp; GST ITC</span>
-        <span class="flex items-center gap-2.5"><i class="w-1.5 h-1.5 rounded-full bg-[#34D399]"></i> Customer &amp; Supplier Khata + UPI Reconciliation</span>
-        <span class="flex items-center gap-2.5"><i class="w-1.5 h-1.5 rounded-full bg-[#34D399]"></i> 2026 Statutory Payroll &amp; Signed PDF Payslips</span>
-        <span class="flex items-center gap-2.5"><i class="w-1.5 h-1.5 rounded-full bg-[#FFB340]"></i> Retail · Restaurants · Supermarkets · Pharmacies · Salons · Hotels · Clinics</span>
-        <!-- Duplicate -->
-        <span class="flex items-center gap-2.5"><i class="w-1.5 h-1.5 rounded-full bg-[#34D399]"></i> Automatic Double-Entry Bookkeeping</span>
-        <span class="flex items-center gap-2.5"><i class="w-1.5 h-1.5 rounded-full bg-[#34D399]"></i> AI Invoice &amp; Receipt OCR</span>
-        <span class="flex items-center gap-2.5"><i class="w-1.5 h-1.5 rounded-full bg-[#34D399]"></i> Live P&amp;L, Trial Balance &amp; GST ITC</span>
-        <span class="flex items-center gap-2.5"><i class="w-1.5 h-1.5 rounded-full bg-[#34D399]"></i> Customer &amp; Supplier Khata + UPI Reconciliation</span>
-        <span class="flex items-center gap-2.5"><i class="w-1.5 h-1.5 rounded-full bg-[#34D399]"></i> 2026 Statutory Payroll &amp; Signed PDF Payslips</span>
-        <span class="flex items-center gap-2.5"><i class="w-1.5 h-1.5 rounded-full bg-[#FFB340]"></i> Retail · Restaurants · Supermarkets · Pharmacies · Salons · Hotels · Clinics</span>
-      </div>
-    </section>
-
-    <!-- ================= CENTERED APPLE KEYNOTE MANIFESTO (No Side Logo Box!) ================= -->
-    <section id="manifesto" class="max-w-4xl mx-auto px-4 sm:px-8 py-24 sm:py-36 flex flex-col items-center justify-center text-center">
-      <p id="scrub-manifesto" class="apple-manifesto-type max-w-4xl mx-auto text-center flex flex-wrap justify-center">
-        Modern business owners shouldn’t be chained to a desktop spreadsheet. Every thermal bill, GST ledger, shift roster, and statutory payslip belongs effortlessly in the palm of your hand — crafted exclusively for our mobile app.
-      </p>
-    </section>
-
-    <!-- ================= APPLE BENTO GRID CAPABILITIES ================= -->
-    <section id="bento-features" class="max-w-6xl mx-auto px-4 sm:px-8 pb-24">
-      <div class="text-center max-w-2xl mx-auto mb-14">
-        <h2 class="apple-section-display text-ink">
-          Designed for speed.<br />
-          <span class="text-muted-ink">Engineered for statutory precision.</span>
-        </h2>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
-        <!-- Bento 1: AI Bill Capture (7 cols) -->
-        <div class="apple-bento-card md:col-span-7 p-8 sm:p-10 flex flex-col justify-between">
-          <div>
-            <span class="text-xs font-semibold uppercase tracking-wider text-brand">AI Bill Capture</span>
-            <h3 class="text-2xl sm:text-3xl font-bold text-ink tracking-tight mt-2">
-              Point your camera. Your GST ledger writes itself.
-            </h3>
-            <p class="text-sm sm:text-base text-muted-ink mt-2.5 max-w-xl leading-relaxed">
-              Snap any paper invoice or thermal receipt. Hisaab.Guru extracts line items, verifies supplier GSTIN, splits CGST, SGST, and IGST, and flags unpaid bills on your Home screen automatically.
-            </p>
-          </div>
-
-          <div class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-3.5">
-            <div class="rounded-2xl bg-subcard-theme border border-theme p-4">
-              <div class="font-mono-num text-xs font-semibold text-brand">0.4s</div>
-              <div class="text-sm font-semibold text-ink mt-1">Auto-Crop Scan</div>
-              <div class="text-xs text-muted-ink mt-0.5">De-skews crumpled bills</div>
-            </div>
-            <div class="rounded-2xl bg-subcard-theme border border-theme p-4">
-              <div class="font-mono-num text-xs font-semibold text-amber-brand">100%</div>
-              <div class="text-sm font-semibold text-ink mt-1">HSN &amp; Tax Split</div>
-              <div class="text-xs text-muted-ink mt-0.5">CGST + SGST + IGST</div>
-            </div>
-            <div class="rounded-2xl bg-[#147A46]/15 border border-[#5EE889]/30 p-4">
-              <div class="font-mono-num text-xs font-semibold text-brand">Ready</div>
-              <div class="text-sm font-semibold text-ink mt-1">Stock &amp; ITC Sync</div>
-              <div class="text-xs text-brand mt-0.5">1-Tap Owner Review</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Bento 2: 2026 Statutory Payroll & PDF Payslips (5 cols) -->
-        <div class="apple-bento-card md:col-span-5 p-8 sm:p-10 flex flex-col justify-between">
-          <div>
-            <span class="text-xs font-semibold uppercase tracking-wider text-amber-brand">2026 Indian Payroll</span>
-            <h3 class="text-2xl sm:text-3xl font-bold text-ink tracking-tight mt-2">
-              Instant PDF payslips &amp; privacy by design.
-            </h3>
-            <p class="text-sm sm:text-base text-muted-ink mt-2.5 leading-relaxed">
-              Structured Basic, DA, HRA, Special Allowance, EPF, ESI, and Professional Tax calculations with owner-only digital signatures, symbol-only salary privacy, and leave management.
-            </p>
-          </div>
-
-          <div class="mt-8 rounded-2xl bg-subcard-theme border border-theme p-4 flex items-center gap-4">
-            <div class="w-16 h-16 shrink-0 relative flex items-center justify-center">
-              <svg class="w-full h-full -rotate-90" viewBox="0 0 36 36">
-                <circle cx="18" cy="18" r="14" fill="none" stroke="rgba(128,128,128,0.18)" stroke-width="4"></circle>
-                <circle cx="18" cy="18" r="14" fill="none" stroke="#34D399" stroke-width="4" stroke-dasharray="50 100"></circle>
-                <circle cx="18" cy="18" r="14" fill="none" stroke="#FFB340" stroke-width="4" stroke-dasharray="25 100" stroke-dashoffset="-50"></circle>
-                <circle cx="18" cy="18" r="14" fill="none" stroke="#38BDF8" stroke-width="4" stroke-dasharray="25 100" stroke-dashoffset="-75"></circle>
-              </svg>
-              <span class="absolute font-mono-num text-[10px] font-bold text-brand">PDF</span>
-            </div>
-            <div class="space-y-1 text-xs flex-1">
-              <div class="flex justify-between"><span class="text-muted-ink">Basic + DA (50%)</span><span class="font-mono-num font-semibold text-ink">₹24,000</span></div>
-              <div class="flex justify-between"><span class="text-muted-ink">HRA &amp; Allowances</span><span class="font-mono-num font-semibold text-ink">₹16,800</span></div>
-              <div class="flex justify-between"><span class="text-muted-ink">Owner Signature</span><span class="font-mono-num font-semibold text-brand">Verified</span></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Bento 3: Double-Entry Bookkeeping, Trial Balance & Period Lock (6 cols) -->
-        <div class="apple-bento-card md:col-span-6 p-8 sm:p-10 flex flex-col justify-between">
-          <div>
-            <span class="text-xs font-semibold uppercase tracking-wider text-brand">Indian Double-Entry Books</span>
-            <h3 class="text-2xl font-bold text-ink tracking-tight mt-2">
-              Journal vouchers, Trial Balance, P&amp;L &amp; Period Lock.
-            </h3>
-            <p class="text-sm text-muted-ink mt-2 leading-relaxed">
-              Every sale invoice, approved purchase bill, credit/debit note reversal, and monthly payroll run automatically posts balanced double-entry journal lines (`JV-SALE`, `JV-BILL`, `JV-PAY`) with CA-ready GSTR-1 &amp; GSTR-3B summaries.
-            </p>
-          </div>
-          <div class="mt-6 grid grid-cols-3 gap-3 text-center">
-            <div class="rounded-xl bg-subcard-theme border border-theme p-3">
-              <div class="font-mono-num text-xs font-bold text-brand">Dr = Cr</div>
-              <div class="text-xs font-semibold text-ink mt-1">Trial Balance</div>
-            </div>
-            <div class="rounded-xl bg-subcard-theme border border-theme p-3">
-              <div class="font-mono-num text-xs font-bold text-amber-brand">ITC Offset</div>
-              <div class="text-xs font-semibold text-ink mt-1">Net GST Ledger</div>
-            </div>
-            <div class="rounded-xl bg-subcard-theme border border-theme p-3">
-              <div class="font-mono-num text-xs font-bold text-brand">Locked</div>
-              <div class="text-xs font-semibold text-ink mt-1">Audit &amp; Period Lock</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Bento 4: Customer & Supplier Khata + Bank/UPI Reconciliation (6 cols) -->
-        <div class="apple-bento-card md:col-span-6 p-8 sm:p-10 flex flex-col justify-between">
-          <div>
-            <span class="text-xs font-semibold uppercase tracking-wider text-amber-brand">Khata &amp; Reconciliation</span>
-            <h3 class="text-2xl font-bold text-ink tracking-tight mt-2">
-              Customer &amp; Supplier Khata with auto-matched UPI feeds.
-            </h3>
-            <p class="text-sm text-muted-ink mt-2 leading-relaxed">
-              Track unpaid, part-paid, and overdue supplier bills or customer credit sales. Automatically match incoming UPI/Card settlements and outgoing vendor payouts, while syncing stock inward moves and unit costing.
-            </p>
-          </div>
-          <div class="mt-6 grid grid-cols-3 gap-3 text-center">
-            <div class="rounded-xl bg-subcard-theme border border-theme p-3">
-              <div class="font-mono-num text-xs font-bold text-brand">AR / AP</div>
-              <div class="text-xs font-semibold text-ink mt-1">Party Khata</div>
-            </div>
-            <div class="rounded-xl bg-subcard-theme border border-theme p-3">
-              <div class="font-mono-num text-xs font-bold text-brand">UPI / Bank</div>
-              <div class="text-xs font-semibold text-ink mt-1">Auto-Reconcile</div>
-            </div>
-            <div class="rounded-xl bg-subcard-theme border border-theme p-3">
-              <div class="font-mono-num text-xs font-bold text-amber-brand">Stock Sync</div>
-              <div class="text-xs font-semibold text-ink mt-1">Inventory &amp; Costing</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Bento 5: Autonomous AI Accountant Reviewer, GST/ITR Engine & CA Handoff (12 cols) -->
-        <div class="apple-bento-card md:col-span-12 p-8 sm:p-10">
-          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-8 border-b border-theme">
-            <div class="max-w-2xl">
-              <span class="text-xs font-semibold uppercase tracking-wider text-brand">
-                Autonomous AI Accountant · 12-Pillar Lifecycle
+          <!-- Left Column: Business Value Proposition -->
+          <div class="lg:col-span-6 flex flex-col gap-5 text-center lg:text-left">
+            <div class="flex flex-wrap items-center justify-center lg:justify-start gap-2 hero-item" style="--i:0">
+              <span class="sc-badge sc-badge-secondary">
+                <svg class="il-icon !size-3.5 text-orange-brand" aria-hidden="true"><use href="#i-sparkles"/></svg>
+                <span>Smart Business Accounting &amp; GST</span>
               </span>
-              <h3 class="text-2xl sm:text-3xl font-bold text-ink tracking-tight mt-2">
-                No accountant needed for routine business accounting.
-              </h3>
-              <p class="text-sm sm:text-base text-muted-ink mt-2 leading-relaxed">
-                Hisaab.Guru independently completes your daily bookkeeping, GSTR-1/2B/3B reconciliation, RBI Account Aggregator bank matching, Sec 44AD / ITR-3 computation, WDV depreciation, and tax notice replies — while packaging tamper-evident workpapers for a qualified Chartered Accountant whenever a statutory audit (Companies Act Sec 141 or Income Tax Act Sec 44AB) is legally required.
-              </p>
+              <span class="badge-orange-soft hl-mono">
+                <svg class="il-icon !size-3.5" aria-hidden="true"><use href="#i-zap"/></svg>
+                <span>24/7 AI Bookkeeping</span>
+              </span>
             </div>
-            <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-2 gap-3 shrink-0">
-              <div class="rounded-2xl bg-subcard-theme border border-theme px-4 py-3 text-center">
-                <div class="font-mono-num text-sm font-bold text-brand">Schedule III</div>
-                <div class="text-[11px] text-muted-ink mt-0.5">Balance Sheet &amp; Close</div>
-              </div>
-              <div class="rounded-2xl bg-subcard-theme border border-theme px-4 py-3 text-center">
-                <div class="font-mono-num text-sm font-bold text-brand">GSTR-1 / 2B / 3B</div>
-                <div class="text-[11px] text-muted-ink mt-0.5">GSP EVC Filing</div>
-              </div>
-              <div class="rounded-2xl bg-subcard-theme border border-theme px-4 py-3 text-center">
-                <div class="font-mono-num text-sm font-bold text-amber-brand">ITR-3 / ITR-4</div>
-                <div class="text-[11px] text-muted-ink mt-0.5">Sec 44AD &amp; WDV Dep.</div>
-              </div>
-              <div class="rounded-2xl bg-subcard-theme border border-theme px-4 py-3 text-center">
-                <div class="font-mono-num text-sm font-bold text-brand">Sec 141 / 44AB</div>
-                <div class="text-[11px] text-muted-ink mt-0.5">CA Audit Handoff</div>
-              </div>
+
+            <h1 id="hero-title" class="apple-hero-display text-ink hero-item" style="--i:1">
+              Run your business. Let <em class="text-orange-brand">Hisaab<span class="text-brand">.Guru</span></em> handle your bills &amp; GST.
+            </h1>
+
+            <p class="hl-lead text-muted-ink measure mx-auto lg:mx-0 hero-item" style="--i:2">
+              Snap a photo of any purchase bill or invoice on your phone. Hisaab.Guru automatically records your expenses, tracks daily profit, manages customer khata &amp; staff payroll, and prepares your Business GST registration in 30 minutes.
+            </p>
+
+            <div class="flex flex-wrap items-center justify-center lg:justify-start gap-3 hero-item" style="--i:3">
+              <a href="#app-store" onclick="event.preventDefault(); openStoreModal('App Store');" class="store-btn store-btn-primary justify-center sm:justify-start">
+                <svg class="size-6 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.33c.64-.78 1.08-1.86.96-2.94-.93.04-2.06.62-2.72 1.4-.58.68-1.1 1.79-.96 2.84 1.04.08 2.08-.52 2.72-1.3z"/>
+                </svg>
+                <span class="text-left"><small>Download on the</small><b>App Store</b></span>
+              </a>
+
+              <a href="#google-play" onclick="event.preventDefault(); openStoreModal('Google Play');" class="store-btn store-btn-secondary justify-center sm:justify-start">
+                <svg class="size-5.5 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M3.609 1.814L13.792 12 3.61 22.186a1.75 1.75 0 01-.61-1.334V3.148c0-.517.224-.998.609-1.334z" opacity=".9"/>
+                  <path d="M17.256 8.536L13.792 12l3.464 3.464 3.908-2.233c.79-.452.79-1.59 0-2.062l-3.908-2.633z" opacity=".55"/>
+                  <path d="M3.609 22.186L13.792 12l3.464 3.464-11.98 6.846c-.645.368-1.268.222-1.667-.124z" opacity=".75"/>
+                  <path d="M3.609 1.814c.4-.346 1.022-.492 1.667-.124l11.98 6.846L13.792 12 3.609 1.814z"/>
+                </svg>
+                <span class="text-left"><small>Get it on</small><b>Google Play</b></span>
+              </a>
+
+              <button type="button" onclick="qr_modal.showModal()" class="store-btn pricing-choose-btn justify-center text-sm font-semibold">
+                <svg class="il-icon" data-icon="inline-start" aria-hidden="true"><use href="#i-qr"/></svg>
+                <span>Scan QR</span>
+              </button>
             </div>
+
+            <p class="text-sm text-muted-ink hero-item flex flex-wrap items-center justify-center lg:justify-start gap-1.5" style="--i:4">
+              <span>Need a new GST number?</span>
+              <a href="/gst-registration" id="hero-register-gst-btn" class="hl-link">
+                <span>Register your Business GST in 30 minutes</span>
+                <svg class="il-icon" data-icon="inline-end" aria-hidden="true"><use href="#i-arrow"/></svg>
+              </a>
+              <span class="badge-orange-soft hl-mono !text-[11px] !py-0.5 !px-2">₹399</span>
+            </p>
           </div>
 
-          <!-- 5-Stage Autonomous AI Accountant Pipeline -->
-          <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-            <div class="rounded-2xl bg-subcard-theme border border-theme p-4">
-              <div class="font-mono-num text-[11px] font-bold text-brand">01 · CAPTURE</div>
-              <div class="text-sm font-bold text-ink mt-1">Owner Scans &amp; Connects</div>
-              <div class="text-xs text-muted-ink mt-1 leading-relaxed">
-                Photographs bills, records sales, and links bank/UPI feeds.
+          <!-- Right Column: Product Overview Video -->
+          <div class="lg:col-span-6 hero-item hg-3d-stage" style="--i:5">
+            <article class="sc-card hg-3d-card" data-hg-tilt>
+              <header class="sc-card-header !py-3 !px-4 sm:!px-5">
+                <div class="flex flex-wrap items-center justify-between gap-2">
+                  <div class="flex items-center gap-2">
+                    <img src="/assets/hisaab-mark.svg?v=consistent_orange_logo" width="24" height="24" alt="Hisaab.Guru Logo" class="size-6 object-contain shrink-0" />
+                    <span class="text-xs sm:text-sm font-semibold text-ink">How <span class="il-logo-word !text-[0.95rem]">Hisaab<span>.Guru</span></span> Works</span>
+                  </div>
+                  <div class="emil-clip-tabs" id="heroLangTabs" role="group" aria-label="Select audio language">
+                    <button type="button" data-lang="hi" onclick="window.switchVideoLanguage('hi', this)" class="hg-lang-btn px-2.5 py-0.5 rounded-full text-[11px] font-semibold text-muted-ink hover:text-ink">हिन्दी</button>
+                    <button type="button" data-lang="kn" onclick="window.switchVideoLanguage('kn', this)" class="hg-lang-btn px-2.5 py-0.5 rounded-full text-[11px] font-semibold text-muted-ink hover:text-ink">ಕನ್ನಡ</button>
+                    <button type="button" data-lang="ta" onclick="window.switchVideoLanguage('ta', this)" class="hg-lang-btn px-2.5 py-0.5 rounded-full text-[11px] font-semibold text-muted-ink hover:text-ink">தமிழ்</button>
+                    <button type="button" data-lang="te" onclick="window.switchVideoLanguage('te', this)" class="hg-lang-btn px-2.5 py-0.5 rounded-full text-[11px] font-semibold text-muted-ink hover:text-ink">తెలుగు</button>
+                    <!-- Duplicate active tab layer clipped via clip-path: inset() for seamless color transition -->
+                    <div class="emil-clip-tabs-active" id="heroLangClipLayer" aria-hidden="true">
+                      <span data-clip-lang="hi" class="px-2.5 py-0.5 rounded-full text-[11px] font-semibold">हिन्दी</span>
+                      <span data-clip-lang="kn" class="px-2.5 py-0.5 rounded-full text-[11px] font-semibold">ಕನ್ನಡ</span>
+                      <span data-clip-lang="ta" class="px-2.5 py-0.5 rounded-full text-[11px] font-semibold">தமிழ்</span>
+                      <span data-clip-lang="te" class="px-2.5 py-0.5 rounded-full text-[11px] font-semibold">తెలుగు</span>
+                    </div>
+                  </div>
+                </div>
+              </header>
+
+              <div class="sc-card-content !p-0">
+                <div class="relative aspect-video bg-[#07140C] border-y border-theme">
+                  <video
+                    id="heroMainVideo"
+                    src="/assets/video/brag-hi.mp4?v=vigenair_24x7_2k"
+                    poster="/assets/video/brag.jpg?v=vigenair_24x7_2k"
+                    controls
+                    playsinline
+                    preload="metadata"
+                    class="w-full h-full object-cover"
+                  ></video>
+                </div>
               </div>
-            </div>
-            <div class="rounded-2xl bg-subcard-theme border border-theme p-4">
-              <div class="font-mono-num text-[11px] font-bold text-brand">02 · AI REVIEWER</div>
-              <div class="text-sm font-bold text-ink mt-1">Extracts, Checks &amp; Asks</div>
-              <div class="text-xs text-muted-ink mt-1 leading-relaxed">
-                Flags duplicate bills, missing GSTINs &amp; Sec 17(5) blocked ITC; asks targeted questions instead of guessing.
-              </div>
-            </div>
-            <div class="rounded-2xl bg-subcard-theme border border-theme p-4">
-              <div class="font-mono-num text-[11px] font-bold text-brand">03 · VERIFIED ENGINE</div>
-              <div class="text-sm font-bold text-ink mt-1">Idempotent Ledger &amp; Tax</div>
-              <div class="text-xs text-muted-ink mt-1 leading-relaxed">
-                Posts balanced JVs, Opening/Closing entries, WDV depreciation, EPF/ESI/PT challans &amp; Trial Balance.
-              </div>
-            </div>
-            <div class="rounded-2xl bg-subcard-theme border border-theme p-4">
-              <div class="font-mono-num text-[11px] font-bold text-amber-brand">04 · OWNER SIGN-OFF</div>
-              <div class="text-sm font-bold text-ink mt-1">Returns, Deadlines &amp; Notices</div>
-              <div class="text-xs text-muted-ink mt-1 leading-relaxed">
-                Prepares GSTR-1/3B, Advance Tax &amp; ASMT-10/143(1) notice replies for owner EVC authorization.
-              </div>
-            </div>
-            <div class="rounded-2xl bg-subcard-theme border border-theme p-4">
-              <div class="font-mono-num text-[11px] font-bold text-brand">05 · CA HANDOFF</div>
-              <div class="text-sm font-bold text-ink mt-1">Statutory Audit Ready</div>
-              <div class="text-xs text-muted-ink mt-1 leading-relaxed">
-                Packages SHA-256 verified audit evidence when a qualified CA DSC sign-off is required by law.
-              </div>
-            </div>
+
+              <footer class="sc-card-footer !py-2.5 !px-4 sm:!px-5">
+                <div class="flex items-center gap-2 text-xs text-muted-ink">
+                  <span class="size-2 rounded-full bg-[var(--il-orange-vivid)]"></span>
+                  <span id="heroVideoLangStatus" class="emil-blur-morph">24/7 AI · All 6 features with real-life examples: Bill OCR, bookkeeping, profit, khata, payroll &amp; GST</span>
+                </div>
+                <button
+                  type="button"
+                  onclick="var v=document.getElementById('heroMainVideo'); if(v){v.muted=false; v.volume=1.0; v.currentTime=0; v.play();}"
+                  class="sc-btn pricing-choose-primary-btn !min-h-8 !px-3.5 !py-1 !rounded-full !text-xs shrink-0 inline-flex items-center gap-1.5"
+                >
+                  <svg class="il-icon !size-3.5" aria-hidden="true"><use href="#i-volume"/></svg>
+                  <span>Play Audio</span>
+                </button>
+              </footer>
+              <script>
+                window.updateLangClipPath = function(activeBtn) {
+                  var layer = document.getElementById('heroLangClipLayer');
+                  var container = document.getElementById('heroLangTabs');
+                  if (!layer || !container || !activeBtn) return;
+                  var cRect = container.getBoundingClientRect();
+                  var bRect = activeBtn.getBoundingClientRect();
+                  var pad = 4;
+                  var innerW = Math.max(cRect.width - pad * 2, 1);
+                  var leftPx = Math.max(bRect.left - cRect.left - pad, 0);
+                  var rightPx = Math.max(innerW - (leftPx + bRect.width), 0);
+                  layer.style.clipPath = 'inset(0px ' + rightPx.toFixed(1) + 'px 0px ' + leftPx.toFixed(1) + 'px round 999px)';
+                };
+                window.addEventListener('DOMContentLoaded', function() {
+                  var firstBtn = document.querySelector('.hg-lang-btn[data-lang="hi"]');
+                  if (firstBtn) window.updateLangClipPath(firstBtn);
+                });
+                window.addEventListener('resize', function() {
+                  var activeBtn = document.querySelector('.hg-lang-btn[data-active="true"]') || document.querySelector('.hg-lang-btn[data-lang="hi"]');
+                  if (activeBtn) window.updateLangClipPath(activeBtn);
+                }, { passive: true });
+
+                window.switchVideoLanguage = function(lang, btnEl) {
+                  var v = document.getElementById('heroMainVideo');
+                  var statusEl = document.getElementById('heroVideoLangStatus');
+                  var labels = {
+                    hi: 'Audio: हिन्दी · 24/7 AI · 6 real-life examples: Bill OCR, bookkeeping, profit, khata, payroll & GST',
+                    kn: 'Audio: ಕನ್ನಡ · 24/7 AI · 6 real-life examples: Bill OCR, bookkeeping, profit, khata, payroll & GST',
+                    ta: 'Audio: தமிழ் · 6 real-life examples · 24/7 AI: Bill OCR, bookkeeping, profit, khata, payroll & GST',
+                    te: 'Audio: తెలుగు · 24/7 AI · 6 real-life examples: Bill OCR, bookkeeping, profit, khata, payroll & GST'
+                  };
+                  document.querySelectorAll('.hg-lang-btn').forEach(function(b) {
+                    var isMatch = b.getAttribute('data-lang') === lang;
+                    b.setAttribute('data-active', isMatch ? 'true' : 'false');
+                  });
+                  if (btnEl) window.updateLangClipPath(btnEl);
+                  if (statusEl && labels[lang]) {
+                    statusEl.classList.add('is-transitioning');
+                    setTimeout(function() {
+                      statusEl.textContent = labels[lang];
+                      statusEl.classList.remove('is-transitioning');
+                    }, 90);
+                  }
+                  if (v) {
+                    var wasTime = v.currentTime || 0;
+                    v.src = '/assets/video/brag-' + lang + '.mp4?v=vigenair_24x7_2k';
+                    v.load();
+                    v.currentTime = wasTime;
+                    v.muted = false;
+                    v.volume = 1.0;
+                    v.play().catch(function(){});
+                  }
+                };
+              </script>
+            </article>
+            <div id="hero-lottie" class="hidden" aria-hidden="true"></div>
           </div>
 
-          <!-- 100% Accounting Replacement Matrix -->
-          <div class="mt-8 pt-6 border-t border-theme grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 text-xs">
-            <div class="flex items-center justify-between rounded-xl bg-subcard-theme border border-theme px-3.5 py-2.5">
-              <span class="font-medium text-ink">1. Daily Bookkeeping</span>
-              <span class="font-mono-num font-bold text-brand">100% Automated</span>
-            </div>
-            <div class="flex items-center justify-between rounded-xl bg-subcard-theme border border-theme px-3.5 py-2.5">
-              <span class="font-medium text-ink">2. Invoice &amp; Bill Processing</span>
-              <span class="font-mono-num font-bold text-brand">100% Automated</span>
-            </div>
-            <div class="flex items-center justify-between rounded-xl bg-subcard-theme border border-theme px-3.5 py-2.5">
-              <span class="font-medium text-ink">3. Bank &amp; UPI Reconciliation</span>
-              <span class="font-mono-num font-bold text-brand">100% Automated</span>
-            </div>
-            <div class="flex items-center justify-between rounded-xl bg-subcard-theme border border-theme px-3.5 py-2.5">
-              <span class="font-medium text-ink">4. GST Calculation &amp; 2B Match</span>
-              <span class="font-mono-num font-bold text-brand">100% Automated</span>
-            </div>
-            <div class="flex items-center justify-between rounded-xl bg-subcard-theme border border-theme px-3.5 py-2.5">
-              <span class="font-medium text-ink">5. GST Return Filing (GSP EVC)</span>
-              <span class="font-mono-num font-bold text-brand">100% + Owner OTP</span>
-            </div>
-            <div class="flex items-center justify-between rounded-xl bg-subcard-theme border border-theme px-3.5 py-2.5">
-              <span class="font-medium text-ink">6. 2026 Payroll &amp; Challans</span>
-              <span class="font-mono-num font-bold text-brand">100% Automated</span>
-            </div>
-            <div class="flex items-center justify-between rounded-xl bg-subcard-theme border border-theme px-3.5 py-2.5">
-              <span class="font-medium text-ink">7. Income-Tax Prep (ITR-3/4)</span>
-              <span class="font-mono-num font-bold text-brand">100% Automated</span>
-            </div>
-            <div class="flex items-center justify-between rounded-xl bg-subcard-theme border border-theme px-3.5 py-2.5">
-              <span class="font-medium text-ink">8. Balance Sheet &amp; Year-End Close</span>
-              <span class="font-mono-num font-bold text-brand">100% Automated</span>
-            </div>
-            <div class="flex items-center justify-between rounded-xl bg-subcard-theme border border-theme px-3.5 py-2.5">
-              <span class="font-medium text-ink">9. Statutory Audit (Sec 141/44AB)</span>
-              <span class="font-mono-num font-bold text-amber-brand">100% Prep → CA DSC</span>
-            </div>
-          </div>
         </div>
       </div>
     </section>
 
-    <!-- ================= MULTI-INDUSTRY COVERAGE (7 Core Business Sectors) ================= -->
-    <section id="industries" class="max-w-6xl mx-auto px-4 sm:px-8 py-20 border-t border-theme">
-      <div class="text-center max-w-3xl mx-auto mb-14">
-        <h2 class="apple-section-display text-ink">
-          One intelligent platform.<br />
-          <span class="text-brand">Built for every Indian business.</span>
-        </h2>
-        <p class="text-sm sm:text-base text-muted-ink mt-3 leading-relaxed">
-          From neighbourhood storefronts and quick-service kitchens to hypermarkets, pharmacies, salons, hotels, and clinics — Hisaab.Guru adapts to your daily accounting, GST, inventory, shift, and payroll workflows.
+    <div class="hl-wrap"><hr class="sc-separator" /></div>
+
+    <!-- ================= CORE BUSINESS CAPABILITIES ================= -->
+    <section id="all-in-one" class="hl-wrap hl-section">
+      <div class="text-center max-w-3xl mx-auto mb-10 sm:mb-12 flex flex-col items-center gap-3">
+        <span class="sc-badge sc-badge-secondary hl-mono">Complete Business Suite</span>
+        <h2 class="apple-section-display text-ink">Everything your business needs <em class="text-brand">in one place.</em></h2>
+        <p class="text-[15px] sm:text-base text-muted-ink leading-relaxed">
+          From daily bill scanning and automatic bookkeeping to customer khata, staff payroll, and GST registration, manage your entire business from your phone.
         </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-6 gap-5">
-        <!-- 1. Retail Stores & Boutiques -->
-        <div class="apple-bento-card md:col-span-2 p-7">
-          <div class="flex items-center justify-between">
-            <span class="text-xs font-semibold uppercase tracking-wider text-brand">Retail &amp; Lifestyle</span>
-            <span class="px-2.5 py-0.5 rounded-full bg-[#34D399]/15 text-brand font-mono-num text-[10px] font-bold">SUPPORTED</span>
+      <!-- Unified Feature Overview Visual -->
+      <figure class="hg-3d-stage mb-10">
+        <article class="sc-card hg-3d-card overflow-hidden border border-[var(--il-line-strong)]" data-hg-tilt>
+          <div class="sc-card-content !p-0 relative bg-[#07150E]">
+            <img
+              src="/assets/img/hisaab-6-features-showcase.webp?v=nano_banana_24x7"
+              width="2560"
+              height="1440"
+              loading="eager"
+              decoding="async"
+              alt="Hisaab.Guru 24/7 AI Business Suite: AI Bill & Receipt OCR, Automatic Bookkeeping, Live Profit & GST Analytics, Customer Khata & UPI, Staff Payroll & Payslips, and 30-Min Business GST Registration"
+              class="w-full aspect-[16/9] object-cover block"
+            />
           </div>
-          <h3 class="text-xl font-bold text-ink mt-3">Retail Stores &amp; Boutiques</h3>
-          <p class="text-xs sm:text-sm text-muted-ink mt-2 leading-relaxed">
-            Wholesale purchase bill OCR, seasonal SKU stock valuation, customer &amp; vendor khata, HSN GST slabs, and staff sales incentives.
-          </p>
-        </div>
-
-        <!-- 2. Restaurants, Cafes & Quick Service Outlets -->
-        <div class="apple-bento-card md:col-span-2 p-7">
-          <div class="flex items-center justify-between">
-            <span class="text-xs font-semibold uppercase tracking-wider text-brand">Food &amp; Beverage</span>
-            <span class="px-2.5 py-0.5 rounded-full bg-[#34D399]/15 text-brand font-mono-num text-[10px] font-bold">SUPPORTED</span>
-          </div>
-          <h3 class="text-xl font-bold text-ink mt-3">Restaurants, Cafés &amp; QSRs</h3>
-          <p class="text-xs sm:text-sm text-muted-ink mt-2 leading-relaxed">
-            Kitchen supplier invoice capture, recipe &amp; unit food costing, daily counter &amp; delivery payout reconciliation, shift rosters, and payroll.
-          </p>
-        </div>
-
-        <!-- 3. Supermarkets & Hypermarkets -->
-        <div class="apple-bento-card md:col-span-2 p-7">
-          <div class="flex items-center justify-between">
-            <span class="text-xs font-semibold uppercase tracking-wider text-brand">High-Volume Grocery</span>
-            <span class="px-2.5 py-0.5 rounded-full bg-[#34D399]/15 text-brand font-mono-num text-[10px] font-bold">SUPPORTED</span>
-          </div>
-          <h3 class="text-xl font-bold text-ink mt-3">Supermarkets &amp; Hypermarkets</h3>
-          <p class="text-xs sm:text-sm text-muted-ink mt-2 leading-relaxed">
-            High-speed distributor bill scanning, multi-counter UPI/Cash/Card settlement matching, automated GST input credit (ITC), and shift attendance.
-          </p>
-        </div>
-
-        <!-- 4. Pharmacies & Medical Services -->
-        <div class="apple-bento-card md:col-span-2 p-7">
-          <div class="flex items-center justify-between">
-            <span class="text-xs font-semibold uppercase tracking-wider text-brand">Pharma &amp; Medicos</span>
-            <span class="px-2.5 py-0.5 rounded-full bg-[#34D399]/15 text-brand font-mono-num text-[10px] font-bold">SUPPORTED</span>
-          </div>
-          <h3 class="text-xl font-bold text-ink mt-3">Pharmacies &amp; Medical Services</h3>
-          <p class="text-xs sm:text-sm text-muted-ink mt-2 leading-relaxed">
-            Pharma distributor invoice OCR, HSN tax slab split, stock inward &amp; expiry ledger alerts, supplier payables, and pharmacist shift scheduling.
-          </p>
-        </div>
-
-        <!-- 5. Salons, Spas & Repair Shops -->
-        <div class="apple-bento-card md:col-span-2 p-7">
-          <div class="flex items-center justify-between">
-            <span class="text-xs font-semibold uppercase tracking-wider text-brand">Services &amp; Studios</span>
-            <span class="px-2.5 py-0.5 rounded-full bg-[#34D399]/15 text-brand font-mono-num text-[10px] font-bold">SUPPORTED</span>
-          </div>
-          <h3 class="text-xl font-bold text-ink mt-3">Salons, Spas &amp; Repair Shops</h3>
-          <p class="text-xs sm:text-sm text-muted-ink mt-2 leading-relaxed">
-            Service &amp; spares GST billing, stylist and technician commission splits, consumable stock tracking, leave approvals, and instant payslips.
-          </p>
-        </div>
-
-        <!-- 6. Hospitality & Hotels -->
-        <div class="apple-bento-card md:col-span-2 p-7">
-          <div class="flex items-center justify-between">
-            <span class="text-xs font-semibold uppercase tracking-wider text-brand">Hospitality &amp; Stays</span>
-            <span class="px-2.5 py-0.5 rounded-full bg-[#34D399]/15 text-brand font-mono-num text-[10px] font-bold">SUPPORTED</span>
-          </div>
-          <h3 class="text-xl font-bold text-ink mt-3">Hospitality &amp; Hotels</h3>
-          <p class="text-xs sm:text-sm text-muted-ink mt-2 leading-relaxed">
-            Department-wise procurement bills, vendor khata settlements, multi-shift housekeeping &amp; front-desk rosters, and 2026 statutory payroll.
-          </p>
-        </div>
-
-        <!-- 7. Healthcare & Clinics (Full-Width Balanced Bento Card) -->
-        <div class="apple-bento-card md:col-span-6 p-7 sm:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-          <div class="max-w-3xl">
-            <div class="flex items-center gap-3">
-              <span class="text-xs font-semibold uppercase tracking-wider text-brand">Clinical &amp; Diagnostics</span>
-              <span class="px-2.5 py-0.5 rounded-full bg-[#34D399]/15 text-brand font-mono-num text-[10px] font-bold">SUPPORTED</span>
+          <figcaption class="sc-card-footer flex-wrap gap-2 text-xs">
+            <div class="flex items-center gap-2 font-semibold text-ink">
+              <img src="/assets/hisaab-mark.svg?v=consistent_orange_logo" width="20" height="20" alt="" class="size-5 object-contain" />
+              <span><span class="il-logo-word !text-[0.92rem]">Hisaab<span>.Guru</span></span> 24/7 AI Engine · AI Bill OCR · Automatic Bookkeeping · Live Profit · Customer Khata · Staff Payroll · 30-Min GST Registration</span>
             </div>
-            <h3 class="text-xl font-bold text-ink mt-2">Healthcare &amp; Clinics</h3>
-            <p class="text-xs sm:text-sm text-muted-ink mt-1.5 leading-relaxed">
-              Diagnostic &amp; clinic consumable purchase accounting, equipment vendor payables, reception &amp; nursing shift rosters, and statutory EPF/ESI/PT payroll with signed PDF payslips.
-            </p>
+          </figcaption>
+        </article>
+      </figure>
+
+      <!-- 6 Professional, Emoji-Free Cards Explaining Each Point in Plain Language (100% Consistent Design) -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 hg-3d-stage">
+        <article class="sc-card p-6 flex flex-col gap-3">
+          <div class="flex items-center justify-between">
+            <span class="size-11 rounded-2xl bg-[var(--il-green-soft)] text-brand flex items-center justify-center border border-[var(--il-line)]">
+              <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-scan"/></svg>
+            </span>
+            <span class="badge-orange-soft hl-mono">1 · AI Bill OCR</span>
           </div>
-          <a
-            href="#download-cta"
-            class="apple-pressable store-btn-secondary px-5 py-2.5 rounded-full text-xs font-semibold shrink-0"
-          >
-            Explore Mobile App →
-          </a>
+          <h3 class="text-lg font-bold text-ink">AI Invoice &amp; Receipt Scanner</h3>
+          <p class="text-sm text-muted-ink leading-relaxed">
+            Just take a photo of any supplier bill or receipt. Hisaab.Guru reads the items, total amount, and GST automatically — no typing needed.
+          </p>
+        </article>
+
+        <article class="sc-card p-6 flex flex-col gap-3">
+          <div class="flex items-center justify-between">
+            <span class="size-11 rounded-2xl bg-[var(--il-green-soft)] text-brand flex items-center justify-center border border-[var(--il-line)]">
+              <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-ledger"/></svg>
+            </span>
+            <span class="badge-orange-soft hl-mono">2 · Auto Books</span>
+          </div>
+          <h3 class="text-lg font-bold text-ink">Automatic Bookkeeping</h3>
+          <p class="text-sm text-muted-ink leading-relaxed">
+            Every sale and expense is neatly recorded in your digital double-entry ledger behind the scenes, so your books are always ready for your CA.
+          </p>
+        </article>
+
+        <article class="sc-card p-6 flex flex-col gap-3">
+          <div class="flex items-center justify-between">
+            <span class="size-11 rounded-2xl bg-[var(--il-green-soft)] text-brand flex items-center justify-center border border-[var(--il-line)]">
+              <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-profit"/></svg>
+            </span>
+            <span class="badge-orange-soft hl-mono">3 · Real Profit</span>
+          </div>
+          <h3 class="text-lg font-bold text-ink">Live Profit &amp; GST ITC Tracker</h3>
+          <p class="text-sm text-muted-ink leading-relaxed">
+            See your total sales, expenses, and exact take-home profit in one glance — plus how much GST Input Tax Credit (ITC) you save this month.
+          </p>
+        </article>
+
+        <article class="sc-card p-6 flex flex-col gap-3">
+          <div class="flex items-center justify-between">
+            <span class="size-11 rounded-2xl bg-[var(--il-green-soft)] text-brand flex items-center justify-center border border-[var(--il-line)]">
+              <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-khata"/></svg>
+            </span>
+            <span class="badge-orange-soft hl-mono">4 · Khata &amp; UPI</span>
+          </div>
+          <h3 class="text-lg font-bold text-ink">Customer Khata &amp; UPI Matching</h3>
+          <p class="text-sm text-muted-ink leading-relaxed">
+            Track who owes you money and which suppliers need to be paid. Incoming UPI QR collections and bank payments match automatically.
+          </p>
+        </article>
+
+        <article class="sc-card p-6 flex flex-col gap-3">
+          <div class="flex items-center justify-between">
+            <span class="size-11 rounded-2xl bg-[var(--il-green-soft)] text-brand flex items-center justify-center border border-[var(--il-line)]">
+              <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-payroll"/></svg>
+            </span>
+            <span class="badge-orange-soft hl-mono">5 · 2026 Payroll</span>
+          </div>
+          <h3 class="text-lg font-bold text-ink">Staff Salary &amp; PDF Payslips</h3>
+          <p class="text-sm text-muted-ink leading-relaxed">
+            Mark daily staff attendance, calculate monthly pay with PF/ESI automatically, and share signed PDF payslips on WhatsApp in one tap.
+          </p>
+        </article>
+
+        <article class="sc-card p-6 flex flex-col gap-3">
+          <div class="flex items-center justify-between">
+            <span class="size-11 rounded-2xl bg-[var(--il-green-soft)] text-brand flex items-center justify-center border border-[var(--il-line)]">
+              <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-gst"/></svg>
+            </span>
+            <span class="badge-orange-soft hl-mono">6 · All Entities</span>
+          </div>
+          <h3 class="text-lg font-bold text-ink">Business GST Registration</h3>
+          <p class="text-sm text-muted-ink leading-relaxed">
+            Need a new GST number for your shop, company, or home business? Upload your documents and finish your GST application in 30 minutes.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <div class="hl-wrap"><hr class="sc-separator" /></div>
+
+    <!-- ================= HOW IT WORKS IN 3 SIMPLE STEPS ================= -->
+    <section id="how-it-works" class="hl-wrap hl-section">
+      <div class="text-center max-w-2xl mx-auto mb-12 flex flex-col items-center gap-3">
+        <span class="badge-orange-soft hl-mono">Simple Workflow</span>
+        <h2 class="apple-section-display text-ink">How it works in <em class="text-brand">3 easy steps.</em></h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 hg-3d-stage">
+        <article class="sc-card p-7 flex flex-col gap-3">
+          <span class="badge-orange-soft hl-mono !text-xs !font-bold !px-3 !py-1 w-fit">STEP 1</span>
+          <h3 class="text-xl font-bold text-ink">Click a photo of any bill</h3>
+          <p class="text-sm text-muted-ink leading-relaxed">
+            Bought stock or raw materials? Just open Hisaab.Guru and snap a photo of the paper bill. No manual data entry required.
+          </p>
+        </article>
+
+        <article class="sc-card p-7 flex flex-col gap-3">
+          <span class="badge-orange-soft hl-mono !text-xs !font-bold !px-3 !py-1 w-fit">STEP 2</span>
+          <h3 class="text-xl font-bold text-ink">AI organizes everything</h3>
+          <p class="text-sm text-muted-ink leading-relaxed">
+            Hisaab.Guru sorts your expenses by category, updates your supplier khata, and calculates your GST savings automatically.
+          </p>
+        </article>
+
+        <article class="sc-card p-7 flex flex-col gap-3">
+          <span class="badge-orange-soft hl-mono !text-xs !font-bold !px-3 !py-1 w-fit">STEP 3</span>
+          <h3 class="text-xl font-bold text-ink">See your profit &amp; relax</h3>
+          <p class="text-sm text-muted-ink leading-relaxed">
+            Check your real monthly profit anytime on your phone and share clean, GST-ready records with one tap at month-end.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <div class="hl-wrap"><hr class="sc-separator" /></div>
+
+    <!-- ================= INDUSTRIES ================= -->
+    <section id="industries" class="hl-wrap hl-section">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <div class="lg:col-span-5 flex flex-col gap-5">
+          <span class="badge-orange-soft w-fit hl-mono">For Every Business Owner</span>
+          <h2 class="apple-section-display text-ink">Built for <em class="text-brand">every</em> Indian business.</h2>
+          <p class="text-[15px] sm:text-base text-muted-ink measure leading-relaxed">
+            Whether you run a café, a retail shop, a pharmacy, a salon, or a growing company, Hisaab.Guru adapts to your daily bills, customers, and staff.
+          </p>
+          <img
+            src="/assets/img/storefront-dusk.webp"
+            width="1200"
+            height="896"
+            loading="lazy"
+            decoding="async"
+            alt="A friendly neighbourhood Indian storefront lit warmly at dusk"
+            class="hl-media aspect-[4/3] mt-2 border border-theme"
+          />
+        </div>
+
+        <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <article class="sc-card p-5 flex flex-col gap-2">
+            <div class="flex items-center gap-2.5">
+              <span class="size-8 rounded-xl bg-[var(--il-green-soft)] text-brand flex items-center justify-center border border-[var(--il-line)] shrink-0">
+                <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-cafe"/></svg>
+              </span>
+              <h3 class="text-base font-bold text-ink">Restaurants, Cafés &amp; Bakeries</h3>
+            </div>
+            <p class="text-sm text-muted-ink leading-relaxed">Scan daily kitchen &amp; dairy bills, track Zomato/Swiggy &amp; counter UPI sales, and see your real food profit.</p>
+          </article>
+          <article class="sc-card p-5 flex flex-col gap-2">
+            <div class="flex items-center gap-2.5">
+              <span class="size-8 rounded-xl bg-[var(--il-green-soft)] text-brand flex items-center justify-center border border-[var(--il-line)] shrink-0">
+                <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-shop"/></svg>
+              </span>
+              <h3 class="text-base font-bold text-ink">Retail Shops &amp; Boutiques</h3>
+            </div>
+            <p class="text-sm text-muted-ink leading-relaxed">Snap distributor invoices, track stock items, manage customer udhaar khata, and print GST bills.</p>
+          </article>
+          <article class="sc-card p-5 flex flex-col gap-2">
+            <div class="flex items-center gap-2.5">
+              <span class="size-8 rounded-xl bg-[var(--il-green-soft)] text-brand flex items-center justify-center border border-[var(--il-line)] shrink-0">
+                <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-cart"/></svg>
+              </span>
+              <h3 class="text-base font-bold text-ink">Supermarkets &amp; Kirana Stores</h3>
+            </div>
+            <p class="text-sm text-muted-ink leading-relaxed">Match hundreds of daily UPI QR payments, track wholesale supplier payouts, and claim 100% GST credit.</p>
+          </article>
+          <article class="sc-card p-5 flex flex-col gap-2">
+            <div class="flex items-center gap-2.5">
+              <span class="size-8 rounded-xl bg-[var(--il-green-soft)] text-brand flex items-center justify-center border border-[var(--il-line)] shrink-0">
+                <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-clinic"/></svg>
+              </span>
+              <h3 class="text-base font-bold text-ink">Pharmacies &amp; Clinics</h3>
+            </div>
+            <p class="text-sm text-muted-ink leading-relaxed">Scan medicine distributor bills, organize GST slabs automatically, and manage clinic staff salary slips.</p>
+          </article>
+          <article class="sc-card p-5 flex flex-col gap-2">
+            <div class="flex items-center gap-2.5">
+              <span class="size-8 rounded-xl bg-[var(--il-green-soft)] text-brand flex items-center justify-center border border-[var(--il-line)] shrink-0">
+                <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-scissors"/></svg>
+              </span>
+              <h3 class="text-base font-bold text-ink">Salons, Spas &amp; Service Shops</h3>
+            </div>
+            <p class="text-sm text-muted-ink leading-relaxed">Track daily service collections, staff incentives, rent &amp; utility bills, and monthly take-home profit.</p>
+          </article>
+          <article class="sc-card p-5 flex flex-col gap-2">
+            <div class="flex items-center gap-2.5">
+              <span class="size-8 rounded-xl bg-[var(--il-green-soft)] text-brand flex items-center justify-center border border-[var(--il-line)] shrink-0">
+                <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-building"/></svg>
+              </span>
+              <h3 class="text-base font-bold text-ink">Agencies, Traders &amp; Startups</h3>
+            </div>
+            <p class="text-sm text-muted-ink leading-relaxed">Register your Sole Proprietorship, LLP, or Pvt Ltd for GST in 30 minutes and keep audit-ready books from day one.</p>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- ================= CENTERED GRAND STORE DOWNLOAD CTA ================= -->
-    <section id="download-cta" class="max-w-5xl mx-auto px-4 sm:px-8 pt-6 pb-20">
-      <div class="apple-bento-card p-10 sm:p-16 text-center relative overflow-hidden">
-        <div class="max-w-2xl mx-auto space-y-6 relative z-10">
-          <span class="inline-flex items-center px-3.5 py-1 rounded-full bg-[#34D399]/15 text-brand text-xs font-semibold tracking-wide">
-            Available Exclusively on Mobile
-          </span>
+    <div class="hl-wrap"><hr class="sc-separator" /></div>
+
+    <!-- ================= GST REGISTRATION (SIMPLE & CLEAR) ================= -->
+    <section id="gst-registration-showcase" class="hl-wrap hl-section">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-start">
+        <div class="lg:col-span-7 flex flex-col gap-6">
+          <span class="badge-orange-soft w-fit hl-mono">Universal Indian GST Registration Platform</span>
           <h2 class="apple-section-display text-ink">
-            Your entire business.<br />
-            <span class="text-brand">In a single app.</span>
+            Get your Business GST number in <em class="text-brand">30 minutes.</em>
           </h2>
-          <p class="text-base sm:text-lg text-muted-ink max-w-xl mx-auto leading-relaxed">
-            Download <strong class="text-ink">Hisaab.Guru</strong> from the App Store or Google Play to get started.
+
+          <p class="text-[15px] sm:text-base text-muted-ink measure leading-relaxed">
+            Don’t get stuck on government portal forms or photo size errors. Upload your basic documents and our AI prepares your complete GST application for Sole Proprietorships, Partnerships, LLPs, and Pvt Ltd companies.
           </p>
 
-          <div class="pt-3 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a
-              href="#app-store-footer"
-              onclick="event.preventDefault(); openStoreModal('App Store');"
-              class="apple-pressable store-btn-primary w-full sm:w-auto min-w-[220px] flex items-center justify-center gap-3.5 px-7 py-4 rounded-2xl"
-            >
-              <svg class="w-8 h-8 shrink-0" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.33c.64-.78 1.08-1.86.96-2.94-.93.04-2.06.62-2.72 1.4-.58.68-1.1 1.79-.96 2.84 1.04.08 2.08-.52 2.72-1.3z"/>
-              </svg>
-              <div class="text-left">
-                <div class="text-[10px] font-semibold uppercase tracking-wider opacity-65 leading-none">Download on the</div>
-                <div class="text-xl font-bold tracking-tight leading-tight mt-0.5">App Store</div>
+          <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-10 border-t border-theme">
+            <li class="flex items-start justify-between gap-3 py-4 border-b border-theme">
+              <div>
+                <div class="text-sm font-semibold text-ink">Auto Photo &amp; Document Formatting</div>
+                <div class="text-[13px] text-muted-ink mt-0.5">Extracts your photo from Aadhaar &amp; resizes under 100 KB automatically</div>
               </div>
-            </a>
+              <span class="hl-mono text-xs text-orange-brand font-semibold shrink-0 pt-0.5">Auto OCR</span>
+            </li>
+            <li class="flex items-start justify-between gap-3 py-4 border-b border-theme">
+              <div>
+                <div class="text-sm font-semibold text-ink">1-Click Family Consent NOC</div>
+                <div class="text-[13px] text-muted-ink mt-0.5">Shop or home in parents’ or spouse’s name? Get a ready NOC letter</div>
+              </div>
+              <span class="hl-mono text-xs text-orange-brand font-semibold shrink-0 pt-0.5">Ready PDF</span>
+            </li>
+            <li class="flex items-start justify-between gap-3 py-4 border-b border-theme">
+              <div>
+                <div class="text-sm font-semibold text-ink">No Bank Account Needed Today</div>
+                <div class="text-[13px] text-muted-ink mt-0.5">Apply for GST first and add your bank account within 30 days (Rule 10A)</div>
+              </div>
+              <span class="hl-mono text-xs text-orange-brand font-semibold shrink-0 pt-0.5">Rule 10A</span>
+            </li>
+            <li class="flex items-start justify-between gap-3 py-4 border-b border-theme">
+              <div>
+                <div class="text-sm font-semibold text-ink">₹0 Government Portal Fee</div>
+                <div class="text-[13px] text-muted-ink mt-0.5">Clear ₹399 assisted preparation with live application tracking</div>
+              </div>
+              <span class="hl-mono text-xs text-orange-brand font-semibold shrink-0 pt-0.5">₹399 Only</span>
+            </li>
+          </ul>
 
-            <a
-              href="#google-play-footer"
-              onclick="event.preventDefault(); openStoreModal('Google Play');"
-              class="apple-pressable store-btn-secondary w-full sm:w-auto min-w-[220px] flex items-center justify-center gap-3.5 px-7 py-4 rounded-2xl"
-            >
-              <svg class="w-7 h-7 shrink-0" viewBox="0 0 24 24" fill="none">
-                <path d="M3.609 1.814L13.792 12 3.61 22.186a1.75 1.75 0 01-.61-1.334V3.148c0-.517.224-.998.609-1.334z" fill="#34D399"/>
-                <path d="M17.256 8.536L13.792 12l3.464 3.464 3.908-2.233c.79-.452.79-1.59 0-2.062l-3.908-2.633z" fill="#FBBF24"/>
-                <path d="M3.609 22.186L13.792 12l3.464 3.464-11.98 6.846c-.645.368-1.268.222-1.667-.124z" fill="#5EE889"/>
-                <path d="M3.609 1.814c.4-.346 1.022-.492 1.667-.124l11.98 6.846L13.792 12 3.609 1.814z" fill="#147A46"/>
-              </svg>
-              <div class="text-left">
-                <div class="text-[10px] font-semibold uppercase tracking-wider text-muted-ink leading-none">Get it on</div>
-                <div class="text-xl font-bold tracking-tight text-ink leading-tight mt-0.5">Google Play</div>
-              </div>
+          <div class="flex flex-wrap items-center gap-3 pt-2">
+            <a href="/gst-registration" class="il-btn pricing-choose-primary-btn !min-h-12 !px-6">
+              <span>Start 30-Minute GST Registration</span>
+              <svg class="il-icon" data-icon="inline-end" aria-hidden="true"><use href="#i-arrow"/></svg>
+            </a>
+            <a href="/gst-registration/status" class="il-btn pricing-choose-btn !min-h-12 !px-5">
+              <span>Check Application Status</span>
             </a>
           </div>
         </div>
+
+        <div class="lg:col-span-5 hg-3d-stage">
+          <article class="sc-card">
+            <header class="sc-card-header border-b border-theme !pb-4">
+              <div class="sc-card-header-row">
+                <div>
+                  <h3 class="sc-card-title text-lg">Four simple steps to your GSTIN</h3>
+                  <p class="sc-card-description !text-xs">Guided AI checklist from start to certificate</p>
+                </div>
+                <span class="badge-orange-soft hl-mono">30 Mins</span>
+              </div>
+            </header>
+
+            <div class="sc-card-content !py-2">
+              <ol class="hl-rows">
+                <li>
+                  <a href="/gst-registration/documents" class="group flex items-center gap-4 py-4">
+                    <span class="hl-mono size-7 rounded-full bg-orange-soft text-xs font-bold flex items-center justify-center shrink-0">1</span>
+                    <span class="flex-1 min-w-0">
+                      <span class="block text-sm font-semibold text-ink">Upload PAN, Aadhaar &amp; Electricity Bill</span>
+                      <span class="block text-[13px] text-muted-ink">AI reads your details automatically</span>
+                    </span>
+                    <svg class="il-icon text-caption group-hover:text-[var(--il-orange)]" aria-hidden="true"><use href="#i-arrow"/></svg>
+                  </a>
+                </li>
+                <li>
+                  <a href="/gst-registration/payment" class="group flex items-center gap-4 py-4">
+                    <span class="hl-mono size-7 rounded-full bg-orange-soft text-xs font-bold flex items-center justify-center shrink-0">2</span>
+                    <span class="flex-1 min-w-0">
+                      <span class="block text-sm font-semibold text-ink">Assisted Filing Plan (₹399)</span>
+                      <span class="block text-[13px] text-muted-ink">Service fee + GST · ₹0 government fee</span>
+                    </span>
+                    <svg class="il-icon text-caption group-hover:text-[var(--il-orange)]" aria-hidden="true"><use href="#i-arrow"/></svg>
+                  </a>
+                </li>
+                <li>
+                  <a href="/gst-registration/review" class="group flex items-center gap-4 py-4">
+                    <span class="hl-mono size-7 rounded-full bg-orange-soft text-xs font-bold flex items-center justify-center shrink-0">3</span>
+                    <span class="flex-1 min-w-0">
+                      <span class="block text-sm font-semibold text-ink">Review &amp; Verify with OTP</span>
+                      <span class="block text-[13px] text-muted-ink">Confirm your prefilled application in plain English</span>
+                    </span>
+                    <svg class="il-icon text-caption group-hover:text-[var(--il-orange)]" aria-hidden="true"><use href="#i-arrow"/></svg>
+                  </a>
+                </li>
+                <li>
+                  <a href="/gst-registration/status" class="group flex items-center gap-4 py-4">
+                    <span class="hl-mono size-7 rounded-full bg-orange-soft text-xs font-bold flex items-center justify-center shrink-0">4</span>
+                    <span class="flex-1 min-w-0">
+                      <span class="block text-sm font-semibold text-ink">Track Status &amp; Download GST Certificate</span>
+                      <span class="block text-[13px] text-muted-ink">Live TRN/ARN updates right on your phone</span>
+                    </span>
+                    <svg class="il-icon text-caption group-hover:text-[var(--il-orange)]" aria-hidden="true"><use href="#i-arrow"/></svg>
+                  </a>
+                </li>
+              </ol>
+            </div>
+
+            <footer class="sc-card-footer text-[13px] text-muted-ink">
+              <span>Supported for</span>
+              <span class="text-ink font-medium">Shopkeepers · Pvt Ltd · LLP · Partnerships</span>
+            </footer>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="hl-wrap"><hr class="sc-separator" /></div>
+
+    <!-- ================= DOWNLOAD ================= -->
+    <section id="download-cta" class="hl-wrap hl-section text-center flex flex-col items-center gap-5">
+      <span class="sc-badge sc-badge-secondary hl-mono">iOS &amp; Android Mobile App</span>
+      <h2 class="apple-section-display text-ink max-w-[16ch] mx-auto">Your whole business, <em class="text-brand">in one app.</em></h2>
+      <p class="hl-lead text-muted-ink measure mx-auto">
+        Download Hisaab.Guru on your phone and say goodbye to month-end accounting stress.
+      </p>
+
+      <div class="mt-4 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3">
+        <a href="#app-store-footer" onclick="event.preventDefault(); openStoreModal('App Store');" class="store-btn store-btn-primary justify-center min-w-[210px]">
+          <svg class="size-7 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.33c.64-.78 1.08-1.86.96-2.94-.93.04-2.06.62-2.72 1.4-.58.68-1.1 1.79-.96 2.84 1.04.08 2.08-.52 2.72-1.3z"/>
+          </svg>
+          <span class="text-left"><small>Download on the</small><b>App Store</b></span>
+        </a>
+        <a href="#google-play-footer" onclick="event.preventDefault(); openStoreModal('Google Play');" class="store-btn store-btn-secondary justify-center min-w-[210px]">
+          <svg class="size-6 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M3.609 1.814L13.792 12 3.61 22.186a1.75 1.75 0 01-.61-1.334V3.148c0-.517.224-.998.609-1.334z" opacity=".9"/>
+            <path d="M17.256 8.536L13.792 12l3.464 3.464 3.908-2.233c.79-.452.79-1.59 0-2.062l-3.908-2.633z" opacity=".55"/>
+            <path d="M3.609 22.186L13.792 12l3.464 3.464-11.98 6.846c-.645.368-1.268.222-1.667-.124z" opacity=".75"/>
+            <path d="M3.609 1.814c.4-.346 1.022-.492 1.667-.124l11.98 6.846L13.792 12 3.609 1.814z"/>
+          </svg>
+          <span class="text-left"><small>Get it on</small><b>Google Play</b></span>
+        </a>
+      </div>
+    </section>
+
+    <div class="hl-wrap"><hr class="sc-separator" /></div>
+
+    <!-- ================= FAQs BEFORE FOOTER ================= -->
+    <section id="faqs" class="hl-wrap hl-section">
+      <div class="text-center max-w-2xl mx-auto mb-12 flex flex-col items-center gap-3">
+        <span class="sc-badge sc-badge-secondary hl-mono">Common Questions</span>
+        <h2 class="apple-section-display text-ink">Frequently asked <em class="text-brand">questions.</em></h2>
+        <p class="text-[15px] text-muted-ink">
+          Everything you need to know about bill scanning, bookkeeping, and GST registration.
+        </p>
+      </div>
+
+      <div class="max-w-3xl mx-auto flex flex-col gap-3.5">
+        <details class="sc-card group p-5 sm:p-6 cursor-pointer" open>
+          <summary class="flex items-center justify-between gap-4 font-bold text-base text-ink list-none">
+            <span>1. How does Hisaab.Guru automate daily bookkeeping?</span>
+            <span class="size-7 rounded-full bg-[var(--il-panel-sunk)] flex items-center justify-center text-brand font-mono text-sm group-open:rotate-45 transition-transform duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] shrink-0">+</span>
+          </summary>
+          <p class="text-sm text-muted-ink leading-relaxed mt-3 pt-3 border-t border-theme">
+            Take a photo of any purchase bill or sales invoice on your phone. Hisaab.Guru automatically extracts the line items, categorizes the expense, updates your ledger, and calculates your GST Input Tax Credit (ITC).
+          </p>
+        </details>
+
+        <details class="sc-card group p-5 sm:p-6 cursor-pointer">
+          <summary class="flex items-center justify-between gap-4 font-bold text-base text-ink list-none">
+            <span>2. How does the Bill Scanner work with printed and thermal receipts?</span>
+            <span class="size-7 rounded-full bg-[var(--il-panel-sunk)] flex items-center justify-center text-brand font-mono text-sm group-open:rotate-45 transition-transform duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] shrink-0">+</span>
+          </summary>
+          <p class="text-sm text-muted-ink leading-relaxed mt-3 pt-3 border-t border-theme">
+            Point your phone camera at any invoice or receipt. Hisaab.Guru reads the supplier name, bill date, items, total amount, and GST tax split in under a second, and adds it straight to your expense records.
+          </p>
+        </details>
+
+        <details class="sc-card group p-5 sm:p-6 cursor-pointer">
+          <summary class="flex items-center justify-between gap-4 font-bold text-base text-ink list-none">
+            <span>3. How can I register a new GST number (GSTIN) for my business?</span>
+            <span class="size-7 rounded-full bg-[var(--il-panel-sunk)] flex items-center justify-center text-brand font-mono text-sm group-open:rotate-45 transition-transform duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] shrink-0">+</span>
+          </summary>
+          <p class="text-sm text-muted-ink leading-relaxed mt-3 pt-3 border-t border-theme">
+            Click <a href="/gst-registration" class="text-brand font-semibold underline">Start 30-Minute GST Registration</a> on our website. Upload your PAN card, Aadhaar card, and electricity bill. Our platform prepares all 10 sections of Form GST REG-01 and formats your documents automatically for OTP submission.
+          </p>
+        </details>
+
+        <details class="sc-card group p-5 sm:p-6 cursor-pointer">
+          <summary class="flex items-center justify-between gap-4 font-bold text-base text-ink list-none">
+            <span>4. What if my shop or business is at a home address in a family member’s name?</span>
+            <span class="size-7 rounded-full bg-[var(--il-panel-sunk)] flex items-center justify-center text-brand font-mono text-sm group-open:rotate-45 transition-transform duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] shrink-0">+</span>
+          </summary>
+          <p class="text-sm text-muted-ink leading-relaxed mt-3 pt-3 border-t border-theme">
+            Hisaab.Guru automatically generates a ready-to-print Family Consent Letter (NOC) in one click so you can use your residential or family-owned premises for GST registration.
+          </p>
+        </details>
+
+        <details class="sc-card group p-5 sm:p-6 cursor-pointer">
+          <summary class="flex items-center justify-between gap-4 font-bold text-base text-ink list-none">
+            <span>5. Do I need a current bank account before applying for GST?</span>
+            <span class="size-7 rounded-full bg-[var(--il-panel-sunk)] flex items-center justify-center text-brand font-mono text-sm group-open:rotate-45 transition-transform duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] shrink-0">+</span>
+          </summary>
+          <p class="text-sm text-muted-ink leading-relaxed mt-3 pt-3 border-t border-theme">
+            No. Under CGST Rule 10A, you can apply for and receive your GSTIN first, and furnish your business bank account details within 30 days after your GST number is granted.
+          </p>
+        </details>
+
+        <details class="sc-card group p-5 sm:p-6 cursor-pointer">
+          <summary class="flex items-center justify-between gap-4 font-bold text-base text-ink list-none">
+            <span>6. Is my business data safe and private?</span>
+            <span class="size-7 rounded-full bg-[var(--il-panel-sunk)] flex items-center justify-center text-brand font-mono text-sm group-open:rotate-45 transition-transform duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] shrink-0">+</span>
+          </summary>
+          <p class="text-sm text-muted-ink leading-relaxed mt-3 pt-3 border-t border-theme">
+            Yes. All your invoices, financial reports, and identity documents are protected with 256-bit encryption and are never shared with third-party marketers.
+          </p>
+        </details>
       </div>
     </section>
   </main>
 
-  <!-- ================= FOOTER ================= -->
-  <footer class="footer sm:footer-horizontal border-t border-theme text-muted-ink p-10 max-w-6xl mx-auto relative z-10">
-    <aside class="space-y-2">
-      <div class="flex items-center gap-2.5">
-        <img src="assets/hisaab-guru-mascot.svg" alt="Hisaab.Guru" class="w-8 h-8 object-contain" />
-        <span class="text-lg font-bold text-ink">
-          Hisaab<span class="text-brand">.Guru</span>
-        </span>
+  <!-- ================= UNIFIED SITE FOOTER WITH SOCIAL ICONS BELOW LOGO ================= -->
+  <footer id="site-footer" class="border-t border-theme bg-[var(--il-panel)] text-muted-ink mt-12">
+    <div class="hl-wrap py-12 flex flex-col gap-10">
+
+      <!-- Top Statutory & Security Trust Ribbon -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pb-8 border-b border-theme text-xs">
+        <div class="sc-alert !bg-[var(--il-panel-sunk)]">
+          <span class="size-9 rounded-xl bg-[var(--il-green-soft)] text-brand flex items-center justify-center shrink-0 font-mono font-bold text-xs">
+            256
+          </span>
+          <div class="flex flex-col gap-1">
+            <h4 class="text-sm font-semibold text-ink">Encrypted document vault</h4>
+            <p class="text-[12px] text-muted-ink leading-relaxed">SHA-256 verified uploads · PAN, Aadhaar, Udyam and utility bills are never shared with third-party marketers.</p>
+          </div>
+        </div>
+
+        <div class="sc-alert !bg-[var(--il-panel-sunk)]">
+          <span class="size-9 rounded-xl bg-[var(--il-green-soft)] text-brand flex items-center justify-center shrink-0 font-mono font-bold text-xs">
+            14A
+          </span>
+          <div class="flex flex-col gap-1">
+            <h4 class="text-sm font-semibold text-ink">CGST Rule 14A &amp; Rule 10A ready</h4>
+            <p class="text-[12px] text-muted-ink leading-relaxed">Built-in eligibility checks for the 3-working-day Rule 14A fast-track GSTIN grant and 30-day post-grant bank deferral.</p>
+          </div>
+        </div>
+
+        <div class="sc-alert !bg-[var(--il-panel-sunk)]">
+          <span class="size-9 rounded-xl bg-[var(--il-green-soft)] text-brand flex items-center justify-center shrink-0 font-mono font-bold text-sm">
+            ₹0
+          </span>
+          <div class="flex flex-col gap-1">
+            <h4 class="text-sm font-semibold text-ink">Clear government fee policy</h4>
+            <p class="text-[12px] text-muted-ink leading-relaxed">The government GST portal (<code class="text-[11px]">reg.gst.gov.in</code>) charges ₹0. Our assisted fee covers AI OCR prefill, NOC drafting and filing.</p>
+          </div>
+        </div>
       </div>
-      <p class="text-xs max-w-xs leading-relaxed">
-        The AI-powered mobile accounting, GST, shift &amp; payroll companion for modern Indian businesses.
-      </p>
-      <p class="text-[11px] opacity-65 pt-1">Copyright © 2026 Hisaab.Guru. All rights reserved.</p>
-    </aside>
-    <nav>
-      <h6 class="text-xs font-semibold text-ink uppercase tracking-wider">Download</h6>
-      <a href="#download-cta" onclick="event.preventDefault(); openStoreModal('App Store');" class="link link-hover text-xs">App Store</a>
-      <a href="#download-cta" onclick="event.preventDefault(); openStoreModal('Google Play');" class="link link-hover text-xs">Google Play</a>
-      <a href="#download-cta" onclick="event.preventDefault(); qr_modal.showModal();" class="link link-hover text-xs">Scan QR Code</a>
-    </nav>
-    <nav>
-      <h6 class="text-xs font-semibold text-ink uppercase tracking-wider">Industries We Serve</h6>
-      <a href="#industries" class="link link-hover text-xs">Retail Stores, Boutiques &amp; Supermarkets</a>
-      <a href="#industries" class="link link-hover text-xs">Restaurants, Cafés, QSRs &amp; Hotels</a>
-      <a href="#industries" class="link link-hover text-xs">Pharmacies, Clinics, Salons &amp; Repair Shops</a>
-    </nav>
+
+      <!-- Five-column navigation -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-6">
+        <div class="lg:col-span-4 flex flex-col gap-3.5">
+          <a href="/" class="il-logo" aria-label="Hisaab.Guru home">
+            <img src="/assets/hisaab-mark.svg?v=consistent_orange_logo" width="40" height="40" alt="Hisaab.Guru Sprout Mascot" class="size-10 object-contain" />
+            <span class="il-logo-word">Hisaab<span>.Guru</span></span>
+          </a>
+          <p class="text-[13px] max-w-xs leading-relaxed">
+            Smart mobile accounting, AI bill scanning, live profit tracking, staff payslips, and 30-minute Business GST registration for Indian businesses.
+          </p>
+
+          <!-- Social Icons Directly Below Hisaab.guru Logo & Tagline -->
+          <div class="flex items-center gap-2.5 pt-1" aria-label="Hisaab.Guru social media links">
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Follow Hisaab.Guru on Instagram" class="emil-press size-9 rounded-full border border-theme bg-[var(--il-panel-sunk)] hover:border-[var(--il-green)] hover:text-brand flex items-center justify-center transition-[border-color,color,transform] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)]">
+              <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="Watch Hisaab.Guru on YouTube" class="emil-press size-9 rounded-full border border-theme bg-[var(--il-panel-sunk)] hover:border-[var(--il-green)] hover:text-brand flex items-center justify-center transition-[border-color,color,transform] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)]">
+              <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 003.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29 29 0 00.46-5.25 29 29 0 00-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg>
+            </a>
+            <a href="https://x.com" target="_blank" rel="noopener noreferrer" aria-label="Follow Hisaab.Guru on X (Twitter)" class="emil-press size-9 rounded-full border border-theme bg-[var(--il-panel-sunk)] hover:border-[var(--il-green)] hover:text-brand flex items-center justify-center transition-[border-color,color,transform] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)]">
+              <svg class="size-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="Connect with Hisaab.Guru on LinkedIn" class="emil-press size-9 rounded-full border border-theme bg-[var(--il-panel-sunk)] hover:border-[var(--il-green)] hover:text-brand flex items-center justify-center transition-[border-color,color,transform] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)]">
+              <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+            <a href="https://wa.me/919940000000" target="_blank" rel="noopener noreferrer" aria-label="Chat with Hisaab.Guru on WhatsApp" class="emil-press size-9 rounded-full border border-theme bg-[var(--il-panel-sunk)] hover:border-[var(--il-green)] hover:text-brand flex items-center justify-center transition-[border-color,color,transform] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)]">
+              <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <nav class="lg:col-span-2 flex flex-col gap-4" aria-label="GST registration">
+          <h6 class="text-[13px] font-semibold text-ink">GST registration</h6>
+          <ul class="flex flex-col gap-2.5 text-[13px]">
+            <li><a href="/gst-registration" class="hl-navlink">1. Business details &amp; vault</a></li>
+            <li><a href="/gst-registration/payment" class="hl-navlink">2. Assisted filing plan</a></li>
+            <li><a href="/gst-registration/review" class="hl-navlink">3. Six-section review &amp; OTP</a></li>
+            <li><a href="/gst-registration/status" class="hl-navlink">4. Live 10-tab TRN status</a></li>
+            <li><a href="/api/gst-registration/consent-noc-preview" target="_blank" rel="noopener" class="hl-link font-medium">Family consent NOC <svg class="il-icon !size-3.5" aria-hidden="true"><use href="#i-external"/></svg></a></li>
+          </ul>
+        </nav>
+
+        <nav class="lg:col-span-2 flex flex-col gap-4" aria-label="Mobile app">
+          <h6 class="text-[13px] font-semibold text-ink">Mobile app</h6>
+          <ul class="flex flex-col gap-2.5 text-[13px]">
+            <li><a href="/pricing.html" class="hl-navlink font-semibold text-brand">Pricing &amp; Plans</a></li>
+            <li><a href="#all-in-one" class="hl-navlink">AI bill &amp; receipt scanner</a></li>
+            <li><a href="#all-in-one" class="hl-navlink">Live profit &amp; GST tracker</a></li>
+            <li><a href="#all-in-one" class="hl-navlink">Staff salary &amp; payslips</a></li>
+            <li><a href="#download-cta" onclick="event.preventDefault(); openStoreModal('App Store');" class="hl-navlink">Download for iOS</a></li>
+            <li><a href="#download-cta" onclick="event.preventDefault(); openStoreModal('Google Play');" class="hl-navlink">Download for Android</a></li>
+          </ul>
+        </nav>
+
+        <nav class="lg:col-span-2 flex flex-col gap-4" aria-label="Entities served">
+          <h6 class="text-[13px] font-semibold text-ink">Entities served</h6>
+          <ul class="flex flex-col gap-2.5 text-[13px]">
+            <li><a href="/gst-registration" class="hl-navlink">Sole proprietorship</a></li>
+            <li><a href="/gst-registration" class="hl-navlink">Private limited (Pvt Ltd)</a></li>
+            <li><a href="/gst-registration" class="hl-navlink">Limited liability (LLP)</a></li>
+            <li><a href="/gst-registration" class="hl-navlink">Partnership and OPC</a></li>
+            <li><a href="#industries" class="hl-navlink">Retail, QSR, clinics and D2C</a></li>
+          </ul>
+        </nav>
+
+        <nav class="lg:col-span-2 flex flex-col gap-4" aria-label="Official portals">
+          <h6 class="text-[13px] font-semibold text-ink">Official portals</h6>
+          <ul class="flex flex-col gap-2.5 text-[13px]">
+            <li><a href="https://reg.gst.gov.in/registration/" target="_blank" rel="noopener noreferrer" class="hl-navlink inline-flex items-center gap-1">reg.gst.gov.in portal <svg class="il-icon !size-3.5" aria-hidden="true"><use href="#i-external"/></svg></a></li>
+            <li><a href="https://udyamregistration.gov.in/" target="_blank" rel="noopener noreferrer" class="hl-navlink inline-flex items-center gap-1">MSME Udyam portal <svg class="il-icon !size-3.5" aria-hidden="true"><use href="#i-external"/></svg></a></li>
+            <li><a href="https://cbic-gst.gov.in/" target="_blank" rel="noopener noreferrer" class="hl-navlink inline-flex items-center gap-1">CBIC GST Act and Rules <svg class="il-icon !size-3.5" aria-hidden="true"><use href="#i-external"/></svg></a></li>
+            <li><a href="/api/gst-registration/health" target="_blank" rel="noopener" class="hl-navlink inline-flex items-center gap-1">API and engine health <svg class="il-icon !size-3.5" aria-hidden="true"><use href="#i-external"/></svg></a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <!-- Copyright and disclaimer -->
+      <div class="pt-6 border-t border-theme flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs">
+        <p>© 2026 <strong class="text-ink font-semibold">Hisaab.Guru</strong>. Made for Indian founders, merchants and chartered accountants.</p>
+        <p class="max-w-xl sm:text-right leading-relaxed">
+          Independent accounting and GST filing preparation platform · Filing directly on <code class="text-[11px]">reg.gst.gov.in</code> is free (₹0 government fee).
+        </p>
+      </div>
+    </div>
   </footer>
 
-  <!-- ================= QR DOWNLOAD MODAL ================= -->
-  <dialog id="qr_modal" class="modal modal-middle">
-    <div class="modal-box apple-bento-card max-w-md text-center p-8 rounded-[32px]">
-      <span id="modal-store-pill" class="inline-block px-3 py-1 rounded-full bg-[#34D399]/15 text-brand font-mono-num text-[10px] font-semibold uppercase tracking-widest mb-2">
-        HISAAB.GURU MOBILE APP
-      </span>
-      <h3 id="modal-store-title" class="text-2xl font-bold text-ink tracking-tight">
-        Scan to Download Hisaab.Guru
-      </h3>
-      <p class="text-xs sm:text-sm text-muted-ink mt-2 leading-relaxed">
-        Point your phone camera at the QR code below to open Hisaab.Guru on the App Store or Google Play.
+  <!-- ================= QR DOWNLOAD MODAL (SHADCN DIALOG ANATOMY) ================= -->
+  <dialog id="qr_modal" class="modal modal-middle" aria-labelledby="modal-store-title">
+    <div class="modal-box sc-card !rounded-[16px] !shadow-xl max-w-sm text-center p-8">
+      <h3 id="modal-store-title" class="sc-card-title text-xl text-ink">Scan to download Hisaab.Guru</h3>
+      <p class="sc-card-description text-sm mt-2 leading-relaxed">
+        Point your phone camera at the code to open Hisaab.Guru on the App Store or Google Play.
       </p>
 
-      <div class="my-6 mx-auto w-48 h-48 rounded-2xl bg-white p-4 shadow-inner border border-black/10 flex items-center justify-center">
-        <svg viewBox="0 0 120 120" class="w-full h-full" fill="#040A07">
-          <rect x="8" y="8" width="32" height="32" rx="4" fill="none" stroke="#040A07" stroke-width="6"/>
-          <rect x="16" y="16" width="16" height="16" rx="2" fill="#147A46"/>
-          <rect x="80" y="8" width="32" height="32" rx="4" fill="none" stroke="#040A07" stroke-width="6"/>
-          <rect x="88" y="16" width="16" height="16" rx="2" fill="#147A46"/>
-          <rect x="8" y="80" width="32" height="32" rx="4" fill="none" stroke="#040A07" stroke-width="6"/>
-          <rect x="16" y="88" width="16" height="16" rx="2" fill="#147A46"/>
+      <div class="my-7 mx-auto size-48 rounded-[14px] bg-white p-4 border border-black/10 flex items-center justify-center">
+        <svg viewBox="0 0 120 120" class="w-full h-full" fill="#0B0D0C" role="img" aria-label="QR code">
+          <rect x="8" y="8" width="32" height="32" rx="4" fill="none" stroke="#0B0D0C" stroke-width="6"/>
+          <rect x="16" y="16" width="16" height="16" rx="2" fill="#126C38"/>
+          <rect x="80" y="8" width="32" height="32" rx="4" fill="none" stroke="#0B0D0C" stroke-width="6"/>
+          <rect x="88" y="16" width="16" height="16" rx="2" fill="#126C38"/>
+          <rect x="8" y="80" width="32" height="32" rx="4" fill="none" stroke="#0B0D0C" stroke-width="6"/>
+          <rect x="16" y="88" width="16" height="16" rx="2" fill="#126C38"/>
           <rect x="48" y="10" width="8" height="8" rx="1.5"/>
           <rect x="62" y="10" width="8" height="16" rx="1.5"/>
           <rect x="48" y="24" width="10" height="8" rx="1.5"/>
           <rect x="10" y="48" width="16" height="8" rx="1.5"/>
           <rect x="32" y="48" width="8" height="16" rx="1.5"/>
-          <rect x="48" y="48" width="24" height="24" rx="5" fill="#147A46"/>
+          <rect x="48" y="48" width="24" height="24" rx="5" fill="#126C38"/>
           <text x="60" y="65" text-anchor="middle" fill="#FFFFFF" font-size="15" font-weight="bold">₹</text>
           <rect x="80" y="48" width="10" height="10" rx="1.5"/>
           <rect x="98" y="48" width="12" height="8" rx="1.5"/>
           <rect x="84" y="64" width="24" height="8" rx="1.5"/>
           <rect x="48" y="80" width="12" height="10" rx="1.5"/>
           <rect x="66" y="80" width="8" height="28" rx="1.5"/>
-          <rect x="82" y="82" width="14" height="14" rx="2" fill="#147A46"/>
+          <rect x="82" y="82" width="14" height="14" rx="2" fill="#126C38"/>
           <rect x="100" y="82" width="10" height="26" rx="1.5"/>
           <rect x="48" y="98" width="12" height="10" rx="1.5"/>
         </svg>
       </div>
 
-      <div class="modal-action justify-center mt-4">
-        <form method="dialog">
-          <button class="apple-pressable store-btn-primary px-6 py-2 rounded-full text-xs font-semibold">Done</button>
-        </form>
-      </div>
+      <form method="dialog">
+        <button class="il-btn il-btn-primary !px-7">Done</button>
+      </form>
     </div>
     <form method="dialog" class="modal-backdrop">
       <button>close</button>
     </form>
   </dialog>
 
-  <!-- ================= APPLE FLUID SPRING, THEME TOGGLE & SCROLL ENGINE ================= -->
+  <!-- ================= TIDY HISAAB.GURU BUDDY BUSINESS ASSISTANT ================= -->
+  <aside id="hg-mascot-chat" aria-label="Hisaab.Guru Business Assistant" class="fixed bottom-4 right-4 sm:bottom-5 sm:right-5 z-50 flex flex-col items-end">
+    <!-- Expandable Chat Card -->
+    <div id="hg-buddy-panel" hidden class="sc-card w-[calc(100vw-2rem)] max-w-[340px] !rounded-2xl shadow-2xl border border-[var(--il-line-strong)] overflow-hidden">
+      <!-- Header -->
+      <div class="flex items-center justify-between gap-2.5 px-4 py-3 bg-[var(--il-panel-sunk)] border-b border-theme">
+        <div class="flex items-center gap-2.5 min-w-0">
+          <div class="relative size-8 rounded-full bg-[var(--il-panel)] border border-theme p-1 flex items-center justify-center shrink-0">
+            <img src="/assets/hisaab-mark.svg?v=consistent_orange_logo" width="24" height="24" alt="Hisaab.Guru Logo" class="size-6 object-contain" />
+            <span class="absolute -bottom-0.5 -right-0.5 size-2 rounded-full bg-[var(--il-green)] ring-2 ring-[var(--il-panel-sunk)]"></span>
+          </div>
+          <div class="min-w-0">
+            <div class="text-xs font-bold leading-tight text-ink truncate"><span class="il-logo-word !text-[0.88rem]">Hisaab<span>.Guru</span></span> Buddy</div>
+            <div class="text-[11px] text-muted-ink truncate">Business &amp; GST Assistant</div>
+          </div>
+        </div>
+        <button
+          type="button"
+          onclick="window.toggleBuddyChat(false)"
+          aria-label="Close assistant"
+          class="emil-press size-7 rounded-full hover:bg-[var(--il-panel)] text-muted-ink hover:text-ink flex items-center justify-center text-xs transition-[background-color,color,transform] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] shrink-0"
+        >
+          <svg class="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <!-- Messages Area -->
+      <div id="hg-buddy-messages" class="p-3.5 max-h-[230px] overflow-y-auto flex flex-col gap-2.5 bg-[var(--il-panel)] text-xs">
+        <div class="p-3 rounded-xl bg-[var(--il-panel-sunk)] border border-theme text-ink leading-relaxed">
+          <strong class="text-ink block mb-0.5">How can we help your business today?</strong>
+          <span class="text-muted-ink">Select a topic below or ask a question about billing, bookkeeping, or GST registration.</span>
+        </div>
+      </div>
+
+      <!-- Quick Action Chips (Business Only, Emoji-Free) -->
+      <div class="px-3.5 py-2.5 bg-[var(--il-panel)] border-t border-theme grid grid-cols-2 gap-1.5">
+        <button type="button" onclick="window.askBuddyQuestion('bill')" class="emil-press px-2.5 py-1.5 rounded-lg text-[11px] font-medium text-left bg-[var(--il-panel-sunk)] hover:border-[var(--il-orange-vivid)] hover:text-orange-brand border border-theme transition-[border-color,color,transform] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] inline-flex items-center gap-1.5 truncate">
+          <svg class="size-3.5 text-orange-brand shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-scan"/></svg>
+          <span class="truncate">Bill Scanning</span>
+        </button>
+        <button type="button" onclick="window.askBuddyQuestion('gst')" class="emil-press px-2.5 py-1.5 rounded-lg text-[11px] font-medium text-left bg-[var(--il-panel-sunk)] hover:border-[var(--il-orange-vivid)] hover:text-orange-brand border border-theme transition-[border-color,color,transform] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] inline-flex items-center gap-1.5 truncate">
+          <svg class="size-3.5 text-brand shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-gst"/></svg>
+          <span class="truncate">GST Registration</span>
+        </button>
+        <button type="button" onclick="window.askBuddyQuestion('profit')" class="emil-press px-2.5 py-1.5 rounded-lg text-[11px] font-medium text-left bg-[var(--il-panel-sunk)] hover:border-[var(--il-orange-vivid)] hover:text-orange-brand border border-theme transition-[border-color,color,transform] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] inline-flex items-center gap-1.5 truncate">
+          <svg class="size-3.5 text-brand shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-profit"/></svg>
+          <span class="truncate">Profit &amp; GST ITC</span>
+        </button>
+        <button type="button" onclick="window.askBuddyQuestion('payroll')" class="emil-press px-2.5 py-1.5 rounded-lg text-[11px] font-medium text-left bg-[var(--il-panel-sunk)] hover:border-[var(--il-orange-vivid)] hover:text-orange-brand border border-theme transition-[border-color,color,transform] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] inline-flex items-center gap-1.5 truncate">
+          <svg class="size-3.5 text-orange-brand shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-payroll"/></svg>
+          <span class="truncate">Khata &amp; Payroll</span>
+        </button>
+      </div>
+
+      <!-- Input Form -->
+      <form onsubmit="event.preventDefault(); window.submitBuddyInput();" class="p-2.5 bg-[var(--il-panel-sunk)] border-t border-theme flex items-center gap-2">
+        <input
+          id="hg-buddy-input"
+          type="text"
+          placeholder="Ask a business or GST question..."
+          class="flex-1 min-w-0 h-8 px-3 rounded-full bg-[var(--il-panel)] border border-theme text-xs text-ink placeholder:text-muted-ink focus:outline-none focus:border-[var(--il-green)]"
+        />
+        <button type="submit" class="emil-press h-8 px-3.5 rounded-full bg-[var(--il-green)] text-[var(--il-green-ink)] text-xs font-semibold hover:opacity-95 transition-[opacity,transform] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] shrink-0">
+          Send
+        </button>
+      </form>
+    </div>
+
+    <!-- Compact Floating Launcher Pill Button -->
+    <button
+      type="button"
+      id="hg-buddy-launcher"
+      onclick="window.toggleBuddyChat(true)"
+      class="emil-press flex items-center gap-2 pl-2.5 pr-3.5 py-2 rounded-full bg-[var(--il-panel)] text-ink border border-[var(--il-line-strong)] shadow-lg hover:border-[var(--il-orange-vivid)] transition-[border-color,transform] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)]"
+    >
+      <span class="relative size-7 rounded-full bg-[var(--il-panel-sunk)] flex items-center justify-center shrink-0">
+        <img src="/assets/hisaab-mark.svg?v=consistent_orange_logo" width="22" height="22" alt="Hisaab.Guru Mascot" class="size-5.5 object-contain" />
+        <span class="absolute -bottom-0.5 -right-0.5 size-2 rounded-full bg-[var(--il-green)] ring-2 ring-[var(--il-panel)]"></span>
+      </span>
+      <span class="text-xs font-semibold text-ink whitespace-nowrap"><span class="il-logo-word !text-[0.88rem]">Hisaab<span>.Guru</span></span> Buddy</span>
+    </button>
+  </aside>
+
   <script>
-    // 1. Light / Dark Theme Switcher in Navbar
-    let currentTheme = localStorage.getItem('hisaab-web-theme') || 'dark';
-
-    function applyTheme(theme) {
-      currentTheme = theme;
-      document.documentElement.setAttribute('data-theme', theme);
-      localStorage.setItem('hisaab-web-theme', theme);
-
-      const sunIcon = document.getElementById('theme-icon-sun');
-      const moonIcon = document.getElementById('theme-icon-moon');
-      const label = document.getElementById('theme-toggle-label');
-      const metaTheme = document.getElementById('meta-theme-color');
-
-      if (theme === 'light') {
-        if (sunIcon) sunIcon.classList.add('hidden');
-        if (moonIcon) moonIcon.classList.remove('hidden');
-        if (label) label.textContent = 'Dark';
-        if (metaTheme) metaTheme.setAttribute('content', '#F5F5F7');
+    window.toggleBuddyChat = function(forceState, isKeyboard) {
+      var panel = document.getElementById('hg-buddy-panel');
+      var launcher = document.getElementById('hg-buddy-launcher');
+      if (!panel) return;
+      if (isKeyboard) {
+        panel.setAttribute('data-instant', '');
       } else {
-        if (sunIcon) sunIcon.classList.remove('hidden');
-        if (moonIcon) moonIcon.classList.add('hidden');
-        if (label) label.textContent = 'Light';
-        if (metaTheme) metaTheme.setAttribute('content', '#000000');
+        panel.removeAttribute('data-instant');
       }
-    }
+      var isHidden = panel.hasAttribute('hidden');
+      var shouldOpen = typeof forceState === 'boolean' ? forceState : isHidden;
+      if (shouldOpen) {
+        panel.removeAttribute('hidden');
+        if (launcher) launcher.setAttribute('hidden', '');
+      } else {
+        panel.setAttribute('hidden', '');
+        if (launcher) launcher.removeAttribute('hidden');
+      }
+    };
 
-    function toggleTheme() {
-      applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
-    }
-
-    applyTheme(currentTheme);
-
-    // 2. Centered Apple Keynote Word-by-Word Illumination
-    window.addEventListener('DOMContentLoaded', () => {
-      if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
-        gsap.registerPlugin(ScrollTrigger);
-
-        const manifestoEl = document.getElementById('scrub-manifesto');
-        if (manifestoEl) {
-          const words = manifestoEl.innerText.trim().split(/\s+/);
-          manifestoEl.innerHTML = words
-            .map((w) => `<span class="scrub-word inline-block mx-[0.15em] text-ink" style="opacity:0.22; transform:translateY(6px);">${w}</span>`)
-            .join('');
-
-          gsap.fromTo(
-            '#scrub-manifesto .scrub-word',
-            { opacity: 0.22, y: 6 },
-            {
-              opacity: 1,
-              y: 0,
-              stagger: 0.06,
-              ease: 'power2.out',
-              scrollTrigger: {
-                trigger: '#manifesto',
-                start: 'top 84%',
-                end: 'bottom 50%',
-                scrub: 0.45,
-              },
-            }
-          );
+    // Emil Kowalski Rule: Never animate keyboard-initiated actions (0ms instant close on Escape)
+    window.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        var panel = document.getElementById('hg-buddy-panel');
+        if (panel && !panel.hasAttribute('hidden')) {
+          window.toggleBuddyChat(false, true);
         }
-
-        // Smooth Spring Entrance for Bento Cards
-        gsap.utils.toArray('.apple-bento-card').forEach((card, i) => {
-          gsap.fromTo(
-            card,
-            { y: 32, opacity: 0 },
-            {
-              y: 0,
-              opacity: 1,
-              duration: 0.72,
-              delay: (i % 3) * 0.06,
-              ease: 'power3.out',
-              scrollTrigger: {
-                trigger: card,
-                start: 'top 88%',
-              },
-            }
-          );
-        });
+        var navMenu = document.getElementById('mobile-nav-menu');
+        var navBtn = document.getElementById('mobile-menu-toggle');
+        if (navMenu && !navMenu.classList.contains('hidden')) {
+          navMenu.setAttribute('data-instant', '');
+          navMenu.classList.add('hidden');
+          if (navBtn) navBtn.setAttribute('aria-expanded', 'false');
+        }
       }
     });
 
-    // 3. Direct 1:1 Pointer Tracking on 3D Phone Stage
-    const heroStage = document.getElementById('hero-3d-stage');
-    const iosRig = document.getElementById('phone-ios-rig');
-    const androidRig = document.getElementById('phone-android-rig');
-
-    if (heroStage && iosRig) {
-      heroStage.addEventListener('pointermove', (e) => {
-        const rect = heroStage.getBoundingClientRect();
-        const nx = (e.clientX - rect.left) / rect.width - 0.5;
-        const ny = (e.clientY - rect.top) / rect.height - 0.5;
-
-        if (typeof gsap !== 'undefined') {
-          gsap.to(iosRig, {
-            rotationY: -12 + nx * 18,
-            rotationX: 5 - ny * 14,
-            duration: 0.35,
-            ease: 'power2.out',
-            overwrite: 'auto',
-          });
-          if (androidRig) {
-            gsap.to(androidRig, {
-              rotationY: -20 + nx * 22,
-              rotationX: 7 - ny * 16,
-              duration: 0.42,
-              ease: 'power2.out',
-              overwrite: 'auto',
-            });
-          }
-        }
-      });
-
-      heroStage.addEventListener('pointerleave', () => {
-        if (typeof gsap !== 'undefined') {
-          gsap.to(iosRig, { rotationY: -12, rotationX: 5, duration: 0.6, ease: 'power3.out', overwrite: 'auto' });
-          if (androidRig) {
-            gsap.to(androidRig, { rotationY: -20, rotationX: 7, duration: 0.6, ease: 'power3.out', overwrite: 'auto' });
-          }
-        }
-      });
-    }
-
-    // 4. Apple Segmented Control Switcher
-    function focusPhoneStage(mode) {
-      const segs = {
-        welcome: document.getElementById('seg-welcome'),
-        payroll: document.getElementById('seg-payroll'),
-        scanner: document.getElementById('seg-scanner'),
-      };
-      Object.keys(segs).forEach((k) => {
-        if (!segs[k]) return;
-        if (k === mode) {
-          segs[k].className = 'apple-pressable px-4 py-1.5 rounded-full text-xs font-semibold store-btn-primary';
-        } else {
-          segs[k].className = 'apple-pressable px-4 py-1.5 rounded-full text-xs font-semibold text-muted-ink hover:text-ink';
-        }
-      });
-
-      if (typeof gsap === 'undefined' || !iosRig || !androidRig) return;
-      if (mode === 'welcome') {
-        gsap.to(iosRig, { rotationY: -8, rotationX: 4, scale: 1.03, zIndex: 30, duration: 0.55, ease: 'power3.out', overwrite: 'auto' });
-        gsap.to(androidRig, { rotationY: -22, scale: 0.96, zIndex: 10, duration: 0.55, ease: 'power3.out', overwrite: 'auto' });
-      } else if (mode === 'payroll') {
-        gsap.to(androidRig, { rotationY: -6, rotationX: 3, scale: 1.04, zIndex: 35, duration: 0.55, ease: 'power3.out', overwrite: 'auto' });
-        gsap.to(iosRig, { rotationY: -22, scale: 0.94, zIndex: 10, duration: 0.55, ease: 'power3.out', overwrite: 'auto' });
+    window.appendBuddyMessage = function(role, htmlText) {
+      var box = document.getElementById('hg-buddy-messages');
+      if (!box) return;
+      var msg = document.createElement('div');
+      if (role === 'user') {
+        msg.className = 'self-end max-w-[85%] px-3 py-2 rounded-xl rounded-br-sm bg-[var(--il-green)] text-[var(--il-green-ink)] font-medium leading-relaxed';
+        msg.textContent = htmlText;
       } else {
-        gsap.to(iosRig, { rotationY: 2, rotationX: 0, scale: 1, zIndex: 25, duration: 0.55, ease: 'power3.out', overwrite: 'auto' });
-        gsap.to(androidRig, { rotationY: -10, rotationX: 2, scale: 1.02, zIndex: 30, duration: 0.55, ease: 'power3.out', overwrite: 'auto' });
+        msg.className = 'p-3 rounded-xl bg-[var(--il-panel-sunk)] border border-theme text-ink leading-relaxed';
+        msg.innerHTML = htmlText;
       }
-    }
+      box.appendChild(msg);
+      box.scrollTop = box.scrollHeight;
+    };
 
-    // 5. Symbol-Only Salary Mask Toggle & Store Modal
-    let isSalaryMasked = false;
-    function toggleDemoMask() {
-      isSalaryMasked = !isSalaryMasked;
-      const valEl = document.getElementById('demo-salary-val');
-      if (!valEl) return;
-      valEl.textContent = isSalaryMasked ? '₹ ••••••' : '₹48,450.00';
-    }
-
-    function openStoreModal(storeName) {
-      const pill = document.getElementById('modal-store-pill');
-      const title = document.getElementById('modal-store-title');
-      if (pill) pill.textContent = storeName.toUpperCase();
-      if (title) title.textContent = 'Download on ' + storeName;
-      const modal = document.getElementById('qr_modal');
-      if (modal && typeof modal.showModal === 'function') {
-        modal.showModal();
+    window.askBuddyQuestion = function(topic) {
+      window.toggleBuddyChat(true);
+      if (topic === 'bill') {
+        window.appendBuddyMessage('user', 'How does bill scanning work?');
+        window.appendBuddyMessage('bot', 'Snap a photo of any purchase invoice or receipt in the app. Hisaab.Guru extracts the supplier GSTIN, line items, and tax breakup automatically.');
+      } else if (topic === 'gst') {
+        window.appendBuddyMessage('user', 'How do I register for GST?');
+        window.appendBuddyMessage('bot', 'Upload your PAN, Aadhaar, and electricity bill on our <a href="/gst-registration" class="text-brand font-semibold underline">GST Registration</a> page to prepare your Form GST REG-01 in 30 minutes.');
+      } else if (topic === 'profit') {
+        window.appendBuddyMessage('user', 'How do I track profit and GST credit?');
+        window.appendBuddyMessage('bot', 'Every recorded sale and expense updates your live Profit &amp; Loss, Trial Balance, and eligible GST Input Tax Credit (ITC) automatically.');
+      } else if (topic === 'payroll') {
+        window.appendBuddyMessage('user', 'Does it support customer khata and staff payroll?');
+        window.appendBuddyMessage('bot', 'Yes — track customer and supplier balances with UPI reconciliation, and generate monthly staff salary slips with PF/ESI calculations.');
       }
-    }
+    };
+
+    window.submitBuddyInput = function() {
+      var inp = document.getElementById('hg-buddy-input');
+      if (!inp || !inp.value.trim()) return;
+      var q = inp.value.trim();
+      inp.value = '';
+      window.appendBuddyMessage('user', q);
+      var lower = q.toLowerCase();
+      if (lower.indexOf('gst') !== -1 || lower.indexOf('noc') !== -1 || lower.indexOf('bank') !== -1) {
+        window.appendBuddyMessage('bot', 'You can complete your Business GST registration in 30 minutes <a href="/gst-registration" class="text-brand font-semibold underline">here</a>, including 1-click Family Consent NOC and Rule 10A bank account deferral.');
+      } else if (lower.indexOf('bill') !== -1 || lower.indexOf('scan') !== -1 || lower.indexOf('photo') !== -1) {
+        window.appendBuddyMessage('bot', 'Take a photo of any printed or thermal receipt in the app — Hisaab.Guru categorizes the expense and updates your GST ledger automatically.');
+      } else {
+        window.appendBuddyMessage('bot', 'Hisaab.Guru helps you manage AI bill scanning, automatic bookkeeping, live profit &amp; GST tracking, customer khata, staff payroll, and 30-minute GST registration.');
+      }
+    };
   </script>
+
+  <script>
+    // 1. Theme: light by default; dark persists under 'hisaab-web-theme'
+    var currentTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+
+    function applyTheme(theme, persist) {
+      currentTheme = theme;
+      document.documentElement.setAttribute('data-theme', theme);
+      if (persist) {
+        try { localStorage.setItem('hisaab-web-theme', theme); } catch (e) {}
+      }
+      var sun = document.getElementById('theme-icon-sun');
+      var moon = document.getElementById('theme-icon-moon');
+      var btn = document.getElementById('theme-toggle-btn');
+      var meta = document.getElementById('meta-theme-color');
+      var dark = theme === 'dark';
+      if (sun) sun.classList.toggle('hidden', !dark);
+      if (moon) moon.classList.toggle('hidden', dark);
+      if (btn) btn.setAttribute('aria-label', dark ? 'Switch to light theme' : 'Switch to dark theme');
+      if (meta) meta.setAttribute('content', dark ? '#0B0D0C' : '#F6F3EC');
+    }
+
+    function toggleTheme() {
+      applyTheme(currentTheme === 'dark' ? 'light' : 'dark', true);
+    }
+
+    applyTheme(currentTheme, false);
+
+    // 2. Store modal
+    function openStoreModal(storeName) {
+      var title = document.getElementById('modal-store-title');
+      if (title) title.textContent = 'Download on ' + storeName;
+      var modal = document.getElementById('qr_modal');
+      if (modal && typeof modal.showModal === 'function') modal.showModal();
+    }
+
+    // 3. shadcn/ui Tabs switcher with Emil Kowalski blur-morph bridge
+    function switchWorkflowTab(tabKey) {
+      var keys = ['scan', 'gst', 'profit', 'payroll'];
+      keys.forEach(function (k) {
+        var btn = document.getElementById('tab-btn-' + k);
+        var panel = document.getElementById('tab-panel-' + k);
+        var active = k === tabKey;
+        if (btn) btn.setAttribute('aria-selected', active ? 'true' : 'false');
+        if (panel) {
+          if (active) {
+            panel.removeAttribute('hidden');
+            panel.classList.add('emil-blur-morph');
+            requestAnimationFrame(function () {
+              requestAnimationFrame(function () {
+                panel.classList.remove('emil-blur-morph');
+              });
+            });
+          } else {
+            panel.setAttribute('hidden', '');
+          }
+        }
+      });
+    }
+
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var hasFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+    window.addEventListener('DOMContentLoaded', function () {
+      // 4. Hero Lottie: plays once, holds the last frame; static last frame under reduced motion
+      var lottieEl = document.getElementById('hero-lottie');
+      if (lottieEl && window.lottie) {
+        var anim = window.lottie.loadAnimation({
+          container: lottieEl,
+          renderer: 'svg',
+          loop: false,
+          autoplay: !reduceMotion,
+          path: '/assets/lottie/hero-ledger.json',
+          rendererSettings: { preserveAspectRatio: 'xMidYMid meet' }
+        });
+        if (reduceMotion) {
+          anim.addEventListener('DOMLoaded', function () {
+            anim.goToAndStop(anim.totalFrames - 1, true);
+          });
+        }
+      }
+
+      // 5. 3d-web-experience: Scroll & pointer-reactive Three.js ambient depth stage with WebGL fallback & DPR cap
+      var canvas = document.getElementById('hg-3d-experience-canvas');
+      var fallback = document.getElementById('hg-3d-webgl-fallback');
+      if (canvas && !reduceMotion && typeof THREE !== 'undefined') {
+        try {
+          var gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+          if (!gl) throw new Error('WebGL unavailable');
+          var isMobile = /iPhone|iPad|Android/i.test(navigator.userAgent);
+          var renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: !isMobile });
+          renderer.setPixelRatio(isMobile ? 1 : Math.min(window.devicePixelRatio || 1, 2));
+
+          var scene = new THREE.Scene();
+          var camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
+          camera.position.set(0, 0, 14);
+
+          var ambLight = new THREE.AmbientLight(0xffffff, 0.85);
+          scene.add(ambLight);
+          var dirLight = new THREE.DirectionalLight(0x67e58b, 1.1);
+          dirLight.position.set(6, 10, 8);
+          scene.add(dirLight);
+
+          var group = new THREE.Group();
+          scene.add(group);
+
+          var emeraldMat = new THREE.MeshStandardMaterial({ color: 0x126c38, roughness: 0.35, metalness: 0.25, transparent: true, opacity: 0.11 });
+          var goldMat = new THREE.MeshStandardMaterial({ color: 0xc9a96a, roughness: 0.3, metalness: 0.45, transparent: true, opacity: 0.12 });
+
+          var torusGeo = new THREE.TorusGeometry(1.15, 0.18, 16, 48);
+          var torusMesh = new THREE.Mesh(torusGeo, goldMat);
+          torusMesh.position.set(8.2, 3.4, -3.5);
+          group.add(torusMesh);
+
+          var icoGeo = new THREE.IcosahedronGeometry(1.05, 0);
+          var icoMesh = new THREE.Mesh(icoGeo, emeraldMat);
+          icoMesh.position.set(7.6, -2.6, -3.0);
+          group.add(icoMesh);
+
+          var resizeScene = function () {
+            var w = canvas.parentElement.clientWidth || window.innerWidth;
+            var h = canvas.parentElement.clientHeight || 640;
+            renderer.setSize(w, h, false);
+            camera.aspect = w / Math.max(h, 1);
+            camera.updateProjectionMatrix();
+          };
+          resizeScene();
+          window.addEventListener('resize', resizeScene, { passive: true });
+
+          var pointerX = 0, pointerY = 0, scrollOffset = 0;
+          window.addEventListener('pointermove', function (e) {
+            pointerX = (e.clientX / window.innerWidth - 0.5) * 1.2;
+            pointerY = (e.clientY / window.innerHeight - 0.5) * 1.2;
+          }, { passive: true });
+          window.addEventListener('scroll', function () {
+            scrollOffset = window.scrollY * 0.0018;
+          }, { passive: true });
+
+          var clock = new THREE.Clock();
+          var animate3D = function () {
+            requestAnimationFrame(animate3D);
+            var t = clock.getElapsedTime();
+            torusMesh.rotation.x = t * 0.35 + scrollOffset;
+            torusMesh.rotation.y = t * 0.45 + pointerX * 0.5;
+            icoMesh.rotation.x = -t * 0.28 + scrollOffset * 1.2;
+            icoMesh.rotation.y = t * 0.38 - pointerY * 0.5;
+            group.position.x += (pointerX * 0.65 - group.position.x) * 0.05;
+            group.position.y += (-pointerY * 0.45 - group.position.y) * 0.05;
+            renderer.render(scene, camera);
+          };
+          animate3D();
+        } catch (err) {
+          if (fallback) fallback.setAttribute('data-webgl-status', 'fallback');
+        }
+      }
+
+      // 6. Keep cards on crisp 2D subpixel-aligned rendering (no 3D perspective texture blur)
+      document.querySelectorAll('[data-hg-tilt]').forEach(function (card) {
+        card.removeAttribute('data-hg-tilt');
+      });
+
+      // 7. Section headings: quiet scroll reveal
+      if (reduceMotion || typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.utils.toArray('main section h2.apple-section-display').forEach(function (el) {
+        gsap.from(el, {
+          opacity: 0,
+          y: 8,
+          duration: 0.45,
+          ease: 'cubic-bezier(0.23, 1, 0.32, 1)',
+          scrollTrigger: { trigger: el, start: 'top 88%', once: true }
+        });
+      });
+    });
+  </script>
+  <script src="assets/clerk-auth.js"></script>
 </body>
 </html>
