@@ -1,15 +1,16 @@
-# Hisaab.Guru — Official Promotional Website
+# Hisaab.Guru promotional website
 
-Luxury editorial & motion-graphics promotional website for **Hisaab.Guru**, the mobile-only AI bookkeeping, GST ledger, shift scheduling, and 2026 Indian statutory payroll application for iOS and Android.
+Static mobile-product showcase with current versus planned capability labels, illustrative phone screens, responsive navigation and optional motion.
 
-## Highlights
-- **App-Only Showcase**: Prominent **Apple App Store** and **Google Play Store** download badges plus an instant mobile QR scanner modal.
-- **Luxury Editorial Typography**: Paired `Cormorant Garamond` & `Instrument Serif` display typography with `Plus Jakarta Sans` and `JetBrains Mono`.
-- **Motion Graphics**: Ambient topographic contour wave canvas, floating 3D iOS & Android phone mockups, live AI invoice laser scanner animation, and infinite kinetic typography marquee.
-- **Multi-Industry Vision**: Showcases Hisaab.Guru live for Hospitality & Cloud Kitchens today and expanding to Pharmacies, Retail, Salons, Boutiques, and Service Enterprises.
+The current-workflow description is inherited from product-status correction `9da5879`; this repository does not independently verify app/backend readiness. Store badges and QR dialog remain intentional placeholders. Numeric pricing remains unannounced and payments are not active.
 
-## Local Preview
-```bash
+## Local preview
+
+```sh
 node server.cjs
 # Open http://127.0.0.1:8767
 ```
+
+No build or lint scripts are configured. Styling/fonts and optional GSAP motion load from external CDNs. The page remains readable and interactive without GSAP or browser storage.
+
+The information pages cover website privacy, prerelease terms, pricing status and contact. They use local CSS and system fonts without additional third-party requests. The operator and support address are owner-approved; inbox delivery has not been tested. The privacy notice is limited to the promotional website, not the mobile app. Hosting/log retention and app-policy questions are recorded in the draft PR description, not in a served draft file. No deployment is part of this change.
